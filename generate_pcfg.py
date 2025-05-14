@@ -2,23 +2,23 @@ import random
 from transformers import GPT2Tokenizer
 import os
 import pickle
+import numpy as np
 
 MAX_SEQUENCE_LENGTH = 10
 DATASET_SIZE = 10000
 
 # probably have differenet classes for different types of grammars
 class PCFG:   
-    def __init__(self, rules):
-        """
-        rules: dict of the form
-        {
-            'S': [(['NP', 'VP'], 0.9), (['VP'], 0.1)],
+    def __init__(self):
+        
+        self.rules = {
+            'S': [(['NP', 'VP'], 0.7), (['VP'], 0.3)],
             'NP': [(['Det', 'N'], 1.0)],
-            ...
+            'VP': [(['V', 'NP'], 0.8), (['V'], 0.2)],
+            'Det': [(['a'], 0.5), (['the'], 0.5)],
+            'N': [(['cat'], 0.5), (['dog'], 0.5)],
+            'V': [(['chases'], 1.0)]
         }
-        """
-
-        self.rules = rules
         self.name = 'basic'
 
 
@@ -49,12 +49,16 @@ class LanguageGenerator:
 def save_dataset(sequences, dataname):
 
     tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
-    tokenizer.add_special_tokens({'pad_token': '[PAD]'})
+    tokenizer.add_special_tokens({
+        'pad_token': '[PAD]',
+        'bos_token': '<|bos|>',
+    })
 
     all_tokens = []
     for seq in sequences:
         text = ' '.join(seq)
-        tokens = tokenizer.encode(text)
+        text_with_bos = tokenizer.bos_token + ' ' + text
+        tokens = tokenizer.encode(text_with_bos)
         all_tokens.extend(tokens)
 
     # Save as binary token array
@@ -65,6 +69,10 @@ def save_dataset(sequences, dataname):
     # Save metadata
     meta = {
         'vocab_size': tokenizer.vocab_size,
+        'bos_token': tokenizer.bos_token,
+        'bos_token_id': tokenizer.bos_token_id,
+        'pad_token': tokenizer.pad_token,
+        'pad_token_id': tokenizer.pad_token_id
     }
     with open(os.path.join(dataname, 'meta.pkl'), 'wb') as f:
         pickle.dump(meta, f)
@@ -72,17 +80,7 @@ def save_dataset(sequences, dataname):
     print(f"Saved {len(all_tokens)} tokens to {dataname}/train.bin")
 
 
-
-rules = {
-        'S': [(['NP', 'VP'], 0.7), (['VP'], 0.3)],
-        'NP': [(['Det', 'N'], 1.0)],
-        'VP': [(['V', 'NP'], 0.8), (['V'], 0.2)],
-        'Det': [(['a'], 0.5), (['the'], 0.5)],
-        'N': [(['cat'], 0.5), (['dog'], 0.5)],
-        'V': [(['chases'], 1.0)]
-    }
-
-pfcg = PCFG(rules)
-generator = LanguageGenerator(pfcg)
+pcfg = PCFG()
+generator = LanguageGenerator(pcfg)
 sequences = generator.generate_sequences(DATASET_SIZE, MAX_SEQUENCE_LENGTH)
-save_dataset(sequences, 'data/pcfg')
+save_dataset(sequences, f'data/{pcfg.name}')
