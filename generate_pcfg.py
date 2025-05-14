@@ -1,8 +1,13 @@
-# write code that takes a rules of a pcfg and generates random sentences up to length n
-
 import random
+from transformers import GPT2Tokenizer
+import os
+import pickle
 
-class PCFG:
+MAX_SEQUENCE_LENGTH = 10
+DATASET_SIZE = 10000
+
+# probably have differenet classes for different types of grammars
+class PCFG:   
     def __init__(self, rules):
         """
         rules: dict of the form
@@ -14,6 +19,7 @@ class PCFG:
         """
 
         self.rules = rules
+        self.name = 'basic'
 
 
 class LanguageGenerator:
@@ -38,9 +44,37 @@ class LanguageGenerator:
     def generate_sequences(self, num_sequences, max_length):
         return [self.generate_sequence(max_length) for _ in range(num_sequences)]
 
-def main():
-    rules = {
-        'S': [(['NP', 'VP'], 0.9), (['VP'], 0.1)],
+
+
+def save_dataset(sequences, dataname):
+
+    tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+    tokenizer.add_special_tokens({'pad_token': '[PAD]'})
+
+    all_tokens = []
+    for seq in sequences:
+        text = ' '.join(seq)
+        tokens = tokenizer.encode(text)
+        all_tokens.extend(tokens)
+
+    # Save as binary token array
+    os.makedirs(dataname, exist_ok=True)
+    arr = np.array(all_tokens, dtype=np.uint16)
+    arr.tofile(os.path.join(dataname, f'train.bin'))
+
+    # Save metadata
+    meta = {
+        'vocab_size': tokenizer.vocab_size,
+    }
+    with open(os.path.join(dataname, 'meta.pkl'), 'wb') as f:
+        pickle.dump(meta, f)
+
+    print(f"Saved {len(all_tokens)} tokens to {dataname}/train.bin")
+
+
+
+rules = {
+        'S': [(['NP', 'VP'], 0.7), (['VP'], 0.3)],
         'NP': [(['Det', 'N'], 1.0)],
         'VP': [(['V', 'NP'], 0.8), (['V'], 0.2)],
         'Det': [(['a'], 0.5), (['the'], 0.5)],
@@ -48,12 +82,7 @@ def main():
         'V': [(['chases'], 1.0)]
     }
 
-    pfcg = PCFG(rules)
-    generator = LanguageGenerator(pfcg)
-    sequences = generator.generate_sequences(10, 5)
-
-    for seq in sequences:
-        print(' '.join(seq))
-
-if __name__ == "__main__":
-    main()
+pfcg = PCFG(rules)
+generator = LanguageGenerator(pfcg)
+sequences = generator.generate_sequences(DATASET_SIZE, MAX_SEQUENCE_LENGTH)
+save_dataset(sequences, 'data/pcfg')
