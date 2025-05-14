@@ -8,7 +8,7 @@ from model import GPT, GPTConfig
     
 # ----- Config -----
 data_dir = 'data'
-dataset = 'tbd'
+dataset = 'basic'
 batch_size = 12
 block_size = 1024
 n_layer = 12
@@ -17,8 +17,8 @@ n_embd = 768
 dropout = 0.0
 bias = False
 learning_rate = 6e-4
-checkpoint_every = 10
-num_epochs = 1000
+checkpoint_every = 1
+num_epochs = 10
 weight_decay = 1e-1
 beta1 = 0.9
 beta2 = 0.95
@@ -28,7 +28,7 @@ torch.manual_seed(42)
 
 # ----- Load Dataset -----
 def get_batch(split):
-    data = np.memmap(os.path.join(data_dir, dataset, f'{split}.bin'), dtype=np.uint16, mode='r')
+    data = np.memmap(os.path.join(data_dir, dataset, f'{split}.bin'), dtype=np.uint32, mode='r')
     ix = torch.randint(len(data) - block_size, (batch_size,))
     x = torch.stack([torch.from_numpy(data[i:i+block_size].astype(np.int64)) for i in ix])
     y = torch.stack([torch.from_numpy(data[i+1:i+1+block_size].astype(np.int64)) for i in ix])
@@ -70,7 +70,7 @@ for epoch in range(num_epochs):
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
         optimizer.step()
 
-    #save checkpoint
+    #save checkpoint and evaluate
     if (epoch+1) % checkpoint_every == 0:
         checkpoint_path = os.path.join(data_dir, dataset, f'checkpoint_epoch_{epoch+1}.pt')
         torch.save(model.state_dict(), checkpoint_path)
