@@ -1,5 +1,6 @@
 import torch
 import torch.nn.functional as F
+from generate_pcfg import validate
 
 #this is a bit weird
 def generate_and_score_sequences(model, tokenizer, num_samples=10, max_length=256):
@@ -14,15 +15,13 @@ def generate_and_score_sequences(model, tokenizer, num_samples=10, max_length=25
 
     with torch.no_grad():
         for _ in range(num_samples):
-            input_ids = torch.tensor([[bos_token_id]], dtype=torch.uint16).to(device)
-            output = model.generate(input_ids, max_length=max_length, do_sample=True)
+            input_ids = torch.tensor([[bos_token_id]], dtype=torch.long).to(device)
+            output, logits = model.generate(input_ids, max_new_tokens=max_length)
 
             # Remove batch dim and compute log-prob
             sequence = output[0]
-            input_seq = sequence[:-1].unsqueeze(0)  # exclude last token for input
             target_seq = sequence[1:].unsqueeze(0)  # exclude first token for target
 
-            logits = model(input_seq).logits
             log_probs = F.log_softmax(logits, dim=-1)
             selected_log_probs = log_probs.gather(2, target_seq.unsqueeze(-1)).squeeze(-1)
             sequence_log_prob = selected_log_probs.sum().item()
@@ -34,21 +33,18 @@ def generate_and_score_sequences(model, tokenizer, num_samples=10, max_length=25
 
     return results
 
-def calculate_accuracy(generated_sequences, valid_sequences, train_sequences):
+def calculate_accuracy(generated_sequences, train_sequences, grammar_name):
     """Calculate the accuracy of generated sequences against valid sequences."""
-    valid_set = set(tuple(seq) for seq in valid_sequences)
     train_set = set(tuple(seq) for seq in train_sequences)
-
-    accuracy = sum(1 for seq in generated_sequences if tuple(seq) in valid_set) / len(generated_sequences)
+    accuracy = sum(validate(seq, grammar_name) for seq in generated_sequences) / len(generated_sequences)
     train_overlap = sum(1 for seq in generated_sequences if tuple(seq) in train_set) / len(generated_sequences)
-
     return {
         "accuracy": accuracy,
         "train_overlap": train_overlap
     }
 
-def evaluate_generated_sequences(model, tokenizer, valid_sequences, num_samples=10, max_length=256):
+def evaluate_generated_sequences(model, tokenizer, training_sequences, grammar_name, num_samples=10, max_length=256):
     """Evaluate generated sequences on accuracy and perplexity."""
     generated_sequences = generate_and_score_sequences(model, tokenizer, num_samples, max_length)
-    accuracy = calculate_accuracy(generated_sequences, valid_sequences)
+    accuracy = calculate_accuracy(generated_sequences, training_sequences, grammar_name)
     return accuracy

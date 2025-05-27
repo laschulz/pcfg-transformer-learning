@@ -242,17 +242,17 @@ class GPT(nn.Module):
 
         device = device or next(self.parameters()).device
         block_size = self.config.block_size
-        optimizer = self.configure_optimizers(weight_decay, learning_rate, betas, device.type)
+        optimizer = self.configure_optimizers(weight_decay, learning_rate, betas, device)
 
         def get_batch(split):
-            data = np.memmap(os.path.join(data_dir, dataset, f'{split}.bin'), dtype=np.uint32, mode='r')
+            data = np.memmap(os.path.join(data_dir, dataset, f'{split}.bin'), mode='r')
             ix = torch.randint(len(data) - block_size, (batch_size,))
             x = torch.stack([torch.from_numpy(data[i:i+block_size].astype(np.int64)) for i in ix])
             y = torch.stack([torch.from_numpy(data[i+1:i+1+block_size].astype(np.int64)) for i in ix])
             return x.to(device), y.to(device)
 
         # training loop
-        tokens_per_epoch = len(np.memmap(os.path.join(data_dir, dataset, 'train.bin'), dtype=np.uint16, mode='r'))
+        tokens_per_epoch = len(np.memmap(os.path.join(data_dir, dataset, 'train.bin'), mode='r'))
         iters_per_epoch = tokens_per_epoch // (batch_size * block_size)
         best_val_loss = float('inf')
         epochs_no_improve = 0
@@ -300,6 +300,7 @@ class GPT(nn.Module):
         the sequence max_new_tokens times, feeding the predictions back into the model each time.
         Most likely you'll want to make sure to be in model.eval() mode of operation for this.
         """
+        logits_list = []
         for _ in range(max_new_tokens):
             # if the sequence context is growing too long we must crop it at block_size
             idx_cond = idx if idx.size(1) <= self.config.block_size else idx[:, -self.config.block_size:]
@@ -317,5 +318,7 @@ class GPT(nn.Module):
             idx_next = torch.multinomial(probs, num_samples=1)
             # append sampled index to the running sequence and continue
             idx = torch.cat((idx, idx_next), dim=1)
-
-        return idx
+            logits_list.append(logits.unsqueeze(1))  # store logits for this step
+        
+        logits_tensor = torch.cat(logits_list, dim=1)  # shape (b, max_new_tokens, vocab_size)
+        return idx, logits_tensor
