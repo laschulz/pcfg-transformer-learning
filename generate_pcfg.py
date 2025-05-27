@@ -137,7 +137,6 @@ def dict_to_pcfg(table):
                                for t in rhs)
             lines.append(f"{lhs} -> {rhs_str} [{p}]")
     pcfg_str = "\n".join(lines)
-    print(f"PCFG String:\n{pcfg_str}\n")
     return pcfg_str
 
 PARSERS = {name: ViterbiParser(PCFG.fromstring(dict_to_pcfg(tbl)))
@@ -145,7 +144,8 @@ PARSERS = {name: ViterbiParser(PCFG.fromstring(dict_to_pcfg(tbl)))
 
 def validate(sequence, grammar_name):
     """True iff sequence (list or space-string) derives from grammar."""
-    tokens = sequence.split() if isinstance(sequence, str) else list(sequence)
+    text_value = sequence["text"]
+    tokens = text_value.split() if isinstance(text_value, str) else list(text_value)
     try:
         return any(PARSERS[grammar_name].parse(tokens))
     except ValueError as err:          # token not covered by the grammar
