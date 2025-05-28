@@ -3,7 +3,7 @@ import torch.nn.functional as F
 from generate_pcfg import validate
 
 #this is a bit weird
-def generate_and_score_sequences(model, tokenizer, num_samples=10, max_length=256):
+def generate_and_score_sequences(model, tokenizer, num_samples=50, max_length=256):
     """
     Generate sequences from the model and compute their log-probabilities.
     """
@@ -11,12 +11,13 @@ def generate_and_score_sequences(model, tokenizer, num_samples=10, max_length=25
     results = []
 
     bos_token_id = tokenizer.bos_token_id
+    eos_token_id = tokenizer.eos_token_id
     device = next(model.parameters()).device #adjust this
 
     with torch.no_grad():
         for _ in range(num_samples):
             input_ids = torch.tensor([[bos_token_id]], dtype=torch.long).to(device)
-            output, logits = model.generate(input_ids, max_new_tokens=max_length)
+            output, logits = model.generate(input_ids, max_new_tokens=max_length, eos_token_id=eos_token_id, eos_prob_threshold=0.9)
 
             # Remove batch dim and compute log-prob
             sequence = output[0]

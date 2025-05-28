@@ -108,23 +108,25 @@ class GPT2Config: # 124M params
     dropout: float = 0.0 
     bias: bool = True # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
 
-class FourLayerTransformerConfig: # 0.89M params
-    block_size = 256           
+class FourLayer: # 0.89M params
+    block_size = 32           
     vocab_size = 512          
     n_layer = 4                
     n_head = 4                
     n_embd = 128              
     dropout = 0.1              
     bias = True
+    name = "FourLayer"
 
-class TwoLayerTransformerConfig:
-    block_size = 256           
+class TwoLayer:
+    block_size = 32           
     vocab_size = 512          
     n_layer = 2                
     n_head = 2                
     n_embd = 128              
     dropout = 0.1              
     bias = True
+    name = "TwoLayer"
 
 class GPT(nn.Module):
 
@@ -236,51 +238,61 @@ class GPT(nn.Module):
 
         return optimizer
     
-    def train_model(self, data_dir, dataset, num_epochs=10, batch_size=8,
-                learning_rate=6e-4, weight_decay=1e-1, betas=(0.9, 0.95),
-                early_stopping=3, checkpoint_every=1, device=None):
-
-        device = device or next(self.parameters()).device
+    def train_model(self, data_dir, dataset, num_epochs, batch_size,
+                learning_rate, weight_decay, betas,
+                early_stopping, checkpoint_every, config, device):
+        
         block_size = self.config.block_size
         optimizer = self.configure_optimizers(weight_decay, learning_rate, betas, device)
 
-        def get_batch(split):
-            data = np.memmap(os.path.join(data_dir, dataset, f'{split}.bin'), mode='r')
+        train_data = np.memmap(os.path.join(data_dir, dataset, 'train.bin'), dtype=np.uint32, mode='r')
+        val_data = np.memmap(os.path.join(data_dir, dataset, 'val.bin'), dtype=np.uint32, mode='r')
+
+        def get_batch(data):
+
             ix = torch.randint(len(data) - block_size, (batch_size,))
             x = torch.stack([torch.from_numpy(data[i:i+block_size].astype(np.int64)) for i in ix])
             y = torch.stack([torch.from_numpy(data[i+1:i+1+block_size].astype(np.int64)) for i in ix])
             return x.to(device), y.to(device)
 
         # training loop
-        tokens_per_epoch = len(np.memmap(os.path.join(data_dir, dataset, 'train.bin'), mode='r'))
-        iters_per_epoch = tokens_per_epoch // (batch_size * block_size)
+        iters_per_epoch = len(train_data) // (batch_size * block_size)
         best_val_loss = float('inf')
         epochs_no_improve = 0
 
         for epoch in range(num_epochs):
             self.train()
+            running_train_loss = 0.0
             for _ in range(iters_per_epoch):
-                X, Y = get_batch('train')
-                logits, loss = self(X, Y)
+                X, Y = get_batch(train_data)
+                _, loss = self(X, Y)
                 optimizer.zero_grad()
                 loss.backward()
                 torch.nn.utils.clip_grad_norm_(self.parameters(), 1.0)
                 optimizer.step()
+                running_train_loss += loss.item()
+
+            avg_train_loss = running_train_loss / iters_per_epoch
+            print(f"[Epoch {epoch}] Training Loss: {avg_train_loss:.4f}")
 
             # validation
             self.eval()
             val_losses = []
             with torch.no_grad():
-                for _ in range(10):
-                    X_val, Y_val = get_batch('val')
+                for _ in range(20):
+                    X_val, Y_val = get_batch(val_data)
                     _, val_loss = self(X_val, Y_val)
                     val_losses.append(val_loss.item())
-            avg_val_loss = np.mean(val_losses)
+            avg_val_loss = float(np.mean(val_losses))
             print(f"[Epoch {epoch}] Validation Loss: {avg_val_loss:.4f}")
 
+            ckpt_path = os.path.join(data_dir, dataset, config)
             if avg_val_loss < best_val_loss:
                 best_val_loss = avg_val_loss
                 epochs_no_improve = 0
+                best_path = os.path.join(data_dir, dataset, ckpt_path, 'best.pt')
+                os.makedirs(os.path.dirname(best_path), exist_ok=True)
+                torch.save(self.state_dict(), best_path)
             else:
                 epochs_no_improve += 1
                 if epochs_no_improve >= early_stopping:
@@ -288,13 +300,14 @@ class GPT(nn.Module):
                     break
 
             if (epoch + 1) % checkpoint_every == 0:
-                ckpt_path = os.path.join(data_dir, dataset, f'checkpoint_epoch_{epoch+1}.pt')
-                torch.save(self.state_dict(), ckpt_path)
-                print(f"Saved checkpoint to {ckpt_path}")
+                ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch+1}.pt')
+                os.makedirs(os.path.dirname(ckpt_path_ep), exist_ok=True)
+                torch.save(self.state_dict(), ckpt_path_ep)
+                print(f"Saved checkpoint to {ckpt_path_ep}")
 
 
     @torch.no_grad()
-    def generate(self, idx, max_new_tokens, temperature=1.0, top_k=None):
+    def generate(self, idx, max_new_tokens, eos_token_id, eos_prob_threshold, temperature=1.0, top_k=None):
         """
         Take a conditioning sequence of indices idx (LongTensor of shape (b,t)) and complete
         the sequence max_new_tokens times, feeding the predictions back into the model each time.
@@ -314,6 +327,10 @@ class GPT(nn.Module):
                 logits[logits < v[:, [-1]]] = -float('Inf')
             # apply softmax to convert logits to (normalized) probabilities
             probs = F.softmax(logits, dim=-1)
+            eos_p = probs[:, eos_token_id]
+            if torch.all(eos_p >= eos_prob_threshold):
+                break
+
             # sample from the distribution
             idx_next = torch.multinomial(probs, num_samples=1)
             # append sampled index to the running sequence and continue

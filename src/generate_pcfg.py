@@ -19,9 +19,9 @@ DATASET_SIZE = 1000
 GRAMMARS = {
     # G2  ─ LinearRecursion
     "LinearRecursion": {
-        "S": [(["A"], .4), (["B"], .4), (["c"], .2)],
-        "A": [(["a"], .5), (["A", "aa"], .5)],
-        "B": [(["b"], .5), (["B", "b"], .5)],
+        "S": [(["A"], .5), (["B"], .4), (["c"], .1)],
+        "A": [(["a"], .3), (["A", "aa"], .7)],
+        "B": [(["b"], .2), (["B", "b"], .8)],
     },
 
     # G3  ─ MutualRecursion
@@ -86,6 +86,8 @@ def validate(sequence, grammar_name):
     """True iff sequence (list or space-string) derives from grammar."""
     text_value = sequence["text"]
     tokens = text_value.split() if isinstance(text_value, str) else list(text_value)
+    tokens = [tok for tok in tokens if tok not in {"<|eos|>", "<|bos|>"}]
+
     try:
         return any(PARSERS[grammar_name].parse(tokens))
     except ValueError as err:          # token not covered by the grammar
@@ -120,11 +122,12 @@ def split_and_tokenize(jsonl_path, tok_fast, out_dir, train_ratio=.9):
     for name, data in [("train", lines[:split]), ("val", lines[split:])]:
         ids = []
         for row in data:
-            ids.extend(tok_fast.encode(tok_fast.bos_token + " " + row["sequence"]))
-        np.array(ids).tofile(f"{out_dir}/{name}.bin")
+            ids.extend(tok_fast.encode(tok_fast.bos_token + " " + row["sequence"] + " " + tok_fast.eos_token))
+        np.array(ids, dtype=np.uint32).tofile(f"{out_dir}/{name}.bin")
         with open(f"{out_dir}/meta_{name}.pkl", "wb") as m:
             pickle.dump({"vocab_size": len(tok_fast),
-                        "bos_token_id": tok_fast.bos_token_id}, m)
+                        "bos_token_id": tok_fast.bos_token_id, 
+                        "eos_token_id": tok_fast.eos_token_id}, m)
         with open(f"{out_dir}/{name}.jsonl", "w") as j:
             for row in data: j.write(json.dumps(row)+"\n")
 
@@ -136,9 +139,9 @@ def train_custom_tokenizer(jsonl_path, tok_path, vocab=512):
     tok = Tokenizer(models.BPE())
     tok.normalizer = NormalizerSequence([NFD(), Lowercase(), StripAccents()])
     tok.pre_tokenizer = Whitespace()
-    tok.train([tmp], trainers.BpeTrainer(vocab_size=vocab, special_tokens=["<|bos|>"]))
+    tok.train([tmp], trainers.BpeTrainer(vocab_size=vocab, special_tokens=["<|bos|>", "<|eos|>"]))
     tok.post_processor = TemplateProcessing(
-        single="<|bos|> $A", special_tokens=[("<|bos|>", tok.token_to_id("<|bos|>"))]
+        single="<|bos|> $A <|eos|>", special_tokens=[("<|bos|>", tok.token_to_id("<|bos|>")), ("<|eos|>", tok.token_to_id("<|eos|>"))]
     )
     tok.save(os.path.abspath(tok_path))
 
@@ -158,9 +161,12 @@ def main():
     sequences=sample_many(args.grammar,args.dataset_size,args.max_len)
 
     # 2) validate first & print quick stats
-    valid_ratio=sum(validate(s,args.grammar) for s in sequences)/args.dataset_size
-    print(f"Generated {args.dataset_size} sequences from '{args.grammar}' – "
-          f"{valid_ratio:.1%} valid (should be 100%).")
+    valid_ratio = sum(
+        validate({"text": " ".join(s)}, args.grammar)
+        for s in sequences
+    ) / args.dataset_size
+    print(f"Generated {args.dataset_size} sequences from '{args.grammar}'"
+          f"{valid_ratio:.1%} valid")
 
     # 3) save dataset
     out_dir=f"data/{args.grammar}/{args.grammar}_{args.dataset_size}"
@@ -170,7 +176,7 @@ def main():
     # 4) optional BPE tokenisation
     tok_path=f"{out_dir}/tokenizer.json"
     train_custom_tokenizer(f"{out_dir}/full.jsonl",tok_path)
-    tok_fast=PreTrainedTokenizerFast(tokenizer_file=tok_path,bos_token="<|bos|>")
+    tok_fast=PreTrainedTokenizerFast(tokenizer_file=tok_path,bos_token="<|bos|>",eos_token="<|eos|>")
     split_and_tokenize(f"{out_dir}/full.jsonl",tok_fast,out_dir)
     print("Tokeniser + splits written.")
 

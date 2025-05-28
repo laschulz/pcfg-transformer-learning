@@ -1,1000 +1,1000 @@
-c
-b b
-a
-b b b
-a aa
-b
-c
-b
-b
-c
-b
-b b
-c
-c
-a aa
-a
-b
-a
-b
-b
-b
-c
-b b
-c
-a
-c
-c
-c
-b b b b
-a aa
-c
-b
-b b
-a
-a
-a
-a
-b b b
-b
-b b b b b b b
-b
-a
-c
-c
-c
-b b b
-a
-b
-b
-a
-b b b b b b
-b
-c
-c
-c
-b b
-a
-a
-a
-b
-b b
-c
-b b b
-a aa aa aa
-a aa aa aa
-b b
-b b
-b
-b
-a aa aa
-a aa
-b b
-c
-a aa aa
-a
-b b
-b b
-c
-b
-b
-a
-a aa
-b
-a aa aa
-b
-a aa aa aa aa
-b
-a
-a aa
-a aa
-c
-b b b b b b
-c
-a aa aa aa aa
-b b
-b
-a
-b
-a
-a aa
-a aa aa
-a aa aa aa aa
-b
-b
-c
-b b
-a
-a
-b
-a aa
-a
-b b
-b b b b
-b
-a aa
-a
-a
-c
-a
-b b
-a
-b
-b b b
-b
-b b
-b b b
-c
-b b
-b b
-a
-c
-b b
-c
-a aa
-b
-b b b b b b b b
-b b
-a aa
-c
-a
-b
-a aa
-a aa
-a aa aa aa
-b b
-b
-a aa aa aa aa aa
-c
-c
-a
-b b
-c
-b
-c
-a aa
-a aa
-a
-a aa aa
-b b b
-b
-b b
-a
-b b
-a
-b b b
-c
-a aa
-c
-b b
-b
-b
-a aa aa aa
-a aa
-b
-a aa aa
-a aa
-a
-a aa aa aa aa aa aa aa
-b b b
-b
-c
-c
-c
-b
-b b b b b b b b b b
-b
-c
-b b
-a aa
-a aa
-a aa aa aa aa
-a
-b b b
-b b b
-a aa
-b b
-c
-b b
-b
-b b b b b
-b b
-b
-b
-a
-a
-b
-b b b b
-b
-b
-a aa aa aa
-a aa aa aa aa aa
-c
-b b b
-c
-c
-a
-a
-a aa
-a aa aa aa
-a
-a aa aa aa aa
-a aa
-b
-b b b b
-a
-b
-a aa
-b
-b b b
-c
-b b
-a aa
-a aa aa aa aa aa
-c
-b b b
-a aa
-b b b b
-b b b b
-c
-b
-a
-c
-b
-b
-c
-b
-a
-a aa aa aa
-a
-a aa aa aa aa
-c
-b b b b b
-a aa aa aa aa
-a
-b b
-a
-b b
-b
-a
-a aa aa
-b
-b b b b
-b
-a
-a aa
-a aa
-b b b b
-a
-a aa aa
-c
-a
-a aa
-b b b
-c
-c
-c
-b
-b b
-b
-a aa aa
-a aa aa aa
-b b b b
-a aa aa
-b
-a aa
-b
-a aa aa
-c
-b b b b
-a
-a
-b
-b
-b
-b
-b
-b b b b
-b b
-a
-c
-c
-b b b
-b
-a
-a aa
-a
-b
-b b b b b b
-a aa aa
-a aa
-b
-a
-b b b b b
-a aa
-b
-b
-a aa
-a aa aa
-b
-c
-a
-b
-a aa
-c
-b
-a aa
-a
-a aa
-b b
-a aa
-b b b
-a
-a aa
-b
-c
-b b
-b b b b b b
-c
-b
-a aa
-a
-a aa
-b b
-a aa aa
-c
-a
-c
-a aa
-b
-b
-c
-a
-b b
-b
-a
-a
-a aa
-b b b b b
-a
-b
-b b
-a
-b
-c
-c
-a
-b
-b
-a aa
-c
-b b b
-a
-b b
-b
-c
-c
-b
-a
-b
-a
-a
-c
-b
-b
-c
-b b b
-a
-a aa aa
-b b
-a
-c
-a aa
-c
-c
-c
-a aa aa aa aa aa
-a
-b
-a aa aa
-c
-c
-b
-c
-c
-a aa aa aa aa
-a
-b b b b b
-c
-a
-c
-c
-a
-b b
-a aa aa
-c
-b
-b b
-a aa
-b b
-b b
-a
-a
-b b b
-b
-a aa
-c
-b b b b b b b
-a
-b
-a aa
-a
-b b b b
-a aa aa
-b
-a aa
-a aa
-a aa aa
-b
-c
-a
-a
-c
-b
-b b b b b b b
-a
-a aa aa aa
-a aa aa
-a aa aa aa aa aa
-a
-c
-c
-a aa
-c
-a aa
-a
-c
-a aa aa
-b
-a
-c
-c
-a
-a
-a
-b b b
-c
-a
-b b b
-b
-a aa
-a
-b b b
-c
-a
-a aa aa aa
-b
-b b
-b
-c
-b b b
-b b
-c
-a aa
-a aa
-a aa
-b
-b
-b
-b
-a aa aa aa
-a
-a
-a aa
-c
-c
-c
-c
-a aa
-c
-a aa aa
-b
-b
-a
-c
-a
-b
-b
-c
-c
-b b b
-b
-c
-b
-b b b b
-a aa
-b b b b b
-c
-b b b b
-a
-b b b b b b b
-a aa
-b
-b
-c
-c
-a aa
-a aa
-c
-a
-a
-a aa
-b b
-a
-b
-b
-b
-b
-c
-b
-a
-a aa
-a aa aa
-a
-a
-b b
-c
-a
-a aa
-c
-c
-a aa aa aa aa aa aa aa
-b b b b
-c
-b
-b b b b b b
-c
-a
-c
-c
-b b
-a
-b
-b b b b
-a aa
-c
-c
-b
-b b b
-b b
-c
-a
-a aa
-a
-c
-a
-a
-a aa
-b b
-a
-b b b
-b b
-b b
-a aa
-c
-c
-b
-c
-b b b
-b b
-b b b b
-a
-c
-b b
-a aa aa
-c
-b b b
-c
-a aa
-a
-b b
-a
-c
-a
-b b
-a
-a
-b
-a aa
-a
-b b
-b b
-a
-b
-c
-c
-c
-b
-c
-a aa aa aa
-a aa aa aa
-a aa aa
-a aa
-b
-a
-b b b b b b b b b b b
-b
-b
-b
-b
-a aa aa aa
-a
-b b b b b
-c
-c
-a
-c
-a aa
-b
-b
-a aa
-b
-c
-b b b
-a aa
-c
-c
-a
-a aa
-b
-c
-b
-b b
-a
-a aa aa
-b
-c
-a aa
-a
-b
-b
-b
-c
-a aa aa
-b b
-b b
-a
-a aa
-a
-c
-c
-b b
-b b b b b
-a aa aa aa aa
-b b b b
-a
-a
-a
-c
-a aa aa
-c
-a
-b b b b
-b
-c
-b
-c
-a aa
-a aa aa aa aa
-a
-b
-c
-c
-c
-a
-a aa aa aa aa aa
-a
-c
-c
-b
-c
-c
-a
-b
-b b
-c
-c
-b
-b
-c
-c
-b b
-b b
-b b b b
-b b b b
-a aa
-b b b b
-b
-a aa aa
-a aa
-a
-b
-b
-b
-b
-a
-a aa
-b
-c
-b b
-c
-a aa
-c
-c
-c
-b b
-a
-b
-b b
-a
-a aa
-c
-a
-b
-b b
-a aa
-c
-b b
-b
-c
-c
-b
-a
-c
-a aa
-c
-a
-c
-b
-a aa
-b b
-a
-a aa aa
-b
-b b b b
-a
-b b b
-b
-c
-c
-c
-a aa
-a
-c
-a aa aa
-a aa aa aa
-a
-a
-a
-b b
-b b
-b b b
-c
-b b b b
-b b b
-b
-c
-a
-b
-b
-b b
-a aa
-a
-a aa
-b
-b
-b
-b b b b b b
-b b b b b
-a aa
-a aa aa
-b
-b b
-a aa aa
-a
-b b b b
-c
-b
-b
-a
-b
-b
-b b b b b
-a aa
-b b
-c
-a aa
-c
-a
-b
-c
-a aa aa
-a
-b b
-a
-c
-a
-b b
-b b b
-b b b b
-a aa aa
-a aa aa
-a aa aa aa aa
-b
-b
-a
-b
-b
-a aa
-a
-b b
-b b b b b b b
-b b b
-b
-c
-b
-a
-a
-b
-b b
-a aa aa aa
-c
-b b b b b
-b b
-c
-a aa aa aa aa aa aa aa
-b
-c
-b b
-b b
-b
-c
-b b b
-a
-b b
-a aa
-b b b b b b
-a
-c
-b
-a aa aa
-a
-c
-b
-c
-c
-c
-c
-a aa
-a
-a
-a
-b
-b b
-c
-a aa
-a
-b b
-b
-a
-c
-b
-b
-a
-b b
-b b
-b b
-b
-b b
-c
-c
-b b
-c
-b b b
-b b
-c
-b b
-b
-c
-b b b b b b b b
-c
-c
-b b
-a
-c
-b b
-a
-b b b
-b b b b
-a aa aa aa
-b b b
-c
-a aa aa aa
-a aa aa aa
-a
-c
-c
-a aa aa
-b b
-b
-a
-b
-b b b b b b
-b
-a aa
-c
-c
-b
-a
-b
-b b b
-c
-c
-b b
-b
-b
-c
-a
-a aa
-a
-b
-b
-b b b b
-a aa
-b b b b b
-a
-b
-a
-a aa
-b b
-a aa aa aa aa aa aa
-a
-c
-b
-a
-b b b
-a
-a
-a
-a aa
-b
-c
-b
-a
-a aa
-c
-a aa
-b b
-a
-b b
-a aa aa aa aa aa aa aa
-c
-a aa aa aa aa
-b b b
-b
-c
-c
-b
-b b
-b
-b
-b
-b b
-b
-a aa
-a aa aa
-b
-a aa
-a aa
-b b b
-c
+a aa <|eos|>
+a aa aa aa aa aa aa aa <|eos|>
+a aa aa <|eos|>
+b b b <|eos|>
+a <|eos|>
+a <|eos|>
+a aa aa <|eos|>
+b b b b <|eos|>
+a <|eos|>
+b b b b b b b b b b b b <|eos|>
+b b b b b b b b b b b b <|eos|>
+b b b b b b b b b <|eos|>
+b <|eos|>
+a <|eos|>
+a aa aa aa <|eos|>
+a aa <|eos|>
+a aa aa <|eos|>
+b b b b b b b b b b b b b <|eos|>
+b b <|eos|>
+b <|eos|>
+b b b b b b b b <|eos|>
+a <|eos|>
+b b b <|eos|>
+b b b b b b b b <|eos|>
+b b <|eos|>
+b b b b b b b <|eos|>
+a <|eos|>
+b <|eos|>
+b b b b b b b b b b b <|eos|>
+b b b <|eos|>
+a aa aa aa aa <|eos|>
+a aa <|eos|>
+c <|eos|>
+a <|eos|>
+c <|eos|>
+a <|eos|>
+b <|eos|>
+b b b b b b <|eos|>
+c <|eos|>
+b <|eos|>
+a aa <|eos|>
+a aa aa aa aa aa aa <|eos|>
+b b b <|eos|>
+b <|eos|>
+a <|eos|>
+b b <|eos|>
+a <|eos|>
+a aa <|eos|>
+b b b <|eos|>
+b b <|eos|>
+a aa aa aa aa aa aa <|eos|>
+a aa aa aa <|eos|>
+b b <|eos|>
+a <|eos|>
+b <|eos|>
+b b b b b b <|eos|>
+a aa <|eos|>
+c <|eos|>
+a aa aa aa aa aa aa aa aa aa <|eos|>
+b b b b <|eos|>
+c <|eos|>
+b b b <|eos|>
+a <|eos|>
+a <|eos|>
+b b b <|eos|>
+a aa <|eos|>
+b b <|eos|>
+a aa aa aa aa <|eos|>
+c <|eos|>
+b b <|eos|>
+b b b b <|eos|>
+b b <|eos|>
+a <|eos|>
+b b <|eos|>
+a <|eos|>
+a aa <|eos|>
+b b <|eos|>
+a <|eos|>
+c <|eos|>
+a aa aa aa aa aa aa aa aa aa aa aa aa <|eos|>
+a aa aa aa aa <|eos|>
+b b b b b b b b <|eos|>
+a <|eos|>
+b b b b b b b b <|eos|>
+b b <|eos|>
+a <|eos|>
+a aa aa aa aa aa aa <|eos|>
+b <|eos|>
+c <|eos|>
+a aa aa aa aa aa <|eos|>
+b b b b b b b b b b <|eos|>
+a aa aa aa aa <|eos|>
+a aa <|eos|>
+a <|eos|>
+b <|eos|>
+a aa aa aa <|eos|>
+a aa aa aa <|eos|>
+a <|eos|>
+a aa aa aa aa aa aa <|eos|>
+b b b b b b b b b b b <|eos|>
+a aa <|eos|>
+a <|eos|>
+a <|eos|>
+b b <|eos|>
+c <|eos|>
+a aa aa aa aa aa aa aa aa aa <|eos|>
+b b b b b b b b b b b b b <|eos|>
+b b b <|eos|>
+a aa aa aa aa aa <|eos|>
+b b b b b b b b b b b b b b b b b b b b b b b b b b b b b <|eos|>
+b b b <|eos|>
+b b b b b b b b b b b b b b b <|eos|>
+b b b b b b b b b b b b b b b b b <|eos|>
+c <|eos|>
+b b b b b b <|eos|>
+b b b b <|eos|>
+b b b b <|eos|>
+a <|eos|>
+b b b b b <|eos|>
+a <|eos|>
+a aa aa aa aa aa aa <|eos|>
+a <|eos|>
+b b b b b b <|eos|>
+a aa <|eos|>
+a <|eos|>
+a aa <|eos|>
+a <|eos|>
+a aa aa aa <|eos|>
+a aa aa aa <|eos|>
+a aa aa <|eos|>
+b b b <|eos|>
+a aa <|eos|>
+a aa aa aa aa aa aa <|eos|>
+b <|eos|>
+a aa <|eos|>
+b <|eos|>
+c <|eos|>
+b b b b b b <|eos|>
+a <|eos|>
+b <|eos|>
+a <|eos|>
+b b <|eos|>
+c <|eos|>
+a aa aa <|eos|>
+b b b b b b <|eos|>
+a aa aa aa aa <|eos|>
+b b <|eos|>
+a <|eos|>
+a <|eos|>
+c <|eos|>
+a aa <|eos|>
+a aa <|eos|>
+a <|eos|>
+a aa aa aa aa aa aa aa <|eos|>
+a aa <|eos|>
+b b b b b b b b b b b b b b b b <|eos|>
+b b b b <|eos|>
+a aa <|eos|>
+b b b <|eos|>
+b <|eos|>
+b b b b <|eos|>
+a <|eos|>
+b b <|eos|>
+b b b b <|eos|>
+a aa aa <|eos|>
+a aa <|eos|>
+b <|eos|>
+a aa aa aa aa aa aa aa aa <|eos|>
+a aa <|eos|>
+c <|eos|>
+b b b b b b b <|eos|>
+b b b <|eos|>
+b <|eos|>
+a aa aa aa aa <|eos|>
+c <|eos|>
+c <|eos|>
+a aa <|eos|>
+a aa aa aa aa aa <|eos|>
+b b b b <|eos|>
+c <|eos|>
+a aa aa aa <|eos|>
+b b b <|eos|>
+a aa aa aa aa <|eos|>
+a aa <|eos|>
+b b <|eos|>
+a aa aa aa <|eos|>
+b b b b b <|eos|>
+b <|eos|>
+b b b b b b b <|eos|>
+b b b <|eos|>
+b b b <|eos|>
+b b b <|eos|>
+a <|eos|>
+a <|eos|>
+b b <|eos|>
+a aa aa <|eos|>
+b <|eos|>
+a <|eos|>
+a aa aa aa aa aa aa <|eos|>
+a aa aa aa <|eos|>
+c <|eos|>
+b <|eos|>
+a aa aa aa aa aa aa aa aa aa <|eos|>
+a aa <|eos|>
+a <|eos|>
+a aa <|eos|>
+b b b <|eos|>
+b b <|eos|>
+a aa aa aa aa aa aa <|eos|>
+a aa <|eos|>
+a aa aa aa aa <|eos|>
+a aa aa aa aa <|eos|>
+b b <|eos|>
+b <|eos|>
+c <|eos|>
+a aa aa aa aa <|eos|>
+c <|eos|>
+b b b b b b b b b b b <|eos|>
+a aa aa aa <|eos|>
+a aa <|eos|>
+b b <|eos|>
+a aa <|eos|>
+b b b b b b b b b b b b b b <|eos|>
+b b <|eos|>
+a <|eos|>
+c <|eos|>
+c <|eos|>
+a aa aa aa aa aa aa aa <|eos|>
+a <|eos|>
+b b b b b b b b <|eos|>
+c <|eos|>
+a aa aa aa aa <|eos|>
+a <|eos|>
+a aa aa aa aa <|eos|>
+b b b <|eos|>
+c <|eos|>
+b b b b <|eos|>
+a aa aa <|eos|>
+a aa <|eos|>
+a aa aa aa aa <|eos|>
+a aa aa aa aa aa aa aa aa aa aa <|eos|>
+a aa aa aa aa aa <|eos|>
+a aa aa aa aa aa aa <|eos|>
+a aa <|eos|>
+a aa aa <|eos|>
+b <|eos|>
+a <|eos|>
+a <|eos|>
+b b b b b b b b b b b <|eos|>
+b b <|eos|>
+b b b b b b b b b <|eos|>
+b b <|eos|>
+a <|eos|>
+b b b b b b b b b b b <|eos|>
+c <|eos|>
+a aa aa aa aa <|eos|>
+a <|eos|>
+a <|eos|>
+b <|eos|>
+b b b b b b b <|eos|>
+a <|eos|>
+a <|eos|>
+a aa aa aa aa aa aa aa aa <|eos|>
+b b b b <|eos|>
+a aa aa aa <|eos|>
+b b b b b <|eos|>
+b b b b <|eos|>
+a aa aa aa aa <|eos|>
+b b b b b b <|eos|>
+a aa aa aa aa <|eos|>
+a aa aa aa aa aa aa aa aa aa aa aa aa <|eos|>
+b b b b b b b <|eos|>
+b b b b b b <|eos|>
+a aa aa <|eos|>
+a aa aa aa aa aa <|eos|>
+b b b <|eos|>
+a <|eos|>
+a aa aa aa aa aa <|eos|>
+a aa aa aa aa aa aa <|eos|>
+b b b b b b b b b b b b b b b b b b b b b b <|eos|>
+b <|eos|>
+a aa aa aa aa aa aa aa aa aa aa aa aa aa <|eos|>
+a aa <|eos|>
+b b b b b b b b b b b b <|eos|>
+a aa aa <|eos|>
+a aa aa aa <|eos|>
+a aa aa aa aa <|eos|>
+a aa <|eos|>
+a aa aa <|eos|>
+a aa aa aa <|eos|>
+a <|eos|>
+b b b b b b b b b b b b b <|eos|>
+b b b b b <|eos|>
+a <|eos|>
+b b <|eos|>
+b b <|eos|>
+b <|eos|>
+a aa aa aa aa aa aa aa <|eos|>
+b b b b b b b b b b b b b b b b <|eos|>
+b <|eos|>
+b b b b b b b b b b b b b b b b b b b b b b b <|eos|>
+b b b b b b b b b b b <|eos|>
+b b b <|eos|>
+a aa aa aa aa aa aa aa aa aa <|eos|>
+b b b b b <|eos|>
+c <|eos|>
+b <|eos|>
+a aa aa <|eos|>
+a <|eos|>
+a aa aa aa aa aa aa aa aa aa aa aa <|eos|>
+a aa aa aa aa aa aa aa aa <|eos|>
+a aa aa <|eos|>
+b <|eos|>
+a aa aa aa aa aa aa aa aa aa aa aa <|eos|>
+a aa aa aa <|eos|>
+b b b b b b b b b b b b b b b b b b <|eos|>
+a <|eos|>
+a <|eos|>
+b b b b <|eos|>
+b b <|eos|>
+b b <|eos|>
+a <|eos|>
+c <|eos|>
+a aa aa aa aa aa <|eos|>
+a aa <|eos|>
+a <|eos|>
+b b b b <|eos|>
+a aa aa <|eos|>
+b b b b b b b b b <|eos|>
+a aa aa aa aa aa <|eos|>
+c <|eos|>
+b b b b b b b <|eos|>
+a <|eos|>
+a aa <|eos|>
+b b b b b b b b b b b b <|eos|>
+b b b b b b b b b b b b <|eos|>
+c <|eos|>
+b b b b b b b b b b b b b b b b b b b <|eos|>
+a aa <|eos|>
+b b b b b <|eos|>
+a <|eos|>
+a <|eos|>
+a aa <|eos|>
+a aa <|eos|>
+a aa <|eos|>
+a <|eos|>
+b b b b b b b b b b b b b b <|eos|>
+b <|eos|>
+b b b b b b <|eos|>
+a <|eos|>
+a <|eos|>
+b <|eos|>
+c <|eos|>
+c <|eos|>
+a aa aa aa <|eos|>
+b b b <|eos|>
+b b b b b <|eos|>
+a aa aa aa aa aa aa aa aa <|eos|>
+a aa <|eos|>
+a aa <|eos|>
+a aa <|eos|>
+b b b b b b b b b b b b b b b b <|eos|>
+c <|eos|>
+a aa aa aa aa aa aa <|eos|>
+b b b b b b b b b b b <|eos|>
+a aa <|eos|>
+c <|eos|>
+b b b b b <|eos|>
+a aa aa aa aa aa aa aa <|eos|>
+c <|eos|>
+b b b b b b b b b b b <|eos|>
+b b <|eos|>
+b b b b <|eos|>
+c <|eos|>
+b b b b b <|eos|>
+b <|eos|>
+a aa aa aa aa <|eos|>
+b <|eos|>
+b b b b b b b <|eos|>
+a <|eos|>
+b b b b b b <|eos|>
+a <|eos|>
+a aa aa <|eos|>
+a aa aa aa aa aa aa aa aa <|eos|>
+b b b b b b b <|eos|>
+c <|eos|>
+a aa <|eos|>
+b b b b <|eos|>
+a <|eos|>
+a <|eos|>
+b b b <|eos|>
+a aa aa aa aa aa <|eos|>
+a aa <|eos|>
+a aa aa aa aa aa <|eos|>
+c <|eos|>
+a <|eos|>
+a <|eos|>
+a aa <|eos|>
+b b b b b b b b b b b b <|eos|>
+c <|eos|>
+a <|eos|>
+a aa aa <|eos|>
+a aa aa aa <|eos|>
+b b b b b b b b b <|eos|>
+b b b b b <|eos|>
+b <|eos|>
+c <|eos|>
+a aa aa aa <|eos|>
+b b b b b b b b b b b b <|eos|>
+b <|eos|>
+a <|eos|>
+a aa aa aa aa aa aa aa aa aa <|eos|>
+a aa aa aa <|eos|>
+b <|eos|>
+b b b b <|eos|>
+b b <|eos|>
+a aa aa <|eos|>
+a aa aa aa aa aa aa aa aa aa aa <|eos|>
+a aa aa <|eos|>
+a aa aa aa <|eos|>
+b b b b b b <|eos|>
+b b b b b b b b b b b <|eos|>
+a aa aa aa aa aa aa aa aa <|eos|>
+b b b b <|eos|>
+b b b b b b b b <|eos|>
+c <|eos|>
+a aa aa aa <|eos|>
+b b <|eos|>
+b <|eos|>
+b b b b b <|eos|>
+b b <|eos|>
+b b b b b b b b b b b b <|eos|>
+b b b b b b b <|eos|>
+c <|eos|>
+a aa aa aa aa aa aa aa aa <|eos|>
+a aa aa aa <|eos|>
+a aa aa aa aa <|eos|>
+a aa aa aa aa <|eos|>
+c <|eos|>
+b b <|eos|>
+a aa <|eos|>
+b b b b b b b b b <|eos|>
+b <|eos|>
+a aa aa <|eos|>
+a <|eos|>
+a aa aa aa aa aa <|eos|>
+a aa aa <|eos|>
+b <|eos|>
+b <|eos|>
+b b b b b <|eos|>
+b b b b b <|eos|>
+a aa aa <|eos|>
+a aa aa <|eos|>
+b b b <|eos|>
+a <|eos|>
+b b b b b b <|eos|>
+b b b b b <|eos|>
+b <|eos|>
+b b b b b b b b b b b <|eos|>
+b b b <|eos|>
+b b b <|eos|>
+a aa aa <|eos|>
+c <|eos|>
+b b b b b b <|eos|>
+b b b <|eos|>
+c <|eos|>
+b b b b b b b b b b <|eos|>
+b <|eos|>
+b b b b b b b b b b b b <|eos|>
+a <|eos|>
+b b b b b b b b <|eos|>
+a aa aa <|eos|>
+a aa aa aa aa aa aa <|eos|>
+b b b b b b b <|eos|>
+a aa aa <|eos|>
+a aa aa aa aa aa aa aa <|eos|>
+a aa aa aa <|eos|>
+b b b b <|eos|>
+b <|eos|>
+a aa aa <|eos|>
+a aa <|eos|>
+c <|eos|>
+b b b b <|eos|>
+b b b b b b <|eos|>
+c <|eos|>
+a aa aa aa <|eos|>
+b b <|eos|>
+b b <|eos|>
+a <|eos|>
+b b b <|eos|>
+a aa aa aa aa aa aa <|eos|>
+a aa aa aa <|eos|>
+a aa <|eos|>
+a aa aa aa <|eos|>
+b b b b b b b b <|eos|>
+c <|eos|>
+a <|eos|>
+a aa aa aa aa aa aa aa aa aa aa <|eos|>
+b b b b <|eos|>
+a aa aa <|eos|>
+a aa aa aa aa aa aa <|eos|>
+b b b <|eos|>
+a aa aa aa aa aa aa <|eos|>
+b b b b b b <|eos|>
+c <|eos|>
+b <|eos|>
+b b b b <|eos|>
+b b <|eos|>
+a aa aa aa aa aa aa aa aa aa aa aa aa aa <|eos|>
+b b <|eos|>
+b b b b b <|eos|>
+a aa aa <|eos|>
+a aa <|eos|>
+b b b b b <|eos|>
+a aa aa aa aa aa aa aa aa aa aa aa aa aa aa <|eos|>
+b b <|eos|>
+a aa aa <|eos|>
+a aa aa aa aa aa aa <|eos|>
+a <|eos|>
+a aa <|eos|>
+b b b b b b b b b <|eos|>
+a aa aa aa aa aa aa aa aa <|eos|>
+a aa aa aa aa aa aa aa aa aa aa aa <|eos|>
+b <|eos|>
+b b <|eos|>
+b <|eos|>
+a aa aa <|eos|>
+b b b b b <|eos|>
+b b b b b b b b b b b b b b b <|eos|>
+a aa aa aa <|eos|>
+b b b b b <|eos|>
+a <|eos|>
+c <|eos|>
+b b <|eos|>
+a aa aa <|eos|>
+b b b <|eos|>
+b b b b <|eos|>
+b <|eos|>
+b <|eos|>
+a aa aa aa aa aa <|eos|>
+a aa <|eos|>
+b b b b b b b b b <|eos|>
+a <|eos|>
+b b b <|eos|>
+a aa aa aa <|eos|>
+b b <|eos|>
+c <|eos|>
+b b b b b b b <|eos|>
+a <|eos|>
+b b b <|eos|>
+b b b <|eos|>
+a aa aa aa aa aa aa aa aa aa aa aa <|eos|>
+a aa <|eos|>
+a <|eos|>
+a <|eos|>
+b b b <|eos|>
+b b b b b <|eos|>
+b b b <|eos|>
+a aa aa <|eos|>
+a aa aa aa aa aa <|eos|>
+a aa aa <|eos|>
+a aa aa aa <|eos|>
+b b b b b b b <|eos|>
+a aa aa aa aa aa <|eos|>
+a <|eos|>
+b b b b b b b b b b b b b b b b b <|eos|>
+a aa <|eos|>
+a aa aa aa aa aa aa aa <|eos|>
+a aa aa <|eos|>
+b b b b b <|eos|>
+a aa <|eos|>
+a <|eos|>
+a aa aa aa aa <|eos|>
+b b <|eos|>
+b b b b b b <|eos|>
+b b b <|eos|>
+a <|eos|>
+a aa <|eos|>
+c <|eos|>
+b b b b b b b b b <|eos|>
+a aa aa <|eos|>
+a aa <|eos|>
+b b <|eos|>
+b <|eos|>
+a <|eos|>
+a aa aa aa aa <|eos|>
+b b b b b b b b b <|eos|>
+b b b b <|eos|>
+a <|eos|>
+a aa aa aa <|eos|>
+a aa aa aa aa aa <|eos|>
+a aa <|eos|>
+a aa aa <|eos|>
+b b <|eos|>
+a aa <|eos|>
+a aa aa <|eos|>
+c <|eos|>
+a <|eos|>
+b b b b <|eos|>
+a <|eos|>
+a <|eos|>
+b <|eos|>
+a aa aa aa aa aa aa <|eos|>
+a <|eos|>
+b b <|eos|>
+c <|eos|>
+c <|eos|>
+c <|eos|>
+a aa <|eos|>
+b b b b b b b b b b b b b <|eos|>
+b b b b b b <|eos|>
+b b b b b b <|eos|>
+a aa aa aa aa aa aa aa aa aa aa aa <|eos|>
+a aa <|eos|>
+a <|eos|>
+b <|eos|>
+b b b b b b b b b b b b b b b <|eos|>
+a aa aa <|eos|>
+a aa aa <|eos|>
+a <|eos|>
+a <|eos|>
+a <|eos|>
+a aa aa <|eos|>
+a aa aa <|eos|>
+b b b b b b b <|eos|>
+b b b b b <|eos|>
+b <|eos|>
+a aa <|eos|>
+b b <|eos|>
+c <|eos|>
+a aa aa <|eos|>
+b b b <|eos|>
+a <|eos|>
+b b b <|eos|>
+a aa <|eos|>
+c <|eos|>
+a aa aa <|eos|>
+a aa aa aa <|eos|>
+c <|eos|>
+a <|eos|>
+a aa aa <|eos|>
+b b <|eos|>
+b b b b b <|eos|>
+b <|eos|>
+a aa aa aa <|eos|>
+a aa <|eos|>
+a <|eos|>
+a aa aa aa <|eos|>
+b b <|eos|>
+a <|eos|>
+a <|eos|>
+b b b b b b b <|eos|>
+b b b <|eos|>
+a <|eos|>
+b b b b b b b b <|eos|>
+a aa aa aa aa aa <|eos|>
+b b <|eos|>
+a aa aa aa aa aa <|eos|>
+a <|eos|>
+a aa aa aa <|eos|>
+b b b <|eos|>
+b b b <|eos|>
+a aa aa aa aa aa aa aa aa aa <|eos|>
+c <|eos|>
+a aa aa <|eos|>
+a aa aa <|eos|>
+b b b b b b b b b b b b b b b b b b b b b b b b <|eos|>
+c <|eos|>
+a <|eos|>
+a aa aa <|eos|>
+a <|eos|>
+a aa aa <|eos|>
+c <|eos|>
+a aa aa <|eos|>
+a aa aa aa aa aa aa aa aa aa aa aa aa aa <|eos|>
+a <|eos|>
+a aa <|eos|>
+b b b b b b b <|eos|>
+b b b b b b b <|eos|>
+a <|eos|>
+a aa aa aa <|eos|>
+c <|eos|>
+a aa <|eos|>
+b b <|eos|>
+b b b b <|eos|>
+c <|eos|>
+c <|eos|>
+a aa <|eos|>
+c <|eos|>
+a aa aa <|eos|>
+a <|eos|>
+a aa aa <|eos|>
+a aa aa aa aa aa aa aa aa aa aa aa aa <|eos|>
+b b b b b b b b b <|eos|>
+a aa aa <|eos|>
+a aa aa aa aa aa <|eos|>
+b b <|eos|>
+b b b <|eos|>
+a aa <|eos|>
+a <|eos|>
+a <|eos|>
+b b b b <|eos|>
+b b b b b b b b b b b b <|eos|>
+a <|eos|>
+b b b b b b b b b b b b b b b b b <|eos|>
+a <|eos|>
+a aa <|eos|>
+a aa <|eos|>
+b b b b b b b b <|eos|>
+a aa <|eos|>
+a aa aa aa aa aa <|eos|>
+a aa <|eos|>
+b b b b b b b b b <|eos|>
+a aa <|eos|>
+b b b b <|eos|>
+a <|eos|>
+b b <|eos|>
+a aa aa <|eos|>
+a aa aa aa <|eos|>
+b <|eos|>
+a aa aa aa <|eos|>
+b b b b b b b b b <|eos|>
+b b b b b b b b <|eos|>
+b b b b b b b <|eos|>
+a <|eos|>
+a aa <|eos|>
+a aa aa aa aa <|eos|>
+b b b b b <|eos|>
+b b b b b b <|eos|>
+a aa <|eos|>
+c <|eos|>
+b b b <|eos|>
+b b <|eos|>
+a <|eos|>
+b <|eos|>
+c <|eos|>
+b b b b b <|eos|>
+a aa aa aa <|eos|>
+b b b b b b b <|eos|>
+b <|eos|>
+c <|eos|>
+a aa aa aa <|eos|>
+a <|eos|>
+a aa aa <|eos|>
+a aa aa aa <|eos|>
+c <|eos|>
+b b <|eos|>
+a aa <|eos|>
+a <|eos|>
+b b b b b <|eos|>
+a aa aa aa aa <|eos|>
+c <|eos|>
+b b <|eos|>
+b b b b b b <|eos|>
+c <|eos|>
+b b b <|eos|>
+a aa aa aa aa aa <|eos|>
+a <|eos|>
+b b b b b b b b b b <|eos|>
+a aa <|eos|>
+c <|eos|>
+a aa <|eos|>
+a <|eos|>
+b <|eos|>
+b b b b <|eos|>
+a aa aa <|eos|>
+a <|eos|>
+b b <|eos|>
+a aa aa <|eos|>
+a <|eos|>
+a aa aa aa <|eos|>
+b <|eos|>
+b b <|eos|>
+a <|eos|>
+a aa aa aa <|eos|>
+b b b b b b b b b <|eos|>
+b b b b <|eos|>
+a <|eos|>
+a aa aa <|eos|>
+b b b b b b b b <|eos|>
+a aa <|eos|>
+c <|eos|>
+a aa <|eos|>
+a aa <|eos|>
+b b b b <|eos|>
+b b b b b b b b <|eos|>
+b b b b b b b b b b b b b b b <|eos|>
+b b b <|eos|>
+c <|eos|>
+a <|eos|>
+b b b <|eos|>
+b b b b <|eos|>
+b <|eos|>
+a <|eos|>
+a <|eos|>
+a aa <|eos|>
+b b b b b <|eos|>
+b b b b <|eos|>
+a aa <|eos|>
+a <|eos|>
+b b b b b b <|eos|>
+b b <|eos|>
+b <|eos|>
+a aa aa aa aa aa <|eos|>
+a aa aa <|eos|>
+b b b b b b b b b b b b b <|eos|>
+c <|eos|>
+b b b b b b b <|eos|>
+b <|eos|>
+b b b b <|eos|>
+a aa aa <|eos|>
+b b b b <|eos|>
+a <|eos|>
+b <|eos|>
+a aa aa <|eos|>
+c <|eos|>
+c <|eos|>
+b b b b b b b b b b b <|eos|>
+a aa aa <|eos|>
+c <|eos|>
+c <|eos|>
+a aa aa <|eos|>
+c <|eos|>
+a <|eos|>
+a aa aa <|eos|>
+a <|eos|>
+a aa aa <|eos|>
+a aa <|eos|>
+b b b <|eos|>
+b <|eos|>
+c <|eos|>
+b b b b b <|eos|>
+b <|eos|>
+a <|eos|>
+b <|eos|>
+b b b b b b b b b b b b b b <|eos|>
+c <|eos|>
+a aa aa <|eos|>
+a aa <|eos|>
+b b b b <|eos|>
+a aa aa <|eos|>
+a <|eos|>
+b b <|eos|>
+a aa aa aa <|eos|>
+a aa aa aa aa aa aa aa aa <|eos|>
+b b b b b b <|eos|>
+b b b b b b b b <|eos|>
+c <|eos|>
+a <|eos|>
+b b b <|eos|>
+a aa <|eos|>
+a aa aa <|eos|>
+b b b b b b b b b b b b <|eos|>
+b b b <|eos|>
+b b b b <|eos|>
+a <|eos|>
+a <|eos|>
+a <|eos|>
+c <|eos|>
+a aa aa aa aa <|eos|>
+b b b <|eos|>
+a <|eos|>
+a aa aa aa <|eos|>
+b <|eos|>
+a <|eos|>
+b b b b b b b <|eos|>
+b b b b <|eos|>
+b b b b b b b b <|eos|>
+a <|eos|>
+c <|eos|>
+b b <|eos|>
+a aa <|eos|>
+a <|eos|>
+a aa aa aa aa <|eos|>
+b b b b b b b <|eos|>
+b b b b b <|eos|>
+a aa aa <|eos|>
+a aa aa aa <|eos|>
+b b b b <|eos|>
+a <|eos|>
+a aa <|eos|>
+a <|eos|>
+a aa aa aa aa aa aa aa aa <|eos|>
+b <|eos|>
+b b b b b <|eos|>
+a aa aa aa aa aa <|eos|>
+a aa <|eos|>
+c <|eos|>
+b <|eos|>
+b b b b b b b b b <|eos|>
+b b b b <|eos|>
+c <|eos|>
+a aa aa <|eos|>
+a aa <|eos|>
+b b b b b b b b b b b b b b b b <|eos|>
+b b b b b b b <|eos|>
+a aa <|eos|>
+a aa aa aa aa aa aa aa aa aa <|eos|>
+a <|eos|>
+b b b b b b b <|eos|>
+a aa aa aa aa aa <|eos|>
+a aa <|eos|>
+a <|eos|>
+b b b <|eos|>
+a aa aa aa aa aa aa aa aa aa aa aa aa <|eos|>
+a aa <|eos|>
+a aa aa aa aa aa aa <|eos|>
+c <|eos|>
+b <|eos|>
+b b b b b b <|eos|>
+b b b b b b b b <|eos|>
+a <|eos|>
+b b b b b <|eos|>
+b b b b b b b b b b b b <|eos|>
+a aa <|eos|>
+c <|eos|>
+b b b b b b b b <|eos|>
+b b <|eos|>
+b b b b b <|eos|>
+b b b b b <|eos|>
+a aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa <|eos|>
+a aa aa aa aa aa aa aa aa <|eos|>
+a aa aa aa aa aa aa <|eos|>
+b b b b b b b b b b b b b b b b b b <|eos|>
+a <|eos|>
+b b b b b b b b b b b b b b b b b b b b <|eos|>
+a aa aa <|eos|>
+b b b b b b b b b b b b b <|eos|>
+b <|eos|>
+a aa aa aa aa aa aa aa aa aa <|eos|>
+a <|eos|>
+b b b b <|eos|>
+b <|eos|>
+a aa aa aa aa aa aa aa <|eos|>
+b b b b b b b <|eos|>
+a aa <|eos|>
+b <|eos|>
+a <|eos|>
+b <|eos|>
+a aa <|eos|>
+b <|eos|>
+a aa aa aa <|eos|>
+b <|eos|>
+b b b b b b b b b b b <|eos|>
+b b b b b b <|eos|>
+a aa aa aa aa <|eos|>
+a aa aa aa <|eos|>
+a aa <|eos|>
+c <|eos|>
+a aa aa aa aa aa aa aa <|eos|>
+b b b b b b b b b b b b b b b b b <|eos|>
+a aa aa aa <|eos|>
+a aa aa <|eos|>
+a aa <|eos|>
+b b b <|eos|>
+b <|eos|>
+a aa aa <|eos|>
+a aa aa aa <|eos|>
+a <|eos|>
+a <|eos|>
+b b b b b b <|eos|>
+c <|eos|>
+b b <|eos|>
+c <|eos|>
+a aa aa aa <|eos|>
+a aa <|eos|>
+a aa <|eos|>
+a aa aa aa <|eos|>
+b b <|eos|>
+a aa aa aa aa <|eos|>
+b b b b b b b b b b b b b b b b b b b <|eos|>
+b b b b <|eos|>
+a aa aa aa aa <|eos|>
+b b b b b b b b b b b b b b b b b b b b b <|eos|>
+b b b b <|eos|>
+b b b <|eos|>
+b b b b <|eos|>
+b b b b b b b <|eos|>
+b b <|eos|>
+b <|eos|>
+c <|eos|>
+a aa aa <|eos|>
+a aa <|eos|>
+a aa aa <|eos|>
+b b b b b b b b b <|eos|>
+b b b b b b b b b b b <|eos|>
+b b b b b b <|eos|>
+b <|eos|>
+b b b <|eos|>
+a aa aa aa aa <|eos|>
+b <|eos|>
+b b b b b b b b <|eos|>
+b b b b b b b b <|eos|>
+a aa aa <|eos|>
+a <|eos|>
+b b <|eos|>
+a aa aa <|eos|>
+b b b <|eos|>
+b b b b b <|eos|>
+a <|eos|>
