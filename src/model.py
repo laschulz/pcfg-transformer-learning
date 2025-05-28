@@ -3,10 +3,18 @@ import numpy as np
 import os
 import inspect
 from dataclasses import dataclass
+import logging
 
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='[%(asctime)s] %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S',
+)
+logger = logging.getLogger(__name__)
 
 class LayerNorm(nn.Module):
     """ LayerNorm but with an optional bias. PyTorch doesn't support simply bias=False """
@@ -109,7 +117,7 @@ class GPT2Config: # 124M params
     bias: bool = True # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
 
 class FourLayer: # 0.89M params
-    block_size = 32           
+    block_size = 128           
     vocab_size = 512          
     n_layer = 4                
     n_head = 4                
@@ -119,7 +127,7 @@ class FourLayer: # 0.89M params
     name = "FourLayer"
 
 class TwoLayer:
-    block_size = 32           
+    block_size = 128           
     vocab_size = 512          
     n_layer = 2                
     n_head = 2                
@@ -273,7 +281,7 @@ class GPT(nn.Module):
                 running_train_loss += loss.item()
 
             avg_train_loss = running_train_loss / iters_per_epoch
-            print(f"[Epoch {epoch}] Training Loss: {avg_train_loss:.4f}")
+            logger.info(f"[Epoch {epoch}] Training Loss: {avg_train_loss:.4f}")
 
             # validation
             self.eval()
@@ -284,26 +292,26 @@ class GPT(nn.Module):
                     _, val_loss = self(X_val, Y_val)
                     val_losses.append(val_loss.item())
             avg_val_loss = float(np.mean(val_losses))
-            print(f"[Epoch {epoch}] Validation Loss: {avg_val_loss:.4f}")
+            logger.info(f"[Epoch {epoch}] Validation Loss: {avg_val_loss:.4f}")
 
             ckpt_path = os.path.join(data_dir, dataset, config)
             if avg_val_loss < best_val_loss:
                 best_val_loss = avg_val_loss
                 epochs_no_improve = 0
-                best_path = os.path.join(data_dir, dataset, ckpt_path, 'best.pt')
+                best_path = os.path.join(ckpt_path, 'best.pt')
                 os.makedirs(os.path.dirname(best_path), exist_ok=True)
                 torch.save(self.state_dict(), best_path)
             else:
                 epochs_no_improve += 1
                 if epochs_no_improve >= early_stopping:
-                    print(f"Early stopping triggered at epoch {epoch}")
+                    logger.info(f"Early stopping triggered at epoch {epoch}")
                     break
 
-            if (epoch + 1) % checkpoint_every == 0:
-                ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch+1}.pt')
+            if epoch % checkpoint_every == 0:
+                ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch}.pt')
                 os.makedirs(os.path.dirname(ckpt_path_ep), exist_ok=True)
                 torch.save(self.state_dict(), ckpt_path_ep)
-                print(f"Saved checkpoint to {ckpt_path_ep}")
+                logger.info(f"Saved checkpoint to {ckpt_path_ep}")
 
 
     @torch.no_grad()

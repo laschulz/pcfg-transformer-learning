@@ -5,6 +5,7 @@ from model import GPT, TwoLayer, FourLayer
 from eval import evaluate_generated_sequences
 import json
 import os
+import numpy as np
 
 
 def parse_args():
@@ -47,8 +48,8 @@ def main():
             learning_rate=6e-4,
             weight_decay=1e-1,
             betas=(0.9, 0.95),
-            early_stopping=10,
-            checkpoint_every=20,
+            early_stopping=15,
+            checkpoint_every=10,
             config=config.name,
             device=device
         )
@@ -57,7 +58,19 @@ def main():
     with open(jsonl_path, 'r') as f:
         training_sequences = [json.loads(line)["sequence"] for line in f]
     tokenizer = PreTrainedTokenizerFast(tokenizer_file=f"{main_path}/tokenizer.json", bos_token="<|bos|>", eos_token="<|eos|>")   
-    evaluate_generated_sequences(model, tokenizer, training_sequences, pcfg)
+    with open(f"{main_path}/test.jsonl", 'r') as f:
+        test_sequences = [json.loads(line)["sequence"] for line in f]
+    generated_sequences, accuracy, train_overlap, res = evaluate_generated_sequences(model, tokenizer, training_sequences, pcfg, test_sequences, device, num_samples=50, max_length=256)
+    file_name = f"{os.path.basename(checkpoint_path).removesuffix('.pt')}.jsonl" if checkpoint_path else "best.jsonl"
+    path_dir = f'{main_path}/{config.name}'
+    os.makedirs(path_dir, exist_ok=True)
+    with open(f"{path_dir}/{file_name}", 'w') as f:
+        for seq in generated_sequences:
+            f.write(f"{seq}\n")
+        f.write(f"Accuracy: {accuracy:.4f}, Train Overlap: {train_overlap:.4f}\n\n\n")
+        f.write("Known sequences log probabilities:\n")
+        for r in res:
+            f.write(f"{r['text']}: {np.exp(r['log_prob'])}\n")
 
 if __name__ == "__main__":
     main()

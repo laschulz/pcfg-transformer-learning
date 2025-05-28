@@ -1,0 +1,900 @@
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a a c b b b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a a a c b b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a a a a a c b b b b b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a c b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a a a a a c b b b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a a a a a c b b b b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a c b b b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a a a a a a a c b b b b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a c b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a a c b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a a a a c b b b b b b b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a a c b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a a a a c b b b b b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a a c b b b b b b b b b b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a a c b b b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a a a a a c b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a c b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a a a a a a c b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a a a a a c b b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a a a a c b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a a a a a a a a c b b b b b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a a a a a a a a a a a c b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a a a a a a a a a c b b b b b b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a a a a a a a a a c b b b b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a a a a a c b b b b b b b b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a a a a c b b b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a a a a a c b b b b b b b b b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a c b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a a c b b b b b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a a a a c b b b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a a a a a a a a c b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a a a c b b b b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a a a c b b b b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a a a c b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a c b b b b b b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a a a a a c b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a a a a a c b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a a a c b b b b b b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a a a a a a c b b b b b b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a c b b b b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a c b b b b b b b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a a a a a a a a a c b b b b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a a a a a a a c b b b b b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a a a a a a a a a a a c b b b b b b b b b b b b b b"}
+{"sequence": "a a a a a a a a a a a a c b b b b b b b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a a a a c b b b b b b b b b b b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a c b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a a a a a c b b b b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a c b b b b b"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a c b b b b b b b b"}
+{"sequence": "a a a a a a a a a a a c b b b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a a a a c b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "c"}
+{"sequence": "a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a a a a a a c b b b b b b b b b"}
+{"sequence": "a c b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a c b b"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "c"}
+{"sequence": "a c b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a a a a c b b b b b b"}
+{"sequence": "a a a c b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a c b b b b"}
+{"sequence": "a a a a a a a a a a a a a c b b b b b b b b b b b b b"}
+{"sequence": "c"}
+{"sequence": "a a a a a c b b b b b"}

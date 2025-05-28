@@ -1,0 +1,100 @@
+{"sequence": "while cond and not cond and cond do if cond and not cond then if cond then if cond and not cond then if not cond then if not not cond then if cond then action else z else t z else t t t t z else t z else t t t z else t z"}
+{"sequence": "while cond do action"}
+{"sequence": "action"}
+{"sequence": "while not cond do if cond and not not cond and not not cond and not cond and not cond and not not cond and cond and not not cond and cond then if cond and not cond then while not cond and not cond and not not cond and cond do action else z else z"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "if cond then action else t t z"}
+{"sequence": "action"}
+{"sequence": "while cond and not not cond and not not not not not cond and not not cond and not not cond and cond and not not not not not cond and cond do action"}
+{"sequence": "if cond then if cond then action else t t z else t z"}
+{"sequence": "action"}
+{"sequence": "if not cond and cond then action else z"}
+{"sequence": "if not cond and cond then while cond do action else t t t t z"}
+{"sequence": "if cond then action else z"}
+{"sequence": "if not cond then if cond and not not cond then while not cond do if not not not not cond then if cond then if cond and cond then while cond do action else z else z else z else t t z else z"}
+{"sequence": "action"}
+{"sequence": "while cond do if not cond and cond then if cond then if cond then if not not cond and cond then while cond and not cond do if cond then action else z else t t z else t t z else z else t z"}
+{"sequence": "if cond and cond then action else t t t t z"}
+{"sequence": "while cond and not not cond do if not cond and not cond and cond and cond and cond and not cond and cond and not cond and cond and cond and not cond and cond and not cond and cond and cond then if cond then while cond do if not not cond then action else z else t z else z"}
+{"sequence": "if cond then if not cond then action else z else z"}
+{"sequence": "if not not not cond then action else t z"}
+{"sequence": "while not not cond and not cond and cond and cond and cond do while cond do while not not cond do action"}
+{"sequence": "if cond then action else z"}
+{"sequence": "if not not cond and not cond and cond and cond and cond and not cond and not cond and cond and cond and not cond and cond and cond and cond and cond and cond and not not cond then action else t z"}
+{"sequence": "if not cond then if not cond and cond then if not cond and cond and not cond and cond and cond and cond then action else t z else t t t t t t t t z else z"}
+{"sequence": "if cond then while cond do if not cond then while cond do action else t t t t t t t t t z else z"}
+{"sequence": "action"}
+{"sequence": "if cond then action else z"}
+{"sequence": "if cond then if not cond and not cond and cond then action else z else t t z"}
+{"sequence": "if not not not not cond and cond and cond then if cond and cond then if cond and cond and cond then action else z else t z else z"}
+{"sequence": "if cond then if cond then if not cond and cond then action else t z else t t t t t t t t z else z"}
+{"sequence": "while not not not cond do action"}
+{"sequence": "while cond do if cond then while cond do if cond then action else t t t t t z else t t t t z"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "if cond then action else t z"}
+{"sequence": "if not cond and cond then if cond then if not not cond then if cond then while cond and not cond and cond and cond do action else t t t z else t t t z else z else t t z"}
+{"sequence": "action"}
+{"sequence": "while cond and not cond and not not not cond and cond do while cond do action"}
+{"sequence": "if cond then if cond and cond and cond then action else t t t t t z else t t t t t t z"}
+{"sequence": "action"}
+{"sequence": "if cond then if cond and cond then action else t t t t t z else t z"}
+{"sequence": "action"}
+{"sequence": "if cond then action else t t z"}
+{"sequence": "if cond then if not not cond and not not not not not cond and not not cond and cond and cond then action else t z else z"}
+{"sequence": "while cond do if not not not cond and cond and cond and cond and cond and cond then if cond then if cond then action else t z else z else z"}
+{"sequence": "if cond then action else t z"}
+{"sequence": "action"}
+{"sequence": "while cond do if cond then action else z"}
+{"sequence": "if cond then while not not not cond do if not cond then if cond and cond then action else z else t z else t z"}
+{"sequence": "while cond do if cond then action else t t t z"}
+{"sequence": "action"}
+{"sequence": "if cond then action else z"}
+{"sequence": "if not not cond then if cond and not cond then while not not not cond and cond and not cond and not not not cond and not cond and not cond and cond and cond and not cond and cond and cond and cond and not cond and cond and cond and cond and cond do action else t t t t t z else t t t t t t t z"}
+{"sequence": "if cond and cond then action else z"}
+{"sequence": "if not not cond and cond and cond and not cond and cond then if not cond then if cond then while cond do if not not cond then if cond then action else t z else t t t t t t z else z else t z else t t z"}
+{"sequence": "action"}
+{"sequence": "if cond then if cond then action else t t z else z"}
+{"sequence": "if cond then while cond and not cond and cond do action else z"}
+{"sequence": "if not not not cond then action else z"}
+{"sequence": "if cond then if cond then if cond then if cond and cond then action else z else z else t t t t t z else t t t z"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "if not cond then action else t z"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "while cond and cond and cond do action"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "while not not cond and cond and cond do action"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "if cond and cond then action else t z"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "while cond do action"}
+{"sequence": "if cond and not cond and cond and cond then if not cond and cond then action else t t z else t t t t z"}
+{"sequence": "while cond do if cond and cond and cond and not cond and not cond and not not cond and cond and not not not cond and cond and cond and cond then if cond then if cond then if cond then if not cond and cond and cond then action else z else t t t z else t t t t t t t z else t t z else z"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "if not not cond and cond then while not not not cond and not cond and cond and not cond and not not cond and not cond do if cond then while not not not not cond and not cond and not cond and cond and not cond do action else t t t z else t t t z"}
+{"sequence": "while not cond and cond do action"}
+{"sequence": "while cond do action"}
+{"sequence": "if cond then action else z"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "while cond and not cond do while cond do action"}
+{"sequence": "while cond do action"}
+{"sequence": "action"}
+{"sequence": "action"}
+{"sequence": "while cond and cond do if not cond then if cond then while not not not cond and cond do while cond do action else z else t t z"}

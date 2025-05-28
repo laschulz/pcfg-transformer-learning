@@ -27,13 +27,13 @@ GRAMMARS = {
     # G3  ─ MutualRecursion
     "MutualRecursion": {
         "S": [(["A"], 1.0)],
-        "A": [(["a", "B"], .5), (["a"], .5)],
-        "B": [(["b", "A"], .5), (["b"], .5)],
+        "A": [(["a", "B"], .8), (["a"], .2)],
+        "B": [(["b", "A"], .8), (["b"], .2)],
     },
 
     # G4  ─ CenterEmbedding
     "CenterEmbedding": {
-        "S": [(["a", "S", "b"], .6), (["c"], .4)],
+        "S": [(["a", "S", "b"], .8), (["c"], .2)],
     },
 
     # G5  ─ ConditionalLoops
@@ -84,8 +84,7 @@ PARSERS = {name: ViterbiParser(PCFG.fromstring(dict_to_pcfg(tbl)))
 
 def validate(sequence, grammar_name):
     """True iff sequence (list or space-string) derives from grammar."""
-    text_value = sequence["text"]
-    tokens = text_value.split() if isinstance(text_value, str) else list(text_value)
+    tokens = sequence.split() if isinstance(sequence, str) else list(sequence)
     tokens = [tok for tok in tokens if tok not in {"<|eos|>", "<|bos|>"}]
 
     try:
@@ -96,7 +95,7 @@ def validate(sequence, grammar_name):
 
 def save_dataset(seqs, out_dir):
     os.makedirs(out_dir, exist_ok=True)
-    with open(f"{out_dir}/full.jsonl", "w") as f:
+    with open(f"{out_dir}/test.jsonl", "w") as f:
         for s in seqs:
             f.write(json.dumps({"sequence": " ".join(s)}) + "\n")
 
@@ -114,28 +113,59 @@ def sample(grammar_name,max_len=MAX_SEQUENCE_LENGTH):
 def sample_many(grammar_name,n,max_len=MAX_SEQUENCE_LENGTH):
     return [sample(grammar_name,max_len) for _ in range(n)]
 
-def split_and_tokenize(jsonl_path, tok_fast, out_dir, train_ratio=.9):
-    os.makedirs(out_dir, exist_ok=True)
-    with open(jsonl_path) as f:
-        lines = [json.loads(l) for l in f]
-    split = int(len(lines)*train_ratio)
-    for name, data in [("train", lines[:split]), ("val", lines[split:])]:
-        ids = []
-        for row in data:
-            ids.extend(tok_fast.encode(tok_fast.bos_token + " " + row["sequence"] + " " + tok_fast.eos_token))
-        np.array(ids, dtype=np.uint32).tofile(f"{out_dir}/{name}.bin")
-        with open(f"{out_dir}/meta_{name}.pkl", "wb") as m:
-            pickle.dump({"vocab_size": len(tok_fast),
-                        "bos_token_id": tok_fast.bos_token_id, 
-                        "eos_token_id": tok_fast.eos_token_id}, m)
-        with open(f"{out_dir}/{name}.jsonl", "w") as j:
-            for row in data: j.write(json.dumps(row)+"\n")
+# def split_and_tokenize(jsonl_path, tok_fast, out_dir, train_ratio=.9):
+#     os.makedirs(out_dir, exist_ok=True)
+#     with open(jsonl_path) as f:
+#         lines = [json.loads(l) for l in f]
+#     split = int(len(lines)*train_ratio)
+#     for name, data in [("train", lines[:split]), ("val", lines[split:])]:
+#         ids = []
+#         for row in data:
+#             ids.extend(tok_fast.encode(tok_fast.bos_token + " " + row["sequence"] + " " + tok_fast.eos_token))
+#         np.array(ids, dtype=np.uint32).tofile(f"{out_dir}/{name}.bin")
+#         with open(f"{out_dir}/{name}.jsonl", "w") as j:
+#             for row in data: j.write(json.dumps(row)+"\n")
+#     with open(f"{out_dir}/meta.pkl", "wb") as m:
+#         pickle.dump({"vocab_size": len(tok_fast),
+#                     "bos_token_id": tok_fast.bos_token_id, 
+#                     "eos_token_id": tok_fast.eos_token_id}, m)
 
-def train_custom_tokenizer(jsonl_path, tok_path, vocab=512):
-    with open(jsonl_path) as f:
-        corpus = [json.loads(l)["sequence"] for l in f]
+def split_and_tokenize(sequences, tok_fast, out_dir, train_ratio=.9):
+    os.makedirs(out_dir, exist_ok=True)
+    split = int(len(sequences) * train_ratio)
+    for name, data in [("train", sequences[:split]), ("val", sequences[split:])]:
+        ids = []
+        for seq in data:
+            ids.extend(tok_fast.encode(tok_fast.bos_token + " " + seq + " " + tok_fast.eos_token))
+        np.array(ids, dtype=np.uint32).tofile(f"{out_dir}/{name}.bin")
+        with open(f"{out_dir}/{name}.jsonl", "w") as j:
+            for seq in data:
+                j.write(json.dumps({"sequence": seq}) + "\n")
+    with open(f"{out_dir}/meta.pkl", "wb") as m:
+        pickle.dump({
+            "vocab_size": len(tok_fast),
+            "bos_token_id": tok_fast.bos_token_id,
+            "eos_token_id": tok_fast.eos_token_id
+        }, m)
+
+# def train_custom_tokenizer(jsonl_path, tok_path, vocab=512):
+#     with open(jsonl_path) as f:
+#         corpus = [json.loads(l)["sequence"] for l in f]
+#     tmp = os.path.join(os.path.dirname(tok_path), "tmp_corpus.txt")
+#     with open(tmp, "w") as f: f.write("\n".join(corpus))
+#     tok = Tokenizer(models.BPE())
+#     tok.normalizer = NormalizerSequence([NFD(), Lowercase(), StripAccents()])
+#     tok.pre_tokenizer = Whitespace()
+#     tok.train([tmp], trainers.BpeTrainer(vocab_size=vocab, special_tokens=["<|bos|>", "<|eos|>"]))
+#     tok.post_processor = TemplateProcessing(
+#         single="<|bos|> $A <|eos|>", special_tokens=[("<|bos|>", tok.token_to_id("<|bos|>")), ("<|eos|>", tok.token_to_id("<|eos|>"))]
+#     )
+#     tok.save(os.path.abspath(tok_path))
+
+def train_custom_tokenizer(corpus, tok_path, vocab=512):
     tmp = os.path.join(os.path.dirname(tok_path), "tmp_corpus.txt")
-    with open(tmp, "w") as f: f.write("\n".join(corpus))
+    with open(tmp, "w") as f:
+        f.write("\n".join(corpus))
     tok = Tokenizer(models.BPE())
     tok.normalizer = NormalizerSequence([NFD(), Lowercase(), StripAccents()])
     tok.pre_tokenizer = Whitespace()
@@ -158,27 +188,21 @@ def main():
     args=parser.parse_args()
 
     # 1) generate
-    sequences=sample_many(args.grammar,args.dataset_size,args.max_len)
+    sequences = sample_many(args.grammar, args.dataset_size, args.max_len)
+    test_sequences = sample_many(args.grammar, 100, args.max_len)
+    str_sequences = [" ".join(seq) for seq in sequences]
+    str_test_sequences = [" ".join(seq) for seq in test_sequences]
 
-    # 2) validate first & print quick stats
-    valid_ratio = sum(
-        validate({"text": " ".join(s)}, args.grammar)
-        for s in sequences
-    ) / args.dataset_size
-    print(f"Generated {args.dataset_size} sequences from '{args.grammar}'"
-          f"{valid_ratio:.1%} valid")
+    # 2) save dataset
+    out_dir = f"data/{args.grammar}/{args.grammar}_{args.dataset_size}"
+    save_dataset(test_sequences, out_dir)
 
-    # 3) save dataset
-    out_dir=f"data/{args.grammar}/{args.grammar}_{args.dataset_size}"
-    save_dataset(sequences,out_dir)
-    print("Saved dataset to",out_dir)
 
-    # 4) optional BPE tokenisation
-    tok_path=f"{out_dir}/tokenizer.json"
-    train_custom_tokenizer(f"{out_dir}/full.jsonl",tok_path)
-    tok_fast=PreTrainedTokenizerFast(tokenizer_file=tok_path,bos_token="<|bos|>",eos_token="<|eos|>")
-    split_and_tokenize(f"{out_dir}/full.jsonl",tok_fast,out_dir)
-    print("Tokeniser + splits written.")
+    # 3) optional BPE tokenisation
+    tok_path = f"{out_dir}/tokenizer.json"
+    train_custom_tokenizer(str_sequences, tok_path)
+    tok_fast = PreTrainedTokenizerFast(tokenizer_file=tok_path, bos_token="<|bos|>", eos_token="<|eos|>")
+    split_and_tokenize(str_sequences, tok_fast, out_dir)
 
 if __name__=="__main__":
     main()

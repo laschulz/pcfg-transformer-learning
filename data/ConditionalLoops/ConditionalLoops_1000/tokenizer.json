@@ -1,0 +1,245 @@
+{
+  "version": "1.0",
+  "truncation": null,
+  "padding": null,
+  "added_tokens": [
+    {
+      "id": 0,
+      "content": "<|bos|>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 1,
+      "content": "<|eos|>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    }
+  ],
+  "normalizer": {
+    "type": "Sequence",
+    "normalizers": [
+      {
+        "type": "NFD"
+      },
+      {
+        "type": "Lowercase"
+      },
+      {
+        "type": "StripAccents"
+      }
+    ]
+  },
+  "pre_tokenizer": {
+    "type": "Whitespace"
+  },
+  "post_processor": {
+    "type": "TemplateProcessing",
+    "single": [
+      {
+        "SpecialToken": {
+          "id": "<|bos|>",
+          "type_id": 0
+        }
+      },
+      {
+        "Sequence": {
+          "id": "A",
+          "type_id": 0
+        }
+      },
+      {
+        "SpecialToken": {
+          "id": "<|eos|>",
+          "type_id": 0
+        }
+      }
+    ],
+    "pair": [
+      {
+        "Sequence": {
+          "id": "A",
+          "type_id": 0
+        }
+      },
+      {
+        "Sequence": {
+          "id": "B",
+          "type_id": 1
+        }
+      }
+    ],
+    "special_tokens": {
+      "<|bos|>": {
+        "id": "<|bos|>",
+        "ids": [
+          0
+        ],
+        "tokens": [
+          "<|bos|>"
+        ]
+      },
+      "<|eos|>": {
+        "id": "<|eos|>",
+        "ids": [
+          1
+        ],
+        "tokens": [
+          "<|eos|>"
+        ]
+      }
+    }
+  },
+  "decoder": null,
+  "model": {
+    "type": "BPE",
+    "dropout": null,
+    "unk_token": null,
+    "continuing_subword_prefix": null,
+    "end_of_word_suffix": null,
+    "fuse_unk": false,
+    "byte_fallback": false,
+    "ignore_merges": false,
+    "vocab": {
+      "<|bos|>": 0,
+      "<|eos|>": 1,
+      "a": 2,
+      "c": 3,
+      "d": 4,
+      "e": 5,
+      "f": 6,
+      "h": 7,
+      "i": 8,
+      "l": 9,
+      "n": 10,
+      "o": 11,
+      "s": 12,
+      "t": 13,
+      "w": 14,
+      "z": 15,
+      "nd": 16,
+      "co": 17,
+      "cond": 18,
+      "and": 19,
+      "no": 20,
+      "not": 21,
+      "en": 22,
+      "hen": 23,
+      "if": 24,
+      "then": 25,
+      "el": 26,
+      "se": 27,
+      "else": 28,
+      "ac": 29,
+      "io": 30,
+      "tio": 31,
+      "actio": 32,
+      "action": 33,
+      "hi": 34,
+      "le": 35,
+      "whi": 36,
+      "while": 37,
+      "do": 38
+    },
+    "merges": [
+      [
+        "n",
+        "d"
+      ],
+      [
+        "c",
+        "o"
+      ],
+      [
+        "co",
+        "nd"
+      ],
+      [
+        "a",
+        "nd"
+      ],
+      [
+        "n",
+        "o"
+      ],
+      [
+        "no",
+        "t"
+      ],
+      [
+        "e",
+        "n"
+      ],
+      [
+        "h",
+        "en"
+      ],
+      [
+        "i",
+        "f"
+      ],
+      [
+        "t",
+        "hen"
+      ],
+      [
+        "e",
+        "l"
+      ],
+      [
+        "s",
+        "e"
+      ],
+      [
+        "el",
+        "se"
+      ],
+      [
+        "a",
+        "c"
+      ],
+      [
+        "i",
+        "o"
+      ],
+      [
+        "t",
+        "io"
+      ],
+      [
+        "ac",
+        "tio"
+      ],
+      [
+        "actio",
+        "n"
+      ],
+      [
+        "h",
+        "i"
+      ],
+      [
+        "l",
+        "e"
+      ],
+      [
+        "w",
+        "hi"
+      ],
+      [
+        "whi",
+        "le"
+      ],
+      [
+        "d",
+        "o"
+      ]
+    ]
+  }
+}
