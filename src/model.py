@@ -116,6 +116,16 @@ class GPT2Config: # 124M params
     dropout: float = 0.0 
     bias: bool = True # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
 
+class SixLayer:
+    block_size = 128           
+    vocab_size = 512          
+    n_layer = 6                
+    n_head = 8                
+    n_embd = 512              
+    dropout = 0.1              
+    bias = True
+    name = "SixLayer"
+
 class FourLayer: # 0.89M params
     block_size = 128           
     vocab_size = 512          
@@ -248,7 +258,7 @@ class GPT(nn.Module):
     
     def train_model(self, data_dir, dataset, num_epochs, batch_size,
                 learning_rate, weight_decay, betas,
-                early_stopping, checkpoint_every, config, device):
+                early_stopping, checkpoint_every, config, device, continue_from=0):
         
         block_size = self.config.block_size
         optimizer = self.configure_optimizers(weight_decay, learning_rate, betas, device)
@@ -281,7 +291,7 @@ class GPT(nn.Module):
                 running_train_loss += loss.item()
 
             avg_train_loss = running_train_loss / iters_per_epoch
-            logger.info(f"[Epoch {epoch}] Training Loss: {avg_train_loss:.4f}")
+            logger.info(f"[Epoch {epoch+continue_from}] Training Loss: {avg_train_loss:.4f}")
 
             # validation
             self.eval()
@@ -292,7 +302,7 @@ class GPT(nn.Module):
                     _, val_loss = self(X_val, Y_val)
                     val_losses.append(val_loss.item())
             avg_val_loss = float(np.mean(val_losses))
-            logger.info(f"[Epoch {epoch}] Validation Loss: {avg_val_loss:.4f}")
+            logger.info(f"[Epoch {epoch+continue_from}] Validation Loss: {avg_val_loss:.4f}")
 
             ckpt_path = os.path.join(data_dir, dataset, config)
             if avg_val_loss < best_val_loss:
@@ -304,11 +314,11 @@ class GPT(nn.Module):
             else:
                 epochs_no_improve += 1
                 if epochs_no_improve >= early_stopping:
-                    logger.info(f"Early stopping triggered at epoch {epoch}")
+                    logger.info(f"Early stopping triggered at epoch {epoch+continue_from}")
                     break
 
             if epoch % checkpoint_every == 0:
-                ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch}.pt')
+                ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch + continue_from}.pt')
                 os.makedirs(os.path.dirname(ckpt_path_ep), exist_ok=True)
                 torch.save(self.state_dict(), ckpt_path_ep)
                 logger.info(f"Saved checkpoint to {ckpt_path_ep}")

@@ -13,7 +13,7 @@ from transformers import PreTrainedTokenizerFast
 from nltk.grammar import PCFG
 from nltk.parse import ViterbiParser
 
-MAX_SEQUENCE_LENGTH = 100
+MAX_SEQUENCE_LENGTH = 126
 DATASET_SIZE = 1000
 
 GRAMMARS = {
@@ -101,14 +101,16 @@ def save_dataset(seqs, out_dir):
 
 def sample(grammar_name,max_len=MAX_SEQUENCE_LENGTH):
     tbl=GRAMMARS[grammar_name]; seq,stack=[],['S']
-    while stack and len(seq)<max_len:
-        sym=stack.pop()
-        if sym in tbl:
-            prods,probs=zip(*tbl[sym])
-            stack.extend(reversed(random.choices(prods,probs)[0]))
-        else:
-            seq.append(sym)
-    return seq
+    while True:
+        while stack and len(seq)<max_len:
+            sym=stack.pop()
+            if sym in tbl:
+                prods,probs=zip(*tbl[sym])
+                stack.extend(reversed(random.choices(prods,probs)[0]))
+            else:
+                seq.append(sym)
+        if not stack and len(seq)<=max_len:
+            return seq
 
 def sample_many(grammar_name,n,max_len=MAX_SEQUENCE_LENGTH):
     return [sample(grammar_name,max_len) for _ in range(n)]
