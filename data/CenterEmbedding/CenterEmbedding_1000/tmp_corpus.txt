@@ -1,1000 +1,1000 @@
-a c b
-a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b
 c
+a c b
+c
+a c b
+c
+c
+a c b
+a a c b b
+a a c b b
+a c b
+a a a a a a c b b b b b b
+a c b
+a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
+a c b
+a a a a a a a a a a c b b b b b b b b b b
+a a a c b b b
 a c b
 c
 a a c b b
+a a a a c b b b b
+a c b
+a a a a a a a a a a a a a c b b b b b b b b b b b b b
+a c b
+a c b
+a a c b b
+a a c b b
+a a c b b
+a c b
+a a a a a a a a c b b b b b b b b
+a a c b b
+c
+c
+a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b
+c
+a a a a a c b b b b b
+a a a c b b b
+a a a a a a a a c b b b b b b b b
+c
+c
+a c b
+a a a a a a a a a c b b b b b b b b b
+a a c b b
+a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
+c
 a a a a a a a a a a a c b b b b b b b b b b b
-a c b
-a c b
-c
-a a a a a c b b b b b
-a a a a c b b b b
-a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b
-c
-a a a c b b b
-a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b
-a a a a a a a a a a c b b b b b b b b b b
-a a a a a a a c b b b b b b b
-c
-a a a a c b b b b
-a a a a c b b b b
-a a a a a a a a c b b b b b b b b
-c
-c
-a c b
-a a a a c b b b b
-a a a c b b b
-c
-a a a a c b b b b
-a a c b b
-a a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b b
-a a a c b b b
-a c b
-c
-a a a a a a a a a a c b b b b b b b b b b
-a a a a a a a a a a c b b b b b b b b b b
-c
-c
 a a a a a a c b b b b b b
-a a c b b
 c
-a c b
-a a a a a a a a c b b b b b b b b
+a a a c b b b
 a a a a a a c b b b b b b
-a c b
-a a a c b b b
-a a a a a a a c b b b b b b b
-c
-a a c b b
-a a a c b b b
-a a c b b
-a a c b b
-a a c b b
-c
-a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b
-a c b
+a a a a a a c b b b b b b
 a a a a c b b b b
-a a c b b
-a c b
-c
-a c b
-a a c b b
-a a c b b
-a a a a a a a a a a a a c b b b b b b b b b b b b
-c
-c
-a a c b b
-c
-a a a a a a a c b b b b b b b
-a c b
-c
-a a a a a a a a c b b b b b b b b
-a a a a a c b b b b b
-a a a a a a a a c b b b b b b b b
-a a c b b
-a a a a a c b b b b b
-c
-a a c b b
-a c b
-a c b
 a a a c b b b
 c
-a a a a a c b b b b b
-a a a a a a c b b b b b b
-a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b
-a a c b b
-a c b
-a c b
-a a a c b b b
-a c b
-a a a a a a c b b b b b b
-a c b
 c
-a a a c b b b
+a a a a c b b b b
+c
 a a a a a a a a a a a c b b b b b b b b b b b
 a a a a c b b b b
+a a a a c b b b b
+a a a a a c b b b b b
+a a a a c b b b b
+a a c b b
+a a a a a c b b b b b
+a a a a c b b b b
+a a a a a a c b b b b b b
+a a a a a a a a a a c b b b b b b b b b b
+a a a a c b b b b
 c
+a c b
+a a a c b b b
+c
+a a a a a a a a a c b b b b b b b b b
+a c b
+a a a a c b b b b
+c
+a a a a a a a a a a a c b b b b b b b b b b b
 c
 a a a a a a a c b b b b b b b
-a a c b b
+a a a c b b b
+a a a c b b b
+a c b
 a a a a c b b b b
 a a a a a a a a a c b b b b b b b b b
 a c b
+a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
+a c b
+c
+a c b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+a a c b b
+c
+a a c b b
+a a a a a a a a c b b b b b b b b
+a a a c b b b
+a a c b b
+c
+a a a c b b b
+a c b
+a a a a a a c b b b b b b
+a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
+a c b
+a c b
+a c b
+c
+a a a a a a a c b b b b b b b
+a a a c b b b
+a c b
+a a a a a c b b b b b
+a a a c b b b
+a a a a a a a a c b b b b b b b b
+a a a a a a c b b b b b b
+a c b
+a c b
+a a a a c b b b b
+a a a a c b b b b
+a a a a c b b b b
+a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b
+a a c b b
+c
+a a c b b
+a a a a a c b b b b b
+a a a c b b b
+a a a a c b b b b
+a a c b b
+c
+a a a c b b b
+c
+a a a a a a c b b b b b b
+a a a a c b b b b
+c
+a a a a a c b b b b b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+a a a a c b b b b
 a c b
 a a c b b
-a a a a a a a a a a c b b b b b b b b b b
+a c b
+c
+a a c b b
+a a a a a c b b b b b
+c
+c
+c
+a a a c b b b
+a a a c b b b
 a a a a a a a a a a c b b b b b b b b b b
 a a a a c b b b b
 c
-a a a a a a a c b b b b b b b
+a a a a c b b b b
+a a c b b
 c
-a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b
+a a a a c b b b b
+a a a a a a a a a c b b b b b b b b b
+c
+a a a a a a a a a a c b b b b b b b b b b
+a a a c b b b
+a c b
+a a a a a a a c b b b b b b b
+a a a c b b b
+a a a a a a a a c b b b b b b b b
+a a a a c b b b b
+a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b
+a a a a a a a a a a a a a c b b b b b b b b b b b b b
+a a a c b b b
+a a a a a a a a a c b b b b b b b b b
+a a a a c b b b b
+a a c b b
+a a c b b
+c
+a a a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b b b
+a a a a a a a a a a a c b b b b b b b b b b b
+a a c b b
+a a a c b b b
+c
+a c b
+a a c b b
+a a a c b b b
+a a a a c b b b b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+a c b
+c
+c
+a c b
+c
 a a a a a a a a c b b b b b b b b
 c
-a a a a a a a c b b b b b b b
-a a a a a a a c b b b b b b b
+a a a a a a c b b b b b b
 a a a c b b b
 c
-a a a a a a a a a a a a c b b b b b b b b b b b b
-a a a a a a a c b b b b b b b
 a c b
+a c b
+a c b
+a a a c b b b
+c
+a a a a a c b b b b b
+a a a a a a a a a a a a a c b b b b b b b b b b b b b
+a a a a a a a a c b b b b b b b b
+a c b
+a a a a a a a a a a c b b b b b b b b b b
+a a a a a a a a c b b b b b b b b
+c
+a a a a a a a a a a c b b b b b b b b b b
+c
+a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b
+a a c b b
+a a a c b b b
+a a a c b b b
+a a a a c b b b b
+a c b
+a c b
+a a a a c b b b b
 a c b
 a a c b b
+a a a a a c b b b b b
+a a a c b b b
+a a c b b
+a a c b b
+a a a a a a c b b b b b b
+a a c b b
+c
+a a a a a a a a a a a a a c b b b b b b b b b b b b b
+a a a a a a a a a c b b b b b b b b b
+a a a c b b b
+a c b
+a a a c b b b
+a a a a a a a a a c b b b b b b b b b
+a a a a a a a c b b b b b b b
+a a a a a c b b b b b
+a c b
+a a c b b
+a a a a c b b b b
+a a a a c b b b b
+a a c b b
+a a a a a a a a a a a c b b b b b b b b b b b
+a a a a c b b b b
+a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b
+a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+a a a a a c b b b b b
+a a a a c b b b b
+a c b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+a a a a a a a c b b b b b b b
+a a a a a a a a a c b b b b b b b b b
+a a a a a c b b b b b
+a a a c b b b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+a a a a a c b b b b b
+a a c b b
+c
+a a a a c b b b b
+a c b
+a a a a a c b b b b b
+a a a a c b b b b
+a c b
+a a a a c b b b b
+a a a c b b b
+a a a a c b b b b
+a a a a a a c b b b b b b
+a a c b b
+c
+a c b
+a a a c b b b
+c
+a a a a a a c b b b b b b
+a a a a a a c b b b b b b
+c
+c
+a a a a c b b b b
+a a a a c b b b b
+a a a a c b b b b
+a a c b b
+a a c b b
+a a c b b
+a a a a a c b b b b b
+c
+a a a c b b b
+a a c b b
+a a a a c b b b b
+a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
+a c b
+a a a a a a a a a a a c b b b b b b b b b b b
+a c b
+a a a a a a a a c b b b b b b b b
+a c b
+a a a a a c b b b b b
+a a a a a c b b b b b
+c
+a a a c b b b
+c
+a a c b b
+a a a a a a a a a c b b b b b b b b b
+c
+a c b
+a a c b b
+a a a a a a a c b b b b b b b
+c
+a a a a a a a a a a c b b b b b b b b b b
+a a a a c b b b b
+a a a a a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b b b b b
+a a a a a a c b b b b b b
+a a a a a a c b b b b b b
+a a a a a a c b b b b b b
+a c b
+a a a a a a a a c b b b b b b b b
+a a a a a a a a a a a c b b b b b b b b b b b
+a a c b b
+c
+a a a a a a a a c b b b b b b b b
+a c b
+a a c b b
+c
+a c b
+c
+a a c b b
+c
+a a c b b
+c
+a a a a a c b b b b b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+a a a a a c b b b b b
+a c b
+a a a a c b b b b
+a c b
+a a c b b
+a a a c b b b
+c
+a a a a a a a a a a a c b b b b b b b b b b b
+c
+a c b
+c
+a c b
+a a a a a a a c b b b b b b b
+a a a a c b b b b
+a a a a a a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b b b b b b
+c
+a a a c b b b
+a a c b b
+a a a a c b b b b
+a a a a c b b b b
+a a c b b
+a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b
+a c b
+a a a c b b b
+a a a a a a a a a c b b b b b b b b b
+a a a a a c b b b b b
+c
+a a c b b
+a a a c b b b
+c
+a a c b b
+a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b
+a c b
+a a c b b
+a a c b b
+a c b
+a c b
+a a a a a a c b b b b b b
+a a a a a a a c b b b b b b b
+a c b
+a a a c b b b
+a a a c b b b
+a a a c b b b
+c
+a a c b b
+a a c b b
+a a a a a a a a a a a c b b b b b b b b b b b
+a a a a a a c b b b b b b
+a a c b b
+a a a a a a a a a a a a a c b b b b b b b b b b b b b
+c
+a a a a a c b b b b b
+a a a c b b b
+a a c b b
+a a a a a a a c b b b b b b b
+c
+a c b
+a a a c b b b
+a a a a c b b b b
+a a a a c b b b b
+a a a a a a a a a a c b b b b b b b b b b
+a a a c b b b
+a a a a a a a a c b b b b b b b b
+c
+c
 a a a c b b b
 a a c b b
 a c b
 a c b
+a c b
+c
+a a a a a a a a c b b b b b b b b
+a c b
+a a a a c b b b b
+a a c b b
+a a a a a c b b b b b
+a a a a a c b b b b b
+a c b
+a a a a a a a a c b b b b b b b b
+a a a a a a a a a a c b b b b b b b b b b
+a a a a a c b b b b b
+a a a a a a a a a a a c b b b b b b b b b b b
+a a a a a a a a a a a c b b b b b b b b b b b
+a c b
+a a a a c b b b b
+a a c b b
+c
+a a c b b
+c
+a a a a a a a a c b b b b b b b b
+c
+a a a a a c b b b b b
+a a a a a a a c b b b b b b b
+c
+a a a a c b b b b
+a a a a a a c b b b b b b
+a a a a c b b b b
+a c b
+a c b
+a a c b b
+a a a a a a a c b b b b b b b
+a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b
+a a a a a c b b b b b
+a a a a a c b b b b b
+c
+a a c b b
+a a a c b b b
+a a a a a a a c b b b b b b b
+a a a a a a a a a c b b b b b b b b b
+a c b
+a a a a a a a a c b b b b b b b b
+a a a a a a a c b b b b b b b
+a a a a c b b b b
+a a a a a a c b b b b b b
+a c b
+a a a c b b b
+a a a c b b b
+a a a a a a a a a a a c b b b b b b b b b b b
+a a c b b
+a a a a c b b b b
+c
 a a c b b
 a a a a a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b b b b b
-a a a a a c b b b b b
-a c b
-a a c b b
-a a a a c b b b b
 a a a a a a a c b b b b b b b
-a a a c b b b
-a a a c b b b
-a a a a c b b b b
-c
-a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b
-a a a c b b b
-c
-c
-c
-a a a c b b b
-a a a c b b b
-a a c b b
-a a c b b
-a a c b b
-a a a a a a a c b b b b b b b
-a a c b b
-c
-c
-a c b
-c
-a a a a c b b b b
-c
-c
 a a a a a a a a a a c b b b b b b b b b b
-a a a a a a a a a a c b b b b b b b b b b
+a c b
+c
+a c b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+a a a a a c b b b b b
+a a a c b b b
+a c b
+a c b
+a c b
+a a a c b b b
+a c b
 a a a c b b b
 c
-a a a c b b b
+a a a a a a a a c b b b b b b b b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+a a c b b
 a c b
+a a c b b
+c
+c
+a a a a a a c b b b b b b
+a a c b b
+c
+c
+a a c b b
+c
+a a c b b
 a c b
-a a a a a a a c b b b b b b b
 a a a a a c b b b b b
 a a a c b b b
 c
 a a c b b
+a a a a a c b b b b b
+a a a a a a a a a a c b b b b b b b b b b
+a a a c b b b
 a c b
-a c b
-a c b
+c
+a a c b b
+a a a a a a a a a c b b b b b b b b b
+a a a a a c b b b b b
+a a c b b
+a a a c b b b
+a a a c b b b
+a a a a a c b b b b b
 a a a c b b b
 a a c b b
-a a a a a a a c b b b b b b b
-a a c b b
-a a c b b
+a c b
+a a a c b b b
+a a a a a a a a c b b b b b b b b
+a a a c b b b
 a c b
 a a a a c b b b b
 a a a a a c b b b b b
+a a c b b
+c
+a c b
+c
+a a a a a c b b b b b
+c
 a a a c b b b
+c
+a a a c b b b
+c
+a a c b b
+c
+a a a a a c b b b b b
+a a a c b b b
+a a a a c b b b b
+a a a a a a c b b b b b b
+a a a c b b b
+a a a a c b b b b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+a a c b b
+a a a a a a c b b b b b b
+a a a c b b b
+c
+c
+a a a a a a a a a c b b b b b b b b b
+a c b
+a a a c b b b
+a a a a a c b b b b b
+a c b
+a a a a a c b b b b b
+c
+a a a a c b b b b
+a a c b b
+a c b
+a a a c b b b
+a a c b b
+a a a a a a c b b b b b b
+a a a a c b b b b
+a a c b b
+a a a a a a a a a a a a a c b b b b b b b b b b b b b
 a a a a a a a a a a a c b b b b b b b b b b b
+a a a a c b b b b
+a a a a c b b b b
+a a a a a a a c b b b b b b b
+a a a a a a a a a a c b b b b b b b b b b
+a a a a c b b b b
+a a a a a a a c b b b b b b b
+a a a a a a a a a a c b b b b b b b b b b
+c
+a a a a a a a c b b b b b b b
 a c b
-a a c b b
-c
-c
-a a a c b b b
-a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b
 a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
+a a a a a c b b b b b
+a a a a a c b b b b b
 c
+a a a c b b b
+a c b
+a c b
+a c b
+a a a a a c b b b b b
+a a a a a a a a a c b b b b b b b b b
+a a a a a c b b b b b
+c
+a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
+a a a a a c b b b b b
+c
+a a a a c b b b b
 a a a a a a a c b b b b b b b
-a c b
-a a a c b b b
-a a a c b b b
-a c b
-a a c b b
 c
-a a a a a c b b b b b
-a a a a a c b b b b b
-a a a a a a c b b b b b b
-a c b
-a a a c b b b
-a a c b b
-a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b
+c
+c
+a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b
 c
 a a a a a a a a a a a c b b b b b b b b b b b
 a a a c b b b
-a a a c b b b
-a a a c b b b
+a a a a a a a a a c b b b b b b b b b
 a a c b b
+c
+a a a c b b b
+a c b
+a a a a a a a a a a a a a c b b b b b b b b b b b b b
+a a c b b
+a a a c b b b
+a a a a a a a c b b b b b b b
+a a c b b
+c
+c
+a a a a c b b b b
 c
 a c b
 c
+a a a c b b b
+a a a c b b b
+a a a c b b b
+c
+a a a a a a a a a a a c b b b b b b b b b b b
+a a a c b b b
+a a c b b
+a a c b b
+a a c b b
+a a c b b
+a a a a c b b b b
 a a a a a a c b b b b b b
+a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
+a a a a a a c b b b b b b
+a c b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+a a a a a c b b b b b
+a a a a c b b b b
+a a a a a a a a c b b b b b b b b
+a a a a a a a a a c b b b b b b b b b
+a a a a a c b b b b b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+a c b
+a a c b b
+a a c b b
+a a a a a c b b b b b
+a c b
+a c b
+a a a a a c b b b b b
+a a a c b b b
+c
+a a a a a a a a a a c b b b b b b b b b b
+c
+a c b
+a c b
+a a a a a a a a a a c b b b b b b b b b b
+a a a a a a a a a a a c b b b b b b b b b b b
+a a a a a a a c b b b b b b b
+a a a a a c b b b b b
+a c b
+a a a a c b b b b
+a a c b b
+a a a a a a a a c b b b b b b b b
+c
+a a a a a a c b b b b b b
+a a a a c b b b b
 a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b
 a c b
-a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
 c
+c
+a a c b b
+c
+a a a a a a a c b b b b b b b
+a a a a c b b b b
+a a a a a a c b b b b b b
+a c b
+a a a a c b b b b
+a a a a a a a a a a a c b b b b b b b b b b b
+a a c b b
+c
+c
+a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b
+a a a a a c b b b b b
+a a a a a a a c b b b b b b b
+a a a c b b b
 a a a a a a a a a a a a c b b b b b b b b b b b b
-a a a a a a a a a a a c b b b b b b b b b b b
-c
-a a a c b b b
-a c b
+a a a a c b b b b
+a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b
 a a a a a a a c b b b b b b b
-a a c b b
-c
-a a a a a a c b b b b b b
-a a a a a c b b b b b
-a a c b b
-a a c b b
-a a a a a a a a a a a a a c b b b b b b b b b b b b b
-a a c b b
-a c b
-a c b
-a a a a c b b b b
-a a a a a a a a a c b b b b b b b b b
-c
-a a c b b
-a a a a a a c b b b b b b
-a a a a a a a c b b b b b b b
-a c b
-a a a a a a a a c b b b b b b b b
-a a a a a a a a a c b b b b b b b b b
-a a c b b
-c
-c
-a a a c b b b
-a a a a a a a c b b b b b b b
-a a a c b b b
-c
-a c b
-a a c b b
-a c b
-c
-a a a a c b b b b
-a c b
-a c b
-a c b
-a a a a a c b b b b b
-a c b
-a a c b b
-a a a a a c b b b b b
-c
-a a a c b b b
-a a a a c b b b b
-a a a a c b b b b
-a a a a a c b b b b b
-a a a a a a a c b b b b b b b
-a a a a a c b b b b b
-c
-a a a a a a c b b b b b b
-a a a c b b b
-a a c b b
-a a a a a a a a a a a c b b b b b b b b b b b
-a a a a a a a a a a c b b b b b b b b b b
-a a a a a a a c b b b b b b b
-a a a c b b b
-c
-c
-c
-a c b
-a a a a a c b b b b b
-a a c b b
-a a a a a a a a a a a a a c b b b b b b b b b b b b b
-a c b
-a a a c b b b
-c
-a a a a a a a a a a a a a c b b b b b b b b b b b b b
-a a a a a c b b b b b
-a a a a c b b b b
-a a a a a a a a c b b b b b b b b
-c
-a a a a a a a c b b b b b b b
-a a a c b b b
-c
-c
-a a c b b
-a c b
-a a a a c b b b b
-a a a a a a a a a c b b b b b b b b b
-a a a a a a c b b b b b b
-a a c b b
-a a a a a a a c b b b b b b b
-a a a a a c b b b b b
-c
-c
-a a a c b b b
-a a a a a a c b b b b b b
-a a a c b b b
-a a a a a c b b b b b
-a a a a a a a a a c b b b b b b b b b
-a a a a c b b b b
-a a a a a c b b b b b
-a a c b b
-a a a a c b b b b
-a c b
-a a a a c b b b b
-c
-a a a a a a a a a a a a a c b b b b b b b b b b b b b
-c
-a a a c b b b
-a a a a a a a c b b b b b b b
-c
-a a a a a a a a c b b b b b b b b
-c
 c
 a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b
+c
+a a a a c b b b b
 a a a a a a c b b b b b b
-a a a c b b b
+a a a a a a c b b b b b b
 a a c b b
-a a c b b
-a a c b b
-a a a a a a a a a a c b b b b b b b b b b
-a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
+a c b
 a a a a a a a c b b b b b b b
-c
-a a a a a a a a a a a c b b b b b b b b b b b
-c
-c
-a a c b b
-c
-a a a a c b b b b
-c
-a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b
-c
-c
-c
-c
-a a c b b
-a a a c b b b
-c
-a a a c b b b
-a a a a a a a a a c b b b b b b b b b
-a a a a a c b b b b b
-a a a a a a a a c b b b b b b b b
-c
-c
-a a a c b b b
-a a a a a a c b b b b b b
-a a a a c b b b b
-a a a a c b b b b
-a c b
-c
-c
-c
-a a c b b
-a c b
 a a a a a a a a a a a a a c b b b b b b b b b b b b b
-a a a a a a a a c b b b b b b b b
-a c b
-a a a a a a a a a a a a c b b b b b b b b b b b b
-c
-a a c b b
-a c b
-a c b
-a a a a c b b b b
-a a a a c b b b b
-a a a a c b b b b
-c
-a a a a a a a a c b b b b b b b b
-a c b
-a c b
-a c b
-a a a a a a c b b b b b b
-a a a a c b b b b
-a a a a a a a c b b b b b b b
-a a a c b b b
-a a a a a a a c b b b b b b b
-c
 a a a a a a a a a c b b b b b b b b b
-a a a c b b b
-a a a a a a c b b b b b b
-a a a a a a c b b b b b b
-a a a a a a a a a c b b b b b b b b b
-a a a a a a a a a a a a a c b b b b b b b b b b b b b
-a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b
-a a a a a a c b b b b b b
-c
-a a a a a a a c b b b b b b b
-a a a a a a a a a a a c b b b b b b b b b b b
-a a a a c b b b b
-a a a c b b b
-c
-a a a a a a a a c b b b b b b b b
-a c b
-a a a a a a a c b b b b b b b
-a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
-a a a a a a a a a a c b b b b b b b b b b
-a a c b b
-a a a a c b b b b
-a c b
-a a a a a a c b b b b b b
-a a a a c b b b b
-a a a a c b b b b
-c
 a a a a a c b b b b b
 a c b
-c
-a c b
-a c b
-a a a a a a a a c b b b b b b b b
-c
-a c b
-a a c b b
-a c b
-a a a a a c b b b b b
-a a a c b b b
-a a a a c b b b b
-a a a a a c b b b b b
-a a c b b
-a a a a a a c b b b b b b
-c
-a a a a a a a c b b b b b b b
-c
-a a a c b b b
-a a a a a c b b b b b
-a a a a a a a a a a a a c b b b b b b b b b b b b
-a a c b b
-a a a a a a c b b b b b b
-c
-a c b
-a a a c b b b
-a a c b b
-a a c b b
-c
-a a a a c b b b b
-a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b
-a a a a a a c b b b b b b
-a a a c b b b
-a a c b b
-c
-a a a a c b b b b
-a a a a a a a a a c b b b b b b b b b
-a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b
-a a a a a a a a a a c b b b b b b b b b b
-a a a a a a a a a a c b b b b b b b b b b
-a a c b b
-c
-a a a a a a a a a c b b b b b b b b b
-a c b
-a a c b b
-a a a a a a a c b b b b b b b
-a a a a a a a a a a a a c b b b b b b b b b b b b
-a a a c b b b
-a a a a c b b b b
-a a a a a a a a a a a c b b b b b b b b b b b
-a a a a a a a c b b b b b b b
-a a a a a a c b b b b b b
-a a c b b
-a a a a a a a a c b b b b b b b b
-c
-a a a c b b b
-a c b
-a a a a a a a a a a a c b b b b b b b b b b b
-a c b
-c
-a c b
-a a a a a a a a a a a a c b b b b b b b b b b b b
-a a a a a c b b b b b
-a a a c b b b
-a a a a a a c b b b b b b
-c
-a a c b b
-a a a a a c b b b b b
-a c b
-a a c b b
-a c b
-a a c b b
-a c b
-a a c b b
-a a c b b
-a a a a c b b b b
-c
-a a c b b
-c
-c
-a c b
-a a a c b b b
-c
-a a a a c b b b b
-a a a a c b b b b
-a a c b b
-a a a a a a a a a c b b b b b b b b b
-a a a a c b b b b
-a a a a c b b b b
-a a a a c b b b b
-c
-a c b
-a a a a a a a c b b b b b b b
-c
-a a a a c b b b b
-a a a a a a c b b b b b b
-c
-a a a a a a a a a a a c b b b b b b b b b b b
-a a a a a a a a a c b b b b b b b b b
-a a a a a a c b b b b b b
-a a a c b b b
-a c b
-a a a a a c b b b b b
-a a a a a c b b b b b
-a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b
-a c b
-a c b
-c
-a a c b b
-c
-a a a a a a a c b b b b b b b
-a c b
-a a a a a a a a a a c b b b b b b b b b b
-a a c b b
-c
-a c b
-c
-a a a a c b b b b
-a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b
-a c b
-a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b
-a a a a c b b b b
-a a a a a a a c b b b b b b b
-a a a c b b b
-c
-a a c b b
-a a a a a a a c b b b b b b b
-a a a c b b b
-c
-c
-c
-a a a a c b b b b
-c
-c
-a a c b b
-a a a a a a a a a a a c b b b b b b b b b b b
-a a c b b
-a a a a c b b b b
-a a a a a a a a c b b b b b b b b
-a a a a a a c b b b b b b
-a a c b b
-a a a a a a a a a a c b b b b b b b b b b
-a a a c b b b
-a a a a c b b b b
-a a a a a a a a a c b b b b b b b b b
-a a a a c b b b b
-a a a a a c b b b b b
-a a c b b
-a a a a a c b b b b b
-a a c b b
-a a a c b b b
-a c b
-a a a c b b b
-a a a a c b b b b
-a c b
-a a a c b b b
-a a a a a a c b b b b b b
-a a c b b
-a a c b b
-a a a a a a a a c b b b b b b b b
-a a a c b b b
-a a a a a c b b b b b
-a c b
-c
-c
-c
-a c b
-a a a a c b b b b
-a a a a c b b b b
-a c b
-a c b
-a a a a a a a c b b b b b b b
-a a a c b b b
-a c b
-a a a a a a a a a a a c b b b b b b b b b b b
-a c b
-a a a a a a a a c b b b b b b b b
-a a a c b b b
-c
-a c b
-a c b
-c
 a c b
 a a a a c b b b b
 a a c b b
-a a a c b b b
-a c b
-a a a a a a c b b b b b b
-a a a a a c b b b b b
-c
-a a c b b
-a a a a a c b b b b b
-c
-c
-a a a a c b b b b
-a a c b b
-c
-a a c b b
-a a a a a a c b b b b b b
-c
-a a a a c b b b b
-c
-a a a a c b b b b
-a a c b b
-a c b
-c
-a a a a c b b b b
-a c b
-c
-a a c b b
-a a c b b
-a a a a a a a a a a c b b b b b b b b b b
-a a a c b b b
-c
-a a c b b
-a a a a a a a a a c b b b b b b b b b
-a a a c b b b
-c
-a a a c b b b
-c
-a a c b b
-c
-a a a a c b b b b
-a a a a a c b b b b b
-a a c b b
-a a c b b
-a c b
-a a a a a a a a a c b b b b b b b b b
-a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b
-a a a a a a a a a a c b b b b b b b b b b
-c
-a a a a a a a c b b b b b b b
-a c b
-a a a a c b b b b
-a a a a a a a a a c b b b b b b b b b
-a a a a c b b b b
-a c b
-c
-a a a c b b b
-a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
-a a a a a a a a a a c b b b b b b b b b b
-a a a a a a a a a c b b b b b b b b b
-a c b
-a c b
-a a a a c b b b b
-a a c b b
-a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b
-c
-a a a a a c b b b b b
-a a c b b
-a a a a a a a a a a c b b b b b b b b b b
-a c b
-c
-a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
-c
-a a a c b b b
-a a a c b b b
-c
-a a a a c b b b b
-c
-a a a a a a a a a c b b b b b b b b b
-a a a c b b b
-a a c b b
-a a a a a a c b b b b b b
-a a a a a a c b b b b b b
-a a c b b
-a a a c b b b
-c
-a c b
-a c b
-c
-a a c b b
-a c b
-a a c b b
-a a a c b b b
-c
-a a c b b
-a a a a c b b b b
-a c b
-a c b
-c
-a a a a a a a c b b b b b b b
-a a a a a a c b b b b b b
-a a a a a a a a c b b b b b b b b
-a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b
-a a a c b b b
-a a a a a a a a a c b b b b b b b b b
-a c b
-a a c b b
-a a a c b b b
-a a a a a a a a c b b b b b b b b
-a a a a a c b b b b b
-c
-a a a a a a a a a c b b b b b b b b b
-a c b
-c
-a a a a a c b b b b b
-a c b
-a a a c b b b
-a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b
-a a a a c b b b b
-a a a a a a c b b b b b b
-c
-c
-c
-c
-a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
-c
-a a a a a a a a c b b b b b b b b
-a c b
-a a a c b b b
-a a a a a c b b b b b
-a c b
-c
-c
-a a a a a a a c b b b b b b b
-a a a a c b b b b
-a a c b b
-a a a a a a a a a a a a c b b b b b b b b b b b b
-a a a a a a a c b b b b b b b
-c
-a c b
-a a a a a a a a a c b b b b b b b b b
-a a a a c b b b b
-a a a c b b b
-a a a a a a a a a c b b b b b b b b b
-c
-c
-a a a a a a a a a a a c b b b b b b b b b b b
-a a a a a a c b b b b b b
-a a a a a c b b b b b
-a a a a a a a a c b b b b b b b b
-c
-a a c b b
-a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
-a a a a a a a a a c b b b b b b b b b
-a c b
 c
 a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b
-c
-c
-a c b
-a a c b b
-a a a c b b b
-a a a a a a c b b b b b b
-c
-a c b
-a a a a a a a a c b b b b b b b b
-a a c b b
-c
-a a a a a a a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b b b b b b b
-a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
-a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b
-a c b
+a a a a a a a c b b b b b b b
 a a a a a c b b b b b
-a a a a c b b b b
-a a a a a c b b b b b
-a c b
-a a a a a a a c b b b b b b b
-a a a a c b b b b
-a a c b b
-a a a a c b b b b
-a a c b b
-a a a a c b b b b
-c
-a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
-a a a c b b b
 a a a a a a c b b b b b b
-a a a c b b b
-a a a a a a a a a a a a c b b b b b b b b b b b b
-a a c b b
-a a c b b
-c
-a a a a a a a a a a c b b b b b b b b b b
-a a c b b
-a a a a a a a a c b b b b b b b b
-a a a c b b b
-c
-a a a a a a a a a a a a c b b b b b b b b b b b b
-a c b
-a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b
 a c b
 a c b
-a a a a a a a a c b b b b b b b b
-a a a a c b b b b
-a a a a a a c b b b b b b
-a a a a a a a c b b b b b b b
-a c b
-a a a a a a c b b b b b b
-a a a a c b b b b
-a a a a a a a c b b b b b b b
-a a a a a a c b b b b b b
-a a c b b
-a a a c b b b
-c
-a a a a a a a a a a c b b b b b b b b b b
-a a a a a a a c b b b b b b b
-a a a a a a a a c b b b b b b b b
-a a a a a a a c b b b b b b b
-a a a a a a a a a a a a c b b b b b b b b b b b b
-a a a c b b b
-c
-c
-a a a a a a a a a c b b b b b b b b b
-a a a a a a a a c b b b b b b b b
-a a a a a a a c b b b b b b b
-a a a a c b b b b
-a c b
-a a a a a a a c b b b b b b b
-a a a a a a c b b b b b b
-a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b
-a a a c b b b
 a a a a a a a a a a a a a c b b b b b b b b b b b b b
-a a a c b b b
+a a a a a a a a c b b b b b b b b
+a a a a c b b b b
+a c b
+a c b
 a a a a a c b b b b b
-a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
-a a a a a a a a a a a a c b b b b b b b b b b b b
-a a a a a a c b b b b b b
+a a a a c b b b b
 a a a c b b b
 a c b
-a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b
-a a a a c b b b b
 a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b
+a a a a a a a c b b b b b b b
+c
+a a a a a a a c b b b b b b b
+c
 a a c b b
+a c b
 a a a a a a a a a a a a a c b b b b b b b b b b b b b
-a a a a c b b b b
-a a a c b b b
-a a a c b b b
-a c b
-a c b
-a a a a a a a a a a a a c b b b b b b b b b b b b
-a c b
-a a a a c b b b b
-a a a c b b b
 c
+a c b
+a a a a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b b b b
 a a c b b
-a a a a a a a a a c b b b b b b b b b
-c
-c
-a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b
-a a a c b b b
-a a a a a c b b b b b
-a a a a a a a a c b b b b b b b b
+a a c b b
+a a c b b
+a a a a a a a a a a c b b b b b b b b b b
 a c b
-a a a a a a a a a c b b b b b b b b b
 c
-a a a a a a a a c b b b b b b b b
+a a a c b b b
 a a a a a a a a a a a c b b b b b b b b b b b
-a a a c b b b
-c
-a a a a a a c b b b b b b
-c
-a a a a a a a c b b b b b b b
-a a c b b
-a a c b b
-a a c b b
-a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b
-a a a c b b b
-a a a a c b b b b
-a a c b b
-a a a a a a a c b b b b b b b
-a c b
-c
-a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b
-c
-a a c b b
-a a a c b b b
-a a a c b b b
 a a a a a a a a a c b b b b b b b b b
-a c b
-a a a c b b b
-a a a a c b b b b
-a a c b b
 a a a a c b b b b
 c
-a c b
-a a a a a a c b b b b b b
-a a a a a a c b b b b b b
-a a a c b b b
-c
-a a a a c b b b b
-a a a a a a a a a a a a a c b b b b b b b b b b b b b
-c
-a a a a a c b b b b b
-a a a a a c b b b b b
-a a a a a a a a c b b b b b b b b
-a a c b b
-a a a a a c b b b b b
 a a a a a a a c b b b b b b b
-a a a c b b b
-a a a a c b b b b
-a a a a c b b b b
 a c b
+a a c b b
+a a a a a a a c b b b b b b b
 a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b
+a a a a c b b b b
+a c b
+a c b
+a a a c b b b
+c
+a c b
+c
+a c b
+a a a c b b b
+c
+a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b
+a a a a a a c b b b b b b
+c
+c
+a a c b b
+a a a a a a a a a c b b b b b b b b b
+a a a c b b b
+a a a a c b b b b
+a a c b b
+c
+a a a a c b b b b
+a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b
+a c b
+a a a a a a c b b b b b b
+a a a c b b b
+a c b
+a c b
+a c b
+c
+a a a a a c b b b b b
+a a c b b
+a a a a a a c b b b b b b
+a a a a c b b b b
+a a c b b
+c
+a c b
+a a a c b b b
 c
 c
 a a a a c b b b b
+a a a a a a a a a c b b b b b b b b b
+c
+a a c b b
+a a a c b b b
+c
+a c b
+a c b
+a c b
+a a c b b
+a c b
+a a c b b
+c
+a a a c b b b
+c
+a c b
+a a a c b b b
+a a a a c b b b b
+a a a a a a a a a a c b b b b b b b b b b
+a a a a a a a c b b b b b b b
+a c b
 a a a a a a a a c b b b b b b b b
+a a a c b b b
+a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b
+a a a a c b b b b
+a a a c b b b
+a a a a a a c b b b b b b
+c
+a a c b b
+a a a c b b b
+a a a a a c b b b b b
+c
+c
+a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b
+c
+a a a a a a a a c b b b b b b b b
+a a a a a a c b b b b b b
+c
+a a a a a a c b b b b b b
+c
+c
+a c b
+a a a a a a a a a c b b b b b b b b b
+c
+a a a a a a a a c b b b b b b b b
+a c b
+a a c b b
+a a a a a a a a a a a c b b b b b b b b b b b
 c
 a a a a a a a c b b b b b b b
 a a a a a c b b b b b
+c
+a a c b b
+a a a a a a a a c b b b b b b b b
+c
+c
+a a a a c b b b b
+a a c b b
+a c b
+c
+a a c b b
+a a a a a c b b b b b
+c
+a a c b b
+c
+c
+a a a a c b b b b
+a a a a c b b b b
+a a a c b b b
+a c b
+a c b
 a a a a a a a a a a a c b b b b b b b b b b b
+a a a c b b b
+a a a a a a c b b b b b b
+a a c b b
+a a a c b b b
+a a c b b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+a a c b b
+a a a c b b b
+a a c b b
+a a c b b
+a a a c b b b
+a a a a a a a a a a a c b b b b b b b b b b b
+a a a a a a a a c b b b b b b b b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+c
+a a a a a a c b b b b b b
+a a a a a a c b b b b b b
+a a a a a a a a c b b b b b b b b
+c
+c
+a c b
+c
+a c b
+a a a a a c b b b b b
+a a a c b b b
+a a c b b
+c
+a a a c b b b
+c
+c
+a a a a c b b b b
+a c b
+a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b
 a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b
+a c b
+a a a a c b b b b
+a a a c b b b
+a a c b b
+a c b
+a a a c b b b
+a a c b b
+a a c b b
+c
+a a a c b b b
+a a a a c b b b b
+a c b
+a c b
+a c b
+a a a a a a a a a a c b b b b b b b b b b
+a a a a a a a a a c b b b b b b b b b
+a a a a c b b b b
+a a a a a a c b b b b b b
+c
+a a a a a a a a c b b b b b b b b
+a a a a c b b b b
+a a a c b b b
+a a a a a a a a c b b b b b b b b
+a a c b b
+a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b
+a c b
+a c b
+c
+a a c b b
+c
+a c b
+a a a c b b b
+a a a a c b b b b
+a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b
+c
+a a a a a a a a c b b b b b b b b
+a a c b b
+a c b
+a a a a a a c b b b b b b
+a c b
+a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
+a a a a a c b b b b b
+a a c b b
+a c b
+c
+a a a c b b b
+a a a a a a a a c b b b b b b b b
+a a c b b
+a a a c b b b
+a a a a a c b b b b b
+a a a a c b b b b
+a c b
+a c b
+a c b
+c
+a c b
+a c b
+a a a a a a a a a c b b b b b b b b b
+a a a a a c b b b b b
+c
+a a a a a a a a c b b b b b b b b
+a a c b b
+a a a a a a a a a a a a c b b b b b b b b b b b b
+a a a a a c b b b b b
 a a a a a a a a a a c b b b b b b b b b b
 c
 a a c b b
-a a a a a c b b b b b
-a c b
-c
-c
-a a c b b
+a a a a a a c b b b b b b
 a a a a c b b b b
-a a c b b
-a c b
 a a a a a c b b b b b
-a a c b b
-a a a a c b b b b
-a a c b b
-a a c b b
-a c b
-a a a c b b b
-a a c b b
-a c b
-a a c b b
-a a a a a a a a a a a a a a c b b b b b b b b b b b b b b
-a a c b b
-a c b
-a c b
+a a a a a c b b b b b
+c
+a a a a a c b b b b b
 a c b
 c
 a a a a a a a a c b b b b b b b b
 a a a c b b b
-a a c b b
-a a a a a a a c b b b b b b b
-a a a a a a a a a a a a c b b b b b b b b b b b b
-a a a a a a c b b b b b b
 c
-c
-a a c b b
-a a a a a a a a c b b b b b b b b
-a c b
-a a a a a c b b b b b
-a c b
-a c b
-a a a a a a a a c b b b b b b b b
-a c b
-a c b
-a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b
-a a a a a c b b b b b
-a c b
-a a a a a a c b b b b b b
-a a a a a a a c b b b b b b b
 c
 a c b
 a a c b b
-a a a a a a a c b b b b b b b
-a a a a a a c b b b b b b
-a a a a a a c b b b b b b
-a c b
-a c b
-a a a a a a c b b b b b b
-a a a a a a a a a c b b b b b b b b b
-c
-a a a a a a a a c b b b b b b b b
-c
-c
-a a a a a c b b b b b
-c
 a a a a a a a a a a a c b b b b b b b b b b b
-a c b
+a a a a a a a c b b b b b b b
+a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b
 a a a a c b b b b
-a a a a c b b b b
-a c b
-a c b
-a c b
-a a a a a a c b b b b b b
-a c b
-a a a a a a a a a c b b b b b b b b b
-a a a a a a c b b b b b b
-a a a a c b b b b
-a a a a c b b b b
-a a a c b b b
+c
 a a a c b b b
 c
+a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b
+a a c b b
+c
+a a a a a a c b b b b b b
+a c b
+a a a a a a a a a a c b b b b b b b b b b
+a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b
+a a a a a a a a c b b b b b b b b
+a a c b b
+a a a a a a c b b b b b b
+a c b
+a c b
+a a a a a a a a c b b b b b b b b
+a a c b b
+a a a a c b b b b
+a a c b b
+a c b
+c
+a a a a c b b b b
+a a c b b
+c
+a a a a a c b b b b b
+a a a a a a a a a a c b b b b b b b b b b
+a a c b b
+a c b
+a a a a a a a a a a c b b b b b b b b b b
+a c b
+a a a a a c b b b b b
+c
+a a a c b b b
+c
+c
+a a c b b
+a c b
+a a a a a a a c b b b b b b b
+a a c b b
+c
+a a a a a a a a a a c b b b b b b b b b b
+a a a a a a a a a c b b b b b b b b b
+c
+a a a a c b b b b
+a a a a a a c b b b b b b
+a a a a a a a c b b b b b b b
+a a c b b
+a a a a a a a c b b b b b b b
+a a a a a a a a a a c b b b b b b b b b b
+a a a a c b b b b
+a a a a a a a c b b b b b b b
+a a a a a a c b b b b b b
+a c b

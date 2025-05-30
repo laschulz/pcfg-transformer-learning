@@ -1,154 +1,154 @@
-if cond then if cond then while cond do if cond then action else z else z else t z
 action
-action
-if cond and cond then action else z
-action
-action
-if cond and cond then if cond and cond then if cond then action else z else z
-if cond then action else z
-action
-if cond then if cond and cond then if not cond then action and cond then if cond and cond and cond and not not cond then if not cond and cond and not cond then action else t z else z else z else z
-action
-action
-if cond and cond then if cond then action else t t t t z else t z
-action
-if cond then if cond then if cond then if cond then if cond then action else t t t t t t z else t t z else t t t t t z else t z
-if cond then action else t t z
-action
-if cond and not cond then if cond then if cond and not cond then action else t t z else t t t t z else t z else z
-if cond and not not not cond and not cond and cond and cond then if not not cond and cond then if not cond then action else z else z
-action
-action
-if cond then if not cond then action else t t t t t t z else t z
 action
 while cond do action
-if cond and cond and cond then action else t z
-cond then while cond do if not cond then while not not not cond do action else z else z
+action
+action
+while cond and cond and cond do action
+action
+if not cond and cond then action else z else t t z
+action
+action
+action
+if cond then if cond then if cond then if cond then if cond then action else t t z else t z else t t z else z
+while cond and not cond and cond and not cond and cond do if cond then action else z
+action
+action
 if cond and cond then action else t z
-while not cond do if cond then if not cond then action else t t t z else t t t z else z
+action
+if cond then action else t z
+action
+action
+if cond then if cond then action else z else t t t t t z
+if not cond then if not cond and cond and not not cond and not not cond and not not not cond and cond and cond and cond and not not cond and not cond and cond and cond and not not cond and cond do if not cond and cond and cond then while not not cond and not cond and cond and cond and cond and cond and cond do while cond and cond do while cond and cond and cond do while not not cond and cond and not cond do if cond then action else z else z
 action
 action
 action
-if cond then action else t t z
-while cond do if cond then action else z
 action
-if cond then if not cond and cond then if cond and cond and cond and not cond and cond then action else t z else z else t t z else z
+action
+action
 action
 if cond then action else z
-if cond then if cond then if cond then while cond and cond do if cond then action else t t t z else t t t t t t t z
-if cond then action else z
-while cond do action
+action
+if not not not cond and not not cond and cond and cond then if cond do if not not cond and cond then action else z else t z else t t t z else t z
+while not cond and not not cond and cond do while cond and cond do action
+action
+if cond then while cond do while cond do action else z
+if cond then action else t t t z
+if not cond then while cond do if not cond and cond then action else t t z else z else t t t t z
+if cond and cond then if cond then if not cond and cond then action else t t z else t z
+if not not cond then while not cond do action else t t t z
+if cond and cond and cond then while cond do if cond then if cond and cond then action else t t z else t t t z else t z else t z
 action
 action
-while cond and cond and not not cond and cond do if not not cond and cond and cond then action else z
-if not cond then if cond then action else t t z else z
-action
-if cond and cond and not cond then if not cond and not cond and not cond then action else z else t t t z
+if not not cond and cond then action else z else z
 action
 action
-while not cond do if not cond then action else z
-if cond then if cond and cond then while not cond do if cond and not cond then if not not cond and cond and cond and not cond then action else z else z
-Accuracy: 0.8000, Train Overlap: 0.6600
+if cond then action else t z
+if cond then action else t t t t t t t t t z
+while cond do if not cond then if cond and cond then action else t z else t t t z
+while cond and cond and cond do if cond then if not cond then if not cond and cond and cond and cond and not cond and not cond then if cond and cond and cond and not cond and cond and cond and cond and not cond and cond then action else z else cond and not cond and not cond do while not cond and cond do if not cond and cond then action else t t z else t t t t t t z else z else t t t t z else z else t t t t t z
+action
+Accuracy: 0.8200, Train Overlap: 0.6800
 
 
 Known sequences log probabilities:
-while cond and not cond and cond do if cond and not cond then if cond then if cond and not cond then if not cond then if not not cond then if cond then action else z else t z else t t t t z else t z else t t t z else t z: 1.913325436877472e-18
-while cond do action: 0.011667734208202047
-action: 0.17425475627384027
-while not cond do if cond and not not cond and not not cond and not cond and not cond and not not cond and cond and not not cond and cond then if cond and not cond then while not cond and not cond and not not cond and cond do action else z else z: 5.799760105855644e-20
-action: 0.17425475627384027
-action: 0.17425475627384027
-if cond then action else t t z: 0.003456891111296978
-action: 0.17425475627384027
-while cond and not not cond and not not not not not cond and not not cond and not not cond and cond and not not not not not cond and cond do action: 4.276057066779445e-13
-if cond then if cond then action else t t z else t z: 9.291336668368584e-05
-action: 0.17425475627384027
-if not cond and cond then action else z: 0.0006121634955356065
-if not cond and cond then while cond do action else t t t t z: 6.641191922066421e-06
-if cond then action else z: 0.00985147708407867
-if not cond then if cond and not not cond then while not cond do if not not not not cond then if cond then if cond and cond then while cond do action else z else z else z else t t z else z: 2.1463773129557652e-16
-action: 0.17425475627384027
-while cond do if not cond and cond then if cond then if cond then if not not cond and cond then while cond and not cond do if cond then action else z else t t z else t t z else z else t z: 4.142960564343065e-15
-if cond and cond then action else t t t t z: 0.00020572470135837905
-while cond and not not cond do if not cond and not cond and cond and cond and cond and not cond and cond and not cond and cond and cond and not cond and cond and not cond and cond and cond then if cond then while cond do if not not cond then action else z else t z else z: 1.0946238532704545e-19
-if cond then if not cond then action else z else z: 9.868674942516743e-05
-if not not not cond then action else t z: 0.00010596923261443214
-while not not cond and not cond and cond and cond and cond do while cond do while not not cond do action: 4.206274371277386e-09
-if cond then action else z: 0.00985147708407867
-if not not cond and not cond and cond and cond and cond and not cond and not cond and cond and cond and not cond and cond and cond and cond and cond and cond and not not cond then action else t z: 2.675642576669357e-13
-if not cond then if not cond and cond then if not cond and cond and not cond and cond and cond and cond then action else t z else t t t t t t t t z else z: 7.341216438176589e-13
-if cond then while cond do if not cond then while cond do action else t t t t t t t t t z else z: 1.0264569535005067e-08
-action: 0.17425475627384027
-if cond then action else z: 0.00985147708407867
-if cond then if not cond and not cond and cond then action else z else t t z: 1.1994242983793807e-06
-if not not not not cond and cond and cond then if cond and cond then if cond and cond and cond then action else z else t z else z: 1.2095180524778713e-10
-if cond then if cond then if not cond and cond then action else t z else t t t t t t t t z else z: 9.696534631091305e-09
-while not not not cond do action: 0.0005642888091141274
-while cond do if cond then while cond do if cond then action else t t t t t z else t t t t z: 4.7190498770357355e-08
-action: 0.17425475627384027
-action: 0.17425475627384027
-action: 0.17425475627384027
-if cond then action else t z: 0.005779234095854387
-if not cond and cond then if cond then if not not cond then if cond then while cond and not cond and cond and cond do action else t t t z else t t t z else z else t t z: 2.725763893443332e-14
-action: 0.17425475627384027
-while cond and not cond and not not not cond and cond do while cond do action: 1.679491062400359e-07
-if cond then if cond and cond and cond then action else t t t t t z else t t t t t t z: 5.298888979009373e-08
-action: 0.17425475627384027
-if cond then if cond and cond then action else t t t t t z else t z: 3.3360772848101158e-06
-action: 0.17425475627384027
-if cond then action else t t z: 0.003456891111296978
-if cond then if not not cond and not not not not not cond and not not cond and cond and cond then action else t z else z: 1.321986615418577e-10
-while cond do if not not not cond and cond and cond and cond and cond and cond then if cond then if cond then action else t z else z else z: 1.5266392365283538e-10
-if cond then action else t z: 0.005779234095854387
-action: 0.17425475627384027
-while cond do if cond then action else z: 0.0006625914606755127
-if cond then while not not not cond do if not cond then if cond and cond then action else z else t z else t z: 1.3481425137132496e-09
-while cond do if cond then action else t t t z: 0.00015414214457306485
-action: 0.17425475627384027
-if cond then action else z: 0.00985147708407867
-if not not cond then if cond and not cond then while not not not cond and cond and not cond and not not not cond and not cond and not cond and cond and cond and not cond and cond and cond and cond and not cond and cond and cond and cond and cond do action else t t t t t z else t t t t t t t z: 4.0449303224330046e-22
-if cond and cond then action else z: 0.0016430667840101872
-if not not cond and cond and cond and not cond and cond then if not cond then if cond then while cond do if not not cond then if cond then action else t z else t t t t t t z else z else t z else t t z: 3.3753181924492133e-16
-action: 0.17425475627384027
-if cond then if cond then action else t t z else z: 0.00016011828445435515
-if cond then while cond and not cond and cond do action else z: 1.2272152957058886e-05
-if not not not cond then action else z: 0.0001758926260871068
-if cond then if cond then if cond then if cond and cond then action else z else z else t t t t t z else t t t z: 2.2812245267246628e-09
-action: 0.17425475627384027
-action: 0.17425475627384027
-if not cond then action else t z: 0.0013371440446103332
-action: 0.17425475627384027
-action: 0.17425475627384027
-action: 0.17425475627384027
-action: 0.17425475627384027
-while cond and cond and cond do action: 0.0004316550259534501
-action: 0.17425475627384027
-action: 0.17425475627384027
-action: 0.17425475627384027
-action: 0.17425475627384027
-action: 0.17425475627384027
-while not not cond and cond and cond do action: 0.00014494545876542097
-action: 0.17425475627384027
-action: 0.17425475627384027
-action: 0.17425475627384027
-if cond and cond then action else t z: 0.001002829314277304
-action: 0.17425475627384027
-action: 0.17425475627384027
-while cond do action: 0.011667734208202047
-if cond and not cond and cond and cond then if not cond and cond then action else t t z else t t t t z: 8.408777105696771e-09
-while cond do if cond and cond and cond and not cond and not cond and not not cond and cond and not not not cond and cond and cond and cond then if cond then if cond then if cond then if not cond and cond and cond then action else z else t t t z else t t t t t t t z else t t z else z: 8.964138346927854e-22
-action: 0.17425475627384027
-action: 0.17425475627384027
-action: 0.17425475627384027
-if not not cond and cond then while not not not cond and not cond and cond and not cond and not not cond and not cond do if cond then while not not not not cond and not cond and not cond and cond and not cond do action else t t t z else t t t z: 1.2195595284238353e-20
-while not cond and cond do action: 0.0010265961456251377
-while cond do action: 0.011667734208202047
-if cond then action else z: 0.00985147708407867
-action: 0.17425475627384027
-action: 0.17425475627384027
-action: 0.17425475627384027
-while cond and not cond do while cond do action: 3.998492279906458e-05
-while cond do action: 0.011667734208202047
-action: 0.17425475627384027
-action: 0.17425475627384027
-while cond and cond do if not cond then if cond then while not not not cond and cond do while cond do action else z else t t z: 4.349667919050378e-11
+if cond then action else z: 0.004459019963814095
+action: 0.09122847199144529
+if cond then while not cond do while not cond do if cond and cond then while cond do while cond do if not cond then action else z else t z else t z: 1.096574116979012e-12
+while cond and cond do while cond do if cond then action else t z: 3.898527452656881e-06
+while cond do if cond then if cond then action else t t t t t z else t z: 2.057737693475325e-06
+action: 0.09122847199144529
+if cond and not not cond and cond then action else t z: 4.838753919558264e-06
+if cond then action else t z: 0.002858910215370193
+action: 0.09122847199144529
+action: 0.09122847199144529
+action: 0.09122847199144529
+if not not cond and cond then action else z: 7.498671768441659e-05
+if cond then action else z: 0.004459019963814095
+action: 0.09122847199144529
+while not not cond do if cond then if cond then while cond and cond and cond and cond and cond do while cond do while cond do while cond and cond do action else z else t z: 7.880945633645985e-14
+if cond then action else t t t t t t t t t z: 7.40262287555118e-05
+if cond then if not cond then action else t t t t t t z else t t z: 2.0997676095196796e-06
+if cond then action else z: 0.004459019963814095
+if cond then action else t t z: 0.0018264642813018356
+action: 0.09122847199144529
+action: 0.09122847199144529
+action: 0.09122847199144529
+action: 0.09122847199144529
+action: 0.09122847199144529
+if not cond then if cond then if not cond then if cond then action else t t t t z else z else z else z: 2.5690157758888096e-08
+while cond and not cond do action: 0.0002452367819188944
+if cond then action else z: 0.004459019963814095
+while cond do action: 0.007030661459141664
+action: 0.09122847199144529
+action: 0.09122847199144529
+action: 0.09122847199144529
+if cond then action else z: 0.004459019963814095
+action: 0.09122847199144529
+action: 0.09122847199144529
+if cond and cond then if cond then action else z else z: 2.1019880229917733e-05
+action: 0.09122847199144529
+action: 0.09122847199144529
+if cond then action else t z: 0.002858910215370193
+if cond then if not not cond and not cond and not not not cond and cond and cond and cond and cond and cond then if cond then if cond then action else t t z else t t t z else z else t z: 4.8334755855783046e-14
+while not cond and not not cond do action: 4.030430317489969e-05
+if not cond then action else z: 0.0016278709263292425
+if not not not not cond and not cond and not not cond and cond and cond then if cond then while cond do while not cond and not cond and cond do action else t z else z: 8.137186847916771e-14
+if not not not cond then action else t t t z: 3.312705796217097e-05
+while cond do while cond and cond do while cond do action: 1.1091048461225573e-05
+while cond do while not cond do if cond then action else t t z: 5.87695000206327e-06
+action: 0.09122847199144529
+while cond do action: 0.007030661459141664
+if cond then action else z: 0.004459019963814095
+if cond then action else t z: 0.002858910215370193
+if cond then if not cond then if cond then if cond then if not cond then action else z else t t t t t t t t z else t t t t z else t t z else z: 1.0889635554453348e-11
+action: 0.09122847199144529
+while cond and cond do action: 0.0008492074381120214
+if cond then action else t z: 0.002858910215370193
+if not cond and cond and cond and cond then action else t t z: 4.3042288120433e-06
+while cond do action: 0.007030661459141664
+action: 0.09122847199144529
+if not cond then action else z: 0.0016278709263292425
+if cond and not cond then action else z: 9.510195068472579e-05
+action: 0.09122847199144529
+while cond and cond do action: 0.0008492074381120214
+action: 0.09122847199144529
+if not not not not cond and cond and cond and cond and cond and cond then action else z: 1.38550289077297e-07
+while cond do action: 0.007030661459141664
+while cond do if cond then while cond do while cond and cond do action else z: 8.451962560571032e-07
+if not cond and cond then while cond do while cond do while cond do action else t z: 2.5439392586609324e-07
+action: 0.09122847199144529
+if not cond and not cond then action else t z: 3.590696327858749e-05
+action: 0.09122847199144529
+while cond do while cond do action: 0.0007667886429446424
+while cond do while not cond and cond and not not cond and not cond and not cond and cond and not not cond and cond and cond and not cond and cond do if cond then action else z: 1.5616169900913576e-13
+action: 0.09122847199144529
+while cond do while cond do while cond and cond and cond and not cond and cond and not cond and cond and not cond and not cond do action: 1.474633267432901e-11
+action: 0.09122847199144529
+action: 0.09122847199144529
+if cond then if cond then while cond do action else t t t z else t t t t t t z: 2.9066907824845127e-07
+if cond and not cond then action else t t t t t t t z: 4.117169794346161e-06
+if cond then if cond then if cond and not cond and cond and not cond and cond and cond and cond and cond and not cond and cond then if not cond then if not cond and cond then while cond do while not cond and cond and not not cond and cond and cond and cond and not cond and not cond and cond and cond and cond and cond do action else z else z else t t t z else t t z else t t z: 1.829591345431922e-27
+if cond then action else t t t t t t t t z: 0.00011646679467054336
+if cond then if cond then action else z else z: 0.00016947928367493502
+if cond then if cond then action else z else z: 0.00016947928367493502
+action: 0.09122847199144529
+action: 0.09122847199144529
+if cond then while cond and cond do if not cond and cond then action else z else z: 1.9966934263539076e-07
+action: 0.09122847199144529
+if cond then if not cond and cond and cond then if cond and cond and cond then action else t t t t t z else t t z else z: 2.0676844890480907e-10
+action: 0.09122847199144529
+if not not cond then if cond then while cond do if cond then if cond then if not cond then while cond do while not not not cond do if cond then action else t z else t z else t z else t z else t t z else t t t t t z: 1.5792322602452685e-17
+action: 0.09122847199144529
+if not cond then action else t t z: 0.0006823077785998477
+if cond then if cond then if cond then if cond then if not not cond and cond then while cond do if not cond then action else t t z else t t z else t z else z else t t z else t t t z: 9.897135615322118e-15
+if cond and not cond then action else t z: 6.0868847917754063e-05
+action: 0.09122847199144529
+action: 0.09122847199144529
+action: 0.09122847199144529
+action: 0.09122847199144529
+while not cond and not cond and cond do action: 4.8116456668945834e-05
+action: 0.09122847199144529
+action: 0.09122847199144529
+action: 0.09122847199144529
+action: 0.09122847199144529

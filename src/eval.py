@@ -69,8 +69,8 @@ def calculate_accuracy(generated_sequences, train_sequences, grammar_name):
 def evaluate_generated_sequences(model, tokenizer, training_sequences, grammar_name, test_sequences, device, num_samples=50, max_length=256):
     """Evaluate generated sequences on accuracy and perplexity."""
     generated_sequences = generate_and_score_sequences(model, tokenizer, num_samples, max_length, device)
-    print(generated_sequences)
+    #print(generated_sequences)
     accuracy, train_overlap = calculate_accuracy(generated_sequences, training_sequences, grammar_name)
-    print(f"Accuracy: {accuracy:.4f}, Train Overlap: {train_overlap:.4f}")
+    #print(f"Accuracy: {accuracy:.4f}, Train Overlap: {train_overlap:.4f}")
     res = score_known_sequences(model, tokenizer, test_sequences, device)
     return generated_sequences, accuracy, train_overlap, res

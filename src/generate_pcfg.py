@@ -60,7 +60,7 @@ GRAMMARS = {
 
     # G7  ─ NestedStructures   (double-quote symbol included)
     "NestedStructures": {
-        "S": [(["(", "A", ")"], .5), (["*", "X", "X", "*"], .5)],
+        "S": [(["(", "A", ")"], .5), (["*", "X", "X", "*"], .5)], #change this
         "A": [(["B", "B", "B"], .4), (["a"], .6)],
         "B": [(["[", "S", "]"], .5), (["b"], .5)],
         "X": [(["Y", '"', "Y", '"', "Y"], .6), (["x"], .4)],

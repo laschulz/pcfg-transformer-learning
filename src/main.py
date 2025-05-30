@@ -49,7 +49,7 @@ def main():
             weight_decay=1e-1,
             betas=(0.9, 0.95),
             early_stopping=15,
-            checkpoint_every=10,
+            checkpoint_every=5,
             config=config.name,
             device=device
         )

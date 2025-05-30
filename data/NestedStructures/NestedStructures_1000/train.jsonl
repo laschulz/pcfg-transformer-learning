@@ -1,0 +1,900 @@
+{"sequence": "( [ * x x * ] [ * x ( [ * x x * ] b [ ( a ) ] ) y ( a ) \" ( a ) y ( a ) \" ( b b [ ( a ) ] ) y ( a ) * ] b )"}
+{"sequence": "* * x x * y * x x * \" * * ( [ ( [ ( [ ( a ) ] b b ) ] b b ) ] [ * y \" * x ( a ) y * x * x ( a ) y * * * * x ( [ ( a ) ] b b ) x \" y \" ( a ) x * y * x y \" * ( a ) y ( a ) \" ( b b b ) y * ( a ) y ( a )"}
+{"sequence": "( [ ( b b [ ( b b [ ( [ * * ( a ) y * ( a ) y ( a ) \" ( a ) y * ( [ * y \" * x x * y ( [ ( b [ ( a ) ] [ ( a ) ] ) ] [ * x y \" y \" * * * y \" ( a ) * x x * x \" y \" * y \" * * x * * x y \" ( b b b ) ( a )"}
+{"sequence": "( a )"}
+{"sequence": "( [ ( a ) ] b [ ( [ * x x * ] b [ ( a ) ] ) ] )"}
+{"sequence": "* ( a ) y * * y \" * ( a ) y ( a ) \" * x x * y * x x * \" y x * y * y \" * * ( b [ ( b b b ) ] b ) * y \" y \" * y \" * x x * x \" y x * y * y \" * ( a ) y ( a ) \" ( a ) y * y \" ( a ) ( a ) y * y \" y \" * * x"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "( b [ * x x * ] b )"}
+{"sequence": "* * x * y \" y \" y y \" y \" y * y ( [ * x x * ] [ ( b b [ ( a ) ] ) ] [ ( a ) ] ) \" * * x * * ( b [ ( a ) ] [ ( [ ( b [ ( a ) ] [ ( b [ ( b b [ * * ( a ) y ( a ) \" ( a ) y ( a ) \" y x * * * y \" y \" y ("}
+{"sequence": "( [ * x x * ] [ ( a ) ] [ * x ( b b b ) y ( b [ ( b [ * y \" * x x * y ( a ) \" ( a ) ( a ) ( [ * x y \" * ( a ) * x * x * x ( a ) x \" ( b [ * y \" * x * ( a ) * x x * y ( a ) \" ( b b [ ( b b b ) ] ) ( a"}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "* x * * * x x * ( b [ * * x y \" * * * * y \" * ( a ) x \" * x y \" * * * x * y \" y \" ( [ ( [ * ( [ * y \" * ( a ) y ( a ) \" y \" ( [ ( a ) ] b b ) * y \" y \" ( a ) y * * ( a ) x \" y \" y x * ( b b [ * x * y"}
+{"sequence": "* * ( b b b ) x \" y \" ( b [ ( [ * x x * ] [ * ( [ * * y \" ( a ) y * y \" ( a ) ( b b [ ( a ) ] ) * * ( [ * ( a ) y * x x * \" * x x * ( a ) y * * x y \" * x x * ( a ) * x x * ( a ) y * y \" * x * * x y \""}
+{"sequence": "* x x *"}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "* ( [ * x * y \" * * x ( a ) x \" ( a ) * * * * x x * * * x ( a ) y * y \" * * ( [ * ( b [ ( a ) ] [ * ( b [ ( [ ( b b [ * ( a ) ( b [ * ( a ) y * * ( [ * x x * ] b b ) y \" y \" y \" * * ( a ) y ( a ) \" *"}
+{"sequence": "( [ ( [ ( [ * x x * ] b [ ( a ) ] ) ] b [ * ( [ * x x * ] b b ) y ( a ) \" * x ( a ) y * x x * \" ( a ) y * x y \" y \" * ( [ * ( a ) y ( a ) \" * * ( [ ( a ) ] b [ ( a ) ] ) y * ( a ) y ( a ) \" y \" ( [ *"}
+{"sequence": "* x * x x * ( a ) y * x x * \" ( a ) y ( a ) \" y \" y \" * y \" * * ( a ) y \" * * x * ( a ) y * x y \" * x x * y * * * y \" y \" * x x * x x * y ( [ * y \" y \" ( a ) y * * x ( a ) y * ( [ ( a ) ] b [ * * x *"}
+{"sequence": "* y \" * x * y \" * * x x * y \" y \" * y \" * x * x x * ( b [ ( a ) ] [ ( [ ( a ) ] [ ( a ) ] [ * x x * ] ) ] ) y ( a ) \" ( a ) y ( a ) \" ( [ * x x * ] [ * x * x x * y \" ( a ) y * * ( a ) y ( a ) \" * x x"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x y \" y \" * ( a ) y ( a ) \" ( a ) y * * y \" ( a ) y * x y \" ( a ) y * x ( a ) y * y \" y \" y x * \" ( a ) * * y \" * ( [ * x ( a ) y * y \" y \" y y \" ( a ) ( b [ * ( [ * x * * ( b [ * x * y \" ( [ * x *"}
+{"sequence": "( [ ( a ) ] b [ * * y \" * x ( b b b ) x \" y \" y * y ( a ) \" ( b [ ( [ * ( a ) y ( [ ( a ) ] [ * x ( b b [ ( a ) ] ) ( a ) y ( a ) \" * x y \" * y \" * * x x * y ( a ) \" * * ( a ) y ( [ ( a ) ] b [ ( a )"}
+{"sequence": "( [ * x ( [ ( a ) ] [ * ( a ) y * ( a ) y ( a ) \" y \" y ( [ * y \" y \" * y \" ( [ * * ( [ ( a ) ] b b ) y * y \" y \" y x * \" y \" ( a ) * x x * y ( [ * x y \" y \" y * ] b [ * * y \" ( b [ ( [ ( a ) ] b b )"}
+{"sequence": "* x y \" * * x x * x \" * * ( [ * ( b [ * * y \" * x x * x \" y * x x * y ( a ) \" y \" * ( a ) y ( [ * ( a ) y ( [ ( a ) ] [ ( [ * * ( a ) x \" * y \" * * x y \" ( a ) x \" * x x * x * y ( [ ( b b b ) ] b b )"}
+{"sequence": "* * y \" ( b b [ ( a ) ] ) y * x y \" y \" ( a ) y ( b b [ * x ( b [ ( b [ * ( a ) ( a ) x \" ( a ) y ( b [ * * * y \" y \" y y \" * ( a ) y ( a ) \" y \" ( a ) y ( [ ( a ) ] b [ ( b b b ) ] ) x * y ( a ) \" y"}
+{"sequence": "* * ( a ) y * y \" y \" * y \" * y \" * x ( b [ ( a ) ] b ) y ( a ) \" y \" y * y ( a ) \" ( a ) y ( b b [ * ( a ) y * * ( [ ( a ) ] b [ ( b b b ) ] ) * ( a ) y ( a ) \" * ( a ) y * * x x * y ( a ) \" y \" ( ["}
+{"sequence": "* * * x x * * * ( a ) x \" y \" * x x * x y \" ( a ) * x ( [ * x x * ] [ ( b b [ * ( a ) * x x * ( a ) y ( a ) \" ( a ) y * ( a ) y * x * ( a ) y * ( b b [ ( a ) ] ) y * y \" * x y \" * ( a ) x \" y \" * x x"}
+{"sequence": "* ( b b b ) y \" * ( a ) y * x * x x * y ( a ) \" * x ( a ) y ( [ ( b b [ * * * x y \" ( [ ( a ) ] b [ * x ( a ) y * y \" * x x * x \" ( b b [ ( a ) ] ) y \" ( b b [ * * x ( [ ( a ) ] b b ) y * x y \" y \" ("}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( b [ * * x * ( a ) y ( [ ( a ) ] b [ * ( a ) * x x * y ( a ) \" ( b b b ) * ( [ ( a ) ] [ ( b b b ) ] [ ( a ) ] ) ( [ * x ( a ) ( a ) x \" y \" * ( b b b ) y ( b [ * ( a ) * y \" y \" ( a ) y \" * x x * y"}
+{"sequence": "* ( a ) y * ( a ) y ( [ * x x * ] b [ * x x * ] ) \" * * x * * ( a ) y \" y \" * * x x * y ( a ) \" ( [ ( [ * ( a ) ( [ * ( b b [ ( b [ * ( a ) y ( b b [ * * y \" y \" ( b [ ( a ) ] [ ( a ) ] ) * ( [ * * ("}
+{"sequence": "* ( [ ( a ) ] b [ * x ( a ) y * x * x ( a ) y ( a ) \" y \" * x x * x * y ( [ ( a ) ] [ ( a ) ] [ ( a ) ] ) \" * y \" * x x * y ( a ) \" ( a ) y * x ( [ * ( a ) x \" ( [ ( [ ( a ) ] [ * x * * x ( [ * x x *"}
+{"sequence": "( a )"}
+{"sequence": "* * ( a ) y * * * y \" * * x ( b [ * x x * ] b ) y * ( [ ( b b [ * y \" * x x * y ( a ) \" ( a ) x x * ] ) ] [ * * y \" ( a ) y * * x * ( b [ ( a ) ] b ) y * x x * \" * x ( b b b ) x \" * x x * x \" ( b [ ("}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( b [ * x * x ( a ) y \" y \" * ( a ) x \" y \" * x x * y \" * x y \" y \" * y \" * x x * y ( a ) \" * x y \" * x * y \" y \" y y \" y \" y * y * ( [ ( a ) ] [ ( a ) ] b ) y ( a ) \" * y \" * ( a ) x \" y \" ( b [ * x"}
+{"sequence": "( [ * x x * ] [ ( a ) ] [ * x * * x x * y ( a ) \" ( a ) y ( a ) \" ( [ * x x * ] b [ * * y \" ( [ ( a ) ] b [ ( a ) ] ) y ( b [ ( a ) ] [ ( a ) ] ) \" ( b b b ) y ( a ) ( a ) y ( [ * x * * x x * y ( a )"}
+{"sequence": "* y \" * y \" y \" * x x * y * * x ( [ * x ( a ) y * y \" * ( a ) y * x * x * * ( a ) * x y \" ( b [ ( a ) ] b ) y ( a ) \" y * y * x * * y \" * y \" y \" * ( [ ( a ) ] [ * x x * ] b ) y ( a ) \" ( a ) y \" * *"}
+{"sequence": "( b b b )"}
+{"sequence": "( [ ( a ) ] [ ( [ * ( b b [ * * x y \" y \" y * y * y \" * * * x x * y * x x * \" ( a ) y * * * x * x x * x \" ( a ) x \" * x y \" y \" ( a ) ( b [ ( [ ( a ) ] [ * ( a ) y ( a ) \" y \" * ( a ) y ( [ ( a ) ] ["}
+{"sequence": "( b b [ ( [ ( a ) ] b b ) ] )"}
+{"sequence": "* x y \" y \" y *"}
+{"sequence": "( a )"}
+{"sequence": "( [ ( b [ ( b [ ( a ) ] b ) ] b ) ] [ ( b b [ * y \" ( [ * x y \" * y \" ( a ) y ( a ) \" ( a ) y * ( a ) x \" ( a ) y * x x * \" y * x ( b [ ( a ) ] [ * ( [ ( a ) ] [ * x * ( a ) y ( [ ( a ) ] [ * * ( a )"}
+{"sequence": "* x ( a ) y ( a ) \" ( a ) y * ( [ ( b [ ( [ * x y \" ( a ) y ( a ) \" y * ] b [ * y \" * ( a ) y * ( a ) x \" * x x * y ( a ) \" * ( a ) y * x * x x * y \" y \" * * ( b b b ) y ( a ) \" y \" y y \" y \" * y \" y"}
+{"sequence": "( [ ( a ) ] b [ ( a ) ] )"}
+{"sequence": "( b b b )"}
+{"sequence": "* * x x * * y \" ( a ) y ( [ * ( a ) y ( b b [ ( b b b ) ] ) \" y \" ( [ * * * x x * x \" * * y \" y \" y ( a ) * x x * y ( [ ( b b [ ( b [ * x ( a ) y * * x x * y * ( a ) y * ( a ) y ( a ) \" * y \" * x y \""}
+{"sequence": "( b [ * x x * ] [ * x y \" * x x * y \" * x * ( a ) y * x x * \" y \" ( a ) y ( [ ( b b b ) ] [ ( a ) ] [ ( a ) ] ) * y \" y \" y x * * ( a ) y * ( a ) y \" y \" ( a ) y ( [ * * ( b [ ( [ * ( a ) ( a ) y \" y"}
+{"sequence": "* ( a ) x \" * x x * x \" y y \" * ( a ) x \" ( b [ ( b b b ) ] b ) ( a ) * ( a ) y * x * x x * y * x ( [ ( a ) ] b b ) * ( a ) y ( a ) \" y \" ( b b [ * * ( a ) * x y \" * ( a ) y * x x * \" y \" ( a ) y ( b"}
+{"sequence": "* x x *"}
+{"sequence": "( [ * x y \" * x * x * y \" y \" * * * * ( b b [ * ( a ) y * x y \" ( b [ ( a ) ] b ) x \" * y \" ( [ * ( [ * x x * ] [ ( a ) ] b ) ( a ) x \" * x ( a ) y * x ( a ) y ( a ) \" ( a ) y ( [ ( a ) ] [ ( b [ * x"}
+{"sequence": "( a )"}
+{"sequence": "* * * x x * y ( b [ * ( a ) y ( a ) \" y \" * x ( a ) x \" y \" ( [ * x ( [ ( a ) ] [ * y \" ( b b b ) y * x ( [ ( a ) ] b b ) y ( a ) \" * ( a ) y * x x * \" y \" ( a ) y * ( a ) y * y \" * ( a ) x \" * * ( a"}
+{"sequence": "* x ( a ) y * ( a ) y ( [ ( a ) ] [ * y \" * y \" y \" ( a ) y * y \" y \" * x y \" * x * x y \" y \" y * * * * x y \" y \" y * ( a ) x \" ( [ * y \" y \" * ( a ) x \" y \" ( a ) ( a ) * x y \" ( [ * ( a ) y ( a ) \""}
+{"sequence": "* x * * ( b b [ ( b [ * y \" ( b [ ( [ ( a ) ] b [ * y \" ( a ) y ( a ) \" y x * ] ) ] [ * x * x ( a ) y ( a ) \" y \" y * y ( b b [ ( a ) ] ) \" * x y \" y \" ( a ) y ( [ * ( b b b ) x \" y \" * y \" y \" y ( a"}
+{"sequence": "* * x y \" * ( b [ * x y \" * x ( b [ * x x * ] b ) ( a ) y * ( a ) y \" ( a ) y ( a ) \" ( b [ ( a ) ] b ) y * * ( a ) * x x * * y \" * x x * y ( a ) \" * y \" * x x * * x x * y * x ( [ ( b b [ ( a ) ] ) ]"}
+{"sequence": "* * x y \" y \" * x y \" * * x y \" ( [ * ( a ) y * x x * \" y \" y ( [ * * x * x x * x \" * x y \" ( a ) y ( [ ( a ) ] b [ * x y \" ( b b [ ( a ) ] ) y ( [ * x x * ] [ ( a ) ] b ) \" y * ] ) \" ( a ) y ( a ) *"}
+{"sequence": "* ( a ) x \" y \" y x *"}
+{"sequence": "( a )"}
+{"sequence": "* y \" * ( a ) ( a ) y * y \" y \" * x x * x * * ( [ * * x x * x \" ( a ) x \" * x y \" ( a ) y * * x x * ( a ) x \" ( a ) x \" * * y \" ( a ) y \" * x ( a ) y ( a ) \" y \" y * ( a ) x \" ( a ) y ( a ) \" ( [ ( b"}
+{"sequence": "* ( b b b ) x \" * ( a ) y ( [ ( a ) ] [ * * ( a ) y \" y \" ( a ) y \" ( b [ * x x * ] b ) y ( b [ * x y \" ( b [ * x ( a ) ( a ) ( a ) x \" y \" ( [ ( b [ ( a ) ] b ) ] [ ( a ) ] [ ( a ) ] ) y ( a ) \" * ("}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) y ( b [ * y \" y \" y x * ] b ) \" y \" * x ( b b [ * * x x * y * x x * \" ( b [ ( a ) ] b ) y * ( a ) y * ( b [ * y \" y \" * x x * y ( b [ * ( a ) y ( b [ * x x * ] b ) \" * x x * y * ( [ ( b [ * x"}
+{"sequence": "* ( a ) y * * * x x * * y \" ( b [ ( b b b ) ] b ) ( b [ * x x * ] [ ( [ ( b [ ( a ) ] b ) ] [ ( a ) ] [ * x ( a ) y ( a ) \" ( a ) y ( a ) \" ( a ) ( b b [ * * ( [ * y \" ( [ ( [ ( b b b ) ] b [ * x x *"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) x \" ( b b [ ( b [ * y \" ( a ) * x y \" ( b [ * x x * ] b ) y \" y \" y \" y * y * ( a ) ( b [ * y \" * x ( a ) * * x ( a ) ( a ) * y \" y \" ( b [ ( a ) ] [ * * * ( b [ ( a ) ] [ * x * x y \" y \" ( a"}
+{"sequence": "* y \" * ( [ * y \" ( a ) x \" * y \" * x * x ( b [ ( a ) ] b ) x \" y \" y * y \" y \" ( b [ ( a ) ] b ) y * y \" * * x * * x x * x \" ( b b b ) x \" y y \" y \" * x x * ( a ) y * x y \" * x y \" ( a ) y \" y \" y \""}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "* ( a ) y \" y \" y \" y \" y x *"}
+{"sequence": "* ( b [ ( a ) ] [ ( a ) ] ) ( [ ( a ) ] b b ) x \" y \" ( [ ( a ) ] b [ ( b [ * x ( [ ( a ) ] [ ( a ) ] b ) y * * ( a ) x \" y \" * x * x y \" * * x x * * x ( a ) y ( a ) \" ( b [ * y \" ( a ) y * ( b b [ ("}
+{"sequence": "* y \" y \" * ( a ) y ( a ) \" y \" ( a ) * x ( b b b ) x \" ( a ) y * x x * \" ( [ ( b [ ( a ) ] [ * ( [ ( b [ * x ( [ * x x * ] [ * ( b [ ( a ) ] b ) ( a ) y ( a ) \" y \" ( a ) x \" y \" * y \" * * ( a ) y \""}
+{"sequence": "( [ * x * x * ( [ ( a ) ] b b ) y ( [ ( a ) ] [ * x * ( b b [ * x y \" * * * x y \" y \" ( a ) y * ( [ * * * ( a ) x \" y \" y * x y \" y \" ( a ) x * x \" y \" ( a ) ( a ) y ( a ) \" * * x ( b b b ) x \" * * y"}
+{"sequence": "( a )"}
+{"sequence": "( b [ * * x ( a ) y * * x * y \" y \" y * * ( [ * * ( b b [ * x y \" ( [ * x x * ] b [ ( a ) ] ) y ( a ) \" y * ] ) y * x ( [ * y \" * ( [ * * x x * y * * x ( a ) x \" y \" ( a ) y * y \" * x x * y * ( b b ["}
+{"sequence": "( [ * ( a ) ( a ) y ( b [ * * ( a ) * x y \" * x y \" * ( a ) * y \" * x x * x \" * ( b b [ ( [ ( a ) ] [ ( a ) ] b ) ] ) y ( a ) \" * * y \" * x y \" y \" ( b b [ * ( a ) y ( [ * x * y \" y \" ( a ) y ( b [ ("}
+{"sequence": "( a )"}
+{"sequence": "( b [ ( a ) ] b )"}
+{"sequence": "( a )"}
+{"sequence": "* x ( a ) y * x ( b [ ( b [ * * ( a ) x \" * * x x * x \" ( [ * x y \" ( a ) y ( [ ( b [ * * * x x * y * y \" ( a ) y * x x * \" y x * \" * x * x * * ( b [ ( a ) ] [ ( [ * x * y \" ( a ) y * y \" * ( b b [ *"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* * * x x * y ( b b b ) \" ( b [ ( a ) ] [ ( a ) ] ) ( a ) y \" * * x ( a ) y * y \" ( b [ ( a ) ] [ ( a ) ] ) y * ( [ ( a ) ] b [ ( b b b ) ] ) * * y \" * * * ( b b [ ( [ ( [ ( [ * * y \" * x ( a ) y * ("}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "* ( [ ( a ) ] b [ ( [ ( a ) ] b b ) ] ) y ( a ) \" ( a ) y * y \" y \" ( b [ * x x * ] b ) y ( b [ * * x ( b b b ) y * y \" ( [ * * x ( [ ( a ) ] b [ ( b [ ( a ) ] [ * * y \" y \" * y \" * x y \" ( a ) y ( ["}
+{"sequence": "* * y \" ( b [ * y \" y \" ( [ ( [ ( a ) ] b [ * x x * ] ) ] b b ) ( a ) y * y \" ( [ ( a ) ] [ ( [ * * * * x y \" y \" * y \" * * ( b b [ ( [ * ( a ) y * x y \" ( a ) y * y \" ( b [ ( [ ( a ) ] [ ( a ) ] b )"}
+{"sequence": "* x ( a ) y * * ( a ) y * ( a ) y ( [ ( a ) ] b [ * x x * ] ) \" y \" * x ( a ) x \" * x * x y \" * ( [ ( a ) ] [ ( a ) ] [ * x * y \" * * x * y \" ( b b [ ( b [ * y \" * * * * x * * * x y \" y \" ( a ) y ( a"}
+{"sequence": "* ( b [ * x ( b b [ * x x * ] ) y * ( [ * * ( [ ( a ) ] [ ( b b [ * x x * ] ) ] [ * ( a ) y ( [ ( [ * y \" * * ( a ) y ( a ) \" * x * ( a ) ( a ) y * x ( a ) x \" ( a ) y * y \" y \" * * x y \" ( b b [ * x"}
+{"sequence": "( a )"}
+{"sequence": "* x y \" ( a ) x \" * * x x * y * x * * ( [ * x y \" ( b b [ ( [ * x x * ] b [ ( [ ( a ) ] [ ( b [ * x x * ] [ * ( [ ( a ) ] [ ( a ) ] b ) x \" ( a ) x \" * x x * x x * ] ) ] [ * y \" ( a ) y ( a ) \" ( a )"}
+{"sequence": "( a )"}
+{"sequence": "* * x y \" y \" * * x * x x * y ( b [ ( a ) ] [ ( a ) ] ) \" ( a ) y * * x x * y ( [ ( [ * x * x ( a ) * x x * y * ( a ) * x * ( a ) * ( b b [ * x ( a ) y ( a ) \" ( a ) * ( a ) y * * x y \" ( a ) y ( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x * * y \" * x y \" ( a ) ( [ * x * ( a ) y * ( a ) y ( a ) \" ( a ) y ( a ) \" * ( b b b ) y * x x * \" * x y \" ( b [ ( [ * x y \" y \" * * x y \" ( a ) * x ( b [ * y \" ( a ) * x y \" ( [ ( b [ ( a ) ] b )"}
+{"sequence": "( a )"}
+{"sequence": "* ( b b [ * x y \" * ( [ * ( a ) y * ( a ) y ( b b [ * y \" ( a ) x \" ( a ) y * y \" * ( a ) y * y \" y \" * x x * y * ( a ) y \" ( a ) y * ( a ) ( b [ ( a ) ] b ) * y \" y \" y ( b [ * x ( b b b ) y * x * y"}
+{"sequence": "* x x *"}
+{"sequence": "( b b [ * * x * ( a ) y * y \" y \" ( a ) y ( a ) ( b [ * ( a ) y * y \" ( a ) y ( b b b ) \" ( [ * x y \" ( a ) y ( a ) \" ( a ) y ( a ) * ] [ ( b [ ( a ) ] [ * x ( a ) y * x * x x * y \" ( a ) x \" y \" * *"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x ( a ) y * y \" ( a ) y \" y \" * x * * ( a ) y ( a ) \" y \" * ( a ) y ( a ) \" ( [ ( a ) ] [ * ( [ ( b b [ * y \" ( a ) y * ( a ) y ( b b b ) \" * x x * y ( a ) \" ( [ ( a ) ] b b ) * x x * y ( b [ * x *"}
+{"sequence": "( b b [ ( [ * y \" y \" y x * ] [ ( a ) ] [ * x ( [ * x x * ] b [ * * ( a ) x \" ( [ * x * x ( b [ * x x * ] [ ( b b b ) ] ) x \" * x x * x \" ( a ) y ( a ) * y ( [ * x x * ] [ * y \" ( a ) y * * x * y \" y"}
+{"sequence": "* * ( a ) y ( b [ * * x * * * ( [ * x x * ] [ * ( b [ ( a ) ] [ ( b b b ) ] ) y * x ( a ) y ( a ) \" ( a ) y \" * x x * y * y \" y \" ( a ) y ( a ) y \" ( b [ ( b [ * x x * ] b ) ] [ ( b [ ( [ * x x * ] ["}
+{"sequence": "( a )"}
+{"sequence": "* y \" ( a ) x \" * x x * y ( a ) x *"}
+{"sequence": "* x x *"}
+{"sequence": "( [ ( a ) ] [ ( b [ * ( [ ( a ) ] [ ( b [ ( a ) ] [ ( a ) ] ) ] [ * y \" ( b b [ * y \" ( a ) y ( a ) \" y ( a ) y * x y \" ( [ * * * x * x * x * y \" ( a ) y \" * ( a ) x \" * * ( a ) * x y \" * ( a ) y ( ["}
+{"sequence": "* * x x * y ( [ ( b [ ( a ) ] [ ( a ) ] ) ] [ ( b [ * x x * ] b ) ] b ) \" ( b b [ * y \" ( [ ( b [ * y \" ( a ) y ( a ) \" ( [ * x x * ] b [ * ( a ) y ( a ) \" * * * x ( a ) y ( a ) \" * x ( [ ( b [ ( a )"}
+{"sequence": "* * x * * * x x * y ( a ) \" * x x * x \" y * ( b b b ) x \" * * * * x y \" * ( [ ( b [ * y \" ( b [ * y \" y \" y x * ] b ) * y \" ( a ) y * x x * \" y y \" * ( [ * * y \" ( a ) * ( a ) y ( a ) \" * * ( a ) y *"}
+{"sequence": "* * * x ( a ) y ( a ) \" ( a ) x \" ( a ) * * x ( a ) y ( a ) \" * x x * x \" * ( a ) * x y \" * ( [ ( b b [ * ( b b b ) y ( a ) \" ( [ ( b [ * x y \" ( a ) x \" y * ] [ * y \" ( a ) ( a ) ( a ) x \" * x * * y"}
+{"sequence": "* x ( a ) y ( [ ( [ * x x * ] [ ( a ) ] [ ( [ ( a ) ] b b ) ] ) ] [ ( a ) ] [ ( a ) ] ) \" * x y \" ( [ * y \" * ( a ) * x * ( b b b ) y ( a ) \" * x x * y * y \" * ( [ * x x * ] b [ ( a ) ] ) y * y \" * x"}
+{"sequence": "* y \" * y \" y \" * * x y \" ( a ) ( a ) y * ( a ) y \" y \" ( a ) x \" y \" ( [ * ( a ) y * x * * x x * y ( a ) \" ( a ) y * y \" ( b b [ * y \" ( a ) x \" * x x * * x x * y \" ( [ * x x * ] [ ( a ) ] b ) x \" *"}
+{"sequence": "* * ( [ ( b [ ( [ ( a ) ] b [ * * x x * y \" ( a ) ( b b [ * x x * ] ) x \" * x y \" * x * x x * * x * x * x ( a ) x \" y \" ( a ) * x x * x \" * x x * y ( a ) \" * x * * x ( a ) x \" * x x * y ( a ) \" * ( a"}
+{"sequence": "( a )"}
+{"sequence": "* x y \" y \" y *"}
+{"sequence": "* ( b [ ( a ) ] [ ( b b [ ( a ) ] ) ] ) y * y \" * * * ( a ) y * y \" y \" * * y \" ( a ) y * * * ( a ) y ( a ) \" * * ( a ) x \" * x ( b b b ) y \" y \" y \" y \" * x * ( [ * * * y \" * * y \" * * * x ( a ) x \""}
+{"sequence": "* x * * x x * y ( a ) \" y \" * x ( b [ ( b [ ( [ ( b b [ ( [ * * x ( a ) y * * y \" y \" y y \" y \" y * y ( [ * y \" ( a ) y * ( [ ( b [ ( b b [ * ( a ) y * y \" ( b b [ ( [ ( [ * x x * ] b [ ( b b [ ( b ["}
+{"sequence": "* x ( b [ ( b b b ) ] [ ( a ) ] ) y ( [ ( a ) ] b b ) \" y \" ( a ) * ( b b b ) * x ( b b [ * ( a ) ( [ * y \" y \" * y \" * x x * y ( [ * ( b b b ) * ( a ) * * x ( a ) y \" ( a ) y * y \" y \" ( a ) y ( a )"}
+{"sequence": "* x y \" ( [ ( a ) ] [ * * ( a ) x \" ( [ ( b [ * x y \" ( a ) y * x ( b b b ) ( [ * * y \" ( [ ( a ) ] b [ ( a ) ] ) x \" ( [ * y \" ( a ) y ( a ) \" * ( b [ * x ( b b b ) y * x x * \" ( [ ( a ) ] b [ ( [ ("}
+{"sequence": "* ( [ ( a ) ] b b ) x \" ( b [ * y \" ( a ) x \" * * * ( [ * x ( a ) x \" y \" * y \" ( a ) ( a ) x \" ( [ ( a ) ] b b ) y * * ( a ) y \" ( a ) * x * y \" y \" * x ( a ) * * y \" y \" ( [ ( b [ ( [ ( a ) ] b [ ("}
+{"sequence": "* * ( [ * y \" y \" * y \" y \" * ( a ) y ( b b b ) \" * x y \" * y \" ( a ) x \" * x x * y ( a ) y \" * * ( a ) y ( [ ( [ ( a ) ] [ ( [ * ( a ) y ( [ * y \" * * y \" * y \" y \" * x x * y * * x x * y ( a ) \" ( a"}
+{"sequence": "( b [ ( a ) ] b )"}
+{"sequence": "* x x *"}
+{"sequence": "* ( a ) y ( a ) \" y \" ( b [ ( a ) ] b ) x * x x * x \" ( b [ * x x * ] [ * x x * ] ) y ( [ * x x * ] b b ) \" * x * x x * y * x * x x * y ( a ) \" y \" * * x x * y ( b b [ * ( a ) y * x x * \" ( a ) x \" *"}
+{"sequence": "( a )"}
+{"sequence": "* x y \" * y \" * x x * y ( [ * x x * ] b [ * y \" ( [ * y \" y \" ( a ) y * x ( a ) x \" y \" ( b b [ * y \" ( a ) y * x x * \" ( a ) y ( b [ ( a ) ] [ ( b b b ) ] ) ( b b b ) y * * y \" ( a ) y ( a ) \" y y \""}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x * * x x * y ( a ) \" * x * x x * * x ( b b [ ( a ) ] ) y ( a ) \" * * * x x * x \" ( a ) x \" y ( a ) y ( b b b ) \" * y \" y \" ( a ) y ( b [ ( a ) ] [ ( a ) ] ) x * y ( a ) \" y * y * y \" * * y \" ( b ["}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( b b [ * x x * ] )"}
+{"sequence": "* * * x x * y * * ( [ ( a ) ] b b ) y * * x ( a ) y ( b [ ( [ * x x * ] [ * y \" * ( b [ * x x * ] b ) y ( a ) \" ( b [ * x * y \" y \" y * y \" y \" y * ( a ) ( b [ ( [ * x y \" y \" * * x * y \" ( [ * x * ("}
+{"sequence": "( a )"}
+{"sequence": "* x ( [ * x y \" * y \" y \" * x y \" * x y \" y \" * * x y \" ( [ ( a ) ] b b ) ( b [ * x ( b [ * x * y \" ( a ) * x ( [ * x x * ] [ * x x * ] [ * ( b b b ) y ( a ) \" * ( a ) y ( [ * y \" ( a ) x \" * x * ( a"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* y \" y \" y ( [ * * y \" ( [ * x x * ] b b ) y ( a ) \" ( b b [ * x x * ] ) x * y \" ( b b [ * ( b [ * ( a ) y ( a ) \" ( a ) * x ( [ ( a ) ] [ * y \" y \" y x * ] b ) * x x * y * x x * \" ( b [ * ( a ) * x"}
+{"sequence": "( a )"}
+{"sequence": "( b [ ( [ * y \" * x x * y * x ( a ) y * x * * ( [ ( a ) ] [ ( a ) ] b ) y * * x y \" ( [ * ( [ ( a ) ] b b ) ( b b b ) y ( b [ ( a ) ] [ * x x * ] ) \" y \" * * x x * y * y \" ( [ ( b b b ) ] b [ ( a ) ]"}
+{"sequence": "* x x *"}
+{"sequence": "( b [ ( a ) ] b )"}
+{"sequence": "( a )"}
+{"sequence": "* x y \" ( a ) y ( a ) \" y *"}
+{"sequence": "* ( b b b ) y ( a ) \" ( a ) y \" ( b b b ) x \" ( a ) y ( a ) \" ( a ) y ( a ) x *"}
+{"sequence": "( a )"}
+{"sequence": "( b b b )"}
+{"sequence": "* x ( a ) ( a ) y ( [ * x x * ] [ * * x ( a ) ( a ) y * x x * \" ( [ ( [ * y \" ( [ * y \" ( a ) y ( [ ( a ) ] b b ) \" ( [ ( a ) ] b b ) x x * ] [ ( a ) ] b ) ( a ) y * x ( a ) x \" y \" * x x * y * * ( a"}
+{"sequence": "( a )"}
+{"sequence": "( b b b )"}
+{"sequence": "( b b [ * y \" ( a ) x \" * * x x * y \" * * ( a ) ( a ) x \" * ( [ ( b b b ) ] [ ( a ) ] [ ( [ ( a ) ] b [ ( a ) ] ) ] ) y * ( a ) y \" * ( a ) y ( b [ * x ( a ) y \" ( a ) y ( [ ( [ * x x * ] [ ( a ) ] ["}
+{"sequence": "* * x x * y * ( a ) y * x * x ( a ) y ( [ ( a ) ] [ ( a ) ] b ) \" ( a ) ( a ) y ( a ) \" ( [ ( a ) ] [ * x * y \" y \" ( [ * x * x x * y * x x * \" * x x * x \" * ( [ * x * ( b b [ * * x x * y ( a ) \" ( b"}
+{"sequence": "( a )"}
+{"sequence": "( [ ( a ) ] [ * x x * ] [ * x y \" * ( a ) x \" y \" y x * y * * ( b [ ( b [ * ( a ) y \" * x ( [ * ( a ) * ( b [ * ( a ) y ( a ) \" y \" * x ( a ) y * x y \" * x * x ( a ) y ( a ) \" * y \" * * y \" y \" ( a )"}
+{"sequence": "* x ( [ ( b b b ) ] b b ) y ( b [ ( b b b ) ] b ) \" ( [ ( a ) ] b [ ( a ) ] ) ( b [ * * y \" ( [ ( a ) ] [ ( a ) ] b ) ( [ * * y \" ( a ) y ( a ) \" ( [ * y \" * y \" y \" ( a ) x * ( a ) y ( b [ * x ( a )"}
+{"sequence": "* y \" ( a ) y * ( a ) y ( [ ( [ * * x * ( a ) y ( a ) \" y \" * * y \" y \" * ( [ ( a ) ] b b ) y * x y \" y \" ( [ * ( a ) y ( [ ( a ) ] [ ( a ) ] [ ( b [ * ( a ) y ( a ) \" * ( a ) y ( a ) \" y \" * * x y \""}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* * x ( b b [ ( [ * x x * ] b [ * x x * ] ) ] ) y * * x ( a ) y ( [ * x y \" * x ( a ) y ( a ) \" * * * * x * x ( a ) y ( a ) \" ( a ) x \" ( [ * ( a ) y * y \" * * x ( a ) ( a ) * y \" ( [ * x x * ] b b )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x ( a ) y \" ( a ) y ( b b b ) \" * * y \" y \" * * * ( a ) ( a ) y * y \" y \" ( a ) * ( a ) y ( a ) \" * x x * y * x x * \" * * * x y \" y \" y * x \" ( a ) y ( [ * * ( a ) y ( b [ * y \" ( b b [ * y \" * x x"}
+{"sequence": "* y \" ( a ) y ( a ) \" ( a ) y ( a ) ( b b b ) * * y \" * x ( a ) y * x ( a ) ( a ) x \" * ( a ) x \" y \" y x * y ( [ * * * x x * y ( [ * y \" y \" ( a ) y * x y \" * x x * y * x x * \" * x ( [ ( a ) ] b b )"}
+{"sequence": "* x y \" y \" ( [ ( a ) ] [ * y \" y \" y * y \" * ( a ) y * ( [ ( a ) ] [ ( a ) ] b ) ( b [ ( b [ ( a ) ] b ) ] [ ( [ ( [ * x * x x * x \" ( b b [ * y \" * x x * y ( [ ( a ) ] [ ( a ) ] b ) \" y * y \" ( a )"}
+{"sequence": "* y \" ( b b [ * x * x x * * y \" ( a ) y ( [ ( a ) ] b b ) \" * ( b [ ( b [ ( b [ * x x * ] [ ( [ ( [ * ( a ) y * ( b b b ) y \" ( a ) y * x ( b b [ ( [ ( a ) ] [ ( a ) ] [ ( a ) ] ) ] ) x \" ( a ) x \" *"}
+{"sequence": "* ( b b b ) x \" * y \" ( a ) ( [ * * y \" ( a ) y ( a ) \" y x * x \" y \" y * * x * ( b [ * x x * ] [ * x ( [ * x x * ] b b ) y \" y \" y \" ( a ) x \" ( b [ ( a ) ] [ ( [ ( a ) ] b b ) ] ) y \" y \" * x x * y"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x ( a ) x \" * y \" y \" ( [ * ( [ ( [ * ( b [ * y \" y \" ( a ) y ( [ * ( a ) y * x x * \" y \" y y \" y \" y * ] [ ( a ) ] b ) y \" y \" ( a ) y * ( b b [ ( a ) ] ) x \" * * x x * x \" * x x * * x ( a ) y ( a"}
+{"sequence": "* * x y \" * ( [ * * * ( [ ( b b b ) ] b b ) y * * x y \" * x ( a ) * x x * y * ( a ) ( a ) y ( b b b ) \" y \" ( a ) x \" * * ( a ) x \" ( b [ ( a ) ] [ * y \" ( a ) y ( b [ * y \" * y \" * x * x x * y * * y"}
+{"sequence": "( a )"}
+{"sequence": "* x ( [ * x y \" y \" * x x * ( b [ * x x * ] [ ( a ) ] ) ( a ) ( [ * * ( a ) ( a ) y * ( [ ( a ) ] b [ * x * x x * ( a ) * ( [ ( a ) ] [ * ( a ) * * y \" * ( a ) y ( b [ ( b [ * y \" ( b [ ( b [ ( b [ *"}
+{"sequence": "* x * x ( [ * y \" ( a ) y * y \" * x x * * ( a ) x \" * * x x * x \" * x x * y ( [ ( b b [ * y \" ( a ) y * * y \" ( a ) y \" ( a ) y * y \" ( [ ( a ) ] [ ( a ) ] [ ( a ) ] ) * x ( a ) y ( a ) \" ( a ) x \" *"}
+{"sequence": "( a )"}
+{"sequence": "* x * y \" y \" ( a ) y * * y \" y \" y x * y * x ( b b b ) y ( a ) \" y \" ( a ) ( a ) x \" y \" y * \" ( b b [ ( a ) ] ) y ( a ) \" * y \" * x x * y * x * y \" ( a ) ( a ) y * x y \" * ( a ) y ( [ ( a ) ] b [ *"}
+{"sequence": "( [ ( [ * x ( a ) * * x x * ( [ * x * x ( [ ( a ) ] [ ( b [ * x * x x * * ( a ) y ( b [ ( b [ * * * * x y \" * x * x * ( b [ ( a ) ] b ) y * ( a ) y \" ( a ) y ( a ) \" * * y \" ( a ) x \" y x * y ( b [ ("}
+{"sequence": "( a )"}
+{"sequence": "* * x ( a ) ( a ) x \" * ( [ ( a ) ] [ * ( [ ( a ) ] [ ( a ) ] [ * x y \" * x x * ( a ) y \" * ( b b [ ( a ) ] ) x \" ( a ) * x y \" * x y \" ( b b b ) y * ( a ) y * y \" * x y \" ( a ) * y \" * * x * x x * y"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) y ( a ) \" ( a ) y \" * * y \" ( a ) y ( a ) \" y x * * y \" * y \" ( a ) ( a ) y * y \" ( [ ( a ) ] b [ ( a ) ] ) y ( a ) \" ( a ) ( a ) y ( a ) \" ( a ) y ( a ) \" ( a ) y \" * ( a ) y * * ( b b b ) y"}
+{"sequence": "* x ( [ * y \" * x y \" y \" * y \" * x ( a ) x \" y \" ( a ) y * y \" y \" y ( a ) y ( a ) \" ( a ) x \" y * * y * y \" * x * x ( a ) y ( a ) \" ( [ * * ( [ * ( a ) y ( a ) \" ( b [ * ( b [ * * * ( a ) x \" * y \""}
+{"sequence": "( b b [ * ( b [ ( [ ( a ) ] [ ( [ * y \" y \" * y \" y \" y x * x ( b [ ( a ) ] [ * x x * ] ) x \" ( a ) ( b b [ ( [ * ( a ) y ( a ) \" * x x * x \" ( a ) y * ( a ) y \" ( b b [ * y \" * x ( a ) y ( b b b ) \""}
+{"sequence": "* y \" ( a ) y ( a ) \" y x *"}
+{"sequence": "( a )"}
+{"sequence": "* y \" y \" ( a ) x x *"}
+{"sequence": "* ( a ) y * ( a ) x \" * y \" y \" y * ( a ) y * ( b b b ) y ( b b b ) \" * ( b [ ( [ * ( a ) y ( b [ * ( b b b ) ( [ ( a ) ] [ ( a ) ] [ * x ( a ) y * * * x x * ( [ * x x * ] [ * ( a ) y * * x x * x \" *"}
+{"sequence": "* ( a ) y ( b [ * ( a ) ( a ) * ( a ) y * ( a ) y * x y \" * ( [ ( a ) ] [ ( [ ( a ) ] [ * ( b b [ * x * * * ( b [ * * ( a ) y * ( b [ * y \" y \" ( a ) ( [ ( b b [ ( a ) ] ) ] [ ( a ) ] b ) y ( a ) \" y"}
+{"sequence": "* * x ( a ) y ( a ) \" * x * ( [ ( a ) ] b b ) * x ( a ) y ( a ) \" ( [ ( [ * y \" y \" ( a ) y ( a ) y \" y \" ( a ) y * * x ( a ) ( b b [ * x x * ] ) y ( a ) \" y \" * x y \" * ( a ) ( a ) x \" * x * ( a ) y"}
+{"sequence": "( a )"}
+{"sequence": "* ( b [ * x x * ] b ) x \" y \" * x y \" * x * y \" y \" ( b [ ( a ) ] [ * * ( a ) y * * * x x * x \" * * * * ( a ) y ( a ) \" y \" y y \" ( a ) y ( a ) \" ( a ) y ( a ) * x \" y \" y x * * x * x * x x * x \" y \""}
+{"sequence": "* ( b b b ) y ( a ) \" y \" * ( a ) y ( b [ * ( a ) y ( a ) \" * x ( b b b ) y ( a ) \" ( a ) * x ( b b b ) y \" y \" y \" y \" ( a ) y ( a ) * y * y \" * x y \" * ( a ) * x x * x \" y \" * ( a ) x \" ( a ) y ( b"}
+{"sequence": "( a )"}
+{"sequence": "( [ * x y \" * x * x y \" ( a ) y ( a ) \" y * ( b [ ( a ) ] b ) y \" ( a ) y * ( a ) y ( a ) \" * x ( a ) * x x * y * y \" ( a ) x \" ( a ) ( [ ( a ) ] b [ ( b b [ * ( [ ( a ) ] [ * * x ( b b [ * x y \" * y"}
+{"sequence": "* x x *"}
+{"sequence": "( [ * y \" ( a ) y * x * x x * y * * y \" ( a ) * ( [ * ( a ) y * x y \" * y \" * ( a ) y * x * x x * y \" * x x * y \" * y \" * ( b [ * x x * ] [ ( [ ( b [ ( a ) ] [ * ( [ ( [ ( b [ ( a ) ] b ) ] [ * x ( ["}
+{"sequence": "* x ( a ) y ( a ) \" y \" ( a ) y \" ( a ) y \" * * x * x * * * y \" * * y \" ( b b [ ( a ) ] ) ( a ) y ( a ) \" y \" * x x * x \" * x x * y ( a ) x * * x * y \" y \" * y \" ( a ) y * * x x * y ( a ) \" ( b b [ ("}
+{"sequence": "* y \" y \" y ( a ) x \" ( a ) y ( a ) \" y *"}
+{"sequence": "( a )"}
+{"sequence": "* y \" ( a ) y * ( a ) y ( [ * ( b b [ * * x y \" y \" ( b b b ) y \" y \" ( [ ( a ) ] [ ( a ) ] b ) y * ( a ) y ( a ) \" * ( a ) x \" y \" * y \" ( a ) y ( a ) \" ( [ * * y \" * y \" y \" y y \" y \" y * y ( [ ( a"}
+{"sequence": "( a )"}
+{"sequence": "( [ * x * y \" y \" ( a ) x x * y * x x * \" ( a ) x \" * ( b [ ( a ) ] [ * * x y \" y \" y * y ( a ) \" * x x * y * * ( b b b ) y * y \" ( [ * y \" ( [ * * * x x * y ( b b b ) \" ( a ) y \" * x x * y ( [ * ( a"}
+{"sequence": "* x y \" * x x * y ( a ) \" y *"}
+{"sequence": "* x x *"}
+{"sequence": "( b b [ ( b [ * * x ( a ) y ( b [ ( a ) ] [ ( a ) ] ) \" y \" ( a ) x * ( a ) y ( a ) \" * x y \" ( a ) y * y \" ( b b [ ( a ) ] ) x \" y x * \" y * y ( a ) \" ( a ) y \" ( a ) x \" ( [ * x * x x * y ( [ * * y"}
+{"sequence": "* y \" ( a ) y ( [ * x * y \" ( a ) y * x * * x x * y * * x ( a ) y * x x * \" * x y \" ( a ) y * * x x * y * y \" * ( [ ( b b [ * ( [ * x x * ] b b ) y ( [ * x * ( a ) y ( [ * ( a ) y \" ( b b [ ( a ) ] )"}
+{"sequence": "( [ * ( a ) y ( a ) \" ( a ) x \" ( [ * x x * ] b [ * x x * ] ) y ( [ ( [ * ( a ) y \" y \" ( a ) x \" ( [ * ( [ * * x y \" ( a ) y * x ( a ) y * ( a ) y ( b b b ) \" * ( a ) y * y \" * ( [ ( a ) ] [ * ( b ["}
+{"sequence": "( a )"}
+{"sequence": "( [ * x ( a ) x \" y \" * x y \" y \" * ( [ * x ( a ) * x x * x \" y \" ( [ * ( a ) y ( a ) \" * x x * y ( a ) \" * x * * ( a ) y ( a ) \" ( a ) y ( [ * x y \" y \" * x ( a ) y \" y \" ( a ) x \" ( a ) x \" y * x *"}
+{"sequence": "* y \" * * * * * ( a ) y * x y \" ( a ) y \" y \" ( a ) y ( a ) \" ( [ * y \" y \" ( a ) y ( b b b ) y \" y \" ( a ) y \" y \" y * ] [ * * y \" * * x x * y ( [ * y \" * ( b [ ( b b b ) ] b ) y ( [ ( a ) ] [ ( b ["}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "* ( b b b ) y * x ( a ) y * y \" ( a ) y * x x * \" y x * \" * x y \" * y \" ( a ) y ( [ ( [ ( [ * x ( [ * x x * ] b b ) x \" ( a ) y ( b [ ( a ) ] b ) \" * x x * x * ] b [ * y \" y \" * x x * ( b [ * ( a ) x"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) ( [ * y \" * * ( a ) y * x x * \" * ( a ) x \" * * x ( a ) y ( a ) \" ( [ * x x * ] b b ) x \" ( b b b ) y * ( a ) y ( a ) \" * x * ( a ) y * x x * \" ( b [ ( [ ( a ) ] [ * ( a ) y * ( a ) ( b b [ *"}
+{"sequence": "( [ * y \" ( b b b ) y ( [ * x x * ] b [ * x x * ] ) \" * x x * y * x y \" * ( [ * * x y \" ( [ * ( a ) y \" ( a ) y \" ( [ ( a ) ] [ * * ( a ) ( a ) x \" * ( a ) y * ( a ) * x * ( b b [ ( b b b ) ] ) x \" y"}
+{"sequence": "* y \" ( a ) x \" ( a ) y ( b [ ( [ ( [ * ( a ) y * ( b b b ) y * * ( a ) x \" ( a ) y * ( a ) y ( [ ( a ) ] [ * x ( a ) y * * x x * y ( a ) \" ( [ ( b b b ) ] [ * * ( a ) y ( a ) \" ( a ) y ( b b b ) \" y"}
+{"sequence": "* y \" ( a ) y * x x * \" y ( b b [ * x x * ] ) y * x x * \" ( a ) y * * y \" y \" y x * * * y \" y \" ( [ ( a ) ] b b ) ( b [ * ( a ) x \" y \" y x * ] b ) y ( a ) \" ( [ * x y \" y \" * x x * x * ] b b ) y * x"}
+{"sequence": "* x ( a ) x \" ( [ ( a ) ] [ * * x ( a ) y * y \" y \" y ( [ * * ( a ) y ( b b b ) \" ( a ) x \" ( b [ * ( b b b ) * x x * y \" * y \" y \" * ( [ ( a ) ] [ ( [ ( a ) ] [ * ( a ) * x ( a ) y * x y \" * * x x *"}
+{"sequence": "( b [ ( [ ( a ) ] [ * y \" * * * * x x * y ( a ) \" ( a ) x \" ( a ) y \" y \" ( b b b ) y ( a ) x * y ( a ) \" y \" y x * y ( a ) \" * x x * y * * ( b [ * x x * ] [ * x y \" ( a ) x \" * * y \" ( [ * x ( a ) y"}
+{"sequence": "( [ * * ( b b b ) x \" y \" y x * x \" ( a ) ( a ) y ( b [ * * y \" * y \" ( a ) x \" * x x * y * * y \" * x * x y \" ( a ) y ( b b b ) \" ( a ) ( a ) y ( a ) \" ( [ * * ( b [ * ( a ) y * x * y \" y \" * x y \" ("}
+{"sequence": "* ( a ) * x x * y * x * x ( a ) x \" ( a ) ( a ) y ( [ * ( b [ * * x x * y ( a ) \" y \" * x y \" y \" y * y * ( b b [ ( a ) ] ) y * * y \" * x x * y * * x ( a ) y * x x * \" * x x * * ( a ) y * x x * \" ( a"}
+{"sequence": "( a )"}
+{"sequence": "* x * x x * x \" ( a ) y * x * * x y \" * x ( a ) ( a ) x \" y \" * * x x * y * x ( [ * x x * ] [ * ( [ * x ( b [ ( a ) ] [ ( [ * ( a ) y ( a ) \" * x x * y * y \" * y \" * x * y \" * x x * * x x * * ( b [ *"}
+{"sequence": "( b [ * x ( a ) y * * x * y \" y \" * * y \" y \" * * x x * y * ( b [ * x x * ] [ * x y \" * x * x y \" ( [ * ( b b [ ( b b b ) ] ) y * * y \" * y \" * ( b [ ( a ) ] [ * * x x * y * x * ( [ * y \" y \" ( a ) y"}
+{"sequence": "* y \" ( a ) y \" * ( a ) y * x x * \" ( a ) y * * x ( a ) y ( a ) \" * * ( a ) ( b [ ( a ) ] [ ( a ) ] ) y ( a ) \" ( a ) x \" y \" y \" ( a ) y ( [ ( [ ( a ) ] [ ( a ) ] b ) ] b b ) x * y * * x ( [ * y \" *"}
+{"sequence": "( [ ( [ * y \" ( b b [ ( a ) ] ) y * x x * \" y * x x * y * ( [ * x x * ] [ ( b [ ( a ) ] b ) ] [ * x x * ] ) x \" * ( a ) y ( b b [ * y \" ( a ) y \" ( a ) y * * x * y \" y \" ( a ) y ( a ) * ( [ * * ( a )"}
+{"sequence": "( a )"}
+{"sequence": "* * ( a ) y ( b b [ * * y \" y \" ( b b b ) y * x ( a ) y * y \" ( [ * * * ( b b [ ( a ) ] ) y * y \" ( [ * x * y \" ( b [ * ( [ ( a ) ] b [ ( a ) ] ) y ( a ) \" ( a ) y \" y \" * x * y \" * x y \" y \" ( [ * *"}
+{"sequence": "( b b b )"}
+{"sequence": "* * x x * x \" * ( a ) * ( a ) y \" y \" ( [ * x y \" ( [ ( a ) ] [ * * * ( a ) * ( a ) y * ( a ) y \" y \" ( b [ * ( b b b ) x \" y \" * ( a ) * * x y \" y \" ( a ) ( [ ( a ) ] [ * y \" ( a ) ( a ) y * ( b [ *"}
+{"sequence": "( b [ ( a ) ] b )"}
+{"sequence": "* y \" y \" * * x * * x y \" * y \" ( b [ ( [ * * x x * * x x * y * y \" * ( a ) ( a ) y ( a ) \" * x ( b b [ * x y \" y \" y * ] ) * x ( b [ ( [ ( a ) ] [ ( b b b ) ] b ) ] b ) y \" ( [ ( b b b ) ] b b ) y *"}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "* x ( [ * * x y \" ( b b b ) y \" ( [ ( [ * x x * ] [ * y \" * y \" * y \" ( a ) ( a ) x \" * * x ( a ) x \" ( [ * y \" y \" ( b b [ ( a ) ] ) y \" * * ( a ) y \" * y \" * x x * x \" y ( a ) ( a ) y * x x * \" ( a"}
+{"sequence": "( b b b )"}
+{"sequence": "( a )"}
+{"sequence": "( [ * ( [ ( b [ ( a ) ] [ * x x * ] ) ] b [ * ( a ) ( b [ * ( a ) y * y \" ( b b b ) x \" ( b b b ) y * y \" ( a ) x \" ( a ) y ( a ) y \" y \" * x * x x * y ( a ) \" * y \" * y \" y \" * x * x ( a ) x \" ( a )"}
+{"sequence": "( a )"}
+{"sequence": "* * y \" ( a ) ( b [ ( a ) ] b ) x \" ( a ) y * x x * \" ( a ) y * ( a ) y * x ( a ) x \" * ( [ * x * * x x * x \" y \" ( [ ( a ) ] [ * ( a ) y * x * ( [ * x y \" * ( a ) * * y \" * x ( a ) y ( a ) \" * ( [ ("}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* y \" * x x * y ( a ) \" * ( b [ * ( b [ * ( a ) y * * ( a ) y * ( a ) y * x x * \" * ( [ ( a ) ] b b ) y ( [ ( a ) ] b b ) \" y \" ( b b [ * x x * ] ) x y \" ( [ ( a ) ] b b ) * * y \" * x x * y ( [ * * y"}
+{"sequence": "* x ( a ) x \" ( b [ ( [ ( a ) ] b [ * x x * ] ) ] [ * y \" ( a ) y ( b b b ) \" y x * ] ) y \" * y \" ( [ * x x * ] b b ) y * x y \" y \" * ( a ) y ( a ) \" * * ( a ) * x * x x * y \" * x x * y * y \" ( b [ ("}
+{"sequence": "* ( [ ( [ ( b [ * x x * ] b ) ] b [ ( a ) ] ) ] [ * y \" * x x * y ( a ) \" y x * ] [ ( a ) ] ) y * ( b [ ( a ) ] b ) x \" ( a ) y ( a ) \" * * x x * * ( a ) y ( [ ( b b [ * ( a ) ( b b b ) y ( b [ * x x"}
+{"sequence": "* * * * x ( a ) y \" y \" ( [ ( [ ( [ * * * x ( a ) y ( a ) \" * ( a ) ( b b b ) ( a ) y ( b [ ( a ) ] b ) \" y \" ( a ) y * ( a ) y \" y \" * ( a ) ( a ) y ( a ) \" y \" y \" * * x ( [ ( a ) ] b b ) y ( a ) \""}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "( [ * x x * ] [ * ( b b b ) y ( a ) \" ( b b [ * y \" y \" y * y \" * ( a ) y * ( [ * x y \" y \" * ( a ) y \" y \" * ( a ) y * ( a ) * x * ( b b [ ( a ) ] ) y * ( [ * x x * ] b [ ( a ) ] ) y ( b b b ) \" * ("}
+{"sequence": "( a )"}
+{"sequence": "* y \" ( [ ( a ) ] [ * x x * ] b ) y * x * y \" * ( a ) * * * x y \" y \" y * ( a ) ( a ) x \" * y \" y \" ( a ) y ( a ) x * y ( a ) \" ( [ ( [ ( a ) ] [ ( a ) ] [ ( [ * x * * ( [ ( a ) ] [ ( b b [ * ( a ) x"}
+{"sequence": "* y \" ( a ) * x * x * * x ( b [ * x y \" * x x * x \" ( a ) y * * * ( a ) y ( b b b ) \" * ( [ * y \" y \" * x x * * x y \" y \" * * x x * y ( a ) \" y \" ( a ) y ( a ) y \" ( [ * y \" * x x * x \" ( a ) y ( [ ("}
+{"sequence": "( a )"}
+{"sequence": "* x y \" y \" y *"}
+{"sequence": "* x x *"}
+{"sequence": "* x x *"}
+{"sequence": "* ( b [ * x y \" ( a ) y ( [ * x x * ] [ * y \" * y \" ( a ) y \" y \" * x y \" y \" * ( a ) y * * y \" ( b b [ ( a ) ] ) * y \" ( a ) x \" y ( a ) y * x x * \" ( a ) x \" ( [ * y \" y \" * ( [ * ( [ ( a ) ] b b )"}
+{"sequence": "* x y \" * y \" * ( a ) y * x x * \" * x ( [ * * x y \" ( a ) y * ( a ) * y \" * x ( a ) y * x x * \" * y \" y \" y y \" ( a ) x \" y * ( a ) y * * * x ( a ) x \" * x x * ( [ * y \" * y \" y \" y y \" * ( [ * y \" ("}
+{"sequence": "* y \" y \" ( a ) x y \" ( a ) x \" ( b [ * * ( a ) y ( a ) \" ( a ) y * x * ( a ) y ( a ) \" y \" ( a ) y * x x * y \" y \" y * * x * x x * ( [ * x x * ] b b ) y ( b b [ ( b b [ ( a ) ] ) ] ) \" ( b b b ) y ("}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "* * ( a ) y \" y \" * x x * x \" ( a ) y * ( a ) y * ( [ ( [ * x ( [ ( b b [ * x ( a ) * y \" ( [ * x * ( a ) y ( a ) \" ( [ * x y \" y \" ( [ * y \" * ( a ) y * y \" y \" * x x * x x * \" ( a ) y * * y \" y \" *"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) y ( [ * ( a ) ( b b b ) x \" y \" ( [ ( [ ( a ) ] b [ ( b b b ) ] ) ] [ ( a ) ] b ) ( b [ * x ( b b [ * x ( b [ ( a ) ] b ) y ( a ) \" * y \" * x y \" ( b b [ ( [ * y \" y \" * ( a ) y ( a ) \" ( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) y * x * x x * y ( [ * y \" * y \" * ( a ) * * ( a ) y \" y \" y \" * y \" y \" y * x ( a ) ( a ) x \" * x x * ( b b b ) x \" * ( [ * x * * x * x x * y ( a ) \" * x x * y * * ( [ * ( [ ( a ) ] b b ) y ("}
+{"sequence": "( [ * y \" ( a ) y * ( a ) * * * y \" * x x * ( a ) y * * x x * y \" y \" ( a ) y ( [ * x x * ] [ ( a ) ] [ * * x ( a ) y ( a ) \" * y \" ( b [ ( [ * ( a ) y ( a ) \" * ( a ) * x ( a ) y ( a ) \" y \" ( a ) y"}
+{"sequence": "* x x *"}
+{"sequence": "* * * ( a ) y * ( a ) y * y \" y \" * * x * ( a ) y * x x * \" ( [ * y \" ( b b b ) y ( [ ( [ * x ( [ ( a ) ] b [ ( a ) ] ) y ( a ) \" * x x * ( a ) y \" ( [ ( a ) ] [ * x x * ] b ) y * * * y \" * ( a ) ( b"}
+{"sequence": "* x * * y \" y \" y ( [ ( a ) ] [ ( b b [ * ( a ) y ( [ ( a ) ] [ * y \" y \" y x * ] b ) \" y \" y * x x * y * ( b b [ * x ( a ) x \" * x * * x x * ( a ) y * x y \" ( b b [ ( a ) ] ) y \" y \" y \" y * \" y \" *"}
+{"sequence": "( [ * y \" y \" ( [ ( a ) ] [ * x * * ( a ) y ( b [ * y \" y \" y y \" ( a ) ( a ) y * * * ( a ) y * * x * x ( [ * ( [ ( a ) ] [ * * ( [ ( a ) ] [ * * ( a ) y ( a ) \" * x * * ( b b [ ( b [ * x y \" * * y \""}
+{"sequence": "( a )"}
+{"sequence": "* x y \" ( a ) x \" ( a ) * ( a ) y ( [ ( a ) ] [ ( [ * ( b b b ) y * x x * \" ( a ) y * x ( b b [ ( b [ ( [ * x x * ] [ ( [ ( a ) ] b b ) ] b ) ] [ * x ( a ) x \" ( b [ ( a ) ] [ ( b [ * * x y \" ( a ) y"}
+{"sequence": "* * y \" y \" ( [ * x x * ] [ ( b [ * ( [ ( [ * ( a ) ( [ ( b [ * x y \" * * * ( [ * x y \" y \" * x * * ( a ) y * x * * ( a ) y * x y \" ( a ) y ( a ) \" y * \" y \" ( a ) y * y \" ( a ) y \" ( [ ( a ) ] [ * x"}
+{"sequence": "* x x *"}
+{"sequence": "( [ ( [ ( b [ ( [ * y \" y \" * y \" ( a ) y ( a ) \" ( a ) y ( a ) x * y * x y \" y \" * x ( a ) y * y \" ( a ) y * x * x * x ( a ) y * x y \" * y \" y \" ( b b [ * * x * x x * y ( b b [ * ( [ ( b [ ( [ * ( a"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x ( a ) x \" * * ( a ) y ( [ ( a ) ] [ ( a ) ] b ) \" * ( a ) y ( a ) \" * x x * y \" y \" * x x * y ( a ) \" y x * y ( a ) \" * ( b b [ * ( [ * x ( a ) ( a ) y ( a ) \" * ( b b [ ( b b [ * ( a ) y * x x *"}
+{"sequence": "( b [ ( a ) ] b )"}
+{"sequence": "( a )"}
+{"sequence": "( b b [ * * ( [ * * x x * x \" ( b [ * y \" y \" y ( b [ * x y \" y \" ( a ) y * x ( b b [ ( b b [ * x x * ] ) ] ) y ( a ) \" * y \" * x x * y ( a ) \" * x x * x x * y \" y \" ( a ) y ( [ * ( b [ ( b [ * y \" ("}
+{"sequence": "* x x *"}
+{"sequence": "( [ * x x * ] [ * x x * ] b )"}
+{"sequence": "* x ( a ) ( a ) y ( b [ * ( a ) y * x * ( [ ( [ * ( b [ ( b b b ) ] [ ( b b [ ( [ * y \" y \" * x * x ( b b [ * x x * ] ) y * x ( [ ( a ) ] [ ( b b b ) ] [ * ( [ * ( [ * y \" y \" y * x ( a ) * x x * x \""}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "* y \" y \" * y \" * ( a ) y * * ( [ * y \" ( b [ ( b b [ * ( a ) y * * * ( a ) x \" y \" y x * * ( a ) y ( a ) \" ( a ) y * x x * \" ( a ) y \" ( b [ ( b [ * x x * ] [ ( a ) ] ) ] b ) y ( a ) \" * y \" y \" ( b"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) y * x y \" * x * x y \" y \" y * y ( a ) \" y \" y * y \" y \" * x * x x * y ( a ) \" y \" * x x * x * * x y \" ( a ) y \" * * y \" ( a ) * x y \" * x x * * x x * y ( [ ( a ) ] b b ) \" * x ( a ) y * * ( a"}
+{"sequence": "( b b [ ( a ) ] )"}
+{"sequence": "( a )"}
+{"sequence": "* ( b b [ ( a ) ] ) y ( [ * ( a ) x \" * x x * y \" y \" y \" ( [ ( a ) ] [ * ( a ) y ( b [ ( a ) ] b ) \" ( a ) y ( a ) \" y x * ] b ) ( a ) y * y \" y \" * ( b [ * ( a ) y ( b [ * x * x * x y \" y \" y * y ("}
+{"sequence": "( [ ( a ) ] [ ( b [ * * x * ( a ) y ( [ * x x * ] b b ) \" * x ( a ) x \" y \" y * y ( [ * ( a ) ( a ) y * x x * \" ( a ) y * ( b [ ( a ) ] b ) y ( a ) \" ( a ) y ( a ) \" * y \" * ( b [ ( b b b ) ] [ * ( a"}
+{"sequence": "* ( b b [ ( a ) ] ) * x x * * ( [ * ( a ) ( a ) y * ( [ * x y \" ( a ) ( a ) y ( a ) \" y \" * x x * y * y \" ( b [ * x ( a ) y * x * y \" * x x * y \" y \" ( [ ( a ) ] [ ( b [ * ( a ) * x x * y * ( a ) y \""}
+{"sequence": "( a )"}
+{"sequence": "* * x ( b b [ * ( [ ( a ) ] [ * * y \" * ( a ) y ( a ) \" * x ( b [ ( a ) ] [ ( a ) ] ) ( a ) y * x x * \" * y \" y \" * x ( b [ * x x * ] b ) y * y \" * y \" * x x * y * x x * \" * * x y \" y \" y * y ( a ) \""}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "* * * * y \" y \" * ( a ) y * x x * \" ( a ) y \" y \" ( a ) x \" ( [ ( a ) ] b b ) x ( a ) x \" * ( [ * y \" * * * ( a ) y * ( a ) y * x x * \" ( [ ( a ) ] b b ) y * x y \" ( a ) x \" * x ( [ ( b b b ) ] b b )"}
+{"sequence": "( b b b )"}
+{"sequence": "* y \" * x ( a ) y \" ( a ) y \" * * * x * y \" ( a ) ( a ) y ( a ) \" y \" ( [ ( a ) ] b b ) y \" * * x * ( a ) * y \" * y \" * * x x * y * * y \" * ( b b b ) y * x * * ( b b [ * ( a ) * * ( [ ( a ) ] [ ( [ ("}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "* y \" * y \" * ( [ * x ( [ * ( [ ( a ) ] [ * y \" ( a ) * ( a ) y * ( b [ ( [ ( a ) ] [ ( b b [ * x x * ] ) ] b ) ] [ ( a ) ] ) x \" * * * x y \" * ( a ) y ( a ) \" * ( a ) y * ( a ) y * x ( [ ( [ * * x x"}
+{"sequence": "* x ( [ * x ( a ) y ( [ * x y \" ( a ) y * y \" ( a ) x \" y * y \" * x x * y ( a ) \" y y \" ( a ) * x x * x \" y \" y \" ( [ ( a ) ] b [ ( a ) ] ) y ( b [ * x ( a ) y ( [ ( a ) ] [ ( a ) ] b ) \" y \" y * ] ["}
+{"sequence": "( a )"}
+{"sequence": "* y \" ( a ) y ( [ ( a ) ] b b ) \" y x *"}
+{"sequence": "* x ( a ) ( a ) y * * x y \" ( b b b ) x \" y * y \" y \" * * y \" * * ( a ) y ( b [ ( [ * y \" ( a ) y * x x * \" y ( [ ( a ) ] b b ) ( a ) x \" ( [ ( a ) ] b [ * * * * y \" y \" y x * y * y \" y \" * * * * y \""}
+{"sequence": "* ( b b b ) y \" * y \" ( a ) x \" * y \" * y \" y \" * x ( [ ( a ) ] [ * x y \" * x y \" ( b b [ * x * ( b [ ( a ) ] b ) y * y \" * x y \" y \" y * * x x * x \" ( [ ( a ) ] b [ ( [ * y \" * y \" y \" ( a ) y * y \""}
+{"sequence": "* * * ( a ) x \" ( a ) * x x * x \" ( a ) y ( a ) \" * ( a ) y \" ( a ) y ( a ) \" ( [ * x * x * ( [ ( b b [ ( a ) ] ) ] [ * x y \" y \" ( a ) y ( a ) * ] b ) y * x ( b [ ( b b [ ( a ) ] ) ] b ) y ( [ ( a )"}
+{"sequence": "( b [ * x x * ] b )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* y \" * ( a ) y \" * * * * * x x * y ( a ) \" ( a ) y * ( b b b ) y * * x y \" ( a ) x \" * ( [ ( a ) ] b b ) y ( b [ * x x * ] [ * x y \" ( [ ( a ) ] [ * * x ( [ ( a ) ] b b ) y ( a ) \" y \" ( a ) y ( a )"}
+{"sequence": "* y \" * * x x * y ( [ * * * x x * y ( a ) \" * * y \" ( a ) y * x y \" ( [ * ( a ) y * x y \" y \" * x x * y * * ( [ ( a ) ] [ * x y \" ( b b [ ( b b b ) ] ) y ( a ) \" * ( a ) y * y \" ( a ) y ( a ) \" y x *"}
+{"sequence": "* x x *"}
+{"sequence": "( b [ * x ( a ) y * * x x * y * x x * \" ( a ) y ( a ) \" y x * \" y \" ( b b [ ( a ) ] ) x * ] b )"}
+{"sequence": "( b [ * * x * ( b b [ ( a ) ] ) ( a ) x \" ( a ) y * x * y \" ( a ) x \" * ( a ) y ( [ ( a ) ] b [ * y \" ( a ) y * ( a ) x \" ( a ) y * * y \" * x x * ( a ) ( a ) x \" * x ( [ * * y \" * x * * x y \" y \" * *"}
+{"sequence": "( a )"}
+{"sequence": "* * * ( a ) x \" ( b [ ( a ) ] b ) y * y \" * y \" ( a ) y \" * ( a ) y ( a ) \" * y \" y \" ( [ ( a ) ] [ ( a ) ] [ * y \" * x y \" * * y \" * * ( [ ( a ) ] [ * y \" ( b b [ * ( [ ( a ) ] [ ( b b [ * y \" y \" ("}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "( b [ * x y \" ( b [ * * x x * y ( b b b ) \" ( a ) y * * x ( a ) y * ( a ) y * y \" ( a ) y ( b [ * x x * ] [ * x x * ] ) \" y ( a ) y * * ( a ) y \" ( a ) x \" y \" * x y \" * y \" y \" y y \" ( a ) y ( b [ ("}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( b [ ( [ ( [ ( a ) ] [ * ( a ) y \" ( a ) y * ( a ) x \" * * * * * y \" ( b b b ) y * x x * \" y ( b [ ( a ) ] b ) y ( a ) \" y \" * x * y \" ( a ) y ( a ) \" * x * * x ( a ) ( [ * x ( a ) y * y \" y \" y y \""}
+{"sequence": "* y \" * * y \" y \" ( a ) * ( a ) y * x x * \" y \" y y \" * x x * y ( a ) \" * ( a ) * x * x x * y ( [ ( [ ( [ * x ( a ) x \" ( [ * x * * x x * y * * y \" * y \" ( a ) x \" y ( b b b ) y ( a ) \" * x x * y \" *"}
+{"sequence": "* x x *"}
+{"sequence": "( b [ ( a ) ] b )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) y * x x * \" * x * ( a ) y * y \" ( [ ( [ * ( b [ * y \" ( b b b ) x \" y * * x x * x \" * x x * y * ( a ) y * ( a ) y * y \" ( b [ ( [ * * x x * y * * y \" ( a ) * ( a ) ( a ) y \" * x * y \" ( a ) y"}
+{"sequence": "* x y \" y \" y *"}
+{"sequence": "* x y \" y \" ( a ) y ( b b [ * ( [ * y \" * * x x * y \" ( a ) y ( [ ( [ * * * y \" ( a ) y * x * * y \" y \" ( a ) x x * ( [ ( a ) ] b [ ( a ) ] ) y ( a ) \" * x x * y ( [ * x y \" * x x * y ( b b [ * y \" ("}
+{"sequence": "* y \" y \" ( a ) y \" * ( b [ * y \" ( a ) y * x * x * x ( b b b ) y * ( a ) y ( a ) \" ( b b b ) y * x ( a ) y * x * y \" ( b b b ) y * x ( a ) x \" ( a ) y * * ( a ) * y \" * * * * x ( a ) y * ( [ * * y \""}
+{"sequence": "* ( a ) y * * ( b [ ( a ) ] b ) y \" y \" y \" * x ( b b b ) * y \" * * * y \" * y \" * * x x * * x ( [ ( a ) ] [ * * ( a ) y * ( a ) x \" y \" y ( b b b ) y * ( b [ * x * x ( a ) y ( a ) \" ( a ) x \" ( a ) ("}
+{"sequence": "* x * x x * x \" * * x y \" * x x * x \" * * * y \" * x ( a ) x \" * x ( a ) y ( a ) \" * ( a ) y ( a ) \" ( [ * ( [ ( b b b ) ] b [ * x x * ] ) y ( a ) \" ( a ) * y \" ( [ * ( a ) * y \" ( [ ( a ) ] b b ) x \""}
+{"sequence": "( b b b )"}
+{"sequence": "* * ( a ) ( a ) y * ( a ) * x y \" ( a ) y \" * y \" * * x ( b [ * x y \" ( [ * x x * ] [ * ( [ * ( a ) x \" y \" y ( b b b ) y ( a ) \" ( [ ( b [ ( a ) ] b ) ] [ * x * x x * x \" ( a ) y * ( b b b ) y ( b b"}
+{"sequence": "( [ ( a ) ] b [ * y \" * * y \" * * ( a ) y ( a ) \" y \" ( b b [ ( a ) ] ) y ( a ) y \" ( a ) y * x * y \" * x y \" * x x * y ( [ ( b [ ( [ ( b b [ * ( [ * x * y \" ( a ) y ( a ) \" ( b [ * * y \" ( b b [ * ("}
+{"sequence": "* x * x x * y ( a ) \" ( a ) y * ( a ) x \" ( b b [ * * ( a ) y * x * x y \" ( a ) * ( [ ( [ ( a ) ] b b ) ] [ * ( [ * x * x y \" ( a ) * x y \" y \" * x x * ( a ) ( a ) x \" ( [ * * * x * * ( a ) y \" * x y"}
+{"sequence": "( a )"}
+{"sequence": "( b [ ( a ) ] [ ( [ * y \" * x * y \" y \" y x * y ( a ) \" * x x * y ( a ) \" * * y \" ( a ) * x y \" ( a ) * x ( [ * y \" y \" y y \" ( b [ * x ( a ) x \" * x x * x \" y * ] b ) y ( [ ( a ) ] b b ) \" y * ] [ *"}
+{"sequence": "* * ( [ * * x * y \" y \" * y \" ( a ) ( a ) x \" ( b b [ ( a ) ] ) x \" * x ( [ * x * x x * ( a ) y ( a ) \" y \" ( a ) y * x x * \" y \" * y \" ( a ) x \" * x x * x x * x * ] [ ( [ * ( a ) y \" * * ( a ) y * ("}
+{"sequence": "* * x y \" ( b b b ) * ( [ ( b b b ) ] b [ ( a ) ] ) y ( a ) \" ( a ) y ( a ) \" ( b b [ * * ( [ ( [ ( a ) ] [ ( [ ( a ) ] b b ) ] [ ( a ) ] ) ] b [ * x x * ] ) y ( a ) \" * x * x ( a ) y * ( a ) y * x x"}
+{"sequence": "( a )"}
+{"sequence": "* ( b [ ( a ) ] [ * x ( a ) x \" y \" ( b b b ) y * * y \" ( a ) x \" * x * ( [ * x x * ] b [ * ( a ) y * y \" * y \" ( a ) y * ( a ) y ( a ) \" ( a ) y * y \" * ( a ) y ( a ) \" y \" ( a ) x ( a ) y ( a ) \" y"}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "( [ * ( a ) y * x x * \" ( [ * y \" ( a ) y * * x ( a ) y * y \" y \" * x * y \" y \" y x * * ( a ) y * x y \" * x ( a ) y ( b [ * * * x * x ( [ ( a ) ] b [ * ( a ) y \" * y \" * * x * ( a ) x \" y \" y * ( a )"}
+{"sequence": "* ( b [ ( a ) ] b ) y ( a ) \" ( [ ( a ) ] b [ ( a ) ] ) y * ( b [ ( a ) ] b ) x \" y \" y ( a ) y ( b b [ * x y \" ( b b [ ( a ) ] ) y * x x * \" * * x x * ( a ) x \" y \" ( a ) y ( b b b ) \" ( a ) y * x x"}
+{"sequence": "( a )"}
+{"sequence": "( b [ * * x ( [ * ( [ * y \" * ( [ ( b [ * x x * ] b ) ] [ * x x * ] [ ( a ) ] ) y ( [ * x * x x * y \" * x y \" * y \" * * y \" * x x * y ( [ * x * x x * y * y \" * x y \" y \" ( a ) * x x * y ( a ) \" * x *"}
+{"sequence": "( a )"}
+{"sequence": "* x y \" y \" y *"}
+{"sequence": "( [ ( [ * x x * ] b [ * * x ( b [ * * x y \" y \" y * * * x * x ( [ * * ( b b [ * x x * ] ) y * x x * \" y \" y x * x \" * x x * y ( a ) \" y * x ( a ) x \" ( b b [ * x * x ( a ) * * ( a ) y \" ( [ * ( a ) *"}
+{"sequence": "( [ * ( a ) x \" ( b [ ( a ) ] b ) y \" * ( a ) ( b b b ) y ( b [ ( a ) ] [ ( [ ( a ) ] [ ( a ) ] [ * ( a ) ( a ) y * y \" ( b [ * x x * ] [ ( [ * * * ( b [ ( a ) ] b ) * x x * y ( a ) \" ( a ) ( a ) y \""}
+{"sequence": "( [ * y \" * x x * x \" * * * x ( a ) y ( a ) \" y \" ( a ) y \" y \" ( a ) y * * x ( a ) x \" * * * x x * * x x * y * * * y \" y \" * * x x * y ( a ) \" y \" y x * y ( a ) x * ( a ) * ( a ) y ( a ) \" ( a ) y *"}
+{"sequence": "( b [ * x ( b b [ * * x x * ( a ) y \" * y \" * x ( a ) y ( b [ ( b [ * y \" ( a ) * ( [ * x * x * x ( a ) y \" ( [ ( a ) ] b b ) y ( a ) \" * * ( a ) y ( [ ( a ) ] [ ( a ) ] [ ( [ ( a ) ] [ ( a ) ] b ) ]"}
+{"sequence": "* x x *"}
+{"sequence": "* ( a ) x \" ( a ) x \" ( a ) y ( [ * x * ( a ) y * * * y \" ( b [ * y \" ( a ) y ( a ) \" * x x * x y \" y \" ( a ) ( a ) x \" ( [ * ( [ * ( a ) y * x x * \" y \" y x * ] b [ * x x * ] ) x \" ( b [ * * y \" y \""}
+{"sequence": "* ( b [ * y \" * * x ( a ) y ( [ ( a ) ] [ ( b [ * y \" y \" * x ( a ) y ( [ ( b b b ) ] [ * y \" * * y \" * * x x * y ( a ) \" * * x y \" * * ( [ * ( a ) y ( a ) \" y \" * x * y \" * x y \" y \" y * * ( [ ( a )"}
+{"sequence": "( [ * x x * ] [ * * y \" y \" ( a ) x * ( b b [ * ( a ) * x * x ( b b [ * y \" ( a ) x \" * * ( a ) y ( a ) \" * y \" ( a ) x \" * ( a ) x \" y \" * ( b [ ( b b b ) ] [ * ( [ * ( a ) y ( a ) \" ( [ ( a ) ] [ *"}
+{"sequence": "( a )"}
+{"sequence": "( b b [ * * x x * x \" y \" y * ( a ) x \" y \" ( a ) y * y \" y \" y x * y \" * x x * ( b b b ) y ( a ) \" * x y \" y \" ( a ) * y \" ( a ) x \" y x * y ( a ) \" * x x * x \" * ( [ ( a ) ] b [ * x ( [ ( b [ * x *"}
+{"sequence": "* ( a ) y * x y \" * ( a ) y ( a ) \" y \" ( a ) x y \" ( [ * y \" y \" * x * x ( b b b ) y * * x y \" y \" * ( b b b ) x \" ( a ) y * x x * \" y x * y * ( a ) y ( [ ( a ) ] b [ * * x * * x * x x * y * x * * *"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x * ( a ) y ( a ) \" ( a ) y * * * y \" y \" * x * x ( b b b ) y * ( a ) y * x ( a ) y * x y \" ( b b [ ( [ ( a ) ] b [ ( a ) ] ) ] ) y * x ( [ * x ( [ * x x * ] [ * ( [ * ( a ) * y \" ( [ ( [ * x ( a )"}
+{"sequence": "( a )"}
+{"sequence": "( b b b )"}
+{"sequence": "* x ( a ) ( a ) y ( a ) \" y \" ( a ) y \" y \" ( a ) y * x * x ( b b [ ( b [ ( a ) ] b ) ] ) y * * y \" * * ( [ ( b b b ) ] b b ) y ( b [ ( b b [ ( b [ * y \" y \" ( a ) y ( [ ( a ) ] b b ) x * ] [ ( a ) ]"}
+{"sequence": "* * ( a ) ( a ) y ( a ) \" ( a ) y * * y \" y \" * * y \" ( a ) x \" y y \" * y \" ( b b [ ( a ) ] ) y * ( [ * ( a ) y \" ( [ * ( a ) x \" ( a ) y * * x x * x \" y \" * ( a ) y * x y \" ( a ) y ( [ * ( [ ( a ) ]"}
+{"sequence": "* y \" y \" ( b [ ( b b b ) ] b ) x * x * * ( [ * * ( [ * x x * ] [ ( a ) ] b ) y * x * ( a ) y * x * y \" * y \" ( [ ( b b b ) ] b [ ( a ) ] ) ( a ) y ( b b b ) \" y \" ( b [ ( a ) ] [ * x x * ] ) y ( a )"}
+{"sequence": "* ( a ) x \" y \" * y \" y \" ( [ * ( b [ * x x * ] [ ( b [ ( a ) ] [ ( a ) ] ) ] ) * ( [ ( b b b ) ] [ * x * x y \" y \" y * y * * x y \" y \" * x x * * x y \" ( [ * x x * ] b b ) y * x x * \" ( [ ( b [ ( b ["}
+{"sequence": "( b b [ * x y \" y \" y * ] )"}
+{"sequence": "( a )"}
+{"sequence": "* x y \" y \" ( a ) y ( [ ( a ) ] [ ( a ) ] b ) *"}
+{"sequence": "* x y \" y \" ( [ ( a ) ] [ ( a ) ] [ * * y \" * * x ( a ) y * ( a ) y ( a ) \" ( [ * ( a ) y ( b [ ( a ) ] [ * y \" y \" y * x y \" * x * ( a ) y ( a ) \" ( a ) * x x * * ( [ ( a ) ] b b ) x \" y \" y * x x *"}
+{"sequence": "* ( a ) y * y \" y \" * x x * ( a ) y ( a ) \" y \" ( a ) ( a ) y * x x * \" ( a ) y * ( a ) y ( a ) \" ( a ) ( a ) y * * x ( a ) y * * x * x ( [ ( [ ( a ) ] b [ ( [ ( [ ( b [ * y \" * ( [ * x x * ] [ ( b b"}
+{"sequence": "* x y \" ( [ ( a ) ] b [ * x * x x * ( [ * * y \" y \" ( a ) y ( [ * ( a ) y \" ( a ) y * x ( [ * y \" ( a ) y ( [ * * y \" ( [ ( b b [ ( a ) ] ) ] [ ( a ) ] b ) y ( [ * y \" y \" ( a ) ( a ) y * ( a ) y ( b"}
+{"sequence": "* ( a ) y * * y \" ( a ) y ( b [ * x ( [ ( a ) ] [ * ( a ) y * y \" y \" y x * \" ( b [ * * ( a ) * ( a ) * ( [ * * y \" * x ( a ) * * ( [ * ( b [ * ( a ) y * x y \" y \" y * \" y \" y x * ] b ) y * x y \" ( a"}
+{"sequence": "* x ( [ ( b b b ) ] [ ( a ) ] [ * x x * ] ) y * ( a ) y ( a ) \" ( [ ( [ ( a ) ] [ * * * * * x y \" * * * y \" * x x * y ( [ ( [ ( a ) ] [ ( [ ( a ) ] [ * x x * ] [ ( a ) ] ) ] b ) ] [ * x x * ] [ ( a )"}
+{"sequence": "* * x * x y \" ( a ) y ( a ) \" ( [ ( a ) ] [ * x * x y \" y \" y * * y \" y \" * x * y \" y \" * ( a ) x \" ( a ) * x * ( a ) y * y \" * x x * y ( a ) \" ( a ) * x x * y * ( a ) y * * x ( a ) y * ( [ ( [ ( [ *"}
+{"sequence": "( b b b )"}
+{"sequence": "* * ( [ ( b b b ) ] [ * x x * ] [ * * * * y \" y \" ( b [ * ( a ) y * ( [ * ( a ) y * y \" ( [ ( [ * x ( a ) y * ( [ * ( a ) x \" * * x ( b [ ( a ) ] [ * * x ( a ) y \" ( b b [ * * x x * * x x * x \" ( a )"}
+{"sequence": "( a )"}
+{"sequence": "* ( [ * x y \" y \" ( a ) y \" y \" y * ] b b ) y * y \" ( a ) y ( a ) \" * * ( [ * x x * ] [ ( a ) ] b ) y ( a ) \" ( a ) y * ( b b [ * ( a ) y * y \" * y \" * x * x ( a ) y * ( b [ ( a ) ] [ * ( a ) ( a ) y"}
+{"sequence": "* ( a ) y ( a ) \" ( b [ * x * y \" y \" ( [ * x y \" * x x * y * * ( a ) y * * * x * * x x * y * * x x * y * y \" ( a ) y * * x * x x * y * ( a ) ( [ * * ( b b b ) y ( b [ * ( a ) x \" * * x x * y ( b b ["}
+{"sequence": "( b b b )"}
+{"sequence": "* * ( a ) y * ( a ) x \" ( b [ ( a ) ] [ * * y \" * x * x x * * x y \" ( a ) x \" * ( [ * * y \" * x ( b [ * ( a ) y ( [ ( a ) ] b b ) \" ( [ ( b [ * y \" ( b b [ * * x y \" y \" y * y ( [ ( a ) ] b [ ( a ) ]"}
+{"sequence": "* ( [ ( a ) ] [ ( a ) ] b ) y ( a ) \" * x * x x * * ( a ) y * ( [ * ( [ * x x * ] [ ( a ) ] [ ( a ) ] ) y * * y \" y \" * x y \" * * x ( b b [ ( b [ ( [ * y \" y \" * * x y \" y \" ( a ) y * * ( a ) ( a ) y"}
+{"sequence": "* ( a ) y \" * * y \" ( b [ ( [ ( a ) ] b [ * y \" * ( a ) y ( a ) \" * y \" y \" ( a ) y ( a ) x * y ( [ ( a ) ] b b ) \" ( a ) y * * * x * * y \" ( a ) y * ( [ ( a ) ] [ * x x * ] b ) ( a ) x \" * ( a ) x \""}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* * x x * y ( a ) \" * x x * y * x x * \" ( a ) * ( b b b ) x \" ( a ) y ( [ ( a ) ] b b ) \" * ( a ) y ( b [ ( b [ ( a ) ] [ * x y \" y \" y * ] ) ] b ) \" ( a ) y ( [ ( [ * ( b b b ) y * y \" ( a ) y * ( a"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "* x y \" ( b b [ ( [ ( a ) ] [ * * x ( a ) x \" * x x * * x ( a ) x \" ( b b b ) y ( a ) \" ( a ) y ( a ) * * * x x * y ( a ) \" y \" ( a ) * * * * * ( a ) y * y \" * ( a ) y ( b b [ * * ( a ) y ( [ ( a ) ]"}
+{"sequence": "( a )"}
+{"sequence": "( b [ ( [ ( a ) ] [ * y \" ( a ) y * * x x * y * ( a ) y ( a ) \" ( b [ ( b b [ ( b b [ * * x * ( a ) y * * x * x x * y ( a ) \" * y \" * y \" * ( b b b ) x \" ( a ) y ( a ) \" ( [ ( a ) ] [ * y \" * * * * ("}
+{"sequence": "( a )"}
+{"sequence": "* x * x x * * ( a ) * x x * y ( b b b ) \" * ( [ * x ( a ) y * * ( a ) * x x * y \" * x x * y \" * * x ( a ) * y \" y \" ( a ) y ( a ) x * y ( [ ( [ * * y \" ( a ) ( a ) y ( [ ( a ) ] [ ( [ * x y \" ( a ) y"}
+{"sequence": "* ( b b [ * x y \" ( a ) x \" y * ] ) y ( b [ * ( [ ( a ) ] [ ( a ) ] b ) y * * ( a ) y * x ( b b b ) x \" ( a ) y \" ( a ) x \" * * x y \" * ( a ) y ( b [ * x ( b [ * x ( a ) y ( [ ( a ) ] b b ) \" ( b [ *"}
+{"sequence": "( a )"}
+{"sequence": "( b [ * ( [ ( [ * * ( a ) * * x x * ( a ) * * x x * y * ( [ * x x * ] [ * x ( a ) y * ( a ) y * y \" ( b [ * * ( a ) y * ( a ) y * x ( a ) y ( a ) \" * y \" * x * * y \" * y \" ( a ) x \" y x * y ( [ * x y"}
+{"sequence": "( b [ * x x * ] b )"}
+{"sequence": "* y \" y \" ( a ) y * x y \" ( b [ * * * x y \" y \" ( [ * y \" ( a ) y * * * ( [ ( b [ ( a ) ] b ) ] [ ( a ) ] [ * y \" y \" ( a ) y * x ( [ ( a ) ] [ * * x x * y * x y \" y \" * y \" ( a ) y ( [ ( [ * x y \" *"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) y ( a ) \" * x y \" y \" * x * x ( [ ( a ) ] b [ ( a ) ] ) x \" * * x x * y * x x * \" ( a ) * ( a ) ( a ) x \" * ( a ) y ( a ) \" y \" * ( b [ * * ( a ) x \" ( a ) y ( a ) \" ( a ) y * ( a ) y * * ( a"}
+{"sequence": "* y \" ( a ) y ( a ) \" * x ( a ) y * ( b [ * * x x * * y \" y \" ( a ) y \" ( a ) y ( b [ ( a ) ] [ * x ( a ) y * * * * y \" ( a ) y * x x * \" * ( a ) y ( b b b ) \" * x x * y * x x * \" y x * x x * y * x x"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x ( a ) y * * x y \" y \" * * x y \" * x x * y * ( a ) x \" * x x * x \" * y \" y \" y x * y ( a ) x * \" y * x \" * x y \" * * y \" y \" * x y \" * * ( [ * ( b b b ) y * y \" ( b b [ ( a ) ] ) * * x x * y * ( a"}
+{"sequence": "( a )"}
+{"sequence": "* x y \" y \" * ( [ ( b b b ) ] b b ) y * x ( a ) y ( a ) \" ( [ * y \" ( b b b ) y * ( a ) y * * x y \" * x ( a ) y \" y \" * * x * x y \" * ( [ * * y \" y \" y ( a ) y * y \" y \" * ( a ) ( [ * * x x * y * * ("}
+{"sequence": "* * x x * y * ( b [ ( a ) ] [ ( a ) ] ) y \" * * x x * y ( [ ( [ ( a ) ] b b ) ] b b ) \" ( b [ ( a ) ] [ ( [ ( [ ( [ * x x * ] b [ ( a ) ] ) ] [ * * x * * ( a ) y * x y \" ( [ ( a ) ] [ ( a ) ] [ ( b ["}
+{"sequence": "* y \" * x ( a ) ( b [ * * * x ( a ) * * * ( a ) y * x ( b b [ * ( a ) ( b b [ * y \" * x x * y \" ( b [ * x x * ] b ) * ( a ) x \" ( a ) y * ( b b [ ( b b b ) ] ) ( a ) x \" y \" * x x * y * y \" y \" ( a )"}
+{"sequence": "* ( a ) * x x * y ( a ) \" ( [ ( a ) ] b b ) x \" y \" y \" ( b [ ( a ) ] [ ( [ * ( a ) ( a ) x \" ( b [ ( a ) ] [ * y \" ( [ ( a ) ] [ ( a ) ] b ) y * ( a ) y ( a ) \" y \" y x * \" * x y \" * y \" ( a ) y * *"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* * ( [ * ( [ * x y \" ( a ) y \" * x x * y ( b [ * * x x * ( b [ ( a ) ] b ) y ( a ) \" y \" * x x * y * x y \" ( [ ( a ) ] b b ) y ( [ * y \" * y \" y \" ( a ) * * x x * y ( [ * x y \" y \" * y \" y \" y x * y"}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "* y \" y \" ( a ) y * * y \" ( b b b ) y * * y \" ( a ) x \" * y \" * x * y \" ( a ) x \" y x * y * x * ( a ) y ( a ) \" ( a ) y * y \" ( [ * * x x * y ( [ ( a ) ] b [ * x x * ] ) \" ( b [ ( a ) ] [ * ( a ) y ("}
+{"sequence": "* * * ( a ) x \" * x x * x \" y * ( a ) y ( a ) \" * x y \" * x x * y * * * ( a ) y * ( [ * x ( [ ( b b b ) ] b b ) y * x ( b [ ( a ) ] [ * x x * ] ) y * x x * \" ( a ) x \" * x x * * ( a ) y * ( a ) y ( a"}
+{"sequence": "* x x *"}
+{"sequence": "* * x * x * y \" * ( [ ( b [ ( a ) ] b ) ] [ ( [ * x * ( a ) * x y \" * y \" ( b [ * y \" ( b b [ ( a ) ] ) y * y \" y \" ( [ ( a ) ] [ * ( a ) y * x * ( [ ( a ) ] b b ) y \" ( b [ ( b b b ) ] b ) y \" y \" *"}
+{"sequence": "* x y \" * x x * y \" y \" ( b b b ) x \" * x x * y ( a ) *"}
+{"sequence": "( [ * ( a ) x \" ( a ) y ( a ) \" y x * ] [ * * * x ( b b b ) ( a ) ( b b [ * ( [ ( a ) ] [ * x x * ] b ) y ( b b [ ( a ) ] ) \" y \" * * ( a ) x \" ( a ) ( a ) x \" ( a ) y \" y \" y \" y \" ( b [ ( b b [ * x"}
+{"sequence": "( a )"}
+{"sequence": "* x * * y \" * x x * y ( a ) \" y ( [ ( [ ( a ) ] [ * * x y \" * x ( a ) y ( b b [ ( a ) ] ) \" ( a ) y * ( a ) y ( b [ * * ( [ ( a ) ] b [ ( a ) ] ) y \" * * * ( a ) y * x x * \" y \" ( b [ * x x * ] [ * *"}
+{"sequence": "( a )"}
+{"sequence": "( b [ ( [ ( b [ ( a ) ] b ) ] b [ * x y \" * ( a ) y * y \" y \" y x * \" y \" * ( a ) y * x * y \" ( [ ( a ) ] b b ) * x ( a ) y * ( a ) y ( a ) \" * y \" * x y \" y \" ( a ) y ( a ) * y * * x y \" y \" y * y *"}
+{"sequence": "( a )"}
+{"sequence": "* * * x y \" ( [ * ( a ) y * * ( a ) y ( a ) \" y \" ( a ) y * * ( [ * ( b b [ * ( b b b ) y ( b b [ ( a ) ] ) \" y \" ( [ ( [ ( a ) ] b [ ( a ) ] ) ] b [ * x x * ] ) x x * ] ) y \" y \" ( a ) y \" * x * x x"}
+{"sequence": "* x ( [ * * x x * y ( a ) \" * x x * y * ( a ) y ( a ) \" * x x * y \" y \" ( a ) y * x ( a ) * x ( [ * * * * * x * x y \" * x y \" y \" * * x x * y * x * * ( [ * * x x * y ( a ) \" y \" * y \" ( a ) y \" * * ("}
+{"sequence": "* y \" ( b [ * ( a ) * * x x * y * y \" ( a ) x \" * x x * * * x x * y ( a ) \" ( [ ( a ) ] [ ( b b [ * y \" ( a ) x \" * * * y \" ( a ) * ( b [ ( a ) ] b ) y ( b b [ * y \" * x ( a ) y ( b b b ) \" * x x * y"}
+{"sequence": "* ( [ ( a ) ] b [ ( a ) ] ) y * ( [ ( a ) ] [ * * ( a ) y * x x * \" ( a ) y ( b [ ( a ) ] [ * x ( b b [ ( [ ( a ) ] [ ( a ) ] b ) ] ) x \" y \" * x y \" y \" y * y * x x * * ] ) \" * y \" ( [ ( a ) ] [ ( b"}
+{"sequence": "( [ * y \" ( b [ * x x * ] b ) y \" * x y \" ( [ ( [ ( [ * x x * ] b [ ( a ) ] ) ] b b ) ] [ * x x * ] [ * y \" ( a ) y ( a ) \" y ( [ * * y \" * x y \" y \" * x y \" * y \" * ( b b [ ( [ ( a ) ] [ ( [ * * * x"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( [ * ( [ ( a ) ] b [ ( a ) ] ) * * x x * y \" y \" * * ( a ) y \" ( a ) y ( a ) \" * y \" ( a ) y * ( a ) y * x x * \" ( a ) y \" ( a ) y * * * x x * y * x * ( b [ * x y \" y \" y * ] [ * y \" y \" ( a ) y * x"}
+{"sequence": "* ( b b [ ( [ ( a ) ] [ * y \" y \" * x x * y * y \" ( a ) y \" * x x * y * y \" ( a ) y ( a ) \" * x * y \" y \" y * x x * y * ( a ) x \" ( a ) y * ( b b [ ( a ) ] ) y * x * ( a ) y \" ( b b [ ( a ) ] ) y * y"}
+{"sequence": "* * y \" y \" y ( b [ * x ( a ) x \" * * y \" y \" y y \" y \" y * y ( a ) \" ( a ) y \" y \" * x x * ( b [ ( a ) ] [ * x x * ] ) * * * * x y \" ( a ) ( b b [ ( [ * y \" * * y \" y \" ( a ) y * ( a ) y * y \" * * x"}
+{"sequence": "* x ( a ) x \" * x * x y \" ( [ ( a ) ] [ ( b b b ) ] b ) y * * y \" y \" y x * y * x y \" * ( b b b ) y \" * x x * ( a ) y * y \" y \" * * * x x * y * x ( a ) y ( a ) \" ( a ) y * x y \" ( a ) y * x ( b b b )"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) y * x x * \" y \" ( a ) y \" * ( [ ( [ * y \" y \" * x ( [ ( b [ ( a ) ] b ) ] b [ ( a ) ] ) x \" ( a ) y \" * ( b [ * ( [ ( [ * y \" * x ( [ * * ( b [ * * y \" ( b b b ) y * ( [ ( [ * y \" ( a ) ( a )"}
+{"sequence": "( [ * y \" * ( a ) ( a ) x \" * y \" y \" * x x * x * ( a ) y * x * * x x * y * y \" * x x * x \" * ( a ) ( a ) y ( [ ( [ ( a ) ] b b ) ] b b ) \" * * * ( a ) y * * * x * * * x x * * x x * y * x x * \" * y \""}
+{"sequence": "( a )"}
+{"sequence": "( b [ * x ( [ ( b [ * ( a ) y ( [ ( a ) ] [ ( a ) ] b ) \" * x x * y ( b [ ( a ) ] [ * x y \" ( a ) y \" y \" y \" * y \" ( a ) y \" * x y \" y \" * ( a ) y \" * x y \" ( [ * * * y \" * y \" ( a ) y ( a ) \" y x *"}
+{"sequence": "( [ * x x * ] [ ( [ * x ( a ) y ( a ) \" ( [ ( a ) ] b [ * x * x x * y ( a ) \" * * * x x * x \" y \" ( a ) y * x y \" y \" y * x * y \" ( b [ * x y \" ( a ) y * y \" * ( [ ( a ) ] b [ ( a ) ] ) y * x * ( [ *"}
+{"sequence": "( b b [ * x * y \" ( a ) y ( b [ * x ( a ) ( a ) x \" ( a ) y ( a ) \" y \" y \" * x ( a ) y * ( a ) * x x * y * x * * x x * x \" y \" * ( [ ( a ) ] [ * x ( a ) y * * y \" * y \" y \" * x x * y * x * ( a ) y ("}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( [ * y \" * ( [ * y \" * x ( a ) x \" ( a ) ( [ ( b b [ * ( [ ( [ * x * ( [ * * y \" ( [ * x ( a ) x \" * x y \" y \" y * * * x ( [ ( a ) ] [ ( [ ( [ ( b [ * * x * x * * ( a ) y * x x * \" ( a ) * x * ( a )"}
+{"sequence": "( b b b )"}
+{"sequence": "( b b b )"}
+{"sequence": "* * * y \" ( a ) y * x x * \" y * y \" * x x * y * * x * x y \" * ( a ) x \" * ( b [ * y \" y \" y ( [ * y \" * x x * x \" ( a ) y * x * x x * y ( a ) \" y \" * x ( a ) y * x y \" y \" y * \" * ( a ) y \" ( a ) y \""}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* * x x * ( a ) y * x x * \" y \" * x * ( a ) y * * x ( a ) y ( a ) \" y \" * ( a ) ( [ * x y \" y \" y * ] [ * y \" * * ( [ * x x * ] [ * * * x y \" ( a ) y * ( b b [ * x ( a ) x \" ( a ) y ( a ) \" ( a ) y *"}
+{"sequence": "* y \" * * x y \" * y \" y \" ( a ) y ( a ) y \" ( a ) y * x y \" * * * x ( b [ ( b b b ) ] b ) x \" ( b b [ * ( a ) y ( [ * * * x x * y \" * x x * y ( b b b ) \" ( a ) y * ( b b [ * ( [ ( a ) ] b [ * ( a ) y"}
+{"sequence": "( a )"}
+{"sequence": "* ( [ ( a ) ] b b ) y ( a ) \" ( [ ( a ) ] b b ) y * x y \" * ( [ * x ( a ) * * x y \" ( [ * ( b [ * ( a ) x \" y \" ( a ) y * ( [ ( [ * ( [ * * y \" y \" * x * ( b b [ ( [ ( b b b ) ] [ ( [ * x x * ] b [ ("}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) ( a ) ( a ) x \" * x * x x * y ( b [ ( a ) ] b ) \" ( a ) ( a ) y * y \" * x x * y ( a ) \" ( a ) y * x x * ( a ) y * ( b [ * y \" * ( [ * ( a ) x \" ( a ) y * y \" * y \" ( b [ * y \" * * x ( a ) x \""}
+{"sequence": "* * x y \" ( a ) * x * ( a ) y * * x x * y ( [ * y \" * x x * * y \" * x x * x \" * * x ( a ) * x * x x * y * * ( a ) y ( a ) \" y \" ( [ ( b b b ) ] b [ * * x * ( a ) y ( a ) \" * ( [ ( a ) ] [ ( [ ( a ) ]"}
+{"sequence": "( a )"}
+{"sequence": "* x * ( b b b ) y \" * y \" ( [ * x ( a ) y ( a ) \" y \" y * ] [ ( a ) ] [ * ( a ) y ( a ) \" y \" * x x * y * x * x x * y * x ( a ) * ( b b b ) y * * x x * * x ( [ ( a ) ] b b ) y ( a ) \" ( a ) * ( a ) y"}
+{"sequence": "( [ ( b [ ( a ) ] [ * x y \" ( a ) x \" ( a ) y * x ( [ ( a ) ] b b ) y ( [ ( [ * * x x * y ( b [ ( a ) ] b ) \" * ( [ * y \" * * y \" y \" * * y \" * y \" ( [ * * ( a ) x \" * ( b [ * y \" ( [ * * ( b b [ ( a"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "( [ ( [ ( a ) ] b b ) ] [ ( a ) ] [ ( a ) ] )"}
+{"sequence": "( a )"}
+{"sequence": "* x ( a ) y \" * ( [ * x ( [ ( a ) ] b b ) y * x x * \" * x x * y \" * x x * y ( a ) \" ( a ) x \" * x * x * x ( a ) x \" ( a ) x \" ( b [ ( [ * x y \" * ( a ) y ( a ) \" ( a ) y * y \" y \" * y \" y \" y * * x ("}
+{"sequence": "* * x * y \" * y \" * x x * y * * * x x * * x x * x \" y \" * ( a ) y * y \" * * y \" ( b [ ( b [ ( [ ( a ) ] b b ) ] b ) ] [ ( a ) ] ) y * x x * \" y ( a ) ( [ ( a ) ] [ ( b b b ) ] b ) y ( b [ * * y \" ( a"}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( [ ( b [ * x x * ] [ * ( a ) y * ( [ ( b [ * y \" y \" ( a ) y * * ( a ) x \" y \" * x x * x ( b b b ) ( [ * x x * ] b b ) y \" y \" ( a ) y * x ( a ) x \" y \" * x x * * ( b b b ) y * ( b b b ) y ( [ ( [ ("}
+{"sequence": "( [ ( b b [ ( [ ( b [ ( a ) ] b ) ] [ * ( a ) y ( a ) \" ( [ ( a ) ] b b ) x \" * y \" * x y \" ( [ ( a ) ] b [ * x * * x y \" * ( a ) y \" ( a ) y * ( a ) y \" ( a ) y * y \" * ( a ) x \" ( a ) x \" * x * x x"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( [ ( a ) ] b b )"}
+{"sequence": "* x ( a ) x \" * x x * y \" * ( b [ ( [ ( a ) ] [ * y \" y \" y * * ( a ) y * * x ( b b [ ( a ) ] ) y * ( a ) y ( a ) \" ( a ) y ( a ) \" * x * x x * * ( a ) y ( a ) \" y \" ( a ) y ( [ * x x * ] [ ( a ) ] ["}
+{"sequence": "( b [ ( a ) ] [ * ( b b [ * y \" ( a ) y ( [ ( b [ * y \" * x * x x * y * ( a ) * x y \" * * ( a ) y ( a ) \" y \" * ( a ) x \" ( a ) y \" * y \" * * x x * y * x ( a ) y * ( a ) x \" y \" y x * \" ( a ) y \" y \""}
+{"sequence": "( b [ ( [ ( [ * * y \" * x x * y ( b [ ( a ) ] b ) \" y x * y ( [ * x x * ] [ * x * ( b b [ ( a ) ] ) * * x x * x \" * x y \" ( a ) x \" ( a ) y * y \" y \" y ( a ) y ( [ * x x * ] b [ * ( b b b ) y * * x y"}
+{"sequence": "* x ( [ ( b [ ( b [ * * x x * * y \" ( a ) y ( a ) \" y x * x \" y \" * ( b b b ) y * x x * \" ( a ) y ( a ) \" y x * y * * x ( a ) y * y \" y \" * x ( [ * x x * ] [ * ( a ) y ( a ) \" ( a ) y ( a ) \" ( [ ( a"}
+{"sequence": "( [ ( a ) ] [ ( a ) ] b )"}
+{"sequence": "* ( [ ( a ) ] b [ ( a ) ] ) x \" y \" y x *"}
+{"sequence": "( [ * x y \" * y \" * x x * y * y \" y \" ( a ) ( [ ( a ) ] [ * x x * ] [ * * x x * y ( a ) \" ( a ) ( a ) y ( a ) \" y \" * * y \" y \" y * x x * x \" * x x * y ( a ) \" y * y \" y \" * x * x ( a ) y * ( a ) y *"}
+{"sequence": "( a )"}
+{"sequence": "* x y \" * y \" y \" * x x * y \" * ( a ) y \" y \" y \" * y \" * y \" * ( a ) y ( b b b ) \" ( a ) ( [ * ( a ) y \" * x x * * ( a ) y * x x * \" y \" ( a ) y \" ( a ) y * x y \" * * y \" * y \" * x y \" * * y \" ( a )"}
+{"sequence": "* * ( a ) y ( a ) \" ( [ ( b [ * * x * ( b b [ ( a ) ] ) ( a ) y * ( a ) y * * y \" * x * y \" ( a ) x \" ( a ) y ( [ * x x * ] [ ( [ * ( b b b ) y \" * * x x * y ( a ) \" * ( [ ( a ) ] [ * ( a ) y * y \" *"}
+{"sequence": "* ( a ) y \" ( a ) y ( a ) \" ( [ * x y \" * * * x x * x \" ( a ) y ( [ ( [ ( a ) ] [ ( [ * y \" ( a ) y ( b b b ) \" y x * ] b [ ( a ) ] ) ] [ ( a ) ] ) ] [ ( [ ( [ * x * ( a ) y * x y \" * x * * * * y \" y"}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "( b b b )"}
+{"sequence": "* y \" * ( b [ * ( a ) y ( b [ ( a ) ] b ) \" * ( a ) y ( a ) \" y \" y x * y * y \" ( [ ( a ) ] [ ( a ) ] b ) x \" ( a ) y ( a ) x * \" y ( a ) y ( [ ( a ) ] [ ( [ ( b [ * x * x ( a ) y ( b b [ * * x y \" ("}
+{"sequence": "( [ ( a ) ] [ ( a ) ] b )"}
+{"sequence": "* x ( a ) y ( a ) \" * x * ( [ ( a ) ] [ * x y \" * y \" y \" * x x * ( a ) x \" * * x ( [ * ( a ) y * y \" * * x x * y * x * x ( b [ * * ( a ) x \" y \" * x y \" y \" y * y ( b [ ( a ) ] b ) * x y \" ( a ) y *"}
+{"sequence": "* y \" * x x * y ( b [ ( [ ( a ) ] b [ * x ( [ ( [ ( a ) ] b b ) ] [ * x ( a ) ( a ) y * x ( a ) x \" y \" * x ( [ * ( b [ * y \" y \" * x x * y ( [ * y \" ( a ) y * y \" * x ( b b [ * x y \" * * * ( [ ( [ *"}
+{"sequence": "( a )"}
+{"sequence": "( b [ * x x * ] b )"}
+{"sequence": "* x y \" ( a ) y ( a ) \" y *"}
+{"sequence": "( [ * x * ( a ) ( a ) y ( a ) \" * ( [ ( a ) ] b b ) * y \" y \" * y \" y \" * x * ( b [ ( a ) ] [ ( b b [ ( a ) ] ) ] ) x \" y \" * x x * y * y \" * x x * y * ( a ) y \" * * x x * y ( a ) \" * * x ( a ) ( a )"}
+{"sequence": "( [ * * * x * ( a ) y ( b b [ * x * y \" y \" y x * y * * x * y \" * x y \" y \" * * x ( [ * * y \" ( a ) x \" y ( a ) y * y \" y \" y ( a ) * x x * x \" * y \" * ( [ * ( a ) x \" ( b [ * ( b b [ * ( a ) y * ( b"}
+{"sequence": "( a )"}
+{"sequence": "* y \" ( [ ( a ) ] [ ( [ * x x * ] b [ * * ( b b b ) y * ( a ) y * x y \" ( b [ ( a ) ] [ * x * ( b b b ) * y \" ( a ) x \" ( a ) y ( b b [ * ( [ * ( a ) y ( a ) \" ( [ * ( a ) y \" y \" y \" * x y \" ( a ) y"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* y \" * ( a ) y ( a ) \" y \" ( a ) y * * x y \" ( a ) y \" * y \" ( b b b ) y * ( a ) y ( a ) \" * x x * y ( a ) \" ( a ) * x * * x y \" ( [ * y \" * * x x * y ( b b b ) \" y \" ( [ ( a ) ] b [ ( [ * ( [ * * *"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* y \" y \" y x *"}
+{"sequence": "( a )"}
+{"sequence": "* * * y \" ( a ) y \" y \" y \" y x * y \" ( a ) y \" ( a ) y * x x * \" * * x ( [ * y \" ( a ) y * x x * \" * ( [ ( a ) ] b [ ( a ) ] ) ( a ) y ( [ ( a ) ] b b ) \" ( [ * * y \" y \" y y \" y \" ( a ) y ( a ) * y"}
+{"sequence": "* x ( a ) y ( b b [ * y \" * x * x y \" y \" y * x \" * x ( a ) y * x x * \" ( a ) ( a ) x \" y \" y \" y * y ( a ) \" ( a ) y ( a ) * * * ( [ * * * x ( [ ( a ) ] b [ ( a ) ] ) y ( b [ ( a ) ] b ) \" ( a ) y *"}
+{"sequence": "( b [ ( a ) ] b )"}
+{"sequence": "* y \" * * x ( a ) y ( [ ( b [ ( a ) ] [ ( a ) ] ) ] b [ ( a ) ] ) \" * x * ( a ) y ( [ * x ( a ) x \" y \" * y \" * x ( a ) y * y \" ( [ * y \" * x y \" y \" * y \" ( a ) x \" ( [ ( a ) ] b b ) y * x x * y \" y"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* * x x * ( a ) y ( [ ( [ * ( [ ( [ * y \" ( [ ( a ) ] b [ * ( a ) ( [ * x x * ] b [ * x y \" * y \" ( a ) y * * * x y \" * x x * * y \" ( b b b ) x \" ( b [ * * y \" y \" * x * * y \" ( a ) y * * * x * y \" *"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* ( b b b ) y \" * * x x * y ( a ) \" * ( a ) x \" * x * * y \" y \" ( a ) * x * y \" ( b b [ * * ( a ) y * x y \" * ( a ) * * * ( b b [ ( b [ ( [ ( a ) ] b b ) ] [ * x y \" * ( a ) ( b b b ) y \" ( a ) y * ("}
+{"sequence": "* x y \" y \" ( b [ ( a ) ] [ ( a ) ] ) ( a ) x \" * ( b [ * ( a ) y * y \" * ( a ) y ( b b [ ( a ) ] ) \" * * x ( b [ * * ( [ ( a ) ] b b ) y * y \" * ( b b b ) * x x * y * ( a ) y ( b [ * ( a ) y \" ( a )"}
+{"sequence": "( a )"}
+{"sequence": "* * x * * x * y \" y \" * x x * y ( b b [ * y \" y \" * ( a ) y * ( a ) y ( a ) \" y \" y * * y \" * x y \" y \" * ( a ) y * ( a ) y \" ( a ) y * y \" * ( [ ( b [ ( [ * * x x * x \" y \" ( a ) y ( a ) y \" ( a ) y"}
+{"sequence": "* x y \" * x x * ( a ) * x x * y * ( a ) y \" ( a ) * ( a ) y \" ( a ) y ( b [ * x x * ] b ) \" ( a ) y ( a ) \" y \" * x x * y * * x ( a ) y * x * * y \" * x x * ( a ) y * x * x y \" y \" * x * * y \" ( b [ ("}
+{"sequence": "( a )"}
+{"sequence": "* * ( a ) y ( b [ * x * x x * y ( a ) \" y \" ( a ) x * ] [ * * y \" ( a ) x \" ( [ * * ( b [ * x x * ] b ) x \" y \" y y \" ( b b [ ( a ) ] ) ( b b b ) y * x ( a ) y * x x * \" ( [ ( a ) ] b [ ( a ) ] ) x \""}
+{"sequence": "( a )"}
+{"sequence": "* y \" ( a ) y ( a ) \" * x x * y * x x * y \" * * x y \" ( a ) x \" * x x * y \" * x * x y \" ( a ) x \" * y \" y \" * x x * y \" y \" ( [ * x * x * ( a ) * y \" y \" y x * * x ( b b b ) y ( b b [ * * x x * y ( b"}
+{"sequence": "* y \" ( a ) y ( b [ * y \" y \" ( a ) y ( a ) y \" y \" ( a ) y * * y \" ( b b b ) y * ( a ) x \" y \" ( b [ ( a ) ] b ) ( a ) * x y \" * * y \" ( a ) y \" * x x * x \" y \" y * y \" ( a ) x \" * * y \" * x x * ( a"}
+{"sequence": "* * ( b [ ( [ ( a ) ] [ * x x * ] b ) ] [ * x x * ] ) y * y \" y \" ( b [ * * x ( a ) y ( b b b ) \" ( a ) y * x x * \" * y \" y \" ( a ) y ( a ) * x x * x \" ( a ) ( a ) x \" y \" y \" * * x * ( a ) * y \" y \""}
+{"sequence": "* x y \" * x x * x \" * * ( a ) y ( [ ( b [ ( a ) ] [ * x x * ] ) ] [ * * x x * y ( b [ ( b [ ( a ) ] b ) ] [ * ( a ) x \" * * x y \" ( a ) y ( [ * ( a ) * x y \" * ( b [ * ( [ * * * x y \" * * ( a ) y * *"}
+{"sequence": "* x ( a ) ( a ) ( a ) y ( a ) \" ( [ * * ( b [ * x * y \" * x * y \" ( a ) y * ( a ) x \" * ( b [ ( b b b ) ] [ * ( a ) x \" y \" y x * ] ) y ( [ ( a ) ] b b ) \" * y \" * * * * x x * y ( a ) \" * ( b b b ) y"}
+{"sequence": "* ( [ ( [ ( b b b ) ] b [ ( [ ( a ) ] [ ( a ) ] [ * ( b [ ( a ) ] b ) y \" * ( b [ * y \" y \" ( a ) x ( b [ * y \" ( a ) ( b b [ ( b b b ) ] ) y ( a ) \" * ( [ ( a ) ] b b ) * * x x * y * * * x x * y * *"}
+{"sequence": "( [ ( a ) ] [ ( b [ * y \" * ( [ * ( b b b ) y ( a ) \" * ( a ) y ( [ * y \" ( a ) * x y \" y \" y * y ( b b [ * x ( b b [ ( b b [ * ( [ ( [ * y \" y \" ( a ) y ( a ) ( [ ( b b [ * ( a ) * x ( [ ( [ * x ( b"}
+{"sequence": "* y \" ( a ) * x x * y ( a ) \" * x * x * y \" y \" ( [ ( a ) ] [ ( a ) ] b ) y * ( [ * x x * ] b [ ( a ) ] ) y * * x ( a ) y ( a ) \" y \" y * y * y \" ( a ) * x ( [ ( a ) ] b [ ( b b b ) ] ) y * x * y \" *"}
+{"sequence": "( [ * y \" y \" * * * ( [ * x ( b b b ) x \" ( a ) y * * x * x x * * * ( a ) y * ( a ) * ( a ) y ( a ) \" * x x * y ( [ * * ( a ) * y \" y \" * x ( b b [ ( a ) ] ) y * * ( b b b ) y * x x * \" ( a ) * x y \""}
+{"sequence": "( a )"}
+{"sequence": "* y \" * x * x ( a ) * x * x x * y * x x * \" ( a ) y * x x * \" ( a ) y * * x x * y * ( a ) y ( a ) \" * x x * x \" y * * ( b b [ * * * * * x y \" y \" * * x ( a ) y ( a ) \" y \" * x x * y ( [ ( a ) ] [ * ("}
+{"sequence": "( b [ ( a ) ] b )"}
+{"sequence": "* x ( [ ( [ * y \" * x * y \" ( a ) y * ( a ) y * x y \" ( [ * ( [ ( [ * ( b [ ( b b b ) ] [ ( a ) ] ) * x x * y * x * y \" ( a ) ( [ ( [ * * * ( [ ( a ) ] [ * x * * ( [ * x x * ] [ ( [ ( a ) ] [ * x x *"}
+{"sequence": "* y \" y \" y * x x * y * x x * \" * ( a ) y * ( a ) x \" * x x * * x y \" * x * x * x y \" ( b [ ( [ ( [ ( a ) ] b b ) ] b [ ( a ) ] ) ] [ * ( a ) y * ( a ) y ( b b [ ( a ) ] ) \" * x x * x \" * x y \" ( b b"}
+{"sequence": "( a )"}
+{"sequence": "* * x x * y * x x * \" y \" ( a ) x x *"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) y ( a ) \" * x ( a ) x \" y \" y * y \" * y \" y \" * * y \" y \" y x * y * y \" ( [ ( [ * ( a ) * x * x ( a ) ( b b [ ( a ) ] ) y \" * x x * y ( a ) \" y \" * ( a ) y * ( [ * x * y \" ( a ) y * * * x y \""}
+{"sequence": "* y \" ( a ) y ( a ) \" * * x x * y * x * x x * y \" * x ( a ) y * x y \" ( a ) y ( b b b ) \" y * \" * * x x * ( a ) y ( [ * x y \" y \" * * ( a ) y \" y \" * x y \" ( a ) y \" y \" ( a ) y ( a ) \" ( [ ( a ) ] ["}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* * x ( [ * x * y \" y \" ( a ) * * x y \" ( a ) x \" ( a ) y * ( a ) * ( b [ * x ( a ) * * x x * x \" ( b b [ ( a ) ] ) x \" y x * y * x * * x * y \" * ( [ * y \" y \" ( [ * * x x * y * * y \" y \" * * y \" ( ["}
+{"sequence": "( [ ( a ) ] b [ ( a ) ] )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) * x ( a ) y * * y \" * ( a ) y * * x x * y \" y \" ( b [ * ( a ) * ( a ) x \" ( a ) y * x y \" * ( [ ( [ ( [ * ( a ) ( a ) x \" * y \" ( b b [ ( a ) ] ) y ( b b b ) \" y * ( a ) ( a ) y * x * x x * y"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "( b [ ( b [ * x ( a ) * * y \" * y \" y \" * x x * x y \" ( a ) y * x y \" ( a ) y ( a ) \" y * \" y * y * y \" y \" ( b [ ( b b [ * * x x * x \" * x y \" ( a ) ( a ) y * ( a ) * * x x * * * x x * y * * x * * x"}
+{"sequence": "* ( a ) * ( b b b ) y * * ( b b b ) y ( a ) \" y \" y y \" ( [ ( a ) ] b [ * y \" * x ( a ) y \" * x x * y * x x * \" y \" ( a ) ( a ) y * x x * \" * x x * ( b [ * * x ( [ * y \" y \" ( b [ ( a ) ] b ) * y \" *"}
+{"sequence": "* ( a ) y * y \" y \" y x * \" y \" * y \" * ( [ * ( a ) y ( a ) \" ( a ) y * * y \" ( b b [ ( a ) ] ) y ( a ) \" * y \" y \" y x * * * x x * y ( [ ( b [ ( b b [ * y \" ( [ * y \" ( b [ ( [ ( b [ ( [ ( b [ ( a )"}
+{"sequence": "( a )"}
+{"sequence": "* y \" ( [ * x * * x x * y * y \" y \" * ( a ) ( a ) y ( a ) \" * x y \" y \" * ( a ) ( a ) y ( a ) \" ( a ) y * x x * \" y \" ( a ) y ( a ) \" y x * x * x \" * x x * y * * * y \" y \" y y \" * x ( a ) y ( [ ( a )"}
+{"sequence": "* ( a ) y ( a ) \" y \" y x *"}
+{"sequence": "* x ( b [ ( a ) ] b ) y * x x * \" ( a ) y * x ( [ * x * x * x ( a ) y ( a ) \" ( [ * y \" ( a ) x \" ( a ) x ( [ ( a ) ] [ ( a ) ] [ * * x x * y * y \" ( a ) y ( [ ( [ * x x * ] [ * y \" ( [ * x ( b b [ ("}
+{"sequence": "* y \" ( [ * y \" y \" ( b b [ ( b b b ) ] ) y * x ( a ) ( a ) y ( a ) \" y \" ( b [ ( b [ * y \" y \" ( a ) y * x * x * x x * ( [ ( a ) ] b [ * * * y \" ( b b [ * x x * ] ) y * * ( [ * ( a ) y * x y \" * x x"}
+{"sequence": "( a )"}
+{"sequence": "( b b [ ( a ) ] )"}
+{"sequence": "( a )"}
+{"sequence": "( [ ( a ) ] [ ( a ) ] [ ( a ) ] )"}
+{"sequence": "( [ * ( a ) y ( a ) \" ( a ) x \" * ( b b [ * ( a ) x \" ( a ) y * x x * \" y x * ] ) x \" ( b [ * x x * ] [ * x x * ] ) y * x x * \" * * * * * y \" ( a ) y \" y \" ( a ) * ( b b [ * y \" y \" ( b [ * ( a ) y *"}
+{"sequence": "* y \" ( a ) y * ( a ) y * ( b b [ ( [ * * x * x x * y * * ( b [ ( b [ ( b b [ * x ( a ) y \" ( [ ( b [ ( [ ( a ) ] [ * x x * ] [ * x ( b [ * x x * ] b ) y * x * ( a ) y * ( a ) x \" * y \" y \" * x ( [ ("}
+{"sequence": "( b b b )"}
+{"sequence": "* ( a ) y * x y \" ( a ) y * * y \" y \" y ( a ) * * y \" * ( b [ * ( a ) y * ( a ) y ( [ ( a ) ] b b ) \" ( [ * * * * x x * ( [ ( a ) ] [ ( a ) ] b ) ( a ) y ( b [ ( [ * x * y \" ( a ) y ( [ ( a ) ] [ ( a"}
+{"sequence": "( a )"}
+{"sequence": "* x ( b [ ( b [ ( b [ * x x * ] [ ( [ * x * ( a ) y * x x * \" * y \" y \" y x * y \" ( a ) y * * ( b [ ( [ * * * ( [ * x * x ( b [ ( a ) ] b ) y * x x * \" * x * ( a ) x \" ( b b [ * * * x * x x * y \" * x"}
+{"sequence": "( a )"}
+{"sequence": "* * x y \" y \" y * y ( a ) \" y \" ( a ) y ( a ) * * y \" * ( a ) y ( a ) \" ( b b [ ( a ) ] ) y ( a ) \" ( a ) y ( b [ * * x * ( a ) y ( a ) \" * x y \" ( a ) x \" ( a ) ( [ ( a ) ] b b ) ( [ ( a ) ] [ ( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "* x y \" y \" y *"}
+{"sequence": "* ( b [ * x y \" * * x ( a ) y ( [ ( a ) ] [ * x * x * y \" ( a ) y * x x * \" * x x * x * ( [ ( b [ ( b b b ) ] b ) ] [ * x ( a ) y ( b b [ * x y \" ( a ) y * x * x ( b b b ) y * x * ( a ) ( a ) y \" * x"}
+{"sequence": "* ( a ) y ( b [ ( a ) ] [ * x y \" ( a ) y ( a ) \" * ( a ) y \" * x ( a ) x \" y \" ( a ) y ( a ) * * y \" * x * y \" ( b [ * ( a ) ( a ) x \" y \" y \" y \" ( [ * y \" ( a ) x \" * y \" * ( b [ * ( a ) x \" y \" y"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x * x x * y \" * y \" y \" y x * * y \" ( [ * x x * ] b [ ( b b b ) ] ) y * x * x x * y * x y \" * ( a ) y ( b b [ * x x * ] ) \" * ( a ) y * * y \" y \" y y \" y \" ( a ) x * y * ( [ * * x y \" ( a ) y * ( ["}
+{"sequence": "( [ ( [ ( b b [ ( a ) ] ) ] b [ ( b b b ) ] ) ] b [ ( [ ( a ) ] [ * * y \" ( a ) y * x ( a ) ( [ * ( a ) y * * ( b [ * * y \" ( a ) x \" y x * y ( [ ( a ) ] [ ( a ) ] [ ( a ) ] ) \" ( a ) y ( a ) \" ( [ *"}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "* y \" * ( a ) y ( a ) \" ( b b [ * x y \" ( a ) y * x * x * x * x x * y * x x * \" ( a ) x \" y * y * x x * \" ( a ) y ( a ) \" * * y \" ( a ) ( a ) y ( b [ * * x y \" ( b b b ) ( b b [ ( a ) ] ) y ( b b [ *"}
+{"sequence": "* x * ( a ) x \" ( a ) y * ( [ ( [ ( a ) ] [ ( [ * x y \" y \" ( a ) y * x x * * ] [ * ( [ ( a ) ] [ * y \" ( b [ * x y \" * x x * y * x y \" * * ( a ) x \" * x * * x x * y * x x * \" * x * y \" y \" y ( a ) y"}
+{"sequence": "* * * * y \" y \" * x ( b b [ ( a ) ] ) ( a ) x \" y \" y \" y \" y * y ( [ ( b [ ( a ) ] [ * x ( a ) y ( a ) \" y \" ( b b [ ( a ) ] ) * * * y \" ( a ) x \" y x * x \" ( b [ ( b b [ ( a ) ] ) ] [ * x ( a ) * y"}
+{"sequence": "* y \" ( a ) y ( a ) \" ( a ) x y \" y \" * x x * x *"}
+{"sequence": "* y \" ( a ) ( b [ * * * x x * y * y \" * ( b b b ) y * x y \" ( a ) y * x y \" ( b b b ) x \" * x * x * x x * y * * x x * ( a ) y \" * * x * x x * y * x x * \" y \" * x * ( a ) y \" y \" * x * y \" y \" y * * ("}
+{"sequence": "* x y \" ( a ) y * x x * \" y *"}
+{"sequence": "( a )"}
+{"sequence": "* x ( a ) y ( b b b ) \" y \" ( a ) x *"}
+{"sequence": "* * x * y \" * x ( b [ * y \" y \" ( b b b ) y * x y \" * ( a ) * * x y \" ( a ) y * ( a ) ( [ * y \" * x ( a ) y ( a ) \" * x * x x * x \" * x * x y \" ( a ) y ( a ) \" y * y ( a ) \" ( a ) y * ( a ) y ( a ) \""}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* * x x * * ( b [ ( a ) ] [ * * y \" y \" ( b b [ * ( b [ * x x * ] [ ( a ) ] ) y ( a ) \" y \" * x ( a ) y * y \" y \" * x * y \" ( a ) y * ( a ) y * ( a ) y ( [ ( [ * x x * ] [ ( a ) ] [ ( b [ ( a ) ] b )"}
+{"sequence": "* x ( [ ( b [ ( a ) ] [ ( a ) ] ) ] [ ( a ) ] [ ( a ) ] ) y * y \" y \" y x * \" ( a ) y * y \" ( b b b ) * * * x * ( a ) x \" ( b [ * ( b b b ) ( b [ ( a ) ] b ) y * * y \" * y \" ( a ) * x y \" ( a ) y * x"}
+{"sequence": "* * y \" ( b b b ) y ( [ * * ( a ) y * y \" y \" * ( a ) y \" ( b [ ( a ) ] b ) ( b [ * x * ( a ) y * ( b b b ) y \" * x * * * * x * ( [ * ( [ ( a ) ] b [ * ( a ) y ( a ) \" ( [ * * x * x x * y * * * x ( ["}
+{"sequence": "( a )"}
+{"sequence": "( [ * x x * ] b [ * x x * ] )"}
+{"sequence": "( [ ( a ) ] b [ * * * x ( b [ * x y \" ( a ) * x y \" * y \" ( a ) ( a ) y ( b b [ ( b [ * * y \" y \" * y \" y \" y * y \" * x x * x \" ( a ) y ( a ) x * x \" * x x * y * x y \" y \" ( a ) y ( a ) * \" y * x * y"}
+{"sequence": "* y \" y \" y x *"}
+{"sequence": "* x x *"}
+{"sequence": "* ( b b [ ( a ) ] ) y \" ( a ) y * ( [ * x y \" ( a ) y * x x * \" y * ] b b ) y * * x ( a ) y * * x * ( [ * x x * ] [ ( a ) ] b ) x \" * x * * * x * y \" y \" * y \" y \" y x * y ( a ) ( [ * * y \" * x ( a )"}
+{"sequence": "* * * x x * y * x ( a ) x \" * * ( a ) y * y \" * x ( a ) y * y \" * x ( a ) y ( b b b ) \" ( a ) y * x x * \" * x * x ( [ * x x * ] [ ( a ) ] [ * x ( a ) * x x * y ( [ * * y \" ( [ * y \" ( [ ( a ) ] [ ( a"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) y ( a ) \" y \" ( [ ( a ) ] [ ( b b [ ( [ ( a ) ] b b ) ] ) ] b ) y * x x * y \" ( a ) y * x * y \" * * y \" ( a ) y \" y \" * x x * * x x * x \" * x x * y ( [ ( [ ( [ * y \" y \" * ( a ) x \" ( a ) y *"}
+{"sequence": "( b [ ( a ) ] b )"}
+{"sequence": "* y \" * ( [ * x x * ] b [ * x ( [ ( a ) ] [ * x y \" y \" * ( a ) y ( [ * x * * y \" ( b [ * x * * ( b [ * ( a ) y ( a ) \" * ( a ) y ( b [ ( a ) ] [ ( a ) ] ) \" * ( [ ( a ) ] [ ( a ) ] [ ( b [ * x x * ]"}
+{"sequence": "* x * ( [ * x x * ] [ * * y \" y \" * x y \" * ( a ) x \" y \" * x y \" * x ( a ) * y \" * * * x x * y ( a ) \" y \" * * * x x * y * x x * \" ( a ) y ( a ) \" ( [ * x x * ] b b ) * x ( [ ( a ) ] b [ ( [ * ( a )"}
+{"sequence": "* x x *"}
+{"sequence": "( b b [ ( a ) ] )"}
+{"sequence": "( b b [ * x x * ] )"}
+{"sequence": "* * * ( a ) x \" * ( a ) * x x * y \" y \" y \" y \" * x x * y * ( [ ( a ) ] b b ) y * x ( a ) y \" * y \" ( a ) y * x ( a ) ( b b [ * * x ( a ) y ( b b [ ( [ * ( [ ( a ) ] b [ * ( a ) y \" y \" * x x * y * y"}
+{"sequence": "* * * * ( a ) y \" ( [ * x ( a ) y * * x * ( [ * ( a ) y ( a ) \" y \" y * x ( a ) x \" y \" * y \" y \" ( a ) y * x x * x * y * ( [ ( [ ( b b b ) ] b b ) ] [ * x x * ] b ) y * x x * \" * * x ( b b b ) y ( a"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) y ( a ) \" * * ( [ * * * x y \" ( a ) y * x * x * x y \" ( a ) ( a ) y ( a ) \" * x x * y ( a ) \" ( a ) y * * * ( a ) y * * x y \" y \" y * ( b [ ( a ) ] [ ( a ) ] ) y ( b [ * x ( a ) y * y \" * x x"}
+{"sequence": "* ( [ * y \" ( a ) y ( a ) \" ( [ * x ( b [ * ( a ) * y \" ( a ) y ( b [ * x y \" * x * x y \" y \" * x x * y * * y \" ( a ) * ( a ) y * x x * \" y \" y * ( a ) y \" y \" * x ( a ) y ( b [ ( a ) ] [ ( [ * x y \""}
+{"sequence": "* x ( a ) y * ( a ) y * x x * \" * x ( a ) y \" y \" y \" ( a ) y * * x ( a ) * x x * x \" * y \" y \" ( a ) y ( a ) x * y * x x * \" * x x * y ( a ) \" * y \" * x y \" ( a ) ( a ) y ( b [ * y \" y \" * y \" * * *"}
+{"sequence": "* * ( a ) x \" y \" * y \" ( a ) y * y \" y \" * x * y \" y \" y ( b [ * y \" * x x * y ( a ) \" * ( [ ( a ) ] [ * x y \" y \" y * ] b ) * y \" y \" * y \" * y \" * ( a ) * * * x * x ( a ) ( [ * x x * ] b [ * x * ("}
+{"sequence": "* ( b b b ) ( [ ( a ) ] [ * * * * * y \" y \" y * x * * x x * ( [ ( a ) ] [ ( [ * y \" ( [ ( a ) ] [ ( a ) ] b ) * x y \" * y \" * ( [ ( [ ( [ * * * * * y \" * y \" * x * x y \" * ( a ) x \" y \" * y \" ( [ ( a"}
+{"sequence": "( [ ( b b [ ( a ) ] ) ] [ ( [ ( [ * x y \" ( b b [ * y \" ( a ) x \" ( a ) y * * y \" * ( a ) x \" ( a ) y * * x ( a ) y ( a ) \" ( a ) y * * x y \" ( a ) y * * ( [ * ( b [ * y \" * ( a ) y * ( b [ ( b b [ *"}
+{"sequence": "* x x *"}
+{"sequence": "( b b b )"}
+{"sequence": "( a )"}
+{"sequence": "* y \" y \" * * ( [ ( [ * x x * ] b b ) ] [ ( a ) ] [ ( a ) ] ) y ( a ) \" ( b [ ( a ) ] [ * y \" * x x * y * ( a ) y * ( b b b ) y * x x * \" y \" ( a ) y ( a ) x * \" * * ( [ * y \" y \" y x * ] [ * x * ( b"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( [ * x y \" * ( [ * ( a ) x \" y \" * y \" * * * * ( b [ ( a ) ] [ ( [ * x ( a ) y ( a ) \" ( a ) ( [ ( [ * x x * ] b [ ( a ) ] ) ] b b ) x \" ( b [ ( a ) ] [ * * * ( a ) x \" ( a ) y ( a ) \" * x x * y * y"}
+{"sequence": "* y \" ( a ) y ( a ) \" ( [ * ( [ * x x * ] [ * * * ( a ) y * * y \" y \" * ( a ) y ( b b [ * y \" * x x * y * ( a ) y * * ( a ) y * x * y \" ( a ) y ( a ) \" ( a ) y * ( a ) y ( a ) \" y \" * * ( a ) y * ( ["}
+{"sequence": "( a )"}
+{"sequence": "* y \" ( a ) y ( b [ ( a ) ] b ) \" y y \" ( a ) y ( a ) \" * x x * x *"}
+{"sequence": "* y \" y \" * x ( a ) y ( a ) \" ( a ) x \" * y \" ( a ) y * * * * x x * y \" ( b b b ) y * x ( a ) y * * y \" * ( a ) y \" y \" ( [ ( [ ( b b b ) ] b b ) ] [ * y \" y \" * y \" * * x ( b b [ ( a ) ] ) y * * y \""}
+{"sequence": "* * y \" * * x y \" ( a ) y * x ( a ) ( a ) y ( [ * x x * ] b [ ( a ) ] ) \" y \" y \" ( b [ ( a ) ] [ ( a ) ] ) y * * y \" * x y \" * * y \" y \" ( a ) x y \" ( b b b ) * x x * y * ( [ * ( a ) y ( a ) \" * ( a"}
+{"sequence": "( [ ( b [ * x x * ] b ) ] [ * x x * ] b )"}
+{"sequence": "( a )"}
+{"sequence": "* x * * ( a ) x \" ( a ) y * * y \" * y \" ( a ) y ( a ) \" ( [ * x y \" y \" ( a ) y \" * ( a ) x \" y \" y ( [ ( a ) ] b b ) y ( b [ * * y \" * ( [ ( [ ( b b b ) ] [ * x x * ] [ * * * * x * ( a ) x \" * x y \""}
+{"sequence": "* y \" * y \" ( a ) ( a ) y * y \" * ( a ) y * y \" ( a ) * * x ( b b b ) * * y \" y \" * x ( b [ * x x * ] [ * y \" ( [ ( a ) ] b [ * x x * ] ) y * ( [ * x ( a ) y ( a ) \" ( a ) y * * * x ( a ) y * ( a ) y"}
+{"sequence": "( a )"}
+{"sequence": "* * ( a ) y * * x * x ( b [ * ( a ) y * ( a ) y ( [ * y \" ( b [ ( [ ( a ) ] b [ ( b [ * y \" * x x * y \" ( [ * x x * ] [ ( b [ ( a ) ] b ) ] b ) y \" y \" ( a ) ( [ * * x ( [ * x x * ] b [ * * x ( a ) y"}
+{"sequence": "( a )"}
+{"sequence": "* y \" * * ( [ ( a ) ] [ * x ( [ * y \" * x ( b b b ) y * x ( a ) y ( b [ * x ( a ) y \" * x x * ( a ) y * x x * \" y \" ( b b b ) y * ( b [ ( a ) ] [ ( a ) ] ) y * y \" y \" ( b b b ) y ( b b b ) x * \" * x"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( [ * * x ( a ) y * x x * \" y \" * x * ( a ) y * * x y \" * * x x * y \" * x * ( b b [ ( b b [ ( [ ( [ ( b [ ( [ * x y \" * * * * * * * ( a ) y * y \" * x x * y \" * x * x ( a ) y * * x ( a ) x \" ( a ) y ("}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( b b b )"}
+{"sequence": "( [ * ( [ * x * x * x y \" ( [ * x * * y \" y \" y * * y \" * x ( [ ( b b [ * x x * ] ) ] [ * x ( b [ * y \" ( [ * x y \" y \" y * ] [ ( a ) ] [ * y \" * x ( b b b ) y ( a ) \" y \" y * y ( a ) \" ( [ * x * x x"}
+{"sequence": "( a )"}
+{"sequence": "* x ( b [ ( b [ ( a ) ] b ) ] [ * x x * ] ) y ( a ) \" y \" ( a ) y \" ( [ ( a ) ] [ * y \" y \" y x * ] [ * ( a ) y ( a ) \" * * x y \" * ( a ) y \" * * x x * y * ( a ) y * ( a ) y * * ( a ) x \" y \" ( a ) y"}
+{"sequence": "* x * y \" * ( [ * y \" * x ( [ ( a ) ] [ * x x * ] b ) y ( [ ( a ) ] [ * x x * ] [ ( a ) ] ) \" y \" * ( a ) y * y \" ( b b b ) y * x * ( a ) y ( a ) \" ( [ * * x * x y \" * * ( a ) * x * ( a ) y * x * x x"}
+{"sequence": "* ( a ) * ( a ) x \" * x * y \" y \" ( b b b ) y \" * x * x x * y ( [ * * x x * y ( [ * y \" y \" ( [ ( [ * ( a ) y * ( b [ ( a ) ] [ ( a ) ] ) * * y \" ( a ) x \" * x ( a ) y ( a ) \" ( a ) y * * * ( b [ * y"}
+{"sequence": "* ( b b b ) y \" * x x * x \" * ( a ) y * * ( a ) y ( a ) \" ( b [ * x x * ] b ) y * x ( a ) y ( a ) \" ( a ) y ( a ) \" ( [ * x * y \" ( a ) y * * x x * y * * x x * y ( [ ( a ) ] b b ) \" * x y \" ( [ ( a )"}
+{"sequence": "* ( [ ( a ) ] [ * ( [ ( b b b ) ] b [ * y \" * y \" y \" y x * y * ( a ) * x x * y ( [ * ( [ ( b b b ) ] [ * x ( [ * y \" ( [ ( [ ( a ) ] [ * y \" y \" * ( b [ * ( a ) y * * ( a ) y * y \" * * x y \" * * x ("}
+{"sequence": "* x x *"}
+{"sequence": "( b [ ( a ) ] b )"}
+{"sequence": "* y \" ( a ) y ( [ ( a ) ] b b ) \" * x x * x y \" * x x * * ( a ) y * x * ( a ) y * x ( a ) * ( [ ( [ * x * x x * y ( a ) \" * x x * x \" * ( a ) y ( a ) \" * y \" * y \" ( a ) y * * y \" * * x * ( a ) ( a )"}
+{"sequence": "( a )"}
+{"sequence": "* y \" ( a ) y * y \" ( [ ( a ) ] b [ ( a ) ] ) x \" y ( [ ( b [ ( a ) ] [ ( b [ ( a ) ] b ) ] ) ] b [ ( b b [ ( [ ( a ) ] b [ ( a ) ] ) ] ) ] ) y \" * * * ( a ) y ( a ) \" ( a ) y * x x * \" * * y \" ( a )"}
+{"sequence": "( a )"}
+{"sequence": "* * x ( a ) y ( a ) \" y \" ( [ ( a ) ] [ ( a ) ] b ) y ( [ ( a ) ] [ * * * x ( b [ ( a ) ] b ) y ( a ) \" ( a ) x \" ( b b [ * * * ( [ ( a ) ] b b ) * y \" y \" * * y \" y \" ( a ) y ( a ) ( [ * y \" ( a ) y"}
+{"sequence": "* ( a ) y ( [ ( a ) ] [ ( a ) ] b ) \" ( b [ * x ( a ) ( a ) y ( a ) \" ( b b [ ( a ) ] ) y ( a ) \" ( a ) y * ( a ) y ( a ) \" y \" ( b b [ * y \" ( a ) x \" y x * ] ) y ( a ) x * \" y \" ( a ) x * ] b ) ( ["}
+{"sequence": "( [ * x x * ] [ ( [ * y \" y \" * x x * y * x ( [ ( a ) ] b [ * x ( a ) y * x x * \" ( [ * x x * ] [ * x x * ] b ) ( a ) x \" * x y \" ( a ) x \" * x x * x * y ( a ) \" ( [ * x x * ] b b ) y ( a ) \" * x y \""}
+{"sequence": "* x ( a ) y ( a ) \" y \" * ( a ) x \" y \" * y \" ( a ) y ( a ) \" y x * y * x x * ( b b b ) y * x x * \" ( b b b ) * ( a ) y * y \" * * ( a ) ( [ ( a ) ] [ ( [ ( [ ( a ) ] [ * y \" ( [ ( b [ * y \" ( [ ( a )"}
+{"sequence": "* x x *"}
+{"sequence": "( b b b )"}
+{"sequence": "* ( a ) y * * x * * x ( a ) ( [ * x ( b [ * * y \" y \" y x * * x * x * x x * y * x x * \" ( a ) y * x x * \" y * x \" * * ( b b [ ( a ) ] ) ( b [ ( a ) ] [ ( a ) ] ) y * y \" ( a ) y * x * x ( [ ( a ) ] b"}
+{"sequence": "* x * x y \" ( b b [ * * x x * y ( [ ( a ) ] [ ( a ) ] [ ( [ * * x * ( [ * y \" * * y \" * x x * y ( a ) \" y y \" ( a ) * y \" y \" y x * y * * ( [ ( a ) ] b b ) y * * ( [ * x x * ] [ * * x * y \" y \" ( a )"}
+{"sequence": "( [ * x * * x y \" ( a ) x \" y * ( a ) y ( [ * x x * ] b [ ( a ) ] ) \" y \" ( a ) x \" ( a ) y ( a ) \" ( [ * y \" y \" * x * x ( [ ( a ) ] b b ) y ( b [ ( a ) ] b ) \" * y \" ( a ) y ( a ) \" y * * x * x * *"}
+{"sequence": "* ( a ) y ( a ) \" * ( b [ * ( a ) y * y \" * y \" * y \" y \" ( b [ ( a ) ] b ) * * x x * y * y \" y \" * x * x * * ( a ) y * * x x * * x ( a ) y \" * x y \" y \" ( a ) x * x \" * x y \" y \" * ( a ) y * * * * x"}
+{"sequence": "* * ( b [ * ( b b b ) y \" ( a ) x \" y \" ( a ) ( a ) y * y \" * x x * x \" y x * \" y \" y \" ( a ) ( a ) x \" ( [ * x x * ] b [ ( a ) ] ) ( a ) * * * * x x * x \" * ( a ) * * x y \" * ( b [ * ( a ) y ( [ ( a"}
+{"sequence": "* * y \" * x x * y ( a ) \" y y \" * y \" * x ( a ) * * ( a ) * ( a ) * y \" ( [ ( b b b ) ] [ * y \" * ( a ) y * ( a ) x \" y \" y y \" ( b [ * x x * ] [ ( b b [ * ( a ) y ( a ) \" ( a ) * ( a ) * x x * y ( a"}
+{"sequence": "( a )"}
+{"sequence": "( [ ( [ ( [ ( a ) ] [ ( a ) ] b ) ] b [ * x x * ] ) ] b b )"}
+{"sequence": "( a )"}
+{"sequence": "( b b [ * ( b [ ( a ) ] [ * x * x x * y * ( a ) y * x y \" ( a ) ( [ ( a ) ] [ * x ( a ) y * * x * x * * x ( [ ( b b [ ( [ ( [ ( a ) ] [ ( [ * * * ( a ) ( [ ( [ * y \" * x y \" * * ( a ) x \" y \" ( b b b"}
+{"sequence": "( a )"}
+{"sequence": "* y \" ( a ) * * x y \" ( a ) y * ( b b [ ( a ) ] ) * * * ( [ ( b [ * y \" ( a ) y * x x * \" y ( a ) y ( b b [ * ( b [ ( b [ ( a ) ] [ ( a ) ] ) ] b ) y * x x * \" ( a ) * y \" ( a ) x \" ( [ * * y \" y \" ("}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* ( [ ( b b [ * x x * ] ) ] b b ) y ( a ) \" y \" * x x * ( a ) x \" ( [ ( b [ * * x x * y \" y \" * x x * ( a ) y ( b [ ( [ ( b b [ * x y \" y \" y * ] ) ] b b ) ] b ) \" ( a ) x \" ( a ) y * x y \" * x y \" *"}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "( [ * y \" ( a ) y ( [ * ( [ ( a ) ] [ ( a ) ] [ ( a ) ] ) y ( a ) \" ( [ * x ( a ) x \" y \" y * ] [ ( b b b ) ] [ ( a ) ] ) y \" y \" ( a ) y * ( a ) x \" * x y \" y \" * x y \" y \" * ( a ) y ( [ ( b [ ( [ *"}
+{"sequence": "( a )"}
+{"sequence": "* * x ( a ) y ( b b b ) \" ( a ) y ( [ * x * * * y \" ( a ) x \" * x ( b b [ ( b [ ( a ) ] [ * x y \" * * ( a ) y ( a ) \" y \" y y \" * ( a ) * y \" y \" * x y \" ( a ) y ( b [ ( a ) ] b ) \" y * x ( [ ( a ) ]"}
+{"sequence": "( [ ( a ) ] [ * y \" ( b b b ) y ( [ ( a ) ] b [ * x x * ] ) \" ( b [ ( [ ( [ * x x * ] b [ * * x x * x \" y \" y x * ] ) ] b b ) ] [ * y \" * * x x * y * x x * \" ( [ * y \" * * x ( a ) x \" * x x * y ( a )"}
+{"sequence": "( [ * * ( a ) y * ( a ) y ( b b b ) \" * x y \" ( b [ ( a ) ] b ) x \" ( a ) y ( a ) * y ( a ) \" y * y \" y \" * x x * ( a ) y ( a ) \" y \" * y \" y \" ( a ) y * * ( a ) y * x ( a ) y * y \" ( b [ ( a ) ] b )"}
+{"sequence": "( b [ * y \" ( [ * y \" y \" y y \" y \" * x x * y * x ( a ) x \" y \" * x * x * * * x * x x * y * ( a ) y * x x * \" y \" * * x y \" y \" ( b b [ ( a ) ] ) x * x \" * x ( a ) y ( a ) \" * ( [ ( a ) ] b [ * x y \""}
+{"sequence": "* x ( [ * x y \" ( b b [ * y \" * ( a ) y ( a ) \" ( a ) y ( b b [ ( a ) ] ) \" y x * y * ( a ) y * * y \" y \" ( a ) y ( b b b ) y \" ( a ) y \" ( a ) y \" * * ( a ) * x ( b b [ * x y \" * x x * y * x x * \" y"}
+{"sequence": "* x y \" y \" * x ( [ ( b [ * * x y \" ( [ * x x * ] b b ) x \" y * y ( a ) \" * * ( a ) x \" y \" ( a ) x ( a ) y ( a ) \" * y \" y \" y * y \" * * ( a ) y ( a ) \" ( b b [ ( a ) ] ) y \" y \" * x x * x \" ( a ) y"}
+{"sequence": "* x ( a ) ( [ * * x ( a ) y \" * x * ( a ) y \" y \" ( b [ ( a ) ] b ) y * ( b [ * * x x * y * x x * \" ( b b b ) y * x ( b b b ) y ( a ) \" * ( [ * x y \" * x ( a ) ( a ) y * x * * x ( a ) y ( a ) \" * x *"}
+{"sequence": "* x ( a ) x \" * * ( a ) x \" * x * x x * y ( [ ( [ ( b b [ ( [ * x x * ] b b ) ] ) ] b b ) ] b b ) \" ( a ) ( b b b ) * * x ( [ * ( a ) ( a ) y ( b [ * x x * ] [ ( a ) ] ) \" ( a ) y ( a ) \" ( [ ( a ) ]"}
+{"sequence": "( a )"}
+{"sequence": "* x * x y \" y \" y * y * y \" * ( a ) ( [ ( b b b ) ] [ * ( a ) y \" * ( [ * x x * ] [ * * y \" * ( a ) y * * * * * x ( a ) y ( a ) \" y \" * ( b [ ( a ) ] [ * x y \" * y \" ( a ) y ( [ ( b b [ * x * x y \" y"}
+{"sequence": "* y \" y \" * x y \" y \" * * ( a ) * y \" ( a ) * * * x y \" ( a ) ( [ ( a ) ] [ * * * * * x ( b b b ) * x x * x \" y \" ( a ) y * y \" * y \" y \" ( a ) y ( a ) y \" y \" y * y ( [ * y \" ( [ * * y \" * ( a ) * *"}
+{"sequence": "( [ ( a ) ] [ * x ( a ) y ( a ) \" * * x ( [ * ( a ) y ( a ) \" * y \" y \" ( a ) y ( a ) * x x * x \" * y \" ( a ) y * * x y \" y \" * ( b [ * x x * ] b ) y \" y \" ( a ) y ( a ) \" ( [ * * x x * * y \" * x ( a"}
+{"sequence": "( b [ ( a ) ] [ * x ( a ) y * y \" * x x * y * * x x * y * * y \" y \" ( a ) y ( a ) ( a ) y * y \" * ( a ) x \" * x ( [ ( a ) ] [ ( a ) ] b ) y \" y \" * x x * y \" y \" * * x y \" * x * ( a ) y ( a ) \" y \" ("}
+{"sequence": "* ( b b b ) x \" ( a ) y * x y \" ( [ * * x * x y \" * x * * x ( a ) y ( a ) \" y \" ( [ ( a ) ] b b ) y ( a ) * y \" y \" y \" * x * x y \" * * x x * y ( [ * * x x * y ( a ) \" ( a ) y ( a ) \" * * x x * y * x"}
+{"sequence": "( b b b )"}
+{"sequence": "* y \" y \" y ( b b b ) y * y \" ( a ) y ( a ) \" ( b [ * x * ( [ ( a ) ] [ ( [ * x * * x x * y ( a ) \" * y \" y \" ( a ) y ( [ * x ( a ) y ( a ) \" y \" ( b b [ ( a ) ] ) ( a ) x \" y \" y * ] b b ) y \" ( b ["}
+{"sequence": "* x x *"}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* * y \" ( b b b ) y ( a ) \" * y \" * x * y \" * * ( b b [ ( a ) ] ) y * x ( a ) y ( [ * x ( b [ ( b b b ) ] [ * x x * ] ) x \" y \" ( b [ * x * x * x x * x \" ( a ) y * * ( a ) ( [ ( a ) ] b b ) y * y \" *"}
+{"sequence": "* ( a ) y * x ( [ * y \" y \" ( b b b ) y * x ( b b b ) y ( a ) \" y \" ( a ) y ( b b [ ( a ) ] ) * * x x * y ( a ) \" ( a ) y \" y \" ( b b b ) ( a ) y * ( b b [ ( a ) ] ) y ( a ) \" y \" ( a ) x y \" * x * y"}
+{"sequence": "* x y \" y \" * x x * y * x x * *"}
+{"sequence": "* ( a ) ( b [ * x y \" y \" ( a ) ( a ) y * ( [ ( [ ( b b [ ( a ) ] ) ] b b ) ] [ * x x * ] [ ( a ) ] ) y * x * x x * y * * y \" y \" * * y \" * * y \" * x ( [ * * * * ( a ) y * ( a ) y \" * ( [ * * x ( b b"}
+{"sequence": "( [ * ( [ * * * x y \" * * ( a ) y * ( a ) y ( a ) \" ( b b [ * ( [ * x ( b [ ( a ) ] b ) y \" y \" ( a ) y ( [ * x x * ] [ ( a ) ] [ ( a ) ] ) \" * * ( [ * * * x x * y ( a ) \" ( a ) y ( a ) \" * y \" * y \""}
+{"sequence": "* * x x * y ( b [ ( a ) ] [ ( [ * x ( b [ * ( a ) y ( a ) \" * y \" y \" ( b b [ * ( a ) y ( a ) \" y \" ( b [ * ( [ ( a ) ] b b ) y ( [ ( a ) ] b b ) \" * ( a ) x \" y \" y x * x \" ( a ) y ( a ) x * ] b ) y"}
+{"sequence": "* ( a ) * * * ( a ) ( a ) y * x ( a ) y * * ( b [ * * * * x ( [ * x x * ] b b ) x \" ( a ) y \" * x x * y ( a ) \" y \" y * y \" y \" ( a ) y ( a ) \" * ( a ) y * ( a ) * ( a ) y * y \" * ( [ * * * y \" * x x"}
+{"sequence": "* x y \" * x y \" * ( [ ( b b b ) ] b [ * y \" ( a ) y ( b [ * * x ( b b b ) * x * x ( a ) y ( a ) \" y \" y * y ( [ * x ( a ) y * * x y \" y \" y * y \" y \" * ( b b b ) y ( b [ * y \" ( a ) x \" ( [ * ( a ) y"}
+{"sequence": "* x y \" ( b [ * * x ( [ ( b b b ) ] [ ( [ * * * x ( [ ( a ) ] b [ * y \" * x * ( b [ ( a ) ] [ ( b b [ ( a ) ] ) ] ) y * y \" * y \" ( a ) ( a ) ( a ) * * x y \" y \" ( a ) x * y * y \" * x x * y * ( a ) y"}
+{"sequence": "( b [ * x ( b b [ * x y \" y \" ( b [ ( b [ ( [ ( [ ( b [ ( [ ( a ) ] b [ * ( a ) * * x y \" y \" ( a ) y * * x y \" y \" ( b b [ ( a ) ] ) y ( a ) * x \" y \" * x y \" ( b [ * * * * * x * y \" ( a ) y ( a ) \""}
+{"sequence": "* ( [ ( a ) ] b b ) y ( [ * x y \" ( [ * * x y \" * y \" * x y \" * x x * x \" y * * ( a ) y * y \" ( a ) x \" ( a ) x * x * x x * y * * x ( [ * x y \" ( a ) ( a ) y ( a ) \" * x x * y ( b b [ ( a ) ] ) \" * x"}
+{"sequence": "* y \" * * x y \" y \" y * y * y \" y \" ( a ) ( b b b ) y * * * * x x * y * x x * \" ( a ) ( a ) y * x x * \" y \" y \" ( a ) ( [ ( [ * x ( [ ( a ) ] [ * x x * ] b ) y \" * ( a ) y \" * * * * * x ( [ ( [ ( b b"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x y \" ( b b [ ( a ) ] ) y ( [ * x x * ] [ * y \" * x x * y ( a ) \" ( a ) y * x y \" ( b b [ * ( a ) y * x x * \" ( a ) x \" * x x * y * x * y \" ( a ) x \" * y \" y \" ( a ) y ( a ) x * x x * * * ( a ) * x"}
+{"sequence": "* ( a ) x \" * y \" ( [ * ( a ) x \" ( [ ( b [ * y \" ( [ ( a ) ] [ ( a ) ] [ ( a ) ] ) y * * ( a ) ( [ ( b [ * x x * ] b ) ] [ * y \" ( a ) y * x x * \" ( b b b ) y ( b [ * * * ( a ) y * x x * \" * x x * y"}
+{"sequence": "* y \" * x x * x \" ( b [ * y \" ( b [ * ( [ * x ( a ) ( b [ ( a ) ] b ) ( a ) y * ( [ * ( a ) * ( b [ * ( a ) * * y \" * ( a ) x \" * * * * x ( a ) y * y \" y \" y y \" y \" ( b [ * ( a ) y * x x * \" y \" * *"}
+{"sequence": "* ( a ) y * x x * \" ( a ) ( [ ( a ) ] [ ( b b b ) ] [ * x ( b [ * * ( b [ ( a ) ] b ) x \" y \" ( [ ( [ * x x * ] b [ * x y \" ( b b b ) y \" ( a ) y \" * x x * x \" ( b b b ) y ( a ) \" y \" y * ] ) ] [ * *"}
+{"sequence": "( a )"}
+{"sequence": "( [ ( [ ( a ) ] b [ * ( a ) y ( a ) \" y \" * x y \" * x x * y \" * y \" * x y \" * x x * y \" * y \" * y \" ( a ) y \" y \" ( a ) ( a ) y ( a ) \" * * y \" ( a ) ( [ ( a ) ] [ ( [ * x x * ] b b ) ] b ) x \" ( [ ("}
+{"sequence": "* y \" y \" * x x * y * x ( a ) y \" ( a ) y ( a ) \" ( b b [ ( a ) ] ) x \" y \" y * * x x * * ( b b b ) x \" * * x * ( a ) * x x * y ( [ * x * ( [ * y \" * * * x ( [ ( a ) ] [ * y \" ( a ) ( [ * y \" * * x y"}
+{"sequence": "( a )"}
+{"sequence": "* * x y \" y \" * ( [ * ( b [ * x x * ] b ) y ( a ) \" ( [ * x ( a ) x \" ( b b b ) ( a ) y * x y \" ( b [ ( a ) ] [ ( b b b ) ] ) y \" y \" y \" ( a ) y ( [ * x x * ] [ * * * x x * y ( a ) \" ( b b b ) y ( ["}
+{"sequence": "( a )"}
+{"sequence": "* ( b b b ) ( a ) x \" y \" * x x * ( a ) y * x ( a ) y ( b [ ( a ) ] b ) \" * ( a ) y * ( [ * y \" ( a ) ( a ) y * x ( a ) y ( a ) \" ( a ) x \" * x y \" * x ( a ) ( [ * * * * ( a ) y \" * x x * y \" * * * y"}
+{"sequence": "* ( b [ ( [ ( [ ( a ) ] b b ) ] [ * y \" * x ( a ) ( a ) y ( b b [ * x y \" ( [ ( a ) ] [ ( a ) ] b ) y ( a ) \" * x x * y ( a ) * ] ) \" y \" * y \" ( [ ( [ ( [ ( [ * x ( [ ( [ * ( a ) y * y \" y \" * x * *"}
+{"sequence": "* * ( a ) y * x x * \" y \" ( a ) y * y \" ( a ) x \" ( a ) * x x * y ( a ) \" y \" * x * ( b b b ) * y \" ( b [ * x x * ] b ) y ( a ) \" ( a ) y * ( [ * ( [ * * * y \" * x * * y \" * ( a ) y ( a ) \" y \" * x x"}
+{"sequence": "( a )"}
+{"sequence": "( [ * ( a ) y ( a ) \" ( a ) y * x ( a ) y \" y \" * x y \" y \" ( a ) y * x x * * ( a ) y * x y \" * x x * y * x x * \" * * * x y \" y \" y * x \" ( b [ * ( b b b ) ( b b [ * x x * ] ) y * ( b [ * x x * ] [ ("}
+{"sequence": "* ( a ) ( [ ( b b b ) ] b [ * x x * ] ) * x x * y ( a ) \" * x * y \" ( a ) x \" * * y \" ( a ) * ( a ) y ( a ) \" * x * ( [ ( a ) ] [ * x * y \" * x ( a ) x \" * x x * y ( a ) \" y * y * * ( [ * x * * ( a )"}
+{"sequence": "* y \" ( a ) y \" y \" y \" y x *"}
+{"sequence": "* x x *"}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( b b b )"}
+{"sequence": "* x y \" ( a ) y * * x x * y ( a ) \" * y \" ( a ) y * y \" ( a ) * ( b b [ * x * x y \" ( a ) y * y \" ( a ) y ( [ * * ( a ) y ( a ) \" * x * x x * y * * y \" y \" y * x ( a ) y * y \" y \" * * x x * y \" ( a )"}
+{"sequence": "* y \" ( a ) y ( a ) \" ( a ) y ( a ) y \" * y \" y \" ( a ) x y \" ( a ) y * * y \" ( [ * x ( [ ( a ) ] b b ) y * y \" ( a ) x \" * x * x x * ( b b b ) * x x * ( a ) ( a ) y ( [ ( a ) ] b [ ( a ) ] ) \" ( b b"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( [ * y \" * ( a ) x \" ( a ) * ( b b [ ( b b b ) ] ) y * y \" * x y \" y \" ( a ) ( [ ( a ) ] [ * x y \" y \" y * ] [ ( a ) ] ) y * x * ( [ * x ( [ ( b b [ * ( [ ( a ) ] [ * x x * ] b ) y * ( a ) y * x * x"}
+{"sequence": "* * x x * y ( a ) \" y \" ( a ) y \" * x ( a ) y * x y \" y \" * y \" * x y \" ( b b [ * ( a ) y * ( b b [ ( b [ ( a ) ] b ) ] ) y ( a ) \" * ( a ) y * ( a ) * y \" ( b b [ ( a ) ] ) y ( [ ( a ) ] [ * x ( [ ("}
+{"sequence": "* ( a ) x \" * y \" y \" * x x * x x * y \" y \" ( b b [ * ( b b b ) y ( a ) \" * x ( a ) y ( a ) \" ( b [ ( a ) ] b ) y ( a ) \" ( a ) x * * x y \" ( a ) y * x x * \" * x y \" ( b b [ * x y \" * y \" y \" ( a ) y"}
+{"sequence": "* y \" y \" y ( [ * x x * ] [ * x ( b b [ * x ( a ) y ( a ) \" y \" ( a ) y ( a ) * ] ) y ( a ) \" ( a ) y * x x * \" y * ] [ * y \" ( b [ * x x * ] b ) y ( a ) \" * y \" * x y \" y \" ( [ ( b [ * ( a ) ( a ) x"}
+{"sequence": "* * * ( b b [ * * y \" * x x * x \" * x x * y * x * x ( a ) x \" y \" ( a ) y * x * * x y \" * x x * y ( b [ ( a ) ] b ) \" ( a ) y * y \" ( a ) y * y \" y \" * ( a ) ( [ * x x * ] [ * * ( a ) y * x ( b [ ( ["}
+{"sequence": "* x ( a ) x \" ( a ) y * x ( a ) x \" ( a ) y ( a ) \" y * \" ( b [ * x ( a ) x \" y \" y * ] [ * ( [ ( a ) ] b [ ( a ) ] ) y * ( b [ * x x * ] [ ( a ) ] ) x \" ( [ * ( [ ( a ) ] [ * y \" ( a ) y ( a ) \" * x"}
+{"sequence": "( a )"}
+{"sequence": "( b [ ( b b b ) ] [ ( [ * x * * ( [ * x y \" y \" ( a ) y \" ( [ ( a ) ] [ ( b b b ) ] [ * * y \" ( a ) x \" * ( a ) * ( b [ * y \" y \" * x ( a ) ( [ * y \" y \" * x y \" * y \" ( a ) x \" ( a ) y * * x y \" * y"}
+{"sequence": "* x x *"}
+{"sequence": "* ( a ) y * y \" * * * ( a ) y ( a ) \" y \" y * * * * y \" * x ( b b [ * x x * ] ) x \" * x x * y ( a ) \" * x x * y * * x x * y ( a ) \" ( a ) y * ( [ ( a ) ] b [ * * y \" * y \" * x x * x \" y ( a ) x \" * y"}
+{"sequence": "* * y \" * ( b [ ( [ ( b [ * * x x * y * x * x ( a ) y ( a ) \" ( b [ * ( a ) x \" ( b [ * * x x * y ( a ) \" ( a ) x \" y ( a ) y * y \" y \" y ( a ) x \" * ( a ) y * x ( b [ ( a ) ] [ ( a ) ] ) y ( a ) \" ("}
+{"sequence": "( a )"}
+{"sequence": "( b b [ ( a ) ] )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x ( a ) y * ( [ * x ( a ) ( a ) y * ( b [ ( a ) ] [ ( b b b ) ] ) y ( a ) \" ( a ) y * y \" * y \" ( a ) ( a ) y ( a ) \" ( b [ ( a ) ] b ) y * x * x * x x * y \" * ( a ) y ( a ) \" y \" y ( b b b ) y * x"}
+{"sequence": "* x * ( b [ ( b b b ) ] [ * ( b b b ) y * ( a ) y * y \" ( [ ( a ) ] b [ * x x * ] ) x \" ( a ) y * y \" y \" * ( a ) x \" ( b [ ( a ) ] [ ( a ) ] ) * y \" ( a ) y ( a ) \" y ( b [ ( a ) ] [ * * x ( a ) x \""}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( [ * * ( a ) y ( a ) \" * x * * x x * ( b b b ) y \" ( [ ( a ) ] [ * y \" ( b [ * x x * ] [ ( a ) ] ) y * ( a ) y * y \" ( [ ( a ) ] b [ ( b b b ) ] ) ( b b [ ( a ) ] ) x \" y \" ( a ) y * y \" ( b [ * x x"}
+{"sequence": "( a )"}
+{"sequence": "( [ * x x * ] [ * y \" * ( a ) y * * y \" ( b b b ) y ( a ) \" ( a ) y * ( a ) y \" y \" ( a ) x \" * ( [ * * ( a ) y ( [ ( a ) ] b b ) \" ( a ) y ( a ) \" y * * x x * y ( a ) \" y \" ( a ) x y \" ( a ) y ( [ ("}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) y * ( [ ( b [ ( [ ( [ ( b [ * * x x * x \" * ( b b b ) x \" * * ( b b [ * x x * ] ) y \" ( b [ ( b [ ( [ * ( a ) y ( [ ( a ) ] [ * y \" ( [ ( a ) ] [ ( [ ( a ) ] b [ ( a ) ] ) ] b ) y * y \" * * x"}
+{"sequence": "( a )"}
+{"sequence": "* x y \" * ( b b [ * x * x x * y * x * x * x x * y \" * ( a ) ( a ) x \" y \" * x ( a ) x \" y \" ( [ * x x * ] [ * y \" y \" * x ( b b b ) y * ( a ) y * y \" * ( a ) x \" ( a ) y ( b [ ( b [ ( a ) ] b ) ] b )"}
+{"sequence": "* x x *"}
+{"sequence": "* x * x x * y * * x x * y ( a ) \" ( b b b ) y * x * x ( [ ( b [ ( b b [ ( [ * ( [ ( a ) ] [ ( a ) ] [ * ( [ ( b [ * y \" * y \" y \" * y \" * * x ( a ) y * ( b [ * * * ( a ) * * * ( a ) y ( [ ( a ) ] b b"}
+{"sequence": "( a )"}
+{"sequence": "* * y \" * x ( a ) y ( a ) \" * x * * x x * y * x ( b b b ) * * ( a ) y ( [ ( a ) ] b [ * y \" ( [ ( a ) ] [ * * ( b b b ) y \" ( a ) y * x y \" * x x * y ( a ) \" y * \" ( a ) y * * x * * x x * y ( a ) \" *"}
+{"sequence": "* * x x * y * ( a ) y * * y \" y \" y * x ( a ) y ( a ) \" y \" * ( b [ * * ( a ) x \" * x * x y \" y \" ( a ) x * y * * * * x x * x \" ( a ) y * y \" * x ( a ) y * x * x * * * ( b b b ) ( a ) x \" * y \" ( b ["}
+{"sequence": "* ( a ) y ( a ) \" ( a ) y \" * ( b b b ) y ( a ) \" y \" ( b b [ * * * * x x * y \" * y \" * * x y \" y \" ( a ) y * x x * * y * ( a ) y * * x ( a ) ( a ) y ( a ) \" ( a ) ( a ) y * x x * \" y \" y \" y \" y \" y"}
+{"sequence": "* * x ( [ * * y \" * y \" ( a ) y * y \" ( a ) y * x x * \" ( b b b ) y ( [ ( a ) ] [ * x ( a ) y \" * * * x * * * * x x * y * x y \" y \" y * \" ( a ) y * x ( a ) y * y \" ( [ ( [ * x * y \" * ( a ) y ( a ) \""}
+{"sequence": "( [ ( a ) ] [ * x x * ] [ ( a ) ] )"}
+{"sequence": "* x * x x * y ( [ * y \" y \" * y \" y \" * x y \" ( a ) y ( b [ * x x * ] [ ( b b [ * y \" ( a ) x \" ( b b [ ( a ) ] ) y * * * x ( a ) y ( a ) \" ( b b [ ( [ * x * x ( b b [ * ( a ) y * y \" * * x x * y ( ["}
+{"sequence": "* y \" ( a ) x \" y ( a ) ( [ * x * x ( a ) ( a ) y ( [ * x y \" ( b [ ( b b b ) ] b ) y ( b b [ ( a ) ] ) \" ( a ) y ( a ) * ] b [ ( b b [ ( [ * y \" * x y \" * * x x * x \" * * * * x y \" * y \" y \" ( [ ( a"}
+{"sequence": "* * x x * y * * * ( b b [ ( b b b ) ] ) y \" ( a ) y ( a ) \" * x x * * * x x * ( [ ( a ) ] b [ ( a ) ] ) y * ( a ) * ( b [ * y \" ( a ) * x x * y * x * x ( a ) y * x * y \" * * x x * y * x x * \" * x x *"}
+{"sequence": "* * ( [ ( a ) ] [ ( a ) ] b ) x \" * y \" ( a ) * x y \" y \" y * y ( a ) \" ( [ ( a ) ] [ * x y \" * ( a ) x \" ( a ) y * x * * y \" y \" ( a ) y ( a ) * x * * x x * y ( [ ( b [ ( a ) ] b ) ] b [ ( a ) ] ) \""}
+{"sequence": "* x * y \" * x * x * x x * ( a ) * x y \" ( [ * * x ( a ) y ( a ) \" * ( b b [ ( [ * ( b [ ( b b [ * y \" ( b b b ) y ( a ) \" ( a ) y ( [ * ( a ) y ( a ) \" y \" ( [ * * x y \" y \" * x y \" y \" ( [ ( a ) ] ["}
+{"sequence": "* y \" * ( b b b ) ( a ) y ( [ ( a ) ] b b ) \" y \" * x x * y * ( [ ( a ) ] [ * y \" ( b [ * * * * ( b b b ) y * ( a ) y * * ( [ * * * ( a ) y ( b b b ) \" * x x * y ( a ) \" * x x * y \" ( a ) y ( [ ( a )"}
+{"sequence": "* * * y \" * x * * x x * y ( a ) \" * ( a ) y ( [ ( a ) ] b [ ( a ) ] ) \" * x x * y ( a ) \" * x ( [ ( [ * * x x * y ( a ) \" ( b b [ ( a ) ] ) y * x ( a ) ( b [ ( b [ * y \" ( a ) y \" ( a ) y * ( [ * y \""}
+{"sequence": "* x ( [ * x ( [ * x x * ] [ * x x * ] [ ( a ) ] ) y \" y \" y \" * * y \" * * x ( a ) y ( a ) \" * x x * y * * x * x ( a ) y ( a ) \" * x ( [ ( [ ( b b b ) ] b [ * * x x * y \" * y \" ( a ) y * y \" * x y \" ("}
+{"sequence": "( a )"}
+{"sequence": "( [ * * x * y \" y \" ( a ) x * * ( b [ ( a ) ] [ ( b [ ( a ) ] b ) ] ) y \" y \" ( a ) y * x * x x * y * x y \" * x x * y * y \" ( a ) x \" y ( [ ( a ) ] b b ) y ( b [ ( [ * ( b [ ( b [ * x ( b b [ ( b [ *"}
+{"sequence": "( a )"}
+{"sequence": "* ( a ) * ( a ) y * ( [ * y \" ( b [ * ( [ ( a ) ] b b ) y ( a ) \" ( [ ( b b b ) ] b [ ( a ) ] ) y * x * x y \" ( b [ ( b b b ) ] b ) x \" ( a ) x * y * ( a ) y ( a ) \" y \" * x x * y * * x x * y \" * x x"}
+{"sequence": "( a )"}
+{"sequence": "* x * x * ( a ) y ( a ) \" y \" * x x * y * y \" y \" * x x * y ( a ) x * y \" ( [ * * ( a ) y * x ( a ) x \" * x * x ( a ) y * ( a ) * * x * x x * y * x * * x x * y * * y \" * x y \" ( b b [ ( [ * y \" ( b ["}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* y \" y \" * * x * ( b [ * y \" ( b b [ * x x * ] ) y ( a ) \" y * y \" y \" * * ( a ) x \" * ( a ) ( a ) y \" * x ( a ) * y \" * y \" y \" y ( a ) y * * * ( b b [ ( [ * x ( a ) x \" * x y \" ( a ) * ( a ) y * y"}
+{"sequence": "* * x ( a ) ( a ) y * x ( b b [ * * x x * y \" y \" ( a ) y * x x * \" * ( a ) ( b [ ( a ) ] [ * x * * ( a ) y ( [ ( a ) ] b b ) \" y \" y * x x * y * x * x x * x \" * y \" y \" ( [ * * y \" * * x ( b [ * ( a"}
+{"sequence": "* x x *"}
+{"sequence": "* x y \" y \" * * ( a ) y * y \" ( a ) y ( [ ( b [ * * ( [ ( a ) ] b b ) ( [ * x ( b [ ( a ) ] [ * * y \" y \" y * * x * y \" * x y \" y \" * ( b b b ) y * x x * \" * * y \" * x ( a ) * ( a ) x \" * x y \" y \" *"}
+{"sequence": "( b [ * x x * ] b )"}
+{"sequence": "* ( b [ ( a ) ] b ) y ( a ) \" * x * x * * ( a ) y ( a ) \" * * x x * ( a ) y * x x * \" y \" y \" y \" y x * * x x * y * * * * y \" y \" y ( [ * x ( a ) y * x y \" y \" * y \" * ( a ) y * x y \" ( [ ( a ) ] [ ("}
+{"sequence": "* * x x * x \" * x * ( a ) y ( a ) \" y \" * x x * x * * x x * y ( a ) \" ( b b b ) y \" ( [ * * * ( a ) y ( a ) \" ( [ ( b b b ) ] b [ ( a ) ] ) y * x y \" ( [ ( [ * ( a ) x \" * * y \" ( b [ ( [ ( a ) ] [ *"}
+{"sequence": "( [ * ( a ) y ( b [ * ( a ) y ( a ) \" * * y \" ( a ) y * y \" * ( a ) y ( b [ ( a ) ] b ) \" ( b [ ( a ) ] b ) x \" * ( a ) y \" y \" ( [ ( b b [ ( b b [ * x * ( a ) y * y \" * x ( b [ * x x * ] b ) y ( a )"}
+{"sequence": "* * x x * ( a ) y * x y \" y \" ( a ) y * x x * * \" ( b b b ) y * * ( a ) x \" * x x * y * x * ( a ) y \" * ( b [ * x x * ] b ) y * ( a ) ( b b [ * y \" ( a ) y * y \" ( a ) x \" ( [ * x x * ] b b ) y ( a )"}
+{"sequence": "( [ ( [ ( b b b ) ] [ * ( a ) x \" ( [ ( a ) ] [ ( a ) ] [ * y \" ( a ) * y \" ( b [ ( [ ( b b b ) ] [ * x * y \" y \" * x x * x ( a ) x \" * y \" ( a ) x \" * * x ( a ) y ( a ) \" y \" y * y ( a ) \" * x x * y"}
+{"sequence": "* y \" * x ( a ) y ( a ) \" y \" * * x * x ( a ) y \" * * * * * y \" ( a ) x \" * x y \" ( a ) y * x * x x * * ( a ) y * * * ( a ) y * x x * \" * ( b b b ) y \" ( a ) x \" ( a ) y ( a ) \" ( [ ( a ) ] [ ( b b b"}
+{"sequence": "* x * ( b b [ * x ( a ) y ( a ) \" ( a ) x \" ( b b b ) x * ] ) * y \" * x x * y ( a ) \" y x * y * x y \" y \" ( [ ( a ) ] b [ ( a ) ] ) y \" ( [ ( a ) ] [ ( a ) ] b ) y \" * x x * y ( a ) \" * ( a ) x \" ( b"}
+{"sequence": "( b [ * ( a ) y ( a ) \" * x x * y * y \" ( a ) x \" y x * \" * ( b b [ * x ( a ) ( a ) y * y \" * y \" ( a ) x \" * * x x * y * y \" ( b [ ( [ ( [ * x y \" * y \" * * * ( a ) y ( b b [ * ( a ) x \" * ( [ ( [ ("}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "( [ ( b b [ ( a ) ] ) ] b [ * ( a ) y \" ( a ) y ( a ) \" * * ( a ) y * x y \" * * x x * y * ( [ * y \" * y \" * ( a ) y ( [ ( a ) ] [ ( a ) ] b ) \" * x x * y * x x * \" ( b b [ * * y \" ( a ) x \" * ( [ * *"}
+{"sequence": "* ( a ) y \" ( a ) x \" y \" ( [ * x x * ] [ ( a ) ] b ) y ( b [ * ( b b [ ( [ * x ( [ * x x * ] b b ) x \" * ( a ) y ( b [ ( b b [ ( [ ( a ) ] [ ( a ) ] b ) ] ) ] b ) \" y \" y ( a ) y ( b [ ( [ * ( a ) y"}
+{"sequence": "* ( b b b ) y ( b [ ( a ) ] b ) \" y \" * x x * y ( [ ( a ) ] b b ) y \" y \" ( [ ( a ) ] [ * y \" y \" * x * y \" * * ( a ) * y \" * ( a ) y ( [ * y \" y \" * ( a ) x \" y \" y * ( [ * y \" * * x x * y ( [ * ( a"}
+{"sequence": "( a )"}
+{"sequence": "( b [ ( a ) ] [ ( a ) ] )"}
+{"sequence": "( b [ * y \" * * x y \" ( a ) x \" y * x \" * x * y \" y \" * ( [ * * y \" y \" y x * y * x ( a ) x \" y \" ( [ ( a ) ] [ * ( a ) y ( a ) \" y \" y y \" ( [ ( a ) ] b [ * x ( a ) x \" * ( [ ( [ * x x * ] b [ * x x"}
+{"sequence": "* ( a ) ( a ) y ( a ) \" * * * x ( a ) y \" ( a ) y ( [ * x ( a ) y * ( [ * x y \" * x x * x \" * ( a ) y * * * y \" y \" y x * * * ( b b b ) y ( [ * x * ( a ) x \" * y \" y \" y y \" * * x * x y \" y \" ( a ) x"}
+{"sequence": "( a )"}
+{"sequence": "* y \" y \" ( a ) * x x * * ( b b b ) y * ( a ) y * ( a ) ( a ) ( [ ( a ) ] b [ ( [ ( a ) ] [ * x y \" * x x * y ( a ) \" ( a ) y ( a ) * ] b ) ] ) ( a ) y ( a ) \" ( a ) * ( b b b ) y * y \" * ( [ * x x *"}
+{"sequence": "* y \" y \" y x *"}
+{"sequence": "* y \" ( a ) y * y \" ( a ) y ( [ ( b [ ( a ) ] [ * x * x x * y ( a ) \" * * x y \" * * * ( a ) y ( a ) \" * * y \" y \" ( a ) * y \" y \" ( a ) y * x y \" * * x * x ( b [ * x ( a ) * y \" y \" y x * y ( [ ( a )"}
+{"sequence": "* ( a ) * y \" y \" ( a ) x y \" y \" ( a ) * y \" * * x x * y ( a ) \" ( b b [ ( a ) ] ) y \" ( b b b ) y * ( a ) y * x * ( [ * ( a ) y ( b b b ) \" ( a ) ( a ) ( a ) y * x x * \" ( a ) y * * x x * y ( a ) \""}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "* y \" y \" ( a ) * x ( a ) y ( a ) \" y \" * * x x * y * * y \" y \" ( a ) x x * * x x * ( a ) y * ( [ * x y \" ( [ ( a ) ] b b ) x \" y * ] [ ( a ) ] [ * y \" * y \" ( a ) ( b [ * * * x ( [ ( a ) ] [ ( b [ *"}
+{"sequence": "* y \" y \" * * ( [ * * * * x ( a ) ( a ) y * x x * \" * ( [ * y \" * * x x * y ( a ) \" * ( a ) y \" ( a ) * * ( a ) y * x * y \" ( a ) y * * ( a ) y ( a ) \" y \" * * * ( [ ( a ) ] b [ * x x * ] ) y * ( [ ("}
+{"sequence": "* y \" ( b [ ( a ) ] [ * y \" y \" y x * ] ) y * x ( a ) y * x * x x * y \" * x y \" * ( a ) y ( a ) \" * ( [ ( b b [ ( [ * x x * ] b [ * x x * ] ) ] ) ] b b ) y \" * x x * y ( [ * ( a ) y * x x * \" * x * ("}
+{"sequence": "* x y \" * x * ( a ) ( [ * ( b [ * * x y \" ( [ ( a ) ] b b ) y * x ( [ ( [ ( a ) ] b b ) ] b [ * ( [ ( [ ( a ) ] [ * x x * ] b ) ] [ ( b b b ) ] [ ( b [ * ( a ) y * * x ( a ) y \" y \" ( a ) y ( a ) \" ("}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "( a )"}
+{"sequence": "( a )"}
+{"sequence": "* x x *"}
+{"sequence": "* x ( a ) * y \" ( a ) * x y \" * * ( a ) y ( a ) \" * ( a ) x \" ( a ) y \" ( a ) ( a ) y \" ( b b [ * x x * ] ) ( b [ ( a ) ] [ * x x * ] ) y * ( a ) ( b [ ( b b b ) ] b ) y * ( a ) y \" y \" * ( a ) x \" y"}
+{"sequence": "( [ * * ( a ) y * x y \" ( a ) y ( a ) \" * x x * * x ( [ ( [ ( a ) ] b b ) ] b [ ( b b b ) ] ) * * * x x * y ( [ * ( a ) y ( a ) \" ( a ) y \" ( [ ( b [ * ( [ * x x * ] b [ * y \" * y \" y \" ( a ) y * x x"}
+{"sequence": "* * x y \" * x * y \" y \" ( a ) ( [ * ( b [ ( a ) ] b ) * x x * y * y \" ( a ) * ( a ) x \" y \" y * x ( a ) x \" ( a ) y ( [ * ( a ) y ( a ) \" * * x * * ( a ) * ( a ) y ( [ ( a ) ] b [ * ( a ) ( [ ( a ) ]"}
+{"sequence": "* x y \" * y \" * x y \" ( a ) x \" ( a ) y ( a ) * y * ( b b b ) y ( b [ * * * ( a ) y \" * x x * y * x x * \" * y \" * ( a ) ( a ) x \" y \" * ( a ) y * y \" ( a ) y * ( a ) y \" ( [ ( a ) ] [ ( a ) ] [ ( [ ("}
+{"sequence": "( [ ( [ ( a ) ] b b ) ] b [ ( b b b ) ] )"}
+{"sequence": "* x * x x * x \" ( a ) y * ( a ) x \" * x x * y * * x y \" ( b [ ( a ) ] [ * x * y \" * ( a ) y ( [ * ( b [ * ( [ ( b [ ( a ) ] b ) ] b [ ( a ) ] ) y ( a ) \" y \" ( a ) y * x * ( a ) y ( a ) \" ( a ) y ( a"}
+{"sequence": "( a )"}
+{"sequence": "( [ ( a ) ] [ * x x * ] b )"}
