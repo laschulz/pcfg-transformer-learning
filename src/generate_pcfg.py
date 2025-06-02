@@ -61,10 +61,10 @@ GRAMMARS = {
     # G7  ─ NestedStructures   (double-quote symbol included)
     "NestedStructures": {
         "S": [(["(", "A", ")"], .5), (["*", "X", "X", "*"], .5)], #change this
-        "A": [(["B", "B", "B"], .4), (["a"], .6)],
-        "B": [(["[", "S", "]"], .5), (["b"], .5)],
-        "X": [(["Y", '"', "Y", '"', "Y"], .6), (["x"], .4)],
-        "Y": [(["S", "y", "S"], .4), (["S", "X"], .3), (["y"], .3)],
+        "A": [(["B", "B"], .4), (["a"], .6)],
+        "B": [(["[", "S", "]"], .3), (["b"], .7)],
+        "X": [(["Y", '"', "Y"], .6), (["x"], .4)],
+        "Y": [(["S", "y", "S"], .15), (["S", "X"], .15), (["y"], .7)],
     },
 }
 
@@ -99,18 +99,63 @@ def save_dataset(seqs, out_dir):
         for s in seqs:
             f.write(json.dumps({"sequence": " ".join(s)}) + "\n")
 
-def sample(grammar_name,max_len=MAX_SEQUENCE_LENGTH):
-    tbl=GRAMMARS[grammar_name]; seq,stack=[],['S']
-    while True:
-        while stack and len(seq)<max_len:
-            sym=stack.pop()
+def sample(grammar_name, max_len=MAX_SEQUENCE_LENGTH):
+    tbl = GRAMMARS[grammar_name]
+    seq = []
+    stack = ['S']
+
+    # 1) Expand normally until you either empty the stack or hit max_len
+    while stack and len(seq) < max_len:
+        sym = stack.pop()
+        if sym in tbl:
+            prods, probs = zip(*tbl[sym])
+            # Random sampling as long as we're safely below max_len
+            chosen_prod = random.choices(prods, probs)[0]
+            stack.extend(reversed(chosen_prod))
+        else:
+            seq.append(sym)
+
+    # 2) If we've hit max_len but stack still has non-terminals, do a greedy "force‐finish"
+    if len(seq) >= max_len and stack:
+        # We'll peel off whatever is left on the stack,
+        # always choosing the highest‐prob rule for each non-terminal,
+        # preferably one that yields only terminals when possible.
+        forced = []
+        while stack:
+            sym = stack.pop()
             if sym in tbl:
-                prods,probs=zip(*tbl[sym])
-                stack.extend(reversed(random.choices(prods,probs)[0]))
+                prods, probs = zip(*tbl[sym])
+
+                # First check if there are productions that are purely terminals
+                terminal_prods = []
+                term_probs = []
+                for p, p_prob in zip(prods, probs):
+                    if all(symbol not in tbl for symbol in p):
+                        terminal_prods.append(p)
+                        term_probs.append(p_prob)
+
+                if terminal_prods:
+                    # pick the terminal-only production of highest probability
+                    idx = term_probs.index(max(term_probs))
+                    chosen_prod = terminal_prods[idx]
+                else:
+                    # otherwise, just pick the single production with highest probability
+                    idx = probs.index(max(probs))
+                    chosen_prod = prods[idx]
+
+                # Now push that chosen production onto the forced list (terminals or recurisve)
+                for s in reversed(chosen_prod):
+                    forced.append(s)
             else:
-                seq.append(sym)
-        if not stack and len(seq)<=max_len:
-            return seq
+                forced.append(sym)
+
+        # Finally, append as many forced terminals as you can up to max_len
+        for s in forced:
+            if s not in tbl and len(seq) < max_len:
+                seq.append(s)
+            # if it's still a non-terminal (should be rare after greedy), skip it
+    return seq
+
 
 def sample_many(grammar_name,n,max_len=MAX_SEQUENCE_LENGTH):
     return [sample(grammar_name,max_len) for _ in range(n)]
@@ -193,7 +238,6 @@ def main():
     sequences = sample_many(args.grammar, args.dataset_size, args.max_len)
     test_sequences = sample_many(args.grammar, 100, args.max_len)
     str_sequences = [" ".join(seq) for seq in sequences]
-    str_test_sequences = [" ".join(seq) for seq in test_sequences]
 
     # 2) save dataset
     out_dir = f"data/{args.grammar}/{args.grammar}_{args.dataset_size}"

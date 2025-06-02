@@ -297,7 +297,7 @@ class GPT(nn.Module):
             self.eval()
             val_losses = []
             with torch.no_grad():
-                for _ in range(20):
+                for _ in range(40):
                     X_val, Y_val = get_batch(val_data)
                     _, val_loss = self(X_val, Y_val)
                     val_losses.append(val_loss.item())
@@ -305,17 +305,17 @@ class GPT(nn.Module):
             logger.info(f"[Epoch {epoch+continue_from}] Validation Loss: {avg_val_loss:.4f}")
 
             ckpt_path = os.path.join(data_dir, dataset, config)
-            if avg_val_loss < best_val_loss:
-                best_val_loss = avg_val_loss
-                epochs_no_improve = 0
-                best_path = os.path.join(ckpt_path, 'best.pt')
-                os.makedirs(os.path.dirname(best_path), exist_ok=True)
-                torch.save(self.state_dict(), best_path)
-            else:
-                epochs_no_improve += 1
-                if epochs_no_improve >= early_stopping:
-                    logger.info(f"Early stopping triggered at epoch {epoch+continue_from}")
-                    break
+            # if avg_val_loss < best_val_loss:
+            #     best_val_loss = avg_val_loss
+            #     epochs_no_improve = 0
+            #     best_path = os.path.join(ckpt_path, 'best.pt')
+            #     os.makedirs(os.path.dirname(best_path), exist_ok=True)
+            #     torch.save(self.state_dict(), best_path)
+            # else:
+            #     epochs_no_improve += 1
+            #     if epochs_no_improve >= early_stopping:
+            #         logger.info(f"Early stopping triggered at epoch {epoch+continue_from}")
+            #         break
 
             if epoch % checkpoint_every == 0:
                 ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch + continue_from}.pt')

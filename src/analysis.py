@@ -86,11 +86,16 @@ def analyze(pcfgs, dataset_size, model_config):
     seed = 42
     torch.manual_seed(seed)
 
+    #Load existing results if file exists
+    results_path = os.path.join("../results", "results_log.json")
+    if os.path.exists(results_path):
+        with open(results_path, 'r') as f:
+            results_log = json.load(f)
+
     for pcfg in pcfgs:
-        main_path = os.path.join('../data', pcfg, pcfg + "_" + dataset_size)
+        main_path = os.path.join('../data', pcfg, f"{pcfg}_{dataset_size}")
         with open(f"{main_path}/train.jsonl", 'r') as f:
             training_sequences = [json.loads(line)["sequence"] for line in f]
-
         with open(f"{main_path}/test.jsonl", 'r') as f:
             test_sequences = [json.loads(line)["sequence"] for line in f]
 
@@ -101,27 +106,34 @@ def analyze(pcfgs, dataset_size, model_config):
         )
 
         checkpoints_dir = os.path.join(main_path, model_config.name)
-        results_log[pcfg] = {}
+        if pcfg not in results_log:
+            results_log[pcfg] = {}
 
         for ckpt in sorted(os.listdir(checkpoints_dir)):
-            if ckpt.endswith(".pt"):
-                model.load_state_dict(torch.load(os.path.join(checkpoints_dir, ckpt), map_location=device))
-                generated_sequences, accuracy, train_overlap, res = evaluate_generated_sequences(
-                    model,
-                    tokenizer,
-                    training_sequences,
-                    pcfg,
-                    test_sequences,
-                    device,
-                    num_samples=50,
-                    max_length=256
-                )
-                results_log[pcfg][ckpt] = {
-                    "generated_sequences": generated_sequences,
-                    "accuracy": accuracy,
-                    "train_overlap": train_overlap,
-                    "res": res
-                }
+            if not ckpt.endswith(".pt") or ckpt in results_log[pcfg]:
+                continue  # Skip already analyzed checkpoints
+
+            print(f"[INFO] Analyzing {ckpt} for {pcfg}...")
+
+            model.load_state_dict(
+                torch.load(os.path.join(checkpoints_dir, ckpt), map_location=device)
+            )
+            generated_sequences, accuracy, train_overlap, res = evaluate_generated_sequences(
+                model,
+                tokenizer,
+                training_sequences,
+                pcfg,
+                test_sequences,
+                device,
+                num_samples=50,
+                max_length=256
+            )
+            results_log[pcfg][ckpt] = {
+                "generated_sequences": generated_sequences,
+                "accuracy": accuracy,
+                "train_overlap": train_overlap,
+                "res": res
+            }
     
     results_path = os.path.join("../results", "results_log.json")
 
@@ -148,7 +160,7 @@ def argument_parser():
     parser.add_argument("--pcfgs", nargs='+', help="List of PCFG names to analyze.")
     parser.add_argument("--dataset_size", type=str, default='1000', help="Size of the dataset to analyze.")
     parser.add_argument("--model", type=str, choices=["TwoLayer", "FourLayer", "SixLayer", "GPT"], default="SixLayer", help="Model configuration to use.")
-    parser.add_argument("--load_data", type=bool, default=True, help="Whether to load existing data or generate new sequences.")
+    parser.add_argument('--load_data', action='store_true')  # default is False
     return parser.parse_args()
 
 def main():
@@ -160,3 +172,6 @@ def main():
         plot_results(results_log, model_config.name)
     else:
         analyze(args.pcfgs, args.dataset_size, model_config)
+
+if __name__ == "__main__":
+    main()
