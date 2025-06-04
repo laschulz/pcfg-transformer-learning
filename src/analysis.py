@@ -78,6 +78,37 @@ def plot_avg_length(results_log, model_name):
     plt.show()
     plt.close()
 
+def plot_kl_divergence(results_log, model_name):
+    for pcfg_name, ckpt_dict in results_log.items():
+        epoch_kl = []
+        for ckpt_file, data in ckpt_dict.items():
+            # parse epoch from filename, e.g. "checkpoint_10.pt" → 10
+            try:
+                epoch = int(os.path.splitext(ckpt_file)[0].split("_")[-1])
+            except ValueError:
+                continue
+
+            kl_divergence = data.get("kl_divergence", 0.0)
+            epoch_kl.append((epoch, kl_divergence))
+
+        # sort by epoch
+        epoch_kl.sort(key=lambda x: x[0])
+        epochs, kl_values = zip(*epoch_kl)
+
+        # plot
+        plt.plot(epochs, kl_values, marker='o', label=pcfg_name)
+
+    plt.xlabel("Epoch")
+    plt.ylabel("KL Divergence")
+    plt.title(f"KL Divergence over Epochs ({model_name})")
+    plt.grid(True)
+    plt.legend(title="Grammar")
+    plt.tight_layout()
+
+    plt.savefig(f"../results/kl_divergence_plot_{model_name}.png")
+    plt.show()
+    plt.close()
+
 def analyze(pcfgs, dataset_size, model_config):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     results_log = {}
@@ -97,7 +128,7 @@ def analyze(pcfgs, dataset_size, model_config):
         with open(f"{main_path}/train.jsonl", 'r') as f:
             training_sequences = [json.loads(line)["sequence"] for line in f]
         with open(f"{main_path}/test.jsonl", 'r') as f:
-            test_sequences = [json.loads(line)["sequence"] for line in f]
+            test_sequences = [(json.loads(line)["sequence"], json.loads(line)["real_log_prob"]) for line in f]
 
         tokenizer = PreTrainedTokenizerFast(
             tokenizer_file=f"{main_path}/tokenizer.json",
@@ -126,12 +157,16 @@ def analyze(pcfgs, dataset_size, model_config):
                 test_sequences,
                 device,
                 num_samples=50,
-                max_length=256
+                max_length=100
             )
+
+            kl_divergence = np.sum([r['abs_logprob_diff'] for r in res])
+
             results_log[pcfg][ckpt] = {
                 "generated_sequences": generated_sequences,
                 "accuracy": accuracy,
                 "train_overlap": train_overlap,
+                "kl_divergence": kl_divergence,
                 "res": res
             }
     
@@ -153,6 +188,7 @@ def analyze(pcfgs, dataset_size, model_config):
 
     plot_results(results_log, model_config.name)
     plot_avg_length(results_log, model_config.name)
+    plot_kl_divergence(results_log, model_config.name)
 
 
 def argument_parser():
