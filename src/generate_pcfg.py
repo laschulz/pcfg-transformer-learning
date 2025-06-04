@@ -52,9 +52,9 @@ GRAMMARS = {
         "E": [(["E", "+", "T"], .25), (["T"], .75)],
         "T": [(["T", "*", "F"], .25), (["F"], .75)],
         "F": [
-            (["(", "E", ")"], .3),
-            (["val"], .4),
-            (["if", "C", "then", "F", "else", "F"], .3)],
+            (["(", "E", ")"], .1),
+            (["val"], .8),
+            (["if", "C", "then", "F", "else", "F"], .1)],
         "C": [(["cond"], .5), (["not", "C"], .25), (["C", "and", "C"], .25)],
     },
 
@@ -63,7 +63,7 @@ GRAMMARS = {
         "S": [(["(", "A", ")"], .5), (["*", "X", "X", "*"], .5)], #change this
         "A": [(["B", "B"], .4), (["a"], .6)],
         "B": [(["[", "S", "]"], .3), (["b"], .7)],
-        "X": [(["Y", '"', "Y"], .6), (["x"], .4)],
+        "X": [(["Y", '"', "Y"], .3), (["x"], .7)],
         "Y": [(["S", "y", "S"], .15), (["S", "X"], .15), (["y"], .7)],
     },
 }
@@ -123,18 +123,16 @@ def validate(tokenizer, sequence, grammar_name):
     tokens = sequence.split() if isinstance(sequence, str) else list(sequence)
     tokens = [tok for tok in tokens if tok not in {"<|eos|>", "<|bos|>"}]
 
+    encoded_ids = tokenizer.encode(' '.join(tokens), add_special_tokens=False)
+    if len(encoded_ids) > 126:
+        return False
+
     try:
         is_valid = any(PARSERS[grammar_name].parse(tokens))
+        return is_valid
     except ValueError as err:          # token not covered by the grammar
         print(f"[VALIDATION ERROR - {grammar_name}] {tokens}\n{err}\n")
         return False
-
-    encoded_ids = tokenizer.encode(' '.join(tokens), add_special_tokens=False)
-
-    if len(encoded_ids) > 126:
-        return False
-    
-    return is_valid
 
 def save_dataset(test_pairs, out_dir):
     os.makedirs(out_dir, exist_ok=True)
@@ -145,64 +143,41 @@ def save_dataset(test_pairs, out_dir):
                 "real_log_prob": log_prob
             }) + "\n")
 
-# def sample(grammar_name, max_len=MAX_SEQUENCE_LENGTH):
-#     tbl = GRAMMARS[grammar_name]
-#     seq = []
-#     stack = ['S']
-#     log_prob = 0.0
 
-#     # 1) Expand normally until you either empty the stack or hit max_len
-#     while stack and len(seq) < max_len:
-#         sym = stack.pop()
-#         if sym in tbl:
-#             prods, probs = zip(*tbl[sym])
-#             # Random sampling as long as we're safely below max_len
-#             chosen_prod = random.choices(prods, probs)[0]
-#             stack.extend(reversed(chosen_prod))
-#             log_prob += np.log(probs[prods.index(chosen_prod)])
-#         else:
-#             seq.append(sym)
-
-#     # 2) Greedy “force‐finish” for any remaining non‐terminals
-#     #    Continue until stack is empty, always picking the highest‐prob terminal‐producing
-#     #    rule if possible; otherwise highest‐prob overall. Append terminals immediately.
-#     while stack:
-#         sym = stack.pop()
-#         if sym in tbl:
-#             prods, probs = zip(*tbl[sym])
-
-#             # Look for productions that yield only terminals
-#             terminal_prods = []
-#             term_probs = []
-#             for p, p_prob in zip(prods, probs):
-#                 if all((child not in tbl) for child in p):
-#                     terminal_prods.append(p)
-#                     term_probs.append(p_prob)
-
-#             if terminal_prods:
-#                 # pick highest‐prob purely‐terminal production
-#                 term_idx = term_probs.index(max(term_probs))
-#                 chosen_prod = terminal_prods[term_idx]
-#                 chosen_prob = term_probs[term_idx]
-#             else:
-#                 # no purely‐terminal choice—pick the highest‐prob production overall
-#                 overall_idx = probs.index(max(probs))
-#                 chosen_prod = prods[overall_idx]
-#                 chosen_prob = probs[overall_idx]
-
-#             log_prob += np.log(chosen_prob)
-#             # push children of chosen_prod back onto stack (in reverse order)
-#             # so that we keep expanding until only terminals remain
-#             for child in reversed(chosen_prod):
-#                 stack.append(child)
-#         else:
-#             # Already a terminal—append immediately
-#             seq.append(sym)
-
-#     return seq, log_prob
-
+import random
+import numpy as np
 
 def sample(grammar_name, max_len=MAX_SEQUENCE_LENGTH):
+    tbl = GRAMMARS[grammar_name]
+
+    while True:
+        seq = []
+        stack = ["S"]
+        log_prob = 0.0
+
+        # Grow seq until either stack empties or seq reaches max_len
+        while stack and len(seq) < max_len:
+            sym = stack.pop()
+            if sym in tbl:
+                prods, probs = zip(*tbl[sym])
+                idx = random.choices(range(len(probs)), weights=probs, k=1)[0]
+                chosen_prod = prods[idx]
+                chosen_prob = probs[idx]
+
+                # Accumulate log-probability of this production choice
+                log_prob += np.log(chosen_prob)
+
+                stack.extend(reversed(chosen_prod))
+            else:
+                seq.append(sym)
+
+        # If stack emptied before hitting max_len, we got a fully terminating sequence
+        if not stack:
+            return seq, log_prob
+        # Otherwise, seq hit max_len with stack nonempty → discard and retry
+
+
+def sample_greedy(grammar_name, max_len=MAX_SEQUENCE_LENGTH):
     """
     Generate exactly one terminal sequence from grammar_name:
       • Randomly expand until (len(seq) + total_min_len(stack) >= max_len), then

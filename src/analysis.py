@@ -141,7 +141,7 @@ def analyze(pcfgs, dataset_size, model_config):
             results_log[pcfg] = {}
 
         for ckpt in sorted(os.listdir(checkpoints_dir)):
-            if not ckpt.endswith(".pt") or ckpt in results_log[pcfg]:
+            if not ckpt.endswith(".pt"): #or ckpt in results_log[pcfg]:
                 continue  # Skip already analyzed checkpoints
 
             print(f"[INFO] Analyzing {ckpt} for {pcfg}...")

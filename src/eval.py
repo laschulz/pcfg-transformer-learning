@@ -99,16 +99,16 @@ def compare_model_vs_real_probs(model, tokenizer, test_sequences_with_probs, dev
     return results
 
 
-def calculate_accuracy(generated_sequences, train_sequences, grammar_name):
+def calculate_accuracy(generated_sequences, train_sequences, grammar_name, tokenizer):
     """Calculate the accuracy of generated sequences against valid sequences."""
     train_set = set(tuple(seq) for seq in train_sequences)
-    accuracy = sum(validate(seq, grammar_name) for seq in generated_sequences) / len(generated_sequences)
+    accuracy = sum(validate(tokenizer, seq, grammar_name) for seq in generated_sequences) / len(generated_sequences)
     train_overlap = sum(1 for seq in generated_sequences if tuple(seq) in train_set) / len(generated_sequences)
     return accuracy, train_overlap
 
 def evaluate_generated_sequences(model, tokenizer, training_sequences, grammar_name, test_sequences, device, num_samples=50, max_length=100):
     """Evaluate generated sequences on accuracy and perplexity."""
     generated_sequences = generate_and_score_sequences(model, tokenizer, num_samples, max_length, device)
-    accuracy, train_overlap = calculate_accuracy(generated_sequences, training_sequences, grammar_name)
+    accuracy, train_overlap = calculate_accuracy(generated_sequences, training_sequences, grammar_name, tokenizer)
     res = compare_model_vs_real_probs(model, tokenizer, test_sequences, device)
     return generated_sequences, accuracy, train_overlap, res
