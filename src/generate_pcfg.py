@@ -287,20 +287,7 @@ def split_and_tokenize(sequences, tok_fast, out_dir, train_ratio=.9):
             "eos_token_id": tok_fast.eos_token_id
         }, m)
 
-# def train_custom_tokenizer(corpus, tok_path, vocab=512):
-#     tmp = os.path.join(os.path.dirname(tok_path), "tmp_corpus.txt")
-#     with open(tmp, "w") as f:
-#         f.write("\n".join(corpus))
-#     tok = Tokenizer(models.BPE())
-#     tok.normalizer = NormalizerSequence([NFD(), Lowercase(), StripAccents()])
-#     tok.pre_tokenizer = Whitespace()
-#     tok.train([tmp], trainers.BpeTrainer(vocab_size=vocab, special_tokens=["<|bos|>", "<|eos|>"]))
-#     tok.post_processor = TemplateProcessing(
-#         single="<|bos|> $A <|eos|>", special_tokens=[("<|bos|>", tok.token_to_id("<|bos|>")), ("<|eos|>", tok.token_to_id("<|eos|>"))]
-#     )
-#     tok.save(os.path.abspath(tok_path))
-#     return tok
-
+# can remove this later
 def train_custom_tokenizer(corpus, tok_path, vocab=512):
     tok = Tokenizer(models.BPE())
     tok.normalizer = NormalizerSequence([NFD(), Lowercase(), StripAccents()])
@@ -315,6 +302,65 @@ def train_custom_tokenizer(corpus, tok_path, vocab=512):
     tok.save(os.path.abspath(tok_path))
     return PreTrainedTokenizerFast(tokenizer_file=tok_path, bos_token="<|bos|>", eos_token="<|eos|>")
 
+
+def build_fixed_tokenizer(grammar_name: str, tok_path: str, special_tokens=None):
+    """
+    Create a WordLevel tokenizer whose vocab = exactly the terminals
+    of GRAMMARS[grammar_name], plus any provided special_tokens.
+    Save it to tok_path and return a PreTrainedTokenizerFast wrapper.
+    """
+    if special_tokens is None:
+        special_tokens = ["<|bos|>", "<|eos|>"]
+
+    # 1) Extract all grammar terminals
+    tbl = GRAMMARS[grammar_name]
+    terminals = set()
+    for lhs, productions in tbl.items():
+        for rhs, _ in productions:
+            for sym in rhs:
+                # anything not in tbl’s keys is a terminal
+                if sym not in tbl:
+                    terminals.add(sym)
+
+    # 2) Build a WordLevel vocabulary: map each terminal → unique ID.
+    #    We reserve IDs for special_tokens first, then assign terminals.
+    vocab = {}
+    idx = 0
+    for tok in special_tokens:
+        vocab[tok] = idx
+        idx += 1
+    for term in sorted(terminals):
+        vocab[term] = idx
+        idx += 1
+
+    # 3) Create a WordLevel model with that vocabulary
+    wordlevel = models.WordLevel(vocab=vocab)
+    tokenizer = Tokenizer(wordlevel)
+
+    # 4) Use whitespace as pre‐tokenizer so that each terminal stays intact
+    tokenizer.pre_tokenizer = pre_tokenizers.Whitespace()
+
+    # 5) Post‐processor: wrap with <|bos|> and <|eos|>
+    tokenizer.post_processor = TemplateProcessing(
+        single="<|bos|> $A <|eos|>",
+        pair=None,
+        special_tokens=[
+            ("<|bos|>", vocab["<|bos|>"]),
+            ("<|eos|>", vocab["<|eos|>"]),
+        ],
+    )
+
+    # 6) Save to disk
+    os.makedirs(os.path.dirname(tok_path), exist_ok=True)
+    tokenizer.save(tok_path)
+
+    # 7) Wrap in PreTrainedTokenizerFast so you can call .encode/.decode easily
+    tok_fast = PreTrainedTokenizerFast(
+        tokenizer_file=tok_path,
+        bos_token="<|bos|>",
+        eos_token="<|eos|>"
+    )
+    return tok_fast
 
 def main():
     parser=argparse.ArgumentParser(
@@ -339,7 +385,8 @@ def main():
 
     # 3) BPE tokenisation
     tok_path = f"{out_dir}/tokenizer.json"
-    tok_fast = train_custom_tokenizer(str_sequences, tok_path)
+    tok_fast = build_fixed_tokenizer(args.grammar, tok_path)
+    #tok_fast = train_custom_tokenizer(str_sequences, tok_path)
 
     split_and_tokenize(str_sequences, tok_fast, out_dir)
 
