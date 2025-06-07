@@ -24,7 +24,7 @@ def to_cnf(parser: ViterbiParser) -> Tuple[Dict[str, list], Set[Nonterminal], No
     Convert an NLTK PCFG into CNF, but *also* keep track of unit‐productions.
     Returns:
       - cnf_rules: a dict with three keys: "unary_term", "unit", and "binary"
-          • "unary_term": list of (A, terminal, prob) for rules A→"a"
+          • "unary": list of (A, terminal, prob) for rules A→"a"
           • "unit":       list of (A, B, prob) for rules A→B  (both Nonterminals)
           • "binary":     list of (A, B, C, prob) for rules A→B C
       - nonterminals: set of all Nonterminal symbols
@@ -122,19 +122,19 @@ def to_cnf(parser: ViterbiParser) -> Tuple[Dict[str, list], Set[Nonterminal], No
 
     return cnf_rules, nonterminals, start_symbol
 
-def cyk_parse(tokens: List[str], cnf_rules, nonterminals, start_symbol) -> Dict:
+def cyk_parse(tokens: List[str], cnf_rules, nonterminals, start_symbol, find_suffix=False) -> Dict:
     """
     Run CYK algorithm on tokens with the given grammar.
     
-    Returns:
+        Returns:
       - valid: Whether the full sequence is valid
-      - rule_counts: Counter of rules used in parse (or valid prefix)
-      - valid_length: Length of valid prefix
-      - invalid_suffix: Invalid part of the sequence
+      - rule_counts: Counter of rules used in parse
+      - valid_length: Length of valid prefix/suffix
+      - invalid_part: Invalid part of the sequence
     """
-    
+
     N = len(tokens)
-    # Initialize charts
+        # Initialize charts
     chart = [[{} for _ in range(N+1)] for _ in range(N+1)]
     back = [[{} for _ in range(N+1)] for _ in range(N+1)]
     
@@ -191,11 +191,6 @@ def cyk_parse(tokens: List[str], cnf_rules, nonterminals, start_symbol) -> Dict:
                                 chart[start][end][A] = new_p
                                 back[start][end][A] = ("unit", X)
                                 queue.append(A)
-    # Find the longest valid prefix
-    valid_length = 0
-    for j in range(1, N+1):
-        if start_symbol in chart[0][j]:
-            valid_length = j
     
     # Extract rule counts from the chart
     rule_counts = defaultdict(int)
@@ -203,9 +198,10 @@ def cyk_parse(tokens: List[str], cnf_rules, nonterminals, start_symbol) -> Dict:
     def extract_rules(i, j, symbol):
         if i == j-1:  # Terminal case
             bp = back[i][j].get(symbol)
-            if bp and bp[0] == "terminal":
+            if bp and bp[0] == "term":
                 rule = f"{symbol} -> {bp[1]}"
                 rule_counts[rule] += 1
+                extract_rules(i, j, bp[1])
         else:  # Non-terminal case
             bp = back[i][j].get(symbol)
             if bp and bp[0] == "binary":
@@ -214,24 +210,54 @@ def cyk_parse(tokens: List[str], cnf_rules, nonterminals, start_symbol) -> Dict:
                 rule_counts[rule] += 1
                 extract_rules(i, split, left_sym)
                 extract_rules(split, j, right_sym)
+            elif bp and bp[0] == "unit":
+                rule = f"{symbol} -> {bp[1]}"
+                rule_counts[rule] += 1
+                extract_rules(i, j, bp[1])
     
-    if valid_length > 0:
-        extract_rules(0, valid_length, start_symbol)
+    # Find the longest valid span
+    if find_suffix:
+        # Find longest valid suffix: look for each [i,N] span where i is the start point
+        valid_start = N  # Default: no valid suffix
+        for i in range(N):
+            if start_symbol in chart[i][N]:
+                valid_start = i
+                break  # Found the leftmost (longest) valid suffix
+                
+        valid_length = N - valid_start
+        invalid_part = tokens[:valid_start] if valid_start > 0 else []
+        
+        # Extract rules only if we found a valid suffix
+        if valid_length > 0:
+            extract_rules(valid_start, N, start_symbol)
+            
+    else:
+        # Find longest valid prefix (original behavior): look for each [0,j] span
+        valid_length = 0
+        for j in range(1, N+1):
+            if start_symbol in chart[0][j]:
+                valid_length = j
+        
+        invalid_part = tokens[valid_length:] if valid_length < N else []
+        
+        # Extract rules only if we found a valid prefix
+        if valid_length > 0:
+            extract_rules(0, valid_length, start_symbol)
     
     # Check if full sequence is valid
     valid = (valid_length == N)
-    invalid_suffix = tokens[valid_length:] if valid_length < N else []
     
     return {
         "valid": valid,
         "rule_counts": dict(rule_counts),
         "valid_length": valid_length,
-        "invalid_suffix": invalid_suffix
+        "invalid_part": invalid_part
     }
 
 def analyze_sequences_enhanced(sequences, grammar):
     """
     Enhanced version that handles both valid and invalid sequences.
+    Finds both longest valid prefix and longest valid suffix.
     
     Args:
       - sequences: List of token sequences
@@ -261,12 +287,19 @@ def analyze_sequences_enhanced(sequences, grammar):
                 count_rules_in_tree(best_parse, rule_counts)
                 valid_count += 1
                 continue
-        except ValueError:
+        except (ValueError, AttributeError):
             # If parsing fails, we'll handle it with CYK
             pass
             
-        # For invalid sequences, use CYK to find valid prefix
-        result = cyk_parse(tokens, cnf_rules, nonterminals, start_symbol)
+        # For invalid sequences, find both valid prefix and suffix
+        prefix_result = cyk_parse(tokens, cnf_rules, nonterminals, start_symbol, find_suffix=False)
+        suffix_result = cyk_parse(tokens, cnf_rules, nonterminals, start_symbol, find_suffix=True)
+        
+        # Determine which is longer - the prefix or suffix
+        use_prefix = prefix_result["valid_length"] >= suffix_result["valid_length"]
+        
+        # Use the better result (prefix or suffix) for rule counting
+        result = prefix_result if use_prefix else suffix_result
         
         # Update global rule counts
         for rule, count in result["rule_counts"].items():
@@ -275,9 +308,12 @@ def analyze_sequences_enhanced(sequences, grammar):
         # Record invalid sequence analysis
         invalid_analyses.append({
             "sequence": tokens,
-            "valid_prefix_length": result["valid_length"],
-            "invalid_suffix": result["invalid_suffix"],
-            "rules_in_prefix": result["rule_counts"]
+            "prefix_length": prefix_result["valid_length"],
+            "prefix_invalid": prefix_result["invalid_part"],
+            "suffix_length": suffix_result["valid_length"],
+            "suffix_invalid": suffix_result["invalid_part"],
+            "using": "prefix" if use_prefix else "suffix",
+            "rules_used": result["rule_counts"]
         })
     
     return rule_counts, valid_count, invalid_analyses
@@ -291,8 +327,6 @@ def argument_parser():
 def main():
     args = argument_parser()
     pcfg = PARSERS[args.grammar]
-
-    print(type(pcfg))
 
     results_path = "../results/results_log.json"
     with open(results_path, "r") as f:
@@ -311,8 +345,22 @@ def main():
     if invalid_analyses:
         print("\nInvalid sequence analysis:")
         for i, analysis in enumerate(invalid_analyses[:10]):  # Show first 10 for brevity
-            print(f"  Sequence {i+1}: Valid prefix length: {analysis['valid_prefix_length']}")
-            print(f"    Invalid suffix: {' '.join(analysis['invalid_suffix'])}")
+            print(f"  Sequence {i+1}: '{' '.join(analysis['sequence'])}'")
+            
+            if analysis["prefix_length"] > 0:
+                prefix = ' '.join(analysis["sequence"][:analysis["prefix_length"]])
+                print(f"    Valid prefix ({analysis['prefix_length']} tokens): '{prefix}'")
+            else:
+                print("    No valid prefix")
+                
+            if analysis["suffix_length"] > 0:
+                suffix_start = len(analysis["sequence"]) - analysis["suffix_length"]
+                suffix = ' '.join(analysis["sequence"][suffix_start:])
+                print(f"    Valid suffix ({analysis['suffix_length']} tokens): '{suffix}'")
+            else:
+                print("    No valid suffix")
+            
+            print(f"    Using: {analysis['using']} for rule analysis")
 
 if __name__ == "__main__":
     main()
