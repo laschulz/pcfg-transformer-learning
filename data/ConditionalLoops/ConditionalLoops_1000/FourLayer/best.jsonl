@@ -1,154 +1,155 @@
+if cond then while cond do action else z
+while not cond do action
+if cond and cond and cond and not not cond then action else t z
+if not cond then action else t z
+action
+while cond do if cond then action else z
+if cond then action else z
+action
+if cond and cond and cond and not cond then action else t z
+if not cond then while not cond do while cond do while cond do if not not cond then if not cond then if cond then if not cond then while not not not cond and cond and not cond and cond and cond and not not not not cond and cond and cond and not not cond and cond do if not cond and cond then while not not cond and cond do action else z else t t z else t z else z else z else z
+while cond do if not cond then if cond then while cond and cond and cond and cond do if cond then while cond and cond and cond do while cond do if cond and cond then action else z else t t t z else z else z
+action
+if cond and not cond and cond then if not cond then if cond then action else t t t z else t t t t t t z else t z
+if cond and cond then action else t z
+if cond and not not cond and not cond then action else z
+action
+action
+action
+if not cond then while cond and cond and cond do if cond then while not not cond and not cond and not cond do if not not not not cond and not cond then if cond then action else z else z else z else z
+while cond do action
+if not cond then if not cond then action else z else t t z
+while cond do if not cond then action else z
+action
+action
+if cond then while cond and not cond do action else t t z
+action
 action
 action
 while cond do action
 action
 action
-while cond and cond and cond do action
 action
-if not cond and cond then action else z else t t z
+if not cond and not cond and not not cond then action else z
+action
+while not cond and not not not not not not not not cond and not not cond and not cond and not cond and cond do while cond and cond and not cond and not cond and cond do action
+if cond and not cond then if cond then while not not cond and not not cond and cond do while cond do action else z else t t t t t z
+while not cond do while not not cond and not cond do if cond then action else t z
+if cond then action else t t z
 action
 action
-action
-if cond then if cond then if cond then if cond then if cond then action else t t z else t z else t t z else z
-while cond and not cond and cond and not cond and cond do if cond then action else z
-action
-action
-if cond and cond then action else t z
 action
 if cond then action else t z
 action
-action
-if cond then if cond then action else z else t t t t t z
-if not cond then if not cond and cond and not not cond and not not cond and not not not cond and cond and cond and cond and not not cond and not cond and cond and cond and not not cond and cond do if not cond and cond and cond then while not not cond and not cond and cond and cond and cond and cond and cond do while cond and cond do while cond and cond and cond do while not not cond and cond and not cond do if cond then action else z else z
-action
-action
-action
-action
-action
-action
-action
-if cond then action else z
-action
-if not not not cond and not not cond and cond and cond then if cond do if not not cond and cond then action else z else t z else t t t z else t z
-while not cond and not not cond and cond do while cond and cond do action
-action
-if cond then while cond do while cond do action else z
 if cond then action else t t t z
-if not cond then while cond do if not cond and cond then action else t t z else z else t t t t z
-if cond and cond then if cond then if not cond and cond then action else t t z else t z
-if not not cond then while not cond do action else t t t z
-if cond and cond and cond then while cond do if cond then if cond and cond then action else t t z else t t t z else t z else t z
+while cond do if cond then action else action
 action
+if cond and cond then action else z
+if not not cond and cond then if not cond then if cond then while not cond do action else t z else t z else z
+if not cond then if cond then if not not cond then action else t t t t z else z else t z
 action
-if not not cond and cond then action else z else z
-action
-action
-if cond then action else t z
-if cond then action else t t t t t t t t t z
-while cond do if not cond then if cond and cond then action else t z else t t t z
-while cond and cond and cond do if cond then if not cond then if not cond and cond and cond and cond and not cond and not cond then if cond and cond and cond and not cond and cond and cond and cond and not cond and cond then action else z else cond and not cond and not cond do while not cond and cond do if not cond and cond then action else t t z else t t t t t t z else z else t t t t z else z else t t t t t z
-action
-Accuracy: 0.8200, Train Overlap: 0.6800
+Accuracy: 0.9800, Train Overlap: 0.6800, KL Divergence: 162.0450
 
 
 Known sequences log probabilities:
-if cond then action else z: 0.004459019963814095
-action: 0.09122847199144529
-if cond then while not cond do while not cond do if cond and cond then while cond do while cond do if not cond then action else z else t z else t z: 1.096574116979012e-12
-while cond and cond do while cond do if cond then action else t z: 3.898527452656881e-06
-while cond do if cond then if cond then action else t t t t t z else t z: 2.057737693475325e-06
-action: 0.09122847199144529
-if cond and not not cond and cond then action else t z: 4.838753919558264e-06
-if cond then action else t z: 0.002858910215370193
-action: 0.09122847199144529
-action: 0.09122847199144529
-action: 0.09122847199144529
-if not not cond and cond then action else z: 7.498671768441659e-05
-if cond then action else z: 0.004459019963814095
-action: 0.09122847199144529
-while not not cond do if cond then if cond then while cond and cond and cond and cond and cond do while cond do while cond do while cond and cond do action else z else t z: 7.880945633645985e-14
-if cond then action else t t t t t t t t t z: 7.40262287555118e-05
-if cond then if not cond then action else t t t t t t z else t t z: 2.0997676095196796e-06
-if cond then action else z: 0.004459019963814095
-if cond then action else t t z: 0.0018264642813018356
-action: 0.09122847199144529
-action: 0.09122847199144529
-action: 0.09122847199144529
-action: 0.09122847199144529
-action: 0.09122847199144529
-if not cond then if cond then if not cond then if cond then action else t t t t z else z else z else z: 2.5690157758888096e-08
-while cond and not cond do action: 0.0002452367819188944
-if cond then action else z: 0.004459019963814095
-while cond do action: 0.007030661459141664
-action: 0.09122847199144529
-action: 0.09122847199144529
-action: 0.09122847199144529
-if cond then action else z: 0.004459019963814095
-action: 0.09122847199144529
-action: 0.09122847199144529
-if cond and cond then if cond then action else z else z: 2.1019880229917733e-05
-action: 0.09122847199144529
-action: 0.09122847199144529
-if cond then action else t z: 0.002858910215370193
-if cond then if not not cond and not cond and not not not cond and cond and cond and cond and cond and cond then if cond then if cond then action else t t z else t t t z else z else t z: 4.8334755855783046e-14
-while not cond and not not cond do action: 4.030430317489969e-05
-if not cond then action else z: 0.0016278709263292425
-if not not not not cond and not cond and not not cond and cond and cond then if cond then while cond do while not cond and not cond and cond do action else t z else z: 8.137186847916771e-14
-if not not not cond then action else t t t z: 3.312705796217097e-05
-while cond do while cond and cond do while cond do action: 1.1091048461225573e-05
-while cond do while not cond do if cond then action else t t z: 5.87695000206327e-06
-action: 0.09122847199144529
-while cond do action: 0.007030661459141664
-if cond then action else z: 0.004459019963814095
-if cond then action else t z: 0.002858910215370193
-if cond then if not cond then if cond then if cond then if not cond then action else z else t t t t t t t t z else t t t t z else t t z else z: 1.0889635554453348e-11
-action: 0.09122847199144529
-while cond and cond do action: 0.0008492074381120214
-if cond then action else t z: 0.002858910215370193
-if not cond and cond and cond and cond then action else t t z: 4.3042288120433e-06
-while cond do action: 0.007030661459141664
-action: 0.09122847199144529
-if not cond then action else z: 0.0016278709263292425
-if cond and not cond then action else z: 9.510195068472579e-05
-action: 0.09122847199144529
-while cond and cond do action: 0.0008492074381120214
-action: 0.09122847199144529
-if not not not not cond and cond and cond and cond and cond and cond then action else z: 1.38550289077297e-07
-while cond do action: 0.007030661459141664
-while cond do if cond then while cond do while cond and cond do action else z: 8.451962560571032e-07
-if not cond and cond then while cond do while cond do while cond do action else t z: 2.5439392586609324e-07
-action: 0.09122847199144529
-if not cond and not cond then action else t z: 3.590696327858749e-05
-action: 0.09122847199144529
-while cond do while cond do action: 0.0007667886429446424
-while cond do while not cond and cond and not not cond and not cond and not cond and cond and not not cond and cond and cond and not cond and cond do if cond then action else z: 1.5616169900913576e-13
-action: 0.09122847199144529
-while cond do while cond do while cond and cond and cond and not cond and cond and not cond and cond and not cond and not cond do action: 1.474633267432901e-11
-action: 0.09122847199144529
-action: 0.09122847199144529
-if cond then if cond then while cond do action else t t t z else t t t t t t z: 2.9066907824845127e-07
-if cond and not cond then action else t t t t t t t z: 4.117169794346161e-06
-if cond then if cond then if cond and not cond and cond and not cond and cond and cond and cond and cond and not cond and cond then if not cond then if not cond and cond then while cond do while not cond and cond and not not cond and cond and cond and cond and not cond and not cond and cond and cond and cond and cond do action else z else z else t t t z else t t z else t t z: 1.829591345431922e-27
-if cond then action else t t t t t t t t z: 0.00011646679467054336
-if cond then if cond then action else z else z: 0.00016947928367493502
-if cond then if cond then action else z else z: 0.00016947928367493502
-action: 0.09122847199144529
-action: 0.09122847199144529
-if cond then while cond and cond do if not cond and cond then action else z else z: 1.9966934263539076e-07
-action: 0.09122847199144529
-if cond then if not cond and cond and cond then if cond and cond and cond then action else t t t t t z else t t z else z: 2.0676844890480907e-10
-action: 0.09122847199144529
-if not not cond then if cond then while cond do if cond then if cond then if not cond then while cond do while not not not cond do if cond then action else t z else t z else t z else t z else t t z else t t t t t z: 1.5792322602452685e-17
-action: 0.09122847199144529
-if not cond then action else t t z: 0.0006823077785998477
-if cond then if cond then if cond then if cond then if not not cond and cond then while cond do if not cond then action else t t z else t t z else t z else z else t t z else t t t z: 9.897135615322118e-15
-if cond and not cond then action else t z: 6.0868847917754063e-05
-action: 0.09122847199144529
-action: 0.09122847199144529
-action: 0.09122847199144529
-action: 0.09122847199144529
-while not cond and not cond and cond do action: 4.8116456668945834e-05
-action: 0.09122847199144529
-action: 0.09122847199144529
-action: 0.09122847199144529
-action: 0.09122847199144529
+action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if not not not cond and cond and not not cond and cond and cond and cond and not not cond and cond and cond and cond and cond then action else z: Model Log Prob: 1.4656767524921985e-09 Real Log Prob: 1.8189894035458798e-15 Absolute Log Prob Difference: 13.59954656677155
+ while cond do action: Model Log Prob: 0.019597314095323014 Real Log Prob: 0.04000000000000001 Absolute Log Prob Difference: 0.7134869332206564
+ if cond then action else t t t z: Model Log Prob: 0.004668670226512317 Real Log Prob: 0.006912000000000002 Absolute Log Prob Difference: 0.39238474843954574
+ if cond and not cond and not not cond then while cond do if cond then if not not not cond and not cond and cond and cond and cond and not cond and cond and not cond and cond then action else t z else t z else t t t t t t t t z: Model Log Prob: 1.8124215634947026e-17 Real Log Prob: 4.39949333667767e-22 Absolute Log Prob Difference: 10.626099912928467
+ while not cond do while cond and cond and cond and cond do action: Model Log Prob: 6.784535716575277e-06 Real Log Prob: 1.9531250000000026e-06 Absolute Log Prob Difference: 1.2452152090847441
+ while cond do while cond do action: Model Log Prob: 0.001446490502630134 Real Log Prob: 0.004000000000000002 Absolute Log Prob Difference: 1.0171540814660283
+ if cond then if cond then while cond do action else z else z: Model Log Prob: 0.00010232985522850008 Real Log Prob: 0.0002560000000000003 Absolute Log Prob Difference: 0.9169759741331944
+ if cond then action else z: Model Log Prob: 0.02608898920483395 Real Log Prob: 0.03200000000000001 Absolute Log Prob Difference: 0.20422254702966347
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if not cond and cond and cond and not cond and not cond and cond and cond and cond and not cond then action else z: Model Log Prob: 7.339666906752149e-08 Real Log Prob: 7.450580596923878e-12 Absolute Log Prob Difference: 9.195341871193506
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if cond then if cond and not cond and cond then action else t t t t z else z: Model Log Prob: 1.8924351670273472e-06 Real Log Prob: 1.2960000000000053e-06 Absolute Log Prob Difference: 0.378581849967043
+ if cond and cond and cond then if not cond and cond and not not not cond and cond then action else t z else z: Model Log Prob: 8.3354663548439e-09 Real Log Prob: 1.8310546875000008e-10 Absolute Log Prob Difference: 3.8182124262175137
+ if not not not cond then if cond then while cond do action else t t t t z else z: Model Log Prob: 3.488521168867589e-07 Real Log Prob: 5.184000000000017e-07 Absolute Log Prob Difference: 0.39609904648502514
+ while cond do while cond do action: Model Log Prob: 0.001446490502630134 Real Log Prob: 0.004000000000000002 Absolute Log Prob Difference: 1.0171540814660283
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ while not not cond and not cond and cond and cond and cond do if cond and not cond and cond then while cond do if cond then if not cond then action else z else t t z else z: Model Log Prob: 3.751911376224992e-13 Real Log Prob: 2.746582031250004e-15 Absolute Log Prob Difference: 4.917078355530762
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ while cond do action: Model Log Prob: 0.019597314095323014 Real Log Prob: 0.04000000000000001 Absolute Log Prob Difference: 0.7134869332206564
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if cond then action else z: Model Log Prob: 0.02608898920483395 Real Log Prob: 0.03200000000000001 Absolute Log Prob Difference: 0.20422254702966347
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if cond then action else t z: Model Log Prob: 0.014399061497608757 Real Log Prob: 0.0192 Absolute Log Prob Difference: 0.28774724835285337
+ if cond then action else t t t z: Model Log Prob: 0.004668670226512317 Real Log Prob: 0.006912000000000002 Absolute Log Prob Difference: 0.39238474843954574
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if not cond and cond then action else z: Model Log Prob: 0.002009951960858561 Real Log Prob: 0.0010000000000000002 Absolute Log Prob Difference: 0.6981108217150052
+ if cond then action else t z: Model Log Prob: 0.014399061497608757 Real Log Prob: 0.0192 Absolute Log Prob Difference: 0.28774724835285337
+ if cond and cond then if cond and cond and cond and cond and not not cond and cond then action else z else t z: Model Log Prob: 1.027911247215857e-08 Real Log Prob: 3.6621093749999954e-10 Absolute Log Prob Difference: 3.3346597005358127
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if cond then action else z: Model Log Prob: 0.02608898920483395 Real Log Prob: 0.03200000000000001 Absolute Log Prob Difference: 0.20422254702966347
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if not cond then while not cond do action else z: Model Log Prob: 0.0001722682685277066 Real Log Prob: 0.0002000000000000002 Absolute Log Prob Difference: 0.14926440406204122
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if not cond and not not cond then action else t z: Model Log Prob: 8.115214159704447e-05 Real Log Prob: 3.750000000000007e-05 Absolute Log Prob Difference: 0.7719847512342142
+ if not cond and cond then while not cond do if cond then while cond do if cond then action else t z else t z else t z: Model Log Prob: 5.706220099673397e-09 Real Log Prob: 3.4559999999999992e-09 Absolute Log Prob Difference: 0.5014449744798029
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if not cond then while cond do while cond and cond do action else z: Model Log Prob: 7.465336951600148e-06 Real Log Prob: 1.0000000000000016e-05 Absolute Log Prob Difference: 0.29231452549977277
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if cond then if cond then if cond then if cond then action else z else t t t t t t z else z else t z: Model Log Prob: 4.411414146274061e-08 Real Log Prob: 4.586471424000023e-07 Absolute Log Prob Difference: 2.341500762338171
+ while not not cond and cond and cond and cond do while not not cond do while cond and cond do if cond then if cond then while not not not not cond and cond do if cond and not cond and cond and cond and not not cond and not cond and cond then if not not cond and cond and not not not not cond and cond and cond then if not cond then action else t t z else t z else z else t z else z: Model Log Prob: 7.916597699998022e-30 Real Log Prob: 1.7564075194264918e-36 Absolute Log Prob Difference: 15.32120154730508
+ if cond then if not cond then while cond do while cond and cond and cond do while cond do action else t z else z: Model Log Prob: 2.99805299851637e-09 Real Log Prob: 5.99999999999998e-09 Absolute Log Prob Difference: 0.6937963917464707
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if not not cond and not cond and cond and cond and cond then if cond then action else z else z: Model Log Prob: 1.2702655509019468e-06 Real Log Prob: 9.765624999999973e-09 Absolute Log Prob Difference: 4.868112686416939
+ while cond and cond do action: Model Log Prob: 0.003316719480558996 Real Log Prob: 0.005000000000000002 Absolute Log Prob Difference: 0.4104617262718593
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if cond then action else t z: Model Log Prob: 0.014399061497608757 Real Log Prob: 0.0192 Absolute Log Prob Difference: 0.28774724835285337
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ while cond do if not cond and cond then action else z: Model Log Prob: 0.00010599841967487115 Real Log Prob: 0.00010000000000000009 Absolute Log Prob Difference: 0.058253999285208025
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if cond and cond then action else z: Model Log Prob: 0.0031451344495300056 Real Log Prob: 0.004000000000000002 Absolute Log Prob Difference: 0.2404377216332385
+ while not cond do action: Model Log Prob: 0.00560568461591264 Real Log Prob: 0.010000000000000005 Absolute Log Prob Difference: 0.5788039001442753
+ if cond then if cond and cond then if cond then action else t t t z else t t z else t t t t t t t z: Model Log Prob: 1.3227886889389825e-08 Real Log Prob: 5.572562780160013e-08 Absolute Log Prob Difference: 1.4381129010402383
+ if cond then if cond and cond and cond and cond then action else t z else t t t z: Model Log Prob: 1.2699088845212399e-06 Real Log Prob: 6.480000000000026e-07 Absolute Log Prob Difference: 0.6728097360551359
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if not not cond and cond then if not cond then action else z else t t z: Model Log Prob: 5.465663112523747e-06 Real Log Prob: 1.8000000000000065e-06 Absolute Log Prob Difference: 1.1106987874302412
+ while not not not cond and cond and cond and cond and not cond and cond and cond do while not cond and not cond and not not cond and not cond and cond and cond and not not cond and cond and cond and not not not cond and not cond and not not cond and cond and cond and cond and not cond do action: Model Log Prob: 5.217706011492394e-19 Real Log Prob: 6.310887241768211e-33 Absolute Log Prob Difference: 32.04597287031311
+ if cond and not cond then action else t z: Model Log Prob: 0.00042323895137061476 Real Log Prob: 0.0006000000000000003 Absolute Log Prob Difference: 0.3489927388067908
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if not cond then if not cond then if cond then action else t z else z else t t t z: Model Log Prob: 5.889865427404344e-07 Real Log Prob: 1.6588800000000072e-06 Absolute Log Prob Difference: 1.0354946190925052
+ if not cond and cond and cond then while not not cond do action else t z: Model Log Prob: 1.8959725683254764e-06 Real Log Prob: 4.6875000000000107e-07 Absolute Log Prob Difference: 1.3974176372429135
+ if cond then if cond then action else z else z: Model Log Prob: 0.0013955121945313795 Real Log Prob: 0.0025600000000000015 Absolute Log Prob Difference: 0.606745746067924
+ if cond then while cond do if not not not cond and cond then action else z else t t t t z: Model Log Prob: 1.9223099415929977e-07 Real Log Prob: 6.480000000000018e-08 Absolute Log Prob Difference: 1.0873921401108966
+ while cond do while cond do if cond then while cond and not cond and not cond do if not cond and cond then if cond then action else z else z else t t z: Model Log Prob: 4.890622924600558e-12 Real Log Prob: 2.249999999999991e-12 Absolute Log Prob Difference: 0.7763894666012412
+ if not cond then action else t t t z: Model Log Prob: 0.0011166812419810695 Real Log Prob: 0.0017280000000000004 Absolute Log Prob Difference: 0.43660356077782136
+ while cond do action: Model Log Prob: 0.019597314095323014 Real Log Prob: 0.04000000000000001 Absolute Log Prob Difference: 0.7134869332206564
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if not cond then if not cond then if cond and cond then action else t t t t z else t z else t z: Model Log Prob: 2.0740447222479245e-08 Real Log Prob: 7.464960000000033e-08 Absolute Log Prob Difference: 1.2807193997805264
+ while not not not cond and cond and not cond and cond and not not cond do if not cond then if cond then action else z else t z: Model Log Prob: 4.0868389149533786e-10 Real Log Prob: 2.288818359374994e-12 Absolute Log Prob Difference: 5.184906291667211
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if not cond then while cond do action else t t t t t t t t z: Model Log Prob: 5.926400345967313e-06 Real Log Prob: 1.3436928000000036e-05 Absolute Log Prob Difference: 0.8185897331330239
+ if cond then action else t z: Model Log Prob: 0.014399061497608757 Real Log Prob: 0.0192 Absolute Log Prob Difference: 0.28774724835285337
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ while not cond and not cond and cond do action: Model Log Prob: 0.00023478232473351184 Real Log Prob: 3.906250000000003e-05 Absolute Log Prob Difference: 1.7934958796574882
+ while cond and not cond do action: Model Log Prob: 0.0007829307818798088 Real Log Prob: 0.0012500000000000002 Absolute Log Prob Difference: 0.4678545393883704
+ if cond then action else t t z: Model Log Prob: 0.00812768778322206 Real Log Prob: 0.011520000000000002 Absolute Log Prob Difference: 0.34880817766668404
+ if not cond then if not cond then action else z else t z: Model Log Prob: 6.58192014026445e-05 Real Log Prob: 9.600000000000003e-05 Absolute Log Prob Difference: 0.37743658107631717
+ if cond and cond and cond and cond and not not not cond and cond then action else t t t t t z: Model Log Prob: 4.013849686818778e-08 Real Log Prob: 1.1865234374999893e-09 Absolute Log Prob Difference: 3.52130834526184
+ if cond then if cond then if cond then while not cond do action else t t t t z else t z else z: Model Log Prob: 2.0589729025583815e-07 Real Log Prob: 3.981312000000021e-07 Absolute Log Prob Difference: 0.6594041457429203
+ if not not not not cond and cond and cond and cond then action else z: Model Log Prob: 2.0406283921119766e-05 Real Log Prob: 2.441406250000002e-07 Absolute Log Prob Difference: 4.425853776503237
+ if cond then if not cond then if cond then while cond and cond do if cond then while not not cond do if cond then while cond and cond do if cond then if cond and cond then while cond do while cond do action else t z else z else t z else t z else z else t z else t t z: Model Log Prob: 1.196549073913199e-20 Real Log Prob: 1.1943936000000224e-19 Absolute Log Prob Difference: 2.3007820598049733
+ if not not not cond then if not cond then if not cond and cond then action else z else z else t z: Model Log Prob: 2.585400793509514e-08 Real Log Prob: 1.500000000000002e-08 Absolute Log Prob Difference: 0.5444154336789353
+ if not not not not cond then action else t z: Model Log Prob: 0.00011044480860782106 Real Log Prob: 7.500000000000014e-05 Absolute Log Prob Difference: 0.3870278130325193
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ action: Model Log Prob: 0.2693042154441206 Real Log Prob: 0.4 Absolute Log Prob Difference: 0.3956228940742089
+ if not cond and cond then while not cond do while cond do action else t t t z: Model Log Prob: 7.310547968049305e-07 Real Log Prob: 5.40000000000002e-07 Absolute Log Prob Difference: 0.30291927881144076
+ if cond then if cond then if cond then while cond do while cond do action else t z else t t t t z else z: Model Log Prob: 2.2430577550015856e-08 Real Log Prob: 1.5925248000000068e-07 Absolute Log Prob Difference: 1.960065770131246
+ 

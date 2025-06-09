@@ -15,22 +15,28 @@ source /om2/user/laschulz/anaconda3/etc/profile.d/conda.sh
 conda activate pcfg_transformer
 
 # Create logs directory if needed
-mkdir -p /om2/user/laschulz/pcfg_transformer-learning/logs
+mkdir -p /om2/user/laschulz/pcfg-transformer-learning/logs
 
-cd /om2/user/laschulz/pcfg_transformer-learning || exit 1
+cd /om2/user/laschulz/pcfg-transformer-learning
 
 PCFGS=("CenterEmbedding" "ArithmeticLogic")
 NUM_PCFG=${#PCFGS[@]}
-SEED_INDEX=$((SLURM_ARRAY_TASK_ID % NUM_PCFG))
+INDEX=$(( SLURM_ARRAY_TASK_ID % NUM_PCFG ))
 
-PCFG = "${PCFGS[$SEED_INDEX]}"
+PCFG="${PCFGS[$INDEX]}"
 
-echo "Running with PCFG:
+# concatenate pcfgs with + 
+IFS='+' 
+LIST_PCFG="${PCFGS[*]}"   # now LIST_PCFG="CenterEmbedding+ArithmeticLogic"
+unset IFS
 
 python src/main.py \
-    --mode multiple \
-    --teacher_type baselineCNN \
-    --student_type multiChannelCNN \
-    --config_path $CONFIG \
-    --seed $SEED \
-    --name exp2
+    --pcfg $PCFG \
+    --dataset "$PCFG{_5000}" \
+    --model FourLayer
+
+
+python src/analysis.py \
+    --pcfg $LIST_PCFG \
+    --dataset_size 5000 \
+    --model FourLayer 

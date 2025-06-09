@@ -1,154 +1,155 @@
-a a a a a a a a a a c b b b b b b b b b b b
+a a a a a a c b b b b b b
+a a a c b b b
+c
+a a a a c b b b b
+a a c b b
+a a a a c b b b
+a a a c b b b
+a c b
 a a a a a a a a a a a a c b b b b b b b b b b b b
-a a c b b
-a a a a c b b b b
-a a a a a a a a a c b b b b b b b b b
-a a a c b b b
 c
-a a a a a c b b b b b
-a c b
-a a c b b
-c
-a a a a a a a a a a a c b b b b b b b b b b b
-a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b
-a c b
-c
-a a a a a a a c b b b b b b b
-a a a a a a c b b b b b b
-a a a a a a a a a a c b b b b b b b b b b b
-a a c b b
-a a a a a a c b b b b b b
 a a a a a a a a c b b b b b b b b b
-a a c b b
-c
-c
 a a a c b b b
-a c b
-c
-c
-c
-a c b
-a c b
-c
-a a a a c b b b b
-a a a a a c b b b b b
-a a a a c b b b b
-a a a c b b b
-a c b
-a c b
-a a a c b b b
-c
-a a a a c b b b b
-a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b
-a a c b b
-a a a a a a a a a a a a c b b b b b b b b b b b b b
-a a a a a a a a a c b b b b b b b b b
-a c b
-a a c b b
-c
 a a a a a c b b b b b
 a c b
-Accuracy: 0.9000, Train Overlap: 0.9000
+a a a a a a a a a a a a a c b b b b b b b b b b b b
+a c b
+a a a c b b b
+a a a a a a a c b b b b b b b b
+a a a a c b b b b
+a a c b b
+a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b
+a a c b b
+a a a c b b b
+a a a a a c b b b b b
+c
+a a a c b b b
+a a a a c b b b b
+c
+a a a c b b b
+a c b
+a a c b b
+a a a a c b b b b
+a a a a a a a c b b b b b b b
+a a a a a a c b b b b b b b
+a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b
+a a a c b b b
+a c b
+c
+c
+c
+a c b
+c
+a a a a a c b b b b b
+a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b
+a c b
+a a a a a a a a a a c b b b b b b b b b b b b
+a a c b b
+a a a c b b b
+a a a a a a a a a a a a a a c b b b b b b b b b b b b
+a a a c b b b
+Accuracy: 0.8000, Train Overlap: 0.8000, KL Divergence: 73.3063
 
 
 Known sequences log probabilities:
-a c b: 0.03660031385664222
-a a c b b: 0.027981141806041318
-c: 0.06015579519676024
-a a c b b: 0.027981141806041318
-a a a a a a c b b b b b b: 0.007803158025471465
-a a a c b b b: 0.021631329587675812
-a a a a c b b b b: 0.015268229604570412
-a c b: 0.03660031385664222
-a a c b b: 0.027981141806041318
-a c b: 0.03660031385664222
-a a a a c b b b b: 0.015268229604570412
-a a c b b: 0.027981141806041318
-a a a a a a a a a c b b b b b b b b b: 0.0029971849592328585
-a a a a a a a c b b b b b b b: 0.006128010461795771
-c: 0.06015579519676024
-a a c b b: 0.027981141806041318
-c: 0.06015579519676024
-c: 0.06015579519676024
-a a a a a a a c b b b b b b b: 0.006128010461795771
-a a c b b: 0.027981141806041318
-a a a a a a a a a a a a c b b b b b b b b b b b b: 0.0010989570554319282
-a a c b b: 0.027981141806041318
-a a c b b: 0.027981141806041318
-a a a c b b b: 0.021631329587675812
-a c b: 0.03660031385664222
-a a a c b b b: 0.021631329587675812
-c: 0.06015579519676024
-c: 0.06015579519676024
-a a a a a a c b b b b b b: 0.007803158025471465
-a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b: 0.0003715988132316687
-a c b: 0.03660031385664222
-c: 0.06015579519676024
-a c b: 0.03660031385664222
-a a c b b: 0.027981141806041318
-a a a a a c b b b b b: 0.010904775953521734
-a a a a a a a a a a a c b b b b b b b b b b b: 0.0016031891167575547
-a a a a a a c b b b b b b: 0.007803158025471465
-a a c b b: 0.027981141806041318
-a a c b b: 0.027981141806041318
-c: 0.06015579519676024
-a a a a a a a a c b b b b b b b b: 0.00433674348958055
-a a c b b: 0.027981141806041318
-c: 0.06015579519676024
-a a a a a a a a a a c b b b b b b b b b b: 0.0021489496148100217
-a a a a a a a a a a a a c b b b b b b b b b b b b: 0.0010989570554319282
-a a a a a a c b b b b b b: 0.007803158025471465
-a a c b b: 0.027981141806041318
-c: 0.06015579519676024
-a a c b b: 0.027981141806041318
-a a a a a a a a a a a c b b b b b b b b b b b: 0.0016031891167575547
-a a a a a a c b b b b b b: 0.007803158025471465
-a c b: 0.03660031385664222
-a a a a a a a c b b b b b b b: 0.006128010461795771
-a c b: 0.03660031385664222
-a a c b b: 0.027981141806041318
-a a a c b b b: 0.021631329587675812
-c: 0.06015579519676024
-a a a c b b b: 0.021631329587675812
-c: 0.06015579519676024
-a a a a a a a c b b b b b b b: 0.006128010461795771
-a a a a c b b b b: 0.015268229604570412
-c: 0.06015579519676024
-c: 0.06015579519676024
-a a a a a a a a c b b b b b b b b: 0.00433674348958055
-a a a a a a a a a a c b b b b b b b b b b: 0.0021489496148100217
-a c b: 0.03660031385664222
-a c b: 0.03660031385664222
-a a a a a c b b b b b: 0.010904775953521734
-a a a c b b b: 0.021631329587675812
-a a a a a a a a c b b b b b b b b: 0.00433674348958055
-a a a a a a a a a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b b b b b b b b b: 4.6447899429989164e-05
-a a a c b b b: 0.021631329587675812
-a a a a a a a a a c b b b b b b b b b: 0.0029971849592328585
-a a a a c b b b b: 0.015268229604570412
-a a a a c b b b b: 0.015268229604570412
-a a a a a c b b b b b: 0.010904775953521734
-a a a a a a a a a a c b b b b b b b b b b: 0.0021489496148100217
-c: 0.06015579519676024
-a a c b b: 0.027981141806041318
-c: 0.06015579519676024
-a c b: 0.03660031385664222
-a a a a a a a a a c b b b b b b b b b: 0.0029971849592328585
-a a a a c b b b b: 0.015268229604570412
-a a a c b b b: 0.021631329587675812
-a a a a a c b b b b b: 0.010904775953521734
-a a a a a a a a a c b b b b b b b b b: 0.0029971849592328585
-c: 0.06015579519676024
-a a c b b: 0.027981141806041318
-a a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b b: 0.00040412774384704245
-c: 0.06015579519676024
-c: 0.06015579519676024
-c: 0.06015579519676024
-a c b: 0.03660031385664222
-a a a a a a a a a a c b b b b b b b b b b: 0.0021489496148100217
-a a a a c b b b b: 0.015268229604570412
-a a a c b b b: 0.021631329587675812
-a a a c b b b: 0.021631329587675812
-a a c b b: 0.027981141806041318
-a c b: 0.03660031385664222
-a a c b b: 0.027981141806041318
+c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a c b b: Model Log Prob: 0.07235556806334736 Real Log Prob: 0.128 Absolute Log Prob Difference: 0.570437853701848
+ a a a a a a c b b b b b b: Model Log Prob: 0.021117070676185273 Real Log Prob: 0.052428800000000005 Absolute Log Prob Difference: 0.9093743084885775
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a a a a a a a c b b b b b b b b: Model Log Prob: 0.011332803838986015 Real Log Prob: 0.03355443200000001 Absolute Log Prob Difference: 1.0854674412671939
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a c b b: Model Log Prob: 0.07235556806334736 Real Log Prob: 0.128 Absolute Log Prob Difference: 0.570437853701848
+ a a a a a a a a c b b b b b b b b: Model Log Prob: 0.011332803838986015 Real Log Prob: 0.03355443200000001 Absolute Log Prob Difference: 1.0854674412671939
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ a a c b b: Model Log Prob: 0.07235556806334736 Real Log Prob: 0.128 Absolute Log Prob Difference: 0.570437853701848
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a a a a c b b b b b: Model Log Prob: 0.02889265248449785 Real Log Prob: 0.06553600000000001 Absolute Log Prob Difference: 0.8190122864736207
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ a a a a a a a a a a c b b b b b b b b b b: Model Log Prob: 0.006087359477683494 Real Log Prob: 0.021474836480000006 Absolute Log Prob Difference: 1.2606674490117564
+ a a c b b: Model Log Prob: 0.07235556806334736 Real Log Prob: 0.128 Absolute Log Prob Difference: 0.570437853701848
+ a a a a a a a c b b b b b b b: Model Log Prob: 0.015926717878862386 Real Log Prob: 0.04194304000000001 Absolute Log Prob Difference: 0.9683144386242439
+ a a a c b b b: Model Log Prob: 0.05468172677037994 Real Log Prob: 0.1024 Absolute Log Prob Difference: 0.6273571216875666
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a c b b: Model Log Prob: 0.07235556806334736 Real Log Prob: 0.128 Absolute Log Prob Difference: 0.570437853701848
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a a a c b b b b: Model Log Prob: 0.03928118598432449 Real Log Prob: 0.08192 Absolute Log Prob Difference: 0.734997485177117
+ a a a a a a a a a a a a a c b b b b b b b b b b b b b: Model Log Prob: 0.0022748317012892955 Real Log Prob: 0.010995116277760005 Absolute Log Prob Difference: 1.5755451272521181
+ a a c b b: Model Log Prob: 0.07235556806334736 Real Log Prob: 0.128 Absolute Log Prob Difference: 0.570437853701848
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a a a a c b b b b b: Model Log Prob: 0.02889265248449785 Real Log Prob: 0.06553600000000001 Absolute Log Prob Difference: 0.8190122864736207
+ a a a a a a a a a a a c b b b b b b b b b b b: Model Log Prob: 0.004229524343060354 Real Log Prob: 0.017179869184000007 Absolute Log Prob Difference: 1.401648763805433
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a c b b: Model Log Prob: 0.07235556806334736 Real Log Prob: 0.128 Absolute Log Prob Difference: 0.570437853701848
+ a a a a a a a a a a a a c b b b b b b b b b b b b: Model Log Prob: 0.0032498617263361134 Real Log Prob: 0.013743895347200006 Absolute Log Prob Difference: 1.441982301083704
+ a a a a a c b b b b b: Model Log Prob: 0.02889265248449785 Real Log Prob: 0.06553600000000001 Absolute Log Prob Difference: 0.8190122864736207
+ a a a c b b b: Model Log Prob: 0.05468172677037994 Real Log Prob: 0.1024 Absolute Log Prob Difference: 0.6273571216875666
+ a a a a a a a a a a a a a c b b b b b b b b b b b b b: Model Log Prob: 0.0022748317012892955 Real Log Prob: 0.010995116277760005 Absolute Log Prob Difference: 1.5755451272521181
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a a a a a a a a a a a a c b b b b b b b b b b b b b: Model Log Prob: 0.0022748317012892955 Real Log Prob: 0.010995116277760005 Absolute Log Prob Difference: 1.5755451272521181
+ a a a a c b b b b: Model Log Prob: 0.03928118598432449 Real Log Prob: 0.08192 Absolute Log Prob Difference: 0.734997485177117
+ a a a a a a a c b b b b b b b: Model Log Prob: 0.015926717878862386 Real Log Prob: 0.04194304000000001 Absolute Log Prob Difference: 0.9683144386242439
+ a a a a a c b b b b b: Model Log Prob: 0.02889265248449785 Real Log Prob: 0.06553600000000001 Absolute Log Prob Difference: 0.8190122864736207
+ a a a a a a a c b b b b b b b: Model Log Prob: 0.015926717878862386 Real Log Prob: 0.04194304000000001 Absolute Log Prob Difference: 0.9683144386242439
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a a a a a c b b b b b b: Model Log Prob: 0.021117070676185273 Real Log Prob: 0.052428800000000005 Absolute Log Prob Difference: 0.9093743084885775
+ a a a a a a a c b b b b b b b: Model Log Prob: 0.015926717878862386 Real Log Prob: 0.04194304000000001 Absolute Log Prob Difference: 0.9683144386242439
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ a a a a c b b b b: Model Log Prob: 0.03928118598432449 Real Log Prob: 0.08192 Absolute Log Prob Difference: 0.734997485177117
+ a a c b b: Model Log Prob: 0.07235556806334736 Real Log Prob: 0.128 Absolute Log Prob Difference: 0.570437853701848
+ a a a c b b b: Model Log Prob: 0.05468172677037994 Real Log Prob: 0.1024 Absolute Log Prob Difference: 0.6273571216875666
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ a a a a a c b b b b b: Model Log Prob: 0.02889265248449785 Real Log Prob: 0.06553600000000001 Absolute Log Prob Difference: 0.8190122864736207
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ a a a a a a a c b b b b b b b: Model Log Prob: 0.015926717878862386 Real Log Prob: 0.04194304000000001 Absolute Log Prob Difference: 0.9683144386242439
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a a a a a a a a c b b b b b b b b b: Model Log Prob: 0.0077958369231550745 Real Log Prob: 0.026843545600000008 Absolute Log Prob Difference: 1.2364355413086177
+ a a a a a a a c b b b b b b b: Model Log Prob: 0.015926717878862386 Real Log Prob: 0.04194304000000001 Absolute Log Prob Difference: 0.9683144386242439
+ a a a a c b b b b: Model Log Prob: 0.03928118598432449 Real Log Prob: 0.08192 Absolute Log Prob Difference: 0.734997485177117
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ a a a c b b b: Model Log Prob: 0.05468172677037994 Real Log Prob: 0.1024 Absolute Log Prob Difference: 0.6273571216875666
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a a a c b b b b: Model Log Prob: 0.03928118598432449 Real Log Prob: 0.08192 Absolute Log Prob Difference: 0.734997485177117
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ a a a c b b b: Model Log Prob: 0.05468172677037994 Real Log Prob: 0.1024 Absolute Log Prob Difference: 0.6273571216875666
+ a a a a a a a a a c b b b b b b b b b: Model Log Prob: 0.0077958369231550745 Real Log Prob: 0.026843545600000008 Absolute Log Prob Difference: 1.2364355413086177
+ a a c b b: Model Log Prob: 0.07235556806334736 Real Log Prob: 0.128 Absolute Log Prob Difference: 0.570437853701848
+ a a a c b b b: Model Log Prob: 0.05468172677037994 Real Log Prob: 0.1024 Absolute Log Prob Difference: 0.6273571216875666
+ a a a a a c b b b b b: Model Log Prob: 0.02889265248449785 Real Log Prob: 0.06553600000000001 Absolute Log Prob Difference: 0.8190122864736207
+ a a a c b b b: Model Log Prob: 0.05468172677037994 Real Log Prob: 0.1024 Absolute Log Prob Difference: 0.6273571216875666
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a a c b b b: Model Log Prob: 0.05468172677037994 Real Log Prob: 0.1024 Absolute Log Prob Difference: 0.6273571216875666
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a a c b b b: Model Log Prob: 0.05468172677037994 Real Log Prob: 0.1024 Absolute Log Prob Difference: 0.6273571216875666
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a a a a a c b b b b b b: Model Log Prob: 0.021117070676185273 Real Log Prob: 0.052428800000000005 Absolute Log Prob Difference: 0.9093743084885775
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ a a a a a a a a a c b b b b b b b b b: Model Log Prob: 0.0077958369231550745 Real Log Prob: 0.026843545600000008 Absolute Log Prob Difference: 1.2364355413086177
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ a a a a a a a a a a a a a c b b b b b b b b b b b b b: Model Log Prob: 0.0022748317012892955 Real Log Prob: 0.010995116277760005 Absolute Log Prob Difference: 1.5755451272521181
+ a a a c b b b: Model Log Prob: 0.05468172677037994 Real Log Prob: 0.1024 Absolute Log Prob Difference: 0.6273571216875666
+ a a a a c b b b b: Model Log Prob: 0.03928118598432449 Real Log Prob: 0.08192 Absolute Log Prob Difference: 0.734997485177117
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a a a a a a c b b b b b b b: Model Log Prob: 0.015926717878862386 Real Log Prob: 0.04194304000000001 Absolute Log Prob Difference: 0.9683144386242439
+ a a a a a a a a a a a a a a a a c b b b b b b b b b b b b b b b b: Model Log Prob: 0.0006034712180377268 Real Log Prob: 0.005629499534213124 Absolute Log Prob Difference: 2.2330774768378516
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ a a c b b: Model Log Prob: 0.07235556806334736 Real Log Prob: 0.128 Absolute Log Prob Difference: 0.570437853701848
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ a a c b b: Model Log Prob: 0.07235556806334736 Real Log Prob: 0.128 Absolute Log Prob Difference: 0.570437853701848
+ c: Model Log Prob: 0.11770413845666812 Real Log Prob: 0.2 Absolute Log Prob Difference: 0.5301431918407389
+ a a c b b: Model Log Prob: 0.07235556806334736 Real Log Prob: 0.128 Absolute Log Prob Difference: 0.570437853701848
+ a c b: Model Log Prob: 0.09394822191084504 Real Log Prob: 0.16000000000000003 Absolute Log Prob Difference: 0.532430015462497
+ 

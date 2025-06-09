@@ -176,7 +176,7 @@ def cyk_parse(tokens: List[str], cnf_rules, nonterminals, start_symbol, find_suf
                         new_p = bprob * left_cell[B] * right_cell[C]
                         if A not in chart[start][end] or new_p > chart[start][end][A]:
                             chart[start][end][A] = new_p
-                            back[start][end][A] = ("bin", split, B, C)
+                            back[start][end][A] = ("binary", split, B, C)
 
             # after placing all binary‐derived nonterminals in [start,end], do unit‐closure
             if chart[start][end]:
@@ -201,10 +201,13 @@ def cyk_parse(tokens: List[str], cnf_rules, nonterminals, start_symbol, find_suf
             if bp and bp[0] == "term":
                 rule = f"{symbol} -> {bp[1]}"
                 rule_counts[rule] += 1
+            elif bp and bp[0] == "unit":  # Handle unit productions at leaf level
+                rule = f"{symbol} -> {bp[1]}"
+                rule_counts[rule] += 1
                 extract_rules(i, j, bp[1])
-        else:  # Non-terminal case
+        else:  # Non-terminal case spanning multiple tokens
             bp = back[i][j].get(symbol)
-            if bp and bp[0] == "binary":
+            if bp and bp[0] == "bin":  
                 _, split, left_sym, right_sym = bp
                 rule = f"{symbol} -> {left_sym} {right_sym}"
                 rule_counts[rule] += 1

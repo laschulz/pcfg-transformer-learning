@@ -1,100 +1,100 @@
-{"sequence": "a"}
-{"sequence": "a b"}
-{"sequence": "a b a"}
-{"sequence": "a"}
-{"sequence": "a b a b a b"}
-{"sequence": "a b a b a"}
-{"sequence": "a b a b a b a b a b a"}
-{"sequence": "a b a b"}
-{"sequence": "a b a"}
-{"sequence": "a"}
-{"sequence": "a b"}
-{"sequence": "a b a b a b a b a b"}
-{"sequence": "a b a b"}
-{"sequence": "a"}
-{"sequence": "a b a b a b a b a b a b"}
-{"sequence": "a b a b a b"}
-{"sequence": "a b"}
-{"sequence": "a b a b a b a b"}
-{"sequence": "a b a b"}
-{"sequence": "a b a b a"}
-{"sequence": "a b a b a b"}
-{"sequence": "a"}
-{"sequence": "a b a b a b a b a b a b a b a"}
-{"sequence": "a b"}
-{"sequence": "a b a b a b a b a"}
-{"sequence": "a b a b a b a"}
-{"sequence": "a b"}
-{"sequence": "a b a b a b a b a b a b a b a"}
-{"sequence": "a"}
-{"sequence": "a b a b"}
-{"sequence": "a b a b a b a"}
-{"sequence": "a b a b a b"}
-{"sequence": "a b a"}
-{"sequence": "a b"}
-{"sequence": "a b a"}
-{"sequence": "a b a"}
-{"sequence": "a b a b a b a b a b a b a b a b"}
-{"sequence": "a b a b a b"}
-{"sequence": "a b a b a b"}
-{"sequence": "a b a b a b a"}
-{"sequence": "a b a b a b a b"}
-{"sequence": "a b a"}
-{"sequence": "a b a b a b a b a b"}
-{"sequence": "a b a b"}
-{"sequence": "a b a b a"}
-{"sequence": "a b a b a b a b a"}
-{"sequence": "a b a b"}
-{"sequence": "a"}
-{"sequence": "a b"}
-{"sequence": "a b a b a b a b a b a b a b"}
-{"sequence": "a b a b a b a"}
-{"sequence": "a b a b a b a b a b a"}
-{"sequence": "a b"}
-{"sequence": "a b"}
-{"sequence": "a b a b"}
-{"sequence": "a b a b a b a b a b"}
-{"sequence": "a"}
-{"sequence": "a b a b a b a b a b a b a b"}
-{"sequence": "a b"}
-{"sequence": "a"}
-{"sequence": "a"}
-{"sequence": "a b a b a"}
-{"sequence": "a b a"}
-{"sequence": "a b a b a b"}
-{"sequence": "a"}
-{"sequence": "a"}
-{"sequence": "a"}
-{"sequence": "a b"}
-{"sequence": "a b a b"}
-{"sequence": "a b a b a b a b a b"}
-{"sequence": "a b a b a b a b a"}
-{"sequence": "a b a b a b a b a b a b a b"}
-{"sequence": "a b a b a b a b a b a b a b a b a b a b a b a b a b"}
-{"sequence": "a b a b a b a b a b a b a b a b"}
-{"sequence": "a b a b a b a"}
-{"sequence": "a b a b a b a b a b a"}
-{"sequence": "a"}
-{"sequence": "a b a b a b a b a b a b a b"}
-{"sequence": "a b a b"}
-{"sequence": "a b a"}
-{"sequence": "a"}
-{"sequence": "a b a"}
-{"sequence": "a b"}
-{"sequence": "a b"}
-{"sequence": "a b a b a"}
-{"sequence": "a b a b"}
-{"sequence": "a b a"}
-{"sequence": "a b a b"}
-{"sequence": "a b a b a"}
-{"sequence": "a b"}
-{"sequence": "a b a b a"}
-{"sequence": "a"}
-{"sequence": "a b a b a b"}
-{"sequence": "a"}
-{"sequence": "a b"}
-{"sequence": "a b a b a b a b a b a b a b a"}
-{"sequence": "a b a"}
-{"sequence": "a b a b a b"}
-{"sequence": "a b a b a b a b a b a b a b a b a b"}
-{"sequence": "a b a"}
+{"sequence": "a b a b", "real_log_prob": -2.2788685663767296}
+{"sequence": "a b a b a b a b a", "real_log_prob": -3.394586322947778}
+{"sequence": "a b a b a", "real_log_prob": -2.5020121176909393}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b a", "real_log_prob": -2.05572501506252}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b a b", "real_log_prob": -2.2788685663767296}
+{"sequence": "a b a b a", "real_log_prob": -2.5020121176909393}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a b a b a b", "real_log_prob": -2.725155669005149}
+{"sequence": "a b a b a b a b", "real_log_prob": -3.1714427716335685}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a b a b a", "real_log_prob": -2.5020121176909393}
+{"sequence": "a b a b", "real_log_prob": -2.2788685663767296}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b a b", "real_log_prob": -2.2788685663767296}
+{"sequence": "a b a b a", "real_log_prob": -2.5020121176909393}
+{"sequence": "a b a b a b a b a b a b a", "real_log_prob": -4.287160528204617}
+{"sequence": "a b a b a b a b a", "real_log_prob": -3.394586322947778}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b a b", "real_log_prob": -2.2788685663767296}
+{"sequence": "a b a b a b a b a", "real_log_prob": -3.394586322947778}
+{"sequence": "a b a b a b a", "real_log_prob": -2.9482992203193588}
+{"sequence": "a b a b a", "real_log_prob": -2.5020121176909393}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b a b a b a b a", "real_log_prob": -3.394586322947778}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a b a b a", "real_log_prob": -2.5020121176909393}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b a b a b a", "real_log_prob": -2.9482992203193588}
+{"sequence": "a b a b a b a b a b a b a b", "real_log_prob": -4.510304079518827}
+{"sequence": "a b a b a b a b a b a b", "real_log_prob": -4.064016976890407}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b a b a b a b a b a b a b a b", "real_log_prob": -4.956591182147246}
+{"sequence": "a b a b a b a b a b a b a", "real_log_prob": -4.287160528204617}
+{"sequence": "a b a b a b a b", "real_log_prob": -3.1714427716335685}
+{"sequence": "a b a", "real_log_prob": -2.05572501506252}
+{"sequence": "a b a", "real_log_prob": -2.05572501506252}
+{"sequence": "a b a b", "real_log_prob": -2.2788685663767296}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b a", "real_log_prob": -2.05572501506252}
+{"sequence": "a b a b a b a", "real_log_prob": -2.9482992203193588}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b a", "real_log_prob": -2.05572501506252}
+{"sequence": "a b a b a b a", "real_log_prob": -2.9482992203193588}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a b a b a b a b a", "real_log_prob": -3.394586322947778}
+{"sequence": "a b a b a b a b a b a b a b a b a", "real_log_prob": -5.179734733461456}
+{"sequence": "a b a b a b a b a", "real_log_prob": -3.394586322947778}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b a b a b", "real_log_prob": -2.725155669005149}
+{"sequence": "a b a b a b a b a b a", "real_log_prob": -3.8408734255761976}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a b a b", "real_log_prob": -2.2788685663767296}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a b a b a b a b a b", "real_log_prob": -3.617729874261988}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b a", "real_log_prob": -2.05572501506252}
+{"sequence": "a b a b a", "real_log_prob": -2.5020121176909393}
+{"sequence": "a b a b a b a b a b a b a b a b", "real_log_prob": -4.956591182147246}
+{"sequence": "a b a", "real_log_prob": -2.05572501506252}
+{"sequence": "a b a b a b a b a b a", "real_log_prob": -3.8408734255761976}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a b a", "real_log_prob": -2.05572501506252}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b a b", "real_log_prob": -2.2788685663767296}
+{"sequence": "a b a b a b a", "real_log_prob": -2.9482992203193588}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a b a b a b a b a", "real_log_prob": -3.394586322947778}
+{"sequence": "a b a b a", "real_log_prob": -2.5020121176909393}
+{"sequence": "a b a b", "real_log_prob": -2.2788685663767296}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a b a b a b", "real_log_prob": -2.725155669005149}
+{"sequence": "a b a b", "real_log_prob": -2.2788685663767296}
+{"sequence": "a b a b a b a b a b a b a", "real_log_prob": -4.287160528204617}
+{"sequence": "a b a b a b a b a b a b a b a b a b", "real_log_prob": -5.402878284775666}
+{"sequence": "a b a b", "real_log_prob": -2.2788685663767296}
+{"sequence": "a b a", "real_log_prob": -2.05572501506252}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a b a", "real_log_prob": -2.05572501506252}
+{"sequence": "a b a b a b a b a b a", "real_log_prob": -3.8408734255761976}
+{"sequence": "a b a b a", "real_log_prob": -2.5020121176909393}
+{"sequence": "a b a", "real_log_prob": -2.05572501506252}
+{"sequence": "a b a b", "real_log_prob": -2.2788685663767296}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a b a", "real_log_prob": -2.05572501506252}
+{"sequence": "a b a b a b a b a", "real_log_prob": -3.394586322947778}
+{"sequence": "a b", "real_log_prob": -1.83258146374831}
+{"sequence": "a", "real_log_prob": -1.6094379124341003}
+{"sequence": "a b a", "real_log_prob": -2.05572501506252}
