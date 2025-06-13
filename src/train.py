@@ -77,29 +77,29 @@ def main():
             device=device
         )
 
-    jsonl_path = f'{main_path}/train.jsonl'
-    with open(jsonl_path, 'r') as f:
-        training_sequences = [json.loads(line)["sequence"] for line in f]
-    tokenizer = PreTrainedTokenizerFast(tokenizer_file=f"{main_path}/tokenizer.json", bos_token="<|bos|>", eos_token="<|eos|>")   
-    with open(f"{main_path}/test.jsonl", 'r') as f:
-        test_sequences = [(json.loads(line)["sequence"], json.loads(line)["real_log_prob"]) for line in f]
-    generated_sequences, accuracy, train_overlap, res = evaluate_generated_sequences(model, tokenizer, training_sequences, pcfg, test_sequences, device, num_samples=50, max_length=100)
+    # jsonl_path = f'{main_path}/train.jsonl'
+    # with open(jsonl_path, 'r') as f:
+    #     training_sequences = [json.loads(line)["sequence"] for line in f]
+    # tokenizer = PreTrainedTokenizerFast(tokenizer_file=f"{main_path}/tokenizer.json", bos_token="<|bos|>", eos_token="<|eos|>")   
+    # with open(f"{main_path}/test.jsonl", 'r') as f:
+    #     test_sequences = [(json.loads(line)["sequence"], json.loads(line)["real_log_prob"]) for line in f]
+    # generated_sequences, accuracy, train_overlap, res = evaluate_generated_sequences(model, tokenizer, training_sequences, pcfg, test_sequences, device, num_samples=50, max_length=100)
 
-    kl_divergence = np.sum([r['abs_logprob_diff'] for r in res])
+    # kl_divergence = np.sum([r['abs_logprob_diff'] for r in res])
 
-    file_name = f"{os.path.basename(checkpoint_path).removesuffix('.pt')}.jsonl" if checkpoint_path else "best.jsonl"
-    path_dir = f'{main_path}/{config.name}'
-    os.makedirs(path_dir, exist_ok=True)
-    with open(f"{path_dir}/{file_name}", 'w') as f:
-        for seq in generated_sequences:
-            f.write(f"{seq}\n")
-        f.write(f"Accuracy: {accuracy:.4f}, Train Overlap: {train_overlap:.4f}, KL Divergence: {kl_divergence:.4f}\n\n\n")
-        f.write("Known sequences log probabilities:\n")
-        for r in res:
-            f.write(f"{r['text']}: ")
-            f.write(f"Model Log Prob: {np.exp(r['log_prob_model'])} ")
-            f.write(f"Real Log Prob: {np.exp(r['log_prob_real'])} ")
-            f.write(f"Absolute Log Prob Difference: {r['abs_logprob_diff']}\n ")
+    # file_name = f"{os.path.basename(checkpoint_path).removesuffix('.pt')}.jsonl" if checkpoint_path else "best.jsonl"
+    # path_dir = f'{main_path}/{config.name}'
+    # os.makedirs(path_dir, exist_ok=True)
+    # with open(f"{path_dir}/{file_name}", 'w') as f:
+    #     for seq in generated_sequences:
+    #         f.write(f"{seq}\n")
+    #     f.write(f"Accuracy: {accuracy:.4f}, Train Overlap: {train_overlap:.4f}, KL Divergence: {kl_divergence:.4f}\n\n\n")
+    #     f.write("Known sequences log probabilities:\n")
+    #     for r in res:
+    #         f.write(f"{r['text']}: ")
+    #         f.write(f"Model Log Prob: {np.exp(r['log_prob_model'])} ")
+    #         f.write(f"Real Log Prob: {np.exp(r['log_prob_real'])} ")
+    #         f.write(f"Absolute Log Prob Difference: {r['abs_logprob_diff']}\n ")
 
 if __name__ == "__main__":
     main()

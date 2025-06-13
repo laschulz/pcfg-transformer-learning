@@ -2,40 +2,8 @@
   "version": "1.0",
   "truncation": null,
   "padding": null,
-  "added_tokens": [
-    {
-      "id": 0,
-      "content": "<|bos|>",
-      "single_word": false,
-      "lstrip": false,
-      "rstrip": false,
-      "normalized": false,
-      "special": true
-    },
-    {
-      "id": 1,
-      "content": "<|eos|>",
-      "single_word": false,
-      "lstrip": false,
-      "rstrip": false,
-      "normalized": false,
-      "special": true
-    }
-  ],
-  "normalizer": {
-    "type": "Sequence",
-    "normalizers": [
-      {
-        "type": "NFD"
-      },
-      {
-        "type": "Lowercase"
-      },
-      {
-        "type": "StripAccents"
-      }
-    ]
-  },
+  "added_tokens": [],
+  "normalizer": null,
   "pre_tokenizer": {
     "type": "Whitespace"
   },
@@ -98,14 +66,7 @@
   },
   "decoder": null,
   "model": {
-    "type": "BPE",
-    "dropout": null,
-    "unk_token": null,
-    "continuing_subword_prefix": null,
-    "end_of_word_suffix": null,
-    "fuse_unk": false,
-    "byte_fallback": false,
-    "ignore_merges": false,
+    "type": "WordLevel",
     "vocab": {
       "<|bos|>": 0,
       "<|eos|>": 1,
@@ -113,96 +74,14 @@
       ")": 3,
       "*": 4,
       "+": 5,
-      "a": 6,
-      "c": 7,
-      "d": 8,
-      "e": 9,
-      "f": 10,
-      "h": 11,
-      "i": 12,
-      "l": 13,
-      "n": 14,
-      "o": 15,
-      "s": 16,
-      "t": 17,
-      "v": 18,
-      "al": 19,
-      "val": 20,
-      "nd": 21,
-      "co": 22,
-      "cond": 23,
-      "no": 24,
-      "not": 25,
-      "el": 26,
-      "en": 27,
-      "hen": 28,
-      "if": 29,
-      "se": 30,
-      "then": 31,
-      "else": 32,
-      "and": 33
+      "and": 6,
+      "cond": 7,
+      "else": 8,
+      "if": 9,
+      "not": 10,
+      "then": 11,
+      "val": 12
     },
-    "merges": [
-      [
-        "a",
-        "l"
-      ],
-      [
-        "v",
-        "al"
-      ],
-      [
-        "n",
-        "d"
-      ],
-      [
-        "c",
-        "o"
-      ],
-      [
-        "co",
-        "nd"
-      ],
-      [
-        "n",
-        "o"
-      ],
-      [
-        "no",
-        "t"
-      ],
-      [
-        "e",
-        "l"
-      ],
-      [
-        "e",
-        "n"
-      ],
-      [
-        "h",
-        "en"
-      ],
-      [
-        "i",
-        "f"
-      ],
-      [
-        "s",
-        "e"
-      ],
-      [
-        "t",
-        "hen"
-      ],
-      [
-        "el",
-        "se"
-      ],
-      [
-        "a",
-        "nd"
-      ]
-    ]
+    "unk_token": "<unk>"
   }
 }

@@ -49,7 +49,7 @@ def get_sequence_token_logits(model, sequence, vocab):
 
     # Get model output
     with torch.no_grad():
-        logits, _ = model(input_ids)
+        logits, _ = model(input_ids, full_logits=True)
     
     # Get log probabilities
     log_probs = F.log_softmax(logits.squeeze(1), dim=-1)
@@ -59,7 +59,6 @@ def get_sequence_token_logits(model, sequence, vocab):
     for i in range(len(tokens)-1):  # -1 because we predict the next token
         next_token = tokens[i+1]
         next_token_id = vocab.get(next_token, 0)
-        # Get probability that model assigns to the actual next token
         token_logit = log_probs[0, i, next_token_id].item()
         token_logits.append(token_logit)
     

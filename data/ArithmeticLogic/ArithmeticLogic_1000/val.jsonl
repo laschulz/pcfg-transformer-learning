@@ -1,100 +1,100 @@
-{"sequence": "( val )"}
-{"sequence": "( val * val ) * val + ( val )"}
+{"sequence": "if cond and not not cond and not cond then val else val * ( val + val ) * val"}
+{"sequence": "val"}
+{"sequence": "val + if cond and cond then val else val * val * val * val * val * ( ( val * val ) )"}
 {"sequence": "val"}
 {"sequence": "val"}
-{"sequence": "val * val + val + val"}
-{"sequence": "( val + val ) * val"}
-{"sequence": "( val * val * val * ( val * val ) + val * val * val * val + val )"}
 {"sequence": "val"}
-{"sequence": "val"}
+{"sequence": "if cond then val else ( if cond then val else val ) + val * val * val + val"}
+{"sequence": "val + val + val + val"}
 {"sequence": "val + val + val"}
-{"sequence": "val"}
-{"sequence": "val"}
+{"sequence": "( val )"}
+{"sequence": "val * val + val"}
 {"sequence": "val * val"}
-{"sequence": "if cond then ( val ) else val"}
-{"sequence": "val"}
-{"sequence": "val + val"}
-{"sequence": "val"}
-{"sequence": "val + val + if not not cond and cond and not not cond and not cond then ( ( val ) * val ) else val"}
-{"sequence": "val * val + val * val"}
-{"sequence": "val * val * if cond then val else val + val"}
-{"sequence": "val"}
+{"sequence": "if cond then val else val + val + val"}
 {"sequence": "val + val"}
 {"sequence": "val"}
 {"sequence": "val"}
+{"sequence": "val"}
+{"sequence": "( val ) * if not cond then val else val"}
+{"sequence": "val"}
 {"sequence": "val + val"}
-{"sequence": "val * val"}
+{"sequence": "val"}
+{"sequence": "if cond then val else val"}
+{"sequence": "( val * val ) + val"}
+{"sequence": "val * val * val"}
+{"sequence": "( val )"}
+{"sequence": "val"}
 {"sequence": "val"}
 {"sequence": "( val )"}
+{"sequence": "if cond then val else val"}
+{"sequence": "val"}
+{"sequence": "val + val"}
+{"sequence": "val * val"}
+{"sequence": "val"}
 {"sequence": "val"}
 {"sequence": "val * val + val"}
-{"sequence": "val + if not not not not cond and cond then val else val"}
+{"sequence": "val * ( ( val + val ) * ( val ) * val )"}
 {"sequence": "val"}
 {"sequence": "val"}
-{"sequence": "val + ( val + val )"}
+{"sequence": "val"}
+{"sequence": "val"}
+{"sequence": "val"}
+{"sequence": "val"}
+{"sequence": "val"}
+{"sequence": "val * if cond and cond and not cond then val else ( val * val )"}
+{"sequence": "val"}
+{"sequence": "val"}
+{"sequence": "val"}
+{"sequence": "val + val * val + ( val )"}
+{"sequence": "val"}
+{"sequence": "val"}
+{"sequence": "val"}
+{"sequence": "val * val"}
+{"sequence": "( ( val ) )"}
+{"sequence": "val * val"}
+{"sequence": "val"}
+{"sequence": "val * val"}
+{"sequence": "val + val * val + val"}
+{"sequence": "if cond and cond then ( val * if cond then val else val ) else val * val * val * val"}
+{"sequence": "val"}
+{"sequence": "val"}
+{"sequence": "if cond then if cond then ( val ) else ( val ) else val"}
+{"sequence": "val * val"}
+{"sequence": "val"}
+{"sequence": "val"}
+{"sequence": "val * val"}
+{"sequence": "val"}
+{"sequence": "val * val * val * val"}
+{"sequence": "val + val * ( val ) * ( val ) + val * val * val + val"}
+{"sequence": "val"}
+{"sequence": "val"}
+{"sequence": "val"}
+{"sequence": "val"}
+{"sequence": "if not cond then val else if not not not cond then val else if not cond then if not cond then val else val else val"}
+{"sequence": "val + val + val"}
 {"sequence": "if cond then val else val"}
-{"sequence": "val * if cond then val else val"}
-{"sequence": "val * val + val * val * if cond then val else val * val"}
-{"sequence": "val"}
-{"sequence": "val * val + val + val"}
-{"sequence": "val"}
-{"sequence": "val"}
+{"sequence": "val * val + if cond and cond and not not cond and not not cond and not cond and not not not cond and cond and not cond and cond and cond and cond and cond and cond and cond and cond and cond and cond and cond and cond and cond then val else val"}
+{"sequence": "( val )"}
 {"sequence": "val"}
 {"sequence": "val * val * val"}
 {"sequence": "val"}
 {"sequence": "val"}
 {"sequence": "val"}
 {"sequence": "val"}
-{"sequence": "val + val"}
-{"sequence": "val + val * if not cond then val else if cond then val else val * val + ( val * val ) * val"}
-{"sequence": "val + val"}
-{"sequence": "val"}
-{"sequence": "val * val * val"}
-{"sequence": "val"}
-{"sequence": "val * ( val )"}
-{"sequence": "val * val"}
+{"sequence": "if cond then val else val + val"}
+{"sequence": "val + val * if cond then val else val * val + ( val ) * val * val * if cond then val else val"}
 {"sequence": "val * val"}
 {"sequence": "val"}
-{"sequence": "val"}
-{"sequence": "( ( ( if cond then val else val ) * val ) )"}
-{"sequence": "val"}
-{"sequence": "val"}
-{"sequence": "( val ) * val * val * ( val )"}
-{"sequence": "val * val * if cond and cond then ( val ) else ( val * val )"}
-{"sequence": "val + val * val * ( val ) * val"}
-{"sequence": "val"}
-{"sequence": "val + val * val * ( val * val ) + val + if cond then val else val"}
-{"sequence": "val"}
-{"sequence": "val"}
-{"sequence": "( val + val ) + if cond then val else val + val + val * ( val + val ) * val"}
-{"sequence": "val"}
-{"sequence": "val + ( val * val + val * val ) * val"}
-{"sequence": "val"}
-{"sequence": "if cond then val else if not not cond and cond and not cond and cond then val else if cond then val else if not cond and not not cond and cond and cond and cond and cond and cond and not cond and cond and cond and not not cond then val else val * val"}
-{"sequence": "val + val * val"}
-{"sequence": "( val )"}
-{"sequence": "val + val + val + val"}
-{"sequence": "val"}
-{"sequence": "val + ( val )"}
-{"sequence": "val + val"}
-{"sequence": "val * val * val * val + val"}
-{"sequence": "val + val"}
-{"sequence": "val + ( val ) + val + val * ( val ) + val * val + ( val * ( val ) ) + if not cond and cond then val else val"}
-{"sequence": "( val * val + val )"}
 {"sequence": "val * val"}
-{"sequence": "( val )"}
+{"sequence": "( val * val * val + val ) * ( val + if cond and cond then val else val ) + val"}
 {"sequence": "val"}
 {"sequence": "val"}
-{"sequence": "val * val + ( val * val * val * val )"}
-{"sequence": "( val )"}
-{"sequence": "if cond then ( val ) else val + val"}
+{"sequence": "val + val"}
+{"sequence": "if cond then if cond then ( val ) else val else val"}
+{"sequence": "if cond then val else val"}
 {"sequence": "val"}
 {"sequence": "val"}
-{"sequence": "( val )"}
+{"sequence": "val * val"}
 {"sequence": "val * val"}
 {"sequence": "val + val"}
-{"sequence": "val"}
-{"sequence": "val"}
-{"sequence": "val"}
-{"sequence": "val"}
-{"sequence": "val + val"}
+{"sequence": "val * val"}

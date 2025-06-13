@@ -2,40 +2,8 @@
   "version": "1.0",
   "truncation": null,
   "padding": null,
-  "added_tokens": [
-    {
-      "id": 0,
-      "content": "<|bos|>",
-      "single_word": false,
-      "lstrip": false,
-      "rstrip": false,
-      "normalized": false,
-      "special": true
-    },
-    {
-      "id": 1,
-      "content": "<|eos|>",
-      "single_word": false,
-      "lstrip": false,
-      "rstrip": false,
-      "normalized": false,
-      "special": true
-    }
-  ],
-  "normalizer": {
-    "type": "Sequence",
-    "normalizers": [
-      {
-        "type": "NFD"
-      },
-      {
-        "type": "Lowercase"
-      },
-      {
-        "type": "StripAccents"
-      }
-    ]
-  },
+  "added_tokens": [],
+  "normalizer": null,
   "pre_tokenizer": {
     "type": "Whitespace"
   },
@@ -98,148 +66,22 @@
   },
   "decoder": null,
   "model": {
-    "type": "BPE",
-    "dropout": null,
-    "unk_token": null,
-    "continuing_subword_prefix": null,
-    "end_of_word_suffix": null,
-    "fuse_unk": false,
-    "byte_fallback": false,
-    "ignore_merges": false,
+    "type": "WordLevel",
     "vocab": {
       "<|bos|>": 0,
       "<|eos|>": 1,
-      "a": 2,
-      "c": 3,
-      "d": 4,
-      "e": 5,
-      "f": 6,
-      "h": 7,
-      "i": 8,
-      "l": 9,
-      "n": 10,
-      "o": 11,
-      "s": 12,
-      "t": 13,
-      "w": 14,
-      "z": 15,
-      "nd": 16,
-      "co": 17,
-      "cond": 18,
-      "no": 19,
-      "not": 20,
-      "and": 21,
-      "el": 22,
-      "en": 23,
-      "hen": 24,
-      "if": 25,
-      "se": 26,
-      "then": 27,
-      "else": 28,
-      "ac": 29,
-      "io": 30,
-      "tio": 31,
-      "actio": 32,
-      "action": 33,
-      "do": 34,
-      "hi": 35,
-      "le": 36,
-      "whi": 37,
-      "while": 38
+      "action": 2,
+      "and": 3,
+      "cond": 4,
+      "do": 5,
+      "else": 6,
+      "if": 7,
+      "not": 8,
+      "t": 9,
+      "then": 10,
+      "while": 11,
+      "z": 12
     },
-    "merges": [
-      [
-        "n",
-        "d"
-      ],
-      [
-        "c",
-        "o"
-      ],
-      [
-        "co",
-        "nd"
-      ],
-      [
-        "n",
-        "o"
-      ],
-      [
-        "no",
-        "t"
-      ],
-      [
-        "a",
-        "nd"
-      ],
-      [
-        "e",
-        "l"
-      ],
-      [
-        "e",
-        "n"
-      ],
-      [
-        "h",
-        "en"
-      ],
-      [
-        "i",
-        "f"
-      ],
-      [
-        "s",
-        "e"
-      ],
-      [
-        "t",
-        "hen"
-      ],
-      [
-        "el",
-        "se"
-      ],
-      [
-        "a",
-        "c"
-      ],
-      [
-        "i",
-        "o"
-      ],
-      [
-        "t",
-        "io"
-      ],
-      [
-        "ac",
-        "tio"
-      ],
-      [
-        "actio",
-        "n"
-      ],
-      [
-        "d",
-        "o"
-      ],
-      [
-        "h",
-        "i"
-      ],
-      [
-        "l",
-        "e"
-      ],
-      [
-        "w",
-        "hi"
-      ],
-      [
-        "whi",
-        "le"
-      ]
-    ]
+    "unk_token": "<unk>"
   }
 }

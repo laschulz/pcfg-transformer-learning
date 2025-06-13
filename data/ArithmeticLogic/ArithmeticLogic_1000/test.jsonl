@@ -1,100 +1,100 @@
-{"sequence": "( ( val ) * val )", "real_log_prob": -8.163844084447087}
+{"sequence": "val + ( val )", "real_log_prob": -5.573576919001259}
 {"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val * val", "real_log_prob": -2.407945608651872}
-{"sequence": "val * val + ( val ) * ( val ) * if cond and not cond and cond and not cond and cond and cond and not cond and not cond then val else val * val * val * ( if cond and cond then val else val * val * val )", "real_log_prob": -52.8234401219239}
-{"sequence": "if cond then val else val", "real_log_prob": -4.017383521085972}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val * val", "real_log_prob": -2.407945608651872}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "if cond and not cond then val else val", "real_log_prob": -7.483119423885699}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val * val + ( val ) * val", "real_log_prob": -8.792452743869461}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val * val", "real_log_prob": -2.407945608651872}
-{"sequence": "( ( val ) * val ) + ( val )", "real_log_prob": -12.938913307230575}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val * val", "real_log_prob": -2.407945608651872}
-{"sequence": "val * val", "real_log_prob": -2.407945608651872}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val * val", "real_log_prob": -2.407945608651872}
-{"sequence": "( val )", "real_log_prob": -3.6764569341153788}
-{"sequence": "val * if not cond then val else val", "real_log_prob": -7.013115794639964}
-{"sequence": "( val )", "real_log_prob": -3.6764569341153788}
-{"sequence": "val * val", "real_log_prob": -2.407945608651872}
-{"sequence": "( val * val )", "real_log_prob": -5.285894846549479}
-{"sequence": "( val )", "real_log_prob": -3.6764569341153788}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "( val * val + if cond and cond then val else val )", "real_log_prob": -12.481332197983395}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "if cond then val else val * val * val", "real_log_prob": -7.236259345954172}
-{"sequence": "val * val", "real_log_prob": -2.407945608651872}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val * ( val ) + val * ( val + val )", "real_log_prob": -13.567521966652954}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val + val + val", "real_log_prob": -4.592747665989533}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val * val", "real_log_prob": -2.407945608651872}
-{"sequence": "val + val", "real_log_prob": -2.6956276811036526}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val * val * val + val", "real_log_prob": -5.914503505971854}
-{"sequence": "val + val", "real_log_prob": -2.6956276811036526}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "( val + val * val * val + val )", "real_log_prob": -10.689572728755344}
 {"sequence": "val * val + val", "real_log_prob": -4.305065593537753}
-{"sequence": "val * val * val", "real_log_prob": -4.017383521085972}
-{"sequence": "val + val * val", "real_log_prob": -4.305065593537753}
-{"sequence": "if not not cond then if cond and cond then val else val else val", "real_log_prob": -12.08828960987379}
-{"sequence": "val + val", "real_log_prob": -2.6956276811036526}
 {"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val + val + val", "real_log_prob": -4.592747665989533}
-{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val + ( val * val ) * val * val + ( val * val ) + val", "real_log_prob": -18.683517776407026}
+{"sequence": "val * val", "real_log_prob": -2.407945608651872}
 {"sequence": "val", "real_log_prob": -0.7985076962177715}
 {"sequence": "val * val", "real_log_prob": -2.407945608651872}
-{"sequence": "val * val + if cond then val else val + if cond then val else val + val * val", "real_log_prob": -16.146495125480016}
-{"sequence": "if not cond and not cond then val else val * if cond then if cond then ( if not cond and cond and cond and cond and cond and cond then val else val ) else val else val + val * val + val + val", "real_log_prob": -42.0977283465527}
-{"sequence": "( if cond then val else val + val ) * val", "real_log_prob": -10.40189065630356}
 {"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val * if cond then val else if cond and cond then val else val + val", "real_log_prob": -12.822258784953991}
+{"sequence": "val * if not not cond and cond and cond and cond and cond and not cond and cond and cond and cond and not cond and not cond and cond and cond and cond and cond then val else val", "real_log_prob": -41.670474822637225}
+{"sequence": "if cond then val else val * val", "real_log_prob": -5.626821433520072}
 {"sequence": "( val )", "real_log_prob": -3.6764569341153788}
-{"sequence": "val * val * val", "real_log_prob": -4.017383521085972}
-{"sequence": "val + val", "real_log_prob": -2.6956276811036526}
-{"sequence": "val + val", "real_log_prob": -2.6956276811036526}
 {"sequence": "val", "real_log_prob": -0.7985076962177715}
 {"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val * ( val * val ) * val * val + val * val", "real_log_prob": -13.620766481171763}
+{"sequence": "if not cond and cond and cond and not cond and cond then if cond then val else val else val + val + val", "real_log_prob": -22.12085420468505}
+{"sequence": "val + val * val * val", "real_log_prob": -5.914503505971854}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "if not cond then val else val + val", "real_log_prob": -7.3007978670917435}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "if not cond and cond and cond and not cond and cond and not cond and not cond and not cond then ( val * val ) else val", "real_log_prob": -29.992333268775972}
+{"sequence": "val * ( val * val )", "real_log_prob": -6.89533275898358}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "( val ) + ( val )", "real_log_prob": -8.451526156898865}
+{"sequence": "if cond then val else val * val", "real_log_prob": -5.626821433520072}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val * val", "real_log_prob": -2.407945608651872}
 {"sequence": "val + val", "real_log_prob": -2.6956276811036526}
-{"sequence": "if not not cond and cond and cond and cond then ( val * ( val * val + val ) * val ) else val * val", "real_log_prob": -27.11906697878275}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val + val", "real_log_prob": -2.6956276811036526}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val * val", "real_log_prob": -2.407945608651872}
 {"sequence": "if cond then val else val", "real_log_prob": -4.017383521085972}
 {"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "( val ) * val + val", "real_log_prob": -7.18301483143536}
+{"sequence": "if not cond and not not cond and cond and cond and cond and cond and not cond and cond and cond then if not cond and cond then val else val else val * val", "real_log_prob": -34.49214293910624}
+{"sequence": "if cond then val else val * val * val", "real_log_prob": -7.236259345954172}
+{"sequence": "val + val * val * if not not not not cond then val else val + ( val * ( val * val ) )", "real_log_prob": -25.55045106086891}
 {"sequence": "val", "real_log_prob": -0.7985076962177715}
 {"sequence": "val", "real_log_prob": -0.7985076962177715}
 {"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "if not cond then ( val + val ) else val", "real_log_prob": -10.178747104989355}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val * if cond then val else val", "real_log_prob": -5.626821433520073}
+{"sequence": "val * ( val )", "real_log_prob": -5.285894846549479}
+{"sequence": "( val )", "real_log_prob": -3.6764569341153788}
+{"sequence": "val + val + val + if not cond then if not cond then val else val else val", "real_log_prob": -15.700208022851594}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val + val * val", "real_log_prob": -4.305065593537753}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val + val + val * val", "real_log_prob": -6.2021855784236335}
+{"sequence": "val + ( val ) + val * val", "real_log_prob": -9.080134816321241}
+{"sequence": "( val * ( ( if not cond then val else val ) + val ) * val )", "real_log_prob": -19.15352140565276}
+{"sequence": "val + val * val + val * ( val )", "real_log_prob": -10.689572728755344}
+{"sequence": "( val )", "real_log_prob": -3.6764569341153788}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
 {"sequence": "val * val", "real_log_prob": -2.407945608651872}
 {"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "if not not cond and cond then val else val * val", "real_log_prob": -10.478851697439687}
 {"sequence": "val", "real_log_prob": -0.7985076962177715}
-{"sequence": "val * if cond then if not not cond then ( val * if not cond then val else val * val ) else val else ( if cond then val else val ) + if cond then val else if cond and not cond then val else val", "real_log_prob": -40.21771382956975}
+{"sequence": "val * ( val * ( if cond then val else val ) ) + val + val", "real_log_prob": -16.786397791521146}
+{"sequence": "val * val * val + if cond then ( ( val ) ) else if not cond and cond then val else val", "real_log_prob": -21.573889534303195}
+{"sequence": "val * val", "real_log_prob": -2.407945608651872}
+{"sequence": "if not cond then val else val", "real_log_prob": -5.403677882205863}
+{"sequence": "val + val", "real_log_prob": -2.6956276811036526}
+{"sequence": "val * val + val", "real_log_prob": -4.305065593537753}
+{"sequence": "val * val", "real_log_prob": -2.407945608651872}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val + val", "real_log_prob": -2.6956276811036526}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val + val * val", "real_log_prob": -4.305065593537753}
 {"sequence": "( val )", "real_log_prob": -3.6764569341153788}
-{"sequence": "( ( val ) + val * ( val ) * val )", "real_log_prob": -14.548351219664678}
+{"sequence": "val * val * val", "real_log_prob": -4.017383521085972}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val * val", "real_log_prob": -2.407945608651872}
+{"sequence": "( val + val ) * val", "real_log_prob": -7.18301483143536}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val * val + val + val", "real_log_prob": -6.2021855784236335}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val * val + if cond and not cond then val else val", "real_log_prob": -10.98967732120568}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val + val", "real_log_prob": -2.6956276811036526}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val * val", "real_log_prob": -2.407945608651872}
+{"sequence": "val * val", "real_log_prob": -2.407945608651872}
+{"sequence": "val + val", "real_log_prob": -2.6956276811036526}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}
+{"sequence": "val", "real_log_prob": -0.7985076962177715}

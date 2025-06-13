@@ -7,7 +7,7 @@ from transformers import PreTrainedTokenizerFast
 from eval import evaluate_generated_sequences
 from model import TwoLayer, FourLayer, SixLayer, GPT
 
-from main import map_model_name
+from train import map_model_name
 import argparse
 
 def plot_results(results_log, model_name):
@@ -145,6 +145,10 @@ def analyze(pcfgs, dataset_size, model_config):
                 continue  # Skip already analyzed checkpoints
 
             print(f"[INFO] Analyzing {ckpt} for {pcfg}...")
+
+            model.load_state_dict(
+                torch.load(os.path.join(checkpoints_dir, ckpt), map_location=device)
+            )
 
             generated_sequences, accuracy, train_overlap, res = evaluate_generated_sequences(
                 model,
