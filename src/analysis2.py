@@ -122,7 +122,7 @@ def to_cnf(parser: ViterbiParser) -> Tuple[Dict[str, list], Set[Nonterminal], No
 
     return cnf_rules, nonterminals, start_symbol
 
-def cyk_parse(tokens: List[str], cnf_rules, nonterminals, start_symbol, find_suffix=False) -> Dict:
+def cyk_parse(tokens: List[str], cnf_rules, start_symbol, find_suffix=False) -> Dict:
     """
     Run CYK algorithm on tokens with the given grammar.
     
@@ -202,21 +202,36 @@ def cyk_parse(tokens: List[str], cnf_rules, nonterminals, start_symbol, find_suf
                 rule = f"{symbol} -> {bp[1]}"
                 rule_counts[rule] += 1
             elif bp and bp[0] == "unit":  # Handle unit productions at leaf level
-                rule = f"{symbol} -> {bp[1]}"
-                rule_counts[rule] += 1
-                extract_rules(i, j, bp[1])
+                child = bp[1]
+                # Only count rules without temporary nonterminals
+                if not str(child).startswith('_'):
+                    rule = f"{symbol} -> {child}"
+                    rule_counts[rule] += 1
+                    extract_rules(i, j, child)
+                else:
+                    # If child is temporary, still follow it but don't count the rule
+                    extract_rules(i, j, child)
         else:  # Non-terminal case spanning multiple tokens
             bp = back[i][j].get(symbol)
             if bp and bp[0] == "binary":  
                 _, split, left_sym, right_sym = bp
-                rule = f"{symbol} -> {left_sym} {right_sym}"
-                rule_counts[rule] += 1
+                # Only count rules without temporary nonterminals
+                if not (str(left_sym).startswith('_') or str(right_sym).startswith('_')):
+                    rule = f"{symbol} -> {left_sym} {right_sym}"
+                    rule_counts[rule] += 1
+                # Continue recursion even for temporary symbols
                 extract_rules(i, split, left_sym)
                 extract_rules(split, j, right_sym)
             elif bp and bp[0] == "unit":
-                rule = f"{symbol} -> {bp[1]}"
-                rule_counts[rule] += 1
-                extract_rules(i, j, bp[1])
+                child = bp[1]
+                # Only count rules without temporary nonterminals
+                if not str(child).startswith('_'):
+                    rule = f"{symbol} -> {child}"
+                    rule_counts[rule] += 1
+                    extract_rules(i, j, child)
+                else:
+                    # If child is temporary, still follow it but don't count the rule
+                    extract_rules(i, j, child)
     
     # Find the longest valid span
     if find_suffix:
@@ -257,7 +272,7 @@ def cyk_parse(tokens: List[str], cnf_rules, nonterminals, start_symbol, find_suf
         "invalid_part": invalid_part
     }
 
-def find_all_subsequences(tokens, cnf_rules, nonterminals, start_symbol):
+def find_all_subsequences(tokens, cnf_rules, start_symbol):
     """
     Find all valid subsequences in a greedy manner:
     1. Find the longest valid prefix from current position
@@ -280,7 +295,7 @@ def find_all_subsequences(tokens, cnf_rules, nonterminals, start_symbol):
             break
             
         # Run CYK on remaining tokens to find longest valid prefix
-        result = cyk_parse(remaining, cnf_rules, nonterminals, start_symbol, find_suffix=False)
+        result = cyk_parse(remaining, cnf_rules, start_symbol, find_suffix=False)
         
         valid_length = result["valid_length"]
         if valid_length == 0:
@@ -311,7 +326,7 @@ def find_all_subsequences(tokens, cnf_rules, nonterminals, start_symbol):
     
     return all_subsequences, dict(all_rule_counts)
 
-def analyze_sequences_enhanced(sequences, grammar):
+def analyze_sequences_enhanced(sequences, grammar, target_symbol=None):
     """
     Enhanced version that handles both valid and invalid sequences.
     For invalid sequences, finds all non-overlapping valid subsequences greedily.
@@ -330,6 +345,7 @@ def analyze_sequences_enhanced(sequences, grammar):
     invalid_analyses = []
 
     cnf_rules, nonterminals, start_symbol = to_cnf(grammar)
+    target_symbol = start_symbol if target_symbol is None else Nonterminal(target_symbol)
     
     for seq in sequences:
         tokens = seq.split() if isinstance(seq, str) else seq
@@ -348,23 +364,23 @@ def analyze_sequences_enhanced(sequences, grammar):
             pass
             
         # For invalid sequences, find all non-overlapping valid subsequences
-        subsequences, seq_rule_counts = find_all_subsequences(tokens, cnf_rules, nonterminals, start_symbol)
+        subsequences, seq_rule_counts = find_all_subsequences(tokens, cnf_rules, target_symbol)
         
         # Update global rule counts
         for rule, count in seq_rule_counts.items():
             rule_counts[rule] += count
             
         # Also get the longest valid prefix and suffix for backward compatibility
-        prefix_result = cyk_parse(tokens, cnf_rules, nonterminals, start_symbol, find_suffix=False)
-        suffix_result = cyk_parse(tokens, cnf_rules, nonterminals, start_symbol, find_suffix=True)
+        # prefix_result = cyk_parse(tokens, cnf_rules, start_symbol, find_suffix=False)
+        # suffix_result = cyk_parse(tokens, cnf_rules, start_symbol, find_suffix=True)
         
         # Record invalid sequence analysis
         invalid_analyses.append({
             "sequence": tokens,
-            "prefix_length": prefix_result["valid_length"],
-            "prefix_invalid": prefix_result["invalid_part"],
-            "suffix_length": suffix_result["valid_length"],
-            "suffix_invalid": suffix_result["invalid_part"],
+            # "prefix_length": prefix_result["valid_length"],
+            # "prefix_invalid": prefix_result["invalid_part"],
+            # "suffix_length": suffix_result["valid_length"],
+            # "suffix_invalid": suffix_result["invalid_part"],
             "subsequences": subsequences,
             "rules_used": seq_rule_counts
         })
@@ -375,6 +391,7 @@ def argument_parser():
     parser = argparse.ArgumentParser(description="Analyze sequences with a PCFG")
     parser.add_argument("--grammar", type=str, required=True, help="Path to the PCFG grammar file")
     parser.add_argument("--epoch", type=str, required=True, help="Epoch number for analysis")
+    parser.add_argument("--target_symbol", type=str, default="S", help="Target symbol for analysis (default: S)")
     return parser.parse_args()
 
 def main():
@@ -387,7 +404,7 @@ def main():
     sequences = all_results[args.grammar][args.epoch]["generated_sequences"]
 
     # Use enhanced analysis function
-    rule_counts, valid_count, invalid_analyses = analyze_sequences_enhanced(sequences, pcfg)
+    rule_counts, valid_count, invalid_analyses = analyze_sequences_enhanced(sequences, pcfg, target_symbol=args.target_symbol)
     
     print(f"Valid sequences: {valid_count}/{len(sequences)} ({valid_count/len(sequences)*100:.2f}%)")
     print("\nRule counts:")
@@ -406,18 +423,18 @@ def main():
                 start, end = subseq['span']
                 print(f"      Subsequence {j+1}: '{subseq['text']}' (positions {start}-{end})")
             
-            if analysis["prefix_length"] > 0:
-                prefix = ' '.join(analysis["sequence"][:analysis["prefix_length"]])
-                print(f"    Longest valid prefix: '{prefix}' ({analysis['prefix_length']} tokens)")
-            else:
-                print("    No valid prefix")
+            # if analysis["prefix_length"] > 0:
+            #     prefix = ' '.join(analysis["sequence"][:analysis["prefix_length"]])
+            #     print(f"    Longest valid prefix: '{prefix}' ({analysis['prefix_length']} tokens)")
+            # else:
+            #     print("    No valid prefix")
                 
-            if analysis["suffix_length"] > 0:
-                suffix_start = len(analysis["sequence"]) - analysis["suffix_length"]
-                suffix = ' '.join(analysis["sequence"][suffix_start:])
-                print(f"    Longest valid suffix: '{suffix}' ({analysis['suffix_length']} tokens)")
-            else:
-                print("    No valid suffix")
+            # if analysis["suffix_length"] > 0:
+            #     suffix_start = len(analysis["sequence"]) - analysis["suffix_length"]
+            #     suffix = ' '.join(analysis["sequence"][suffix_start:])
+            #     print(f"    Longest valid suffix: '{suffix}' ({analysis['suffix_length']} tokens)")
+            # else:
+            #     print("    No valid suffix")
             
 
 if __name__ == "__main__":

@@ -214,7 +214,8 @@ class GPT(nn.Module):
             loss = F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1), ignore_index=-1)
         else:
             # inference-time mini-optimization: only forward the lm_head on the very last position
-            logits = self.lm_head(x[:, [-1], :]) # note: using list [-1] to preserve the time dim
+            #logits = self.lm_head(x[:, [-1], :]) # note: using list [-1] to preserve the time dim
+            logits = self.lm_head(x)  # forward the lm_head on all positions
             loss = None
 
         return logits, loss
@@ -317,7 +318,7 @@ class GPT(nn.Module):
             #         logger.info(f"Early stopping triggered at epoch {epoch+continue_from}")
             #         break
 
-            if epoch % checkpoint_every == 0:
+            if epoch % checkpoint_every == 0 or epoch in {1, 2, 3, 4, 5}:
                 ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch + continue_from}.pt')
                 os.makedirs(os.path.dirname(ckpt_path_ep), exist_ok=True)
                 torch.save(self.state_dict(), ckpt_path_ep)

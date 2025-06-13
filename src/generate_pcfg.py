@@ -64,6 +64,12 @@ GRAMMARS = {
         "X": [(["Y", '"', "Y"], .3), (["x"], .7)],
         "Y": [(["S", "y", "S"], .15), (["S", "X"], .15), (["y"], .7)],
     },
+
+    # Condition
+    "Conditionals": {
+        "S": [(["C"], 1.0)],
+        "C": [(["cond"], .5), (["not", "C"], .25), (["C", "and", "C"], .25)],
+    },
 }
 
 def dict_to_pcfg(table):
@@ -141,9 +147,6 @@ def save_dataset(test_pairs, out_dir):
                 "real_log_prob": log_prob
             }) + "\n")
 
-
-import random
-import numpy as np
 
 def sample(grammar_name, max_len=MAX_SEQUENCE_LENGTH):
     tbl = GRAMMARS[grammar_name]
@@ -358,6 +361,8 @@ def build_fixed_tokenizer(grammar_name: str, tok_path: str, special_tokens=None)
         bos_token="<|bos|>",
         eos_token="<|eos|>"
     )
+
+    print(vocab)
     return tok_fast
 
 def main():
@@ -390,6 +395,7 @@ def main():
 
     count_valid_sequences(tok_fast, test_sequences, args.grammar)
     count_valid_sequences(tok_fast, train_sequences, args.grammar)
+
 
 if __name__=="__main__":
     main()

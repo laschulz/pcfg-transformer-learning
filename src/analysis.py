@@ -146,9 +146,6 @@ def analyze(pcfgs, dataset_size, model_config):
 
             print(f"[INFO] Analyzing {ckpt} for {pcfg}...")
 
-            model.load_state_dict(
-                torch.load(os.path.join(checkpoints_dir, ckpt), map_location=device)
-            )
             generated_sequences, accuracy, train_overlap, res = evaluate_generated_sequences(
                 model,
                 tokenizer,
