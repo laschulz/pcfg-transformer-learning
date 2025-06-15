@@ -103,9 +103,12 @@ def analyze_hierarchy_per_epoch(sequences, cnf_rules, C: Nonterminal, parser, mo
         total_count += count
         for i, j, text in spans:
             valid = False
+            if i == 1 or j == len(tokens):
+                valid_count += 1
+                continue
             if tokens[i-1] not in invalid_terminals:
                 valid = True
-            if j<len(tokens)-1 and tokens[j+1] in invalid_terminals:
+            if tokens[j] in invalid_terminals:
                 valid = valid and True
             if valid:
                 valid_count += 1
@@ -123,7 +126,7 @@ def get_terminals_for_nonterminal(grammar_rules):
         terminals.add(terminal)
     return terminals
 
-def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar):
+def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoch):
     # Looking into Conditionals subgrammar
     parser = PARSERS[subgrammar]
     cnf_rules, _ , _ = to_cnf(parser)
@@ -167,6 +170,9 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar):
     for ckpt in sorted(os.listdir(checkpoints_dir)):
         if not ckpt.endswith(".pt"): #or ckpt in all_grammar_results.get(grammar_name, {}).get(ckpt, False):
             continue 
+        epoch_int = int(ckpt.split('_')[1].split('.')[0])  # Extract epoch number from filename
+        if to_epoch and epoch_int > to_epoch:
+            continue
         print(f"Analyzing epoch: {ckpt}")
         model.load_state_dict(
             torch.load(os.path.join(checkpoints_dir, ckpt), map_location=device)
@@ -331,7 +337,7 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar):
 #     plt.show()
 #     plt.close()
     
-def plot_subgrammar(grammar_name):
+def plot_subgrammar(grammar_name, to_epoch):
     """
     Plot KL divergence between neural model and PCFG predictions across epochs
     for multiple nonterminals.
@@ -398,9 +404,8 @@ def plot_subgrammar(grammar_name):
         
         for epoch_key in sorted_keys:
             match = re.search(r'epoch_(\d+)', epoch_key)
-            if match:
-                epoch_num = int(match.group(1))
-            else:
+            epoch_num = int(match.group(1))
+            if to_epoch and epoch_num > to_epoch:
                 continue
                 
             # Get metrics for this epoch
@@ -532,39 +537,39 @@ def plot_subgrammar(grammar_name):
     plt.tight_layout()
     plt.savefig(f"../results/hierarchy_plot_{grammar_name}.png", dpi=300, bbox_inches='tight')
     
-    # Create a separate plot just for total subsequence counts
-    fig2, ax = plt.subplots(figsize=(10, 5))
+    # # Create a separate plot just for total subsequence counts
+    # fig2, ax = plt.subplots(figsize=(10, 5))
     
-    # Plot bars for each nonterminal
-    for nt_idx, nonTerminal in enumerate(nonTerminals):
-        positions = []
-        counts = []
+    # # Plot bars for each nonterminal
+    # for nt_idx, nonTerminal in enumerate(nonTerminals):
+    #     positions = []
+    #     counts = []
         
-        for epoch in all_epochs:
-            if epoch in bar_data and nonTerminal in bar_data[epoch]:
-                positions.append(epoch + (nt_idx - len(nonTerminals)/2 + 0.5) * bar_width)
-                counts.append(bar_data[epoch][nonTerminal])
+    #     for epoch in all_epochs:
+    #         if epoch in bar_data and nonTerminal in bar_data[epoch]:
+    #             positions.append(epoch + (nt_idx - len(nonTerminals)/2 + 0.5) * bar_width)
+    #             counts.append(bar_data[epoch][nonTerminal])
         
-        color = bar_colors[nt_idx]
-        ax.bar(positions, counts, bar_width, label=nonTerminal, 
-              color=color, alpha=0.7)
+    #     color = bar_colors[nt_idx]
+    #     ax.bar(positions, counts, bar_width, label=nonTerminal, 
+    #           color=color, alpha=0.7)
         
-        # Add value labels
-        for i, v in enumerate(counts):
-            ax.text(positions[i], v + 0.5, str(v), ha='center', fontsize=8)
+    #     # Add value labels
+    #     for i, v in enumerate(counts):
+    #         ax.text(positions[i], v + 0.5, str(v), ha='center', fontsize=8)
     
-    # Configure the separate plot
-    ax.set_xlabel('Epoch')
-    ax.set_ylabel('Number of Subsequences')
-    ax.set_title(f'Subsequence Counts per Epoch - {grammar_name}')
-    ax.legend()
-    ax.grid(True, alpha=0.3, axis='y')
-    ax.set_xticks(all_epochs)
+    # # Configure the separate plot
+    # ax.set_xlabel('Epoch')
+    # ax.set_ylabel('Number of Subsequences')
+    # ax.set_title(f'Subsequence Counts per Epoch - {grammar_name}')
+    # ax.legend()
+    # ax.grid(True, alpha=0.3, axis='y')
+    # ax.set_xticks(all_epochs)
     
-    plt.tight_layout()
-    plt.savefig(f"../results/subsequence_counts_{grammar_name}.png", dpi=300)
-    plt.show()
-    plt.close()
+    # plt.tight_layout()
+    # plt.savefig(f"../results/subsequence_counts_{grammar_name}.png", dpi=300)
+    # plt.show()
+    # plt.close()
 
 # Update the main function to optionally generate plots
 def main():
@@ -572,8 +577,8 @@ def main():
     if args.plot_only:
         plot_subgrammar(args.grammar)
         return
-    analyze_hieararchy_all_epochs(args.grammar, args.nonTerminal, args.subgrammar)
-    plot_subgrammar(args.grammar)
+    analyze_hieararchy_all_epochs(args.grammar, args.nonTerminal, args.subgrammar, args.to_epoch)
+    plot_subgrammar(args.grammar, args.to_epoch)
 
 # Update argument parser to include plot-only option
 def argument_parser():
@@ -582,6 +587,7 @@ def argument_parser():
     parser.add_argument("--plot_only", action='store_true', help="If set, only generate plots without analysis.")
     parser.add_argument("--nonTerminal", type=str, required=True, help="Number of epochs to analyze.")
     parser.add_argument("--subgrammar", type=str, required=True, help="Subgrammar to use for analysis.")
+    parser.add_argument("--to_epoch", type=int, default=None, help="Number of epochs to analyze.")
 
     return parser.parse_args()
         
