@@ -10,7 +10,10 @@ from model import TwoLayer, FourLayer, SixLayer, GPT
 from train import map_model_name
 import argparse
 
-def plot_results(results_log, model_name):
+def plot_results(results_log, model_name, pcfgs=None):
+    if pcfgs is not None:
+        results_log = {pcfg: results_log[pcfg] for pcfg in pcfgs if pcfg in results_log}
+
 
     for pcfg_name, ckpt_dict in results_log.items():
         # collect (epoch, accuracy) pairs
@@ -206,7 +209,7 @@ def main():
     if args.load_data:
         with open("../results/results_log.json", "r") as f:
             results_log = json.load(f)
-        plot_results(results_log, model_config.name)
+        plot_results(results_log, model_config.name, args.pcfgs)
     else:
         analyze(args.pcfgs, args.dataset_size, model_config)
 

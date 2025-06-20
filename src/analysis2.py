@@ -134,7 +134,8 @@ def cyk_parse(tokens: List[str], cnf_rules, start_symbol, find_suffix=False) -> 
     """
 
     N = len(tokens)
-        # Initialize charts
+    
+    # Initialize charts
     chart = [[{} for _ in range(N+1)] for _ in range(N+1)]
     back = [[{} for _ in range(N+1)] for _ in range(N+1)]
     
@@ -264,7 +265,6 @@ def cyk_parse(tokens: List[str], cnf_rules, start_symbol, find_suffix=False) -> 
     
     # Check if full sequence is valid
     valid = (valid_length == N)
-    
     return {
         "valid": valid,
         "rule_counts": dict(rule_counts),

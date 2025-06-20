@@ -55,7 +55,6 @@ def main():
             learning_rate=6e-4,
             weight_decay=1e-1,
             betas=(0.9, 0.95),
-            early_stopping=15,
             checkpoint_every=5,
             config=config.name,
             device=device, 
@@ -66,12 +65,11 @@ def main():
         model.train_model(
             data_dir=f'../data/{pcfg}',
             dataset=dataset,
-            num_epochs=200,
+            num_epochs=50, # 200
             batch_size=8,
             learning_rate=6e-4,
             weight_decay=1e-1,
             betas=(0.9, 0.95),
-            early_stopping=15,
             checkpoint_every=5,
             config=config.name,
             device=device

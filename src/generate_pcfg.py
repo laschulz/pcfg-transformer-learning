@@ -57,7 +57,7 @@ GRAMMARS = {
             (["while", "C", "do", "S"], 0.2),
             (["action"], 0.4)],
         "T": [(["t", "T"], 0.6), (["z"], 0.4)],
-        "C": [(["x", "R", "y"], 0.5), (["not", "C"], 0.25), (["C", "and", "C"], 0.25)],
+        "C": [(["R"], 0.5), (["not", "C"], 0.25), (["C", "and", "C"], 0.25)],
         "R": [(["x", "==", "y"], 0.2), (["x", "<=", "y"], 0.2), (["x", "<", "y"], 0.2), 
               (["x", ">=", "y"], 0.2), (["x", ">", "y"], 0.2)]
     },
@@ -99,8 +99,8 @@ GRAMMARS = {
 
     "Comparisons": {
         "S": [(["R"], 1.0)],
-        "R": [(["x", "==", "y"], 0.2), (["x", "<=", "y"], 0.2), (["x", "<", "y"], 0.2), 
-              (["x", ">=", "y"], 0.2), (["x", ">", "y"], 0.2)]
+        "R": [(["=="], 0.2), (["<="], 0.2), (["<"], 0.2), 
+              ([">="], 0.2), ([">"], 0.2)]
     },
 
     "BinaryValues": {
@@ -186,7 +186,7 @@ def save_dataset(test_pairs, out_dir):
     with open(f"{out_dir}/test.jsonl", "w") as f:
         for seq, log_prob in test_pairs:
             f.write(json.dumps({
-                "sequence": " ".join(seq),
+                "sequence": seq,
                 "real_log_prob": log_prob
             }) + "\n")
 
@@ -217,7 +217,7 @@ def sample(grammar_name, max_len=MAX_SEQUENCE_LENGTH):
 
         # If stack emptied before hitting max_len, we got a fully terminating sequence
         if not stack:
-            return seq, log_prob
+            return " ".join(seq), log_prob
         # Otherwise, seq hit max_len with stack nonempty → discard and retry
 
 
@@ -422,8 +422,8 @@ def main():
 
     # 1) generate
     train_sequences = sample_many(args.grammar, args.dataset_size, args.max_len)
-    test_sequences = sample_many(args.grammar, 100, args.max_len)
-    str_sequences = [" ".join(seq) for seq, _ in train_sequences]
+    test_sequences = sample_many(args.grammar, 500, args.max_len)
+    str_sequences = [seq for seq, _ in train_sequences]
 
     # 2) save dataset
     out_dir = f"../data/{args.grammar}/{args.grammar}_{args.dataset_size}"

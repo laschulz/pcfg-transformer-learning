@@ -78,6 +78,7 @@ def compare_model_vs_real_probs(model, tokenizer, test_sequences_with_probs, dev
 
             # Compute model log-prob
             model_log_prob = 0.0
+
             for i in range(encoded.size(1) - 1):
                 input_ids = encoded[:, : i + 1]
                 target_id = encoded[:, i + 1].item()
@@ -85,12 +86,50 @@ def compare_model_vs_real_probs(model, tokenizer, test_sequences_with_probs, dev
                 log_probs = F.log_softmax(logits.squeeze(1), dim=-1)
                 token_log_prob = log_probs[0, target_id].item()
                 model_log_prob += token_log_prob
-
+            print(model_log_prob, real_log_prob)
             # We already have real_log_prob passed in, so just compare
             diff = abs(model_log_prob - real_log_prob)
 
             results.append({
                 "text": seq,
+                "log_prob_model": model_log_prob,
+                "log_prob_real": real_log_prob,
+                "abs_logprob_diff": diff,
+            })
+
+    return results
+
+def compare_model_vs_real_probs_subgrammar(model, tokenizer, test_sequences_with_probs, device):
+    """
+    Now expects test_sequences_with_probs to be a list of (sequence_str, real_log_prob) tuples.
+    We unpack both, but only recompute model_log_prob and then compare to the stored real_log_prob.
+    """
+    model.eval()
+    results = []
+
+    with torch.no_grad():
+        for seq, real_log_prob in test_sequences_with_probs:
+            # Encode string with BOS/EOS
+            start, end, text = seq
+            encoded = tokenizer.encode(text, return_tensors="pt").to(device)
+
+            # Compute model log-prob
+            model_log_prob = 0.0
+
+            if start == 0:
+                start = 1
+
+            for i in range(end - start+1):
+                input_ids = encoded[:, : start + i]
+                target_id = encoded[:, start + i].item()
+                logits, _ = model(input_ids)
+                log_probs = F.log_softmax(logits.squeeze(1), dim=-1)
+                token_log_prob = log_probs[0, target_id].item()
+                model_log_prob += token_log_prob
+            diff = abs(model_log_prob - real_log_prob)
+
+            results.append({
+                "text": text,
                 "log_prob_model": model_log_prob,
                 "log_prob_real": real_log_prob,
                 "abs_logprob_diff": diff,

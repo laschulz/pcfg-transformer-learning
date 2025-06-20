@@ -261,8 +261,8 @@ class GPT(nn.Module):
         return optimizer
     
     def train_model(self, data_dir, dataset, num_epochs, batch_size,
-                learning_rate, weight_decay, betas,
-                early_stopping, checkpoint_every, config, device, continue_from=0):
+                learning_rate, weight_decay, betas, 
+                checkpoint_every, config, device, continue_from=0):
         
         block_size = self.config.block_size
         optimizer = self.configure_optimizers(weight_decay, learning_rate, betas, device)
@@ -279,8 +279,6 @@ class GPT(nn.Module):
 
         # training loop
         iters_per_epoch = len(train_data) // (batch_size * block_size)
-        best_val_loss = float('inf')
-        epochs_no_improve = 0
 
         for epoch in range(num_epochs):
             self.train()
@@ -309,17 +307,6 @@ class GPT(nn.Module):
             logger.info(f"[Epoch {epoch+continue_from}] Validation Loss: {avg_val_loss:.4f}")
 
             ckpt_path = os.path.join(data_dir, dataset, config)
-            # if avg_val_loss < best_val_loss:
-            #     best_val_loss = avg_val_loss
-            #     epochs_no_improve = 0
-            #     best_path = os.path.join(ckpt_path, 'best.pt')
-            #     os.makedirs(os.path.dirname(best_path), exist_ok=True)
-            #     torch.save(self.state_dict(), best_path)
-            # else:
-            #     epochs_no_improve += 1
-            #     if epochs_no_improve >= early_stopping:
-            #         logger.info(f"Early stopping triggered at epoch {epoch+continue_from}")
-            #         break
 
             if epoch % checkpoint_every == 0 or epoch in {1, 2, 3, 4, 5}:
                 ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch + continue_from}.pt')
