@@ -10,10 +10,8 @@ from model import GPT, FourLayer
 from transformers import PreTrainedTokenizerFast
 import argparse
 import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
 import numpy as np
 import re
-from generate_pcfg import sample_many
 from eval import compare_model_vs_real_probs_subgrammar
 
 # Function to find non-overlapping longest valid substrings
@@ -80,8 +78,6 @@ def get_terminals_for_nonterminal(grammar_rules):
         terminals.add(terminal)
     return terminals
 
-
-# not done yet 
 def prepare_test_sequences(parser, cnf_rules, nt, main_dir):
     with open(f"{main_dir}/test.jsonl", 'r') as f:
         test_sequences = [json.loads(line)["sequence"] for line in f]
@@ -100,7 +96,7 @@ def prepare_test_sequences(parser, cnf_rules, nt, main_dir):
     test_sequences_with_probs = [(seq, prob) for seq, prob in zip(relevant_test_sequences, probabilities)]
     return test_sequences_with_probs, num_sequences
 
-def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoch):
+def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoch, dataset_size):
     # Looking into Conditionals subgrammar
     parser = PARSERS[subgrammar]
     cnf_rules, _ , _ = to_cnf(parser)
@@ -114,7 +110,7 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
         all_results = json.load(f)
     sequences_all_epochs = all_results[grammar_name]
 
-    main_dir = f"../data/{grammar_name}/{grammar_name}_200" #TODO: adjust this
+    main_dir = f"../data/{grammar_name}/{grammar_name}_{dataset_size}"
     
     # Load tokenizer
     tokenizer = PreTrainedTokenizerFast(
@@ -355,13 +351,14 @@ def main():
     if args.plot_only:
         plot_subgrammar(args.grammar, args.to_epoch)
         return
-    analyze_hieararchy_all_epochs(args.grammar, args.nonTerminal, args.subgrammar, args.to_epoch)
+    analyze_hieararchy_all_epochs(args.grammar, args.nonTerminal, args.subgrammar, args.to_epoch, args.dataset_size)
     plot_subgrammar(args.grammar, args.to_epoch)
 
 # Update argument parser to include plot-only option
 def argument_parser():
     parser = argparse.ArgumentParser(description="Analyze hierarchy in PCFG Transformer learning.")
     parser.add_argument("--grammar", type=str, required=True, help="The grammar to analyze.")
+    parser.add_argument("--dataset_size", type=int, required=True, help="Size of the dataset to analyze.")
     parser.add_argument("--plot_only", action='store_true', help="If set, only generate plots without analysis.")
     parser.add_argument("--nonTerminal", type=str, required=True, help="Number of epochs to analyze.")
     parser.add_argument("--subgrammar", type=str, required=True, help="Subgrammar to use for analysis.")

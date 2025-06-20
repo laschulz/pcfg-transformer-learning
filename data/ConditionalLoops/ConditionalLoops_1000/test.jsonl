@@ -1,100 +1,500 @@
-{"sequence": "while cond do while cond and not cond and not not cond and not not cond and not cond and not cond do if cond then action else z", "real_log_prob": -28.148457798408913}
-{"sequence": "if not cond then if cond then if cond then action else t z else t z else z", "real_log_prob": -10.901422273450791}
-{"sequence": "while not cond and not not cond and cond and not not cond and not cond and cond and cond and cond and cond do action", "real_log_prob": -28.172174325026223}
-{"sequence": "while not cond do while not not cond and not cond do action", "real_log_prob": -13.146079904021644}
-{"sequence": "if cond then while not not not cond do if cond then if not not cond then action else t t t z else t z else z", "real_log_prob": -19.770836058456386}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else t t t t z", "real_log_prob": -5.485321871246373}
+{"sequence": "if cond and not cond then if cond then action else z else z", "real_log_prob": -9.43348392329039}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "if not cond then action else z", "real_log_prob": -4.828313737302301}
-{"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "if cond and cond and cond and cond and not cond then action else t z", "real_log_prob": -13.656905527787634}
-{"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
-{"sequence": "if not cond and not not not cond and cond and not cond and not cond and cond then if cond then while cond and cond do if cond and cond then while cond do if not cond and cond and cond then action else z else t z else t t t t t z else t z", "real_log_prob": -47.619189264414935}
-{"sequence": "if cond then while cond do while not not cond do action else t t t t z", "real_log_prob": -12.863080779474243}
-{"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
 {"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
-{"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "while cond do while cond do action", "real_log_prob": -5.521460917862246}
-{"sequence": "while cond do if cond and cond and cond then while not not cond and not cond and cond do action else t t z", "real_log_prob": -21.5454900597815}
-{"sequence": "if not not cond and cond then if cond then if not cond then action else z else t z else t t z", "real_log_prob": -16.264278161136396}
-{"sequence": "while not cond and cond do if cond then if not cond then action else t z else t z", "real_log_prob": -14.144014624936307}
-{"sequence": "while cond do if cond then while cond do action else z", "real_log_prob": -8.047189562170502}
-{"sequence": "if cond then if cond then if cond then action else z else t z else t t t t t t t z", "real_log_prob": -12.580081654926843}
+{"sequence": "if not cond then while cond and cond do while not not cond and cond do while not cond do while cond do if cond then if cond then if cond then action else t t z else t z else z else t z", "real_log_prob": -31.976908703986563}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "while not cond and not not cond and not cond and cond and cond and not cond and cond and cond and not cond and not cond and not not not cond and not cond and not cond and not not cond and cond and cond and cond and cond and cond and cond and cond do if not cond and cond and cond and not cond and cond and cond and cond and not cond and cond and cond then action else t t z", "real_log_prob": -90.63706456446185}
+{"sequence": "if not cond and cond then if cond then if not cond and cond then action else t t z else t z else t z", "real_log_prob": -17.46825096546234}
+{"sequence": "if cond then if cond then action else t t t z else t t z", "real_log_prob": -8.521876139320618}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do if cond and cond and cond then while cond do if cond then if cond then action else t t t t t z else z else t t t z", "real_log_prob": -21.344134924274616}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "while cond and cond do action", "real_log_prob": -5.298317366548036}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond and cond then action else t t t z", "real_log_prob": -7.0539377891602175}
+{"sequence": "if not not not cond and cond and cond and cond and cond and not cond and cond and cond and cond and cond and cond and not not cond and cond then action else z", "real_log_prob": -36.71308404305977}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then while cond do if not not not not not cond and cond and cond and cond then if cond then while not cond and cond do action else t t t t t z else z else t t t z", "real_log_prob": -33.820784174353626}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "while cond do if cond and cond and cond then while cond do action else z", "real_log_prob": -12.20607264553017}
-{"sequence": "if not cond and cond then action else t z", "real_log_prob": -7.418580902748127}
-{"sequence": "if not not cond and cond and not cond and cond and cond and cond and not cond and cond and cond and not cond and cond then while not cond do action else z", "real_log_prob": -34.85678605269415}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "if cond then if cond then while cond do while cond do if not cond and cond then if not cond and not not not cond then if cond then action else t t t t t t z else t z else t t z else t t t z else t z", "real_log_prob": -35.88119213732053}
-{"sequence": "if cond then while not not cond and not cond and not cond do action else t z", "real_log_prob": -15.95949062078168}
+{"sequence": "while cond do if cond then while cond do action else t t t t t t t z", "real_log_prob": -11.622968928532435}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then if cond then action else z else t t t t t z", "real_log_prob": -8.521876139320618}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "if cond then if cond and cond then while cond do action else t t t z else t t z", "real_log_prob": -12.903902773994497}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
+{"sequence": "if cond and cond and cond then action else z", "real_log_prob": -7.600902459542082}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "if cond and cond and cond then action else z", "real_log_prob": -7.600902459542082}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "if not cond and not cond and cond then action else t t t z", "real_log_prob": -11.905968053079834}
+{"sequence": "if not cond and cond then if cond then action else t t z else t t t t z", "real_log_prob": -12.498437665886334}
+{"sequence": "if cond then if cond then while not not cond and not cond and cond and cond and cond do while cond do if cond then if cond then if cond then if not cond then action else t z else z else t t t t z else z else t t t t t t z else t z", "real_log_prob": -40.668683880102556}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not not cond then action else t t z", "real_log_prob": -7.236259345954172}
+{"sequence": "if cond and not cond then action else t t t t t t z", "real_log_prob": -9.97270902157808}
+{"sequence": "if cond then while cond and not cond and cond do while cond do if cond then while not cond do if cond then while cond and cond and cond and not not cond and not cond do while not cond do action else t t t z else z else z", "real_log_prob": -42.33329441786547}
+{"sequence": "while cond do while cond do while cond do while cond do action", "real_log_prob": -10.126631103850336}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then if not not not not cond and cond and cond and not cond then action else t t t t t t z else t t t z", "real_log_prob": -23.73497506502356}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then if cond then if cond and cond then action else t t z else z else z", "real_log_prob": -11.594569454010736}
+{"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
+{"sequence": "while cond do if cond and cond then while not cond do action else z", "real_log_prob": -11.512925464970227}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not not cond and not not not cond and not cond and not cond and cond and not not not cond and not cond and cond and cond and cond and not cond and not cond and cond then if not cond then while cond and cond do action else t t z else z", "real_log_prob": -55.73284545853302}
+{"sequence": "if cond and cond and not not cond and not cond then if not not cond and cond then if not cond then action else t z else t t z else z", "real_log_prob": -26.661485869535586}
+{"sequence": "if cond and cond then if not cond and cond and cond then if cond then if cond then action else t z else t z else t t z else z", "real_log_prob": -20.68712679033054}
+{"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
+{"sequence": "if cond then if cond then while not cond do if cond then if not cond and cond and cond then while cond do if not cond then action else z else t z else z else t t t z else t t t t t z", "real_log_prob": -31.0653009200168}
+{"sequence": "if cond then if cond then while cond do while cond do if not cond then action else t z else z else t t t z", "real_log_prob": -16.528243706970862}
+{"sequence": "if not cond then if not not cond and cond then action else t t t z else t z", "real_log_prob": -14.249375140594132}
+{"sequence": "if not not cond and not cond then action else z", "real_log_prob": -9.680344001221917}
+{"sequence": "while not cond do if cond and cond and cond and cond then action else t z", "real_log_prob": -13.880049079101843}
+{"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not not cond then if cond and cond and cond and not cond then if not cond and not not cond then if cond then while not cond do if cond then if not cond and not cond then action else t t z else t t z else z else z else z else t z", "real_log_prob": -43.80123276802587}
+{"sequence": "if not not not cond and cond then if not cond and cond and cond and cond and cond and cond and cond and not not not cond and cond then while cond do if not cond and not cond then action else t z else z else z", "real_log_prob": -44.57795204843632}
+{"sequence": "while not cond do action", "real_log_prob": -4.605170185988091}
+{"sequence": "if cond then if not cond and not cond then action else t z else t z", "real_log_prob": -11.84142953194226}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "if not cond then action else z", "real_log_prob": -4.828313737302301}
+{"sequence": "while cond and cond do action", "real_log_prob": -5.298317366548036}
+{"sequence": "while not cond and cond do while cond and cond and cond do action", "real_log_prob": -13.146079904021644}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while not cond and cond and cond do action", "real_log_prob": -8.764053269347762}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "if cond then if cond and cond and cond then action else t t t t z else t t z", "real_log_prob": -13.191584846446279}
+{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "while not not not cond and not cond and not cond and cond and cond and not cond and cond and cond and cond and cond and cond and cond do if cond then if cond then while cond and cond do while cond and cond do while not cond do action else t z else t z", "real_log_prob": -52.93654020967594}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while not cond do action", "real_log_prob": -4.605170185988091}
+{"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
+{"sequence": "if cond and not cond and cond then if not cond then action else t z else t t z", "real_log_prob": -14.431696697388087}
+{"sequence": "if cond and not not cond and cond and cond and not cond and cond and cond then action else t z", "real_log_prob": -20.588377333387086}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "while not cond do action", "real_log_prob": -4.605170185988091}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "if not not cond and cond and cond and cond then if not cond then action else z else z", "real_log_prob": -16.364955728889843}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not not cond and not cond and cond and cond then action else t t t t z", "real_log_prob": -15.882529579645551}
+{"sequence": "while cond do if cond then action else t z", "real_log_prob": -6.255430092942446}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "if cond then if cond and cond then action else t z else z", "real_log_prob": -8.558015185936492}
+{"sequence": "if cond then action else t t t t t z", "real_log_prob": -5.996147495012363}
+{"sequence": "if cond then if cond then if not not cond and cond and not not cond then if not cond and cond and cond then action else z else z else t z else z", "real_log_prob": -26.779268905191966}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
-{"sequence": "if cond and not cond and not not cond and not cond and cond then while cond do action else z", "real_log_prob": -19.607548080375363}
-{"sequence": "if not cond then while not cond and cond and cond do if cond then if cond and cond then action else t z else t z else t t t z", "real_log_prob": -22.36110322390222}
+{"sequence": "if not cond then action else z", "real_log_prob": -4.828313737302301}
+{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond and cond and cond do if not cond and cond and cond then action else t t t z", "real_log_prob": -16.981141868313664}
+{"sequence": "if cond and not not cond then while cond do if not cond then if cond then action else z else t t t t t z else t t z", "real_log_prob": -20.610165749194415}
+{"sequence": "while not cond do while cond do action", "real_log_prob": -6.907755278982137}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond and not cond and cond and not cond then while cond do if not cond and cond then action else t t t t t t z else z", "real_log_prob": -23.811936106159678}
+{"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
+{"sequence": "if cond and cond then action else z", "real_log_prob": -5.521460917862246}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "if not cond and cond and cond then action else z", "real_log_prob": -8.987196820661971}
-{"sequence": "if not cond and not not cond and cond and cond then if cond then if cond and cond and not not not cond and not cond and not cond and cond and cond and not cond and cond and cond then if cond and not not cond then if cond then while cond and cond and cond do if cond and not not cond and cond then action else z else t t z else t z else t z else t t z else t t t t t t z", "real_log_prob": -77.87548807902546}
+{"sequence": "while cond do if cond then while cond do action else t z", "real_log_prob": -8.558015185936492}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else t t t z", "real_log_prob": -4.974496247480382}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
 {"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "while cond and cond do if not cond then action else z", "real_log_prob": -9.210340371976182}
+{"sequence": "if cond then if cond then if not cond and cond then if cond then action else t t t z else t t t t z else t t t t t t z else t t t t t z", "real_log_prob": -23.67980243969475}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "if cond and cond and cond then while cond do if not cond then while not cond do if cond then action else t t t t t t t t z else t z else z", "real_log_prob": -24.627549270280397}
-{"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "while not not not cond and not cond do action", "real_log_prob": -10.843494811027599}
-{"sequence": "if not cond then while cond do while cond and cond and cond and not not cond do if cond then action else z else t t z", "real_log_prob": -21.991777162409925}
-{"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
-{"sequence": "while cond and cond and cond do action", "real_log_prob": -7.3777589082278725}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "if cond then action else t t t t t t t z", "real_log_prob": -7.017798742544344}
 {"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "if cond then if not cond then if not cond then if cond then action else t z else t t z else z else t t t z", "real_log_prob": -16.856747773942896}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "while cond do if not cond then action else t t t t z", "real_log_prob": -9.174201325360308}
-{"sequence": "while cond and cond do if cond and not cond and cond then if cond then if cond and not not cond and not cond and not cond and cond then if cond then if cond then while cond do if cond then action else t t t z else t z else z else z else t z else t z", "real_log_prob": -45.228349123666014}
-{"sequence": "while not cond and not cond do while not not cond and cond and cond and cond and cond do if not cond then if cond then action else t t t z else z", "real_log_prob": -29.434074591775364}
-{"sequence": "if cond then while not cond and cond and not cond and not cond do while cond do if cond and not cond then if not cond then action else z else t t z else t z", "real_log_prob": -29.880361694403785}
+{"sequence": "while not cond and not not cond and cond do action", "real_log_prob": -11.536641991587544}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then if not cond then if not not not not cond and not cond and cond then action else z else z else z", "real_log_prob": -20.97012591487794}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else t t z", "real_log_prob": -4.463670623714392}
+{"sequence": "if not not cond and not cond then action else t z", "real_log_prob": -10.191169624987907}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do if cond then action else t t t t t t z", "real_log_prob": -8.809558211772398}
+{"sequence": "if not cond and cond and cond and not cond then while not cond do action else t t z", "real_log_prob": -17.16346342510762}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while not cond and cond and cond do action", "real_log_prob": -8.764053269347762}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond and cond then if cond then if cond then while cond do if cond then while cond and not cond and cond and cond do if cond and not cond and cond then action else z else z else t z else z else z", "real_log_prob": -33.91016773548831}
+{"sequence": "if cond then while cond do action else t t t t t t t t z", "real_log_prob": -9.831209459304379}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do while cond do if not cond then while cond do if cond then action else t z else t z", "real_log_prob": -15.28344890812467}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not cond and cond and cond then if not not cond then if cond and cond then while cond do if cond then while cond do action else t t z else z else t t t t t t z else t t z", "real_log_prob": -31.12983944115437}
+{"sequence": "if cond then action else t t t t t z", "real_log_prob": -5.996147495012363}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
+{"sequence": "if not cond and cond and cond then action else t z", "real_log_prob": -9.498022444427962}
+{"sequence": "if not cond then action else t t z", "real_log_prob": -5.8499649848342825}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else t t t z", "real_log_prob": -4.974496247480382}
+{"sequence": "while not cond do action", "real_log_prob": -4.605170185988091}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else t t z", "real_log_prob": -4.463670623714392}
+{"sequence": "if cond and cond and cond and cond then if cond then if cond then if not cond then if cond then if cond then action else t z else t t t t t t t z else t t t t z else z else z else z", "real_log_prob": -29.825189069074995}
+{"sequence": "if not not cond then action else z", "real_log_prob": -6.214608098422191}
+{"sequence": "if cond then while cond and cond do if cond then while not not cond and not cond do action else t t z else z", "real_log_prob": -19.912335620730087}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while not not cond do while not not not cond do if cond then while cond do action else t t z", "real_log_prob": -18.302897708295983}
+{"sequence": "while not not cond and not not cond do while cond do if not not not cond and cond and cond and cond and cond and cond then if cond then action else t t z else t t t z", "real_log_prob": -35.30775610322695}
+{"sequence": "if cond then action else t t t t z", "real_log_prob": -5.485321871246373}
+{"sequence": "if cond then action else t t z", "real_log_prob": -4.463670623714392}
+{"sequence": "while cond do if cond then while cond and cond and not not cond and cond and not cond do if not cond and cond and not cond and cond then if cond and cond and cond and not not cond and cond then if cond then if cond then if not not cond and cond and not cond then action else t z else t t z else t t t t z else t t z else t t t t t z else t t z", "real_log_prob": -69.7447264170044}
+{"sequence": "if cond and not cond then if not not not cond and cond then action else t t t t t t z else t t t t t t t t z", "real_log_prob": -22.823367281053784}
+{"sequence": "while cond do while cond do action", "real_log_prob": -5.521460917862246}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not cond then action else t z", "real_log_prob": -5.339139361068292}
+{"sequence": "if not cond then if cond then action else z else t t t t t z", "real_log_prob": -9.908170500440509}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond and cond then if not cond and not cond and cond and cond and cond and not cond and cond and cond then if not not cond and cond and cond and not cond and not cond and cond and cond and cond then action else z else t t t z else t t z", "real_log_prob": -51.943288436665625}
+{"sequence": "while not not cond and cond do action", "real_log_prob": -8.070906088787817}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else t t z", "real_log_prob": -4.463670623714392}
+{"sequence": "while cond and not cond and not not not not cond and cond and not cond and cond and cond and cond and cond do action", "real_log_prob": -28.172174325026223}
+{"sequence": "if cond then while cond do while cond do if cond then while cond do action else z else t t z", "real_log_prob": -13.897154547004781}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do if cond and cond then action else z", "real_log_prob": -7.824046010856292}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then while not not cond do if cond and not cond and not not cond then action else t z else t z", "real_log_prob": -20.382339249975825}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then while cond do while cond and cond and not not cond and cond and cond and cond and cond do while cond do while cond do while cond and cond do while cond do action else z", "real_log_prob": -34.586209448145304}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not cond then while cond do action else t t t t z", "real_log_prob": -9.174201325360308}
+{"sequence": "if cond then action else t t z", "real_log_prob": -4.463670623714392}
+{"sequence": "if not cond and cond then if cond then if cond then action else t z else t t t t z else z", "real_log_prob": -14.513340686428597}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do while cond do action", "real_log_prob": -5.521460917862246}
+{"sequence": "if not cond then if not cond and not not cond and cond and not cond and cond then if cond then if cond then action else t t z else z else z else z", "real_log_prob": -27.290094528957958}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while not not cond do if cond then action else t t t z", "real_log_prob": -10.049670062714208}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then if not not cond and cond and cond and cond then while not cond do while not not cond and cond and cond do if cond and not cond and cond and not cond then if not cond and not not not not cond then if cond then if not cond and cond then action else t t t t t z else t z else z else z else t t z else z", "real_log_prob": -63.578679885196614}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not cond and not not not cond and not not cond and not cond and cond and cond and not cond and cond and not not not cond then action else t z", "real_log_prob": -35.837615305705874}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while not cond do while not not cond and cond do if cond and cond then action else t z", "real_log_prob": -16.875781352655835}
+{"sequence": "if not cond then action else z", "real_log_prob": -4.828313737302301}
+{"sequence": "if not cond then action else t t t t z", "real_log_prob": -6.8716162323662635}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else t t t z", "real_log_prob": -4.974496247480382}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do if not cond then action else t z", "real_log_prob": -7.641724454062337}
+{"sequence": "if cond then while not cond and not cond and not not cond do action else t z", "real_log_prob": -15.95949062078168}
+{"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
+{"sequence": "if cond then while cond do action else t t z", "real_log_prob": -6.766255716708437}
+{"sequence": "if cond then while cond do if cond and cond and not cond then action else t t t z else t t t t t t z", "real_log_prob": -18.412941171858193}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while not cond and not not cond and not not cond and not cond and cond and cond and cond and not not cond and cond do action", "real_log_prob": -30.944763047266004}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "if cond then while not not cond do if not not not cond and cond then action else t t t z else z", "real_log_prob": -18.813723332061976}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not not cond then action else t t z", "real_log_prob": -7.236259345954172}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then if cond then if not cond and not cond and cond then if cond then while not cond and not cond and cond do if cond then action else t t t t t t t t z else t t z else t z else t t t z else t t t t z", "real_log_prob": -38.905323885396214}
+{"sequence": "if cond and cond and cond then while cond do while cond and cond and cond and cond do action else t t z", "real_log_prob": -19.466048518101665}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do if not cond then action else z", "real_log_prob": -7.1308988302963465}
+{"sequence": "if cond then if cond then if cond then action else t z else t z else t t z", "real_log_prob": -10.536779159862881}
+{"sequence": "while not not cond do if cond then if cond then if not cond then if cond then if not cond and cond and not not cond and cond then action else t z else t t t t t z else z else t t t z else z", "real_log_prob": -35.00104045206225}
+{"sequence": "while cond and cond and cond and not cond and cond and cond and cond and not cond and cond and not not cond and cond and not cond and cond and cond and cond and cond do while cond and cond do if cond then action else t t t z", "real_log_prob": -49.7822029059453}
+{"sequence": "while cond do if not cond then while cond do while not cond and cond do action else z", "real_log_prob": -15.201804919084163}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not not not cond and cond and cond and cond and not cond then action else t z", "real_log_prob": -17.815788611147312}
+{"sequence": "if not not cond and not cond and not not cond and not cond and not cond and cond and cond and not not cond and cond and not cond and not cond and cond and cond then if not cond and cond then if cond and cond then action else z else z else t t z", "real_log_prob": -55.26284182928728}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not cond then if not cond then if cond then if cond and cond and not cond and cond then if cond then while not cond and cond and cond and not not cond and cond do action else t t z else z else z else t z else z", "real_log_prob": -40.25385287618564}
+{"sequence": "if cond then if cond and not cond and cond then if cond then if not not cond and not cond then if not cond then if cond and not not cond and cond and cond then if cond then action else z else t z else z else z else z else t t z else z", "real_log_prob": -42.30957789124816}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while not cond do while cond do if not cond and not cond and not cond and not cond and cond and not not not cond and cond and cond and cond and cond and not cond and cond and cond and not not not not not cond and cond and cond then action else t t z", "real_log_prob": -59.668584990578466}
+{"sequence": "if cond then if cond then action else z else z", "real_log_prob": -5.967748020490665}
+{"sequence": "if not not cond then action else z", "real_log_prob": -6.214608098422191}
+{"sequence": "while cond and not cond do action", "real_log_prob": -6.684611727667927}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
+{"sequence": "while cond do if cond then action else t t z", "real_log_prob": -6.766255716708437}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while not cond do if cond and cond and cond and cond and not cond and cond and cond and cond and cond and cond and not cond and cond and not cond and cond and cond and not cond then action else t t t z", "real_log_prob": -45.4001762712714}
+{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond and cond do if not cond then if cond and not cond and cond and cond then while cond do if cond then if not cond then action else t t t t t t z else t t t z else t z else t t t t t t z", "real_log_prob": -36.27423472543014}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond and cond then while cond do if cond then action else t t z else t t t t t z", "real_log_prob": -13.925554021526478}
+{"sequence": "while cond and cond do action", "real_log_prob": -5.298317366548036}
+{"sequence": "if cond then action else t t t t t z", "real_log_prob": -5.996147495012363}
+{"sequence": "if cond and not not cond and cond and cond and cond then if cond and not cond then action else z else t t z", "real_log_prob": -21.545490059781503}
+{"sequence": "if cond then if not cond then action else z else t z", "real_log_prob": -7.864868005376547}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then while not cond do if not not not cond then if not not cond then if not not cond and cond and cond and cond and cond and cond then action else t z else t t t t z else t z else t z", "real_log_prob": -38.38513236582145}
+{"sequence": "if cond and cond then action else t z", "real_log_prob": -6.0322865416282365}
+{"sequence": "while not cond and not cond do action", "real_log_prob": -8.070906088787817}
+{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "if cond then if not not not cond then action else t t z else t t t t t z", "real_log_prob": -13.70241047021227}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do if not cond then while not cond do if cond and not cond and cond then action else t t t t z else t z", "real_log_prob": -21.444812492028063}
+{"sequence": "if not cond then action else t t t t z", "real_log_prob": -6.8716162323662635}
+{"sequence": "if not not cond and not cond and cond and not cond and cond and cond and not not not cond and cond and cond and cond and cond and not cond and cond and cond and cond and not cond and not cond and cond then action else z", "real_log_prob": -52.65546919593852}
+{"sequence": "if cond and cond and cond then action else t z", "real_log_prob": -8.111728083308073}
+{"sequence": "if cond then if not not cond and not cond and cond and not cond and cond and cond and cond and cond and cond then while cond and not cond do action else z else t z", "real_log_prob": -34.427604417968666}
+{"sequence": "if not cond and cond and cond then action else t t t t t z", "real_log_prob": -11.541324939491924}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not cond then while cond do action else z", "real_log_prob": -7.1308988302963465}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not cond and cond then if cond then if cond then if cond then if cond then while cond do if cond and not not not cond and cond and cond and not cond and cond then if cond then action else t t t t t t t t t t z else t z else t t z else z else t z else t t t t t t z else t t z", "real_log_prob": -51.54526111355621}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else t t z", "real_log_prob": -4.463670623714392}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do while cond do if cond then action else z", "real_log_prob": -8.047189562170502}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not cond and cond then if not cond then if not not cond then action else t z else z else t t z", "real_log_prob": -17.65057252225629}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond and cond and not not not cond and cond and not not not not cond and cond and cond and cond and cond and not not cond and cond and cond do if cond then while cond and not cond and not not not not not cond and not cond and not not cond and cond do if not not cond then action else z else z", "real_log_prob": -71.56987009575393}
+{"sequence": "if not cond and cond and cond and not cond and cond then if cond and cond and cond then action else t t z else t z", "real_log_prob": -22.749462864107436}
+{"sequence": "if not cond then action else z", "real_log_prob": -4.828313737302301}
+{"sequence": "if cond then if cond then if not cond and cond then action else t z else z else z", "real_log_prob": -12.470038191364635}
+{"sequence": "if not cond and not not not not not cond and not cond and cond and cond and cond then action else t t t z", "real_log_prob": -25.075764483718796}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond and cond then if cond then action else z else z", "real_log_prob": -8.047189562170502}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then while not cond do action else z", "real_log_prob": -7.1308988302963465}
+{"sequence": "while cond do if cond then action else z", "real_log_prob": -5.744604469176456}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while not not cond and cond do action", "real_log_prob": -8.070906088787817}
+{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "if cond then if cond then while cond do if cond and cond then action else t t t t z else t t t z else t t z", "real_log_prob": -17.472933913366717}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond and cond do action", "real_log_prob": -5.298317366548036}
+{"sequence": "while cond do while not cond do action", "real_log_prob": -6.907755278982137}
+{"sequence": "while not cond do if cond then if not cond then if cond and cond then if not cond and not not not cond and cond and not not not cond then if cond then action else t t z else z else t t t z else t t z else t t t t t t t z", "real_log_prob": -43.793493195931674}
+{"sequence": "while not cond and not not not not cond and cond and cond and not not cond and cond and cond and cond and cond and cond and not cond do while cond do action", "real_log_prob": -37.40623122361973}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond and not cond and cond and not cond and cond then while cond do if cond then if cond and cond and cond and not not cond and not not cond and cond and cond and cond and cond and cond and not cond and not cond then if cond and cond and cond and not not not not cond and cond and cond and not cond and not cond and cond and cond then while cond do action else z else t t z else t t z else t t z", "real_log_prob": -88.00404729368577}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not not cond and cond and cond and cond and not cond and not cond and cond and not cond and not cond then action else z", "real_log_prob": -28.395317876340435}
+{"sequence": "while not not cond and not cond and cond and not cond and cond and not cond and cond and cond and cond and cond and not cond and cond and cond do action", "real_log_prob": -36.48994049174557}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else t t z", "real_log_prob": -4.463670623714392}
+{"sequence": "while cond do if not cond then action else z", "real_log_prob": -7.1308988302963465}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not cond and not not not cond and not not cond and cond and not cond and cond and cond then while cond do if cond then action else z else z", "real_log_prob": -30.451042891402953}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then if not cond then action else t t t t z else t t t t t t z", "real_log_prob": -12.46229861927046}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then if cond then if cond then while not cond and not cond and cond and cond and not not not cond and cond do if cond then while cond and cond do if not cond and cond and not cond and not cond then action else z else z else t t t t t z else z else z", "real_log_prob": -50.5095610223111}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not not not cond and not cond and cond then if not cond and cond and cond then action else t t t t t t z else t t t z", "real_log_prob": -25.81441660670339}
+{"sequence": "if not cond then if not not cond and cond then action else t t t t z else z", "real_log_prob": -14.249375140594132}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond and cond do action", "real_log_prob": -5.298317366548036}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do if cond then while cond do if not not cond then action else t t z else t z", "real_log_prob": -14.877983800016507}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else t t t z", "real_log_prob": -4.974496247480382}
+{"sequence": "if cond then while cond and cond do action else z", "real_log_prob": -7.824046010856292}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then while not cond do action else z", "real_log_prob": -7.1308988302963465}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do if not cond then while cond do if not cond then if cond then if not cond then while cond do if cond and cond then while cond do if cond then action else t t z else z else t z else t z else t t t t z else t t z", "real_log_prob": -36.62758383239928}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while not not not not cond and cond and cond and not not cond and cond and not cond and cond do if cond then while cond do while cond do if cond then action else t z else t z", "real_log_prob": -36.07786432492302}
+{"sequence": "while cond do while cond do while cond do while cond do while not cond do action", "real_log_prob": -13.815510557964272}
+{"sequence": "while not cond do action", "real_log_prob": -4.605170185988091}
+{"sequence": "if cond then while not cond and cond do if cond and not not cond and cond then if cond then action else z else z else t z", "real_log_prob": -21.70409508995814}
+{"sequence": "if not cond then if not cond then if cond and cond and cond then action else z else t z else t z", "real_log_prob": -16.446599717930354}
+{"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not cond then while cond do action else z", "real_log_prob": -7.1308988302963465}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then while cond do while cond do action else z", "real_log_prob": -8.047189562170502}
+{"sequence": "if not cond and not cond and not cond and cond and cond and cond and cond then while cond do if cond and cond then if not cond then action else z else t t t t t z else t t t t z", "real_log_prob": -35.494760607925286}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not not not not cond and cond and cond and cond and not not cond and cond and cond and cond and cond and not cond and not not not cond and cond then if not cond then if cond then while cond do if not cond and cond then if cond and cond and cond and not cond and cond then while cond do action else t z else z else z else z else z", "real_log_prob": -69.95382112460545}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then while cond do if cond then action else t t t t t t z else z", "real_log_prob": -11.335286856080653}
+{"sequence": "if not not cond and cond then if cond and cond then action else z else t z", "real_log_prob": -13.410045449856106}
+{"sequence": "if not cond and cond and cond then action else t z", "real_log_prob": -9.498022444427962}
+{"sequence": "if cond then action else t t z", "real_log_prob": -4.463670623714392}
+{"sequence": "if cond then if cond then if cond then while not not cond do action else z else t t t z else t t t z", "real_log_prob": -16.633604222628687}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then if cond then action else t z else z", "real_log_prob": -6.478573644256656}
+{"sequence": "if cond then action else t t t z", "real_log_prob": -4.974496247480382}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do if cond then if not not cond and cond then action else t t z else t t z", "real_log_prob": -15.165665872468288}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond and cond do action", "real_log_prob": -5.298317366548036}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then while not cond do action else t t z", "real_log_prob": -8.152550077828327}
+{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "while not not cond do if not not cond then if not cond then action else t z else z", "real_log_prob": -15.712630542850151}
+{"sequence": "if cond then if not cond and cond then action else t z else t t z", "real_log_prob": -10.965960794588362}
+{"sequence": "if cond and not cond then while cond do if cond then while cond do while not cond do action else z else t t z", "real_log_prob": -18.749184810924405}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "if cond and cond then action else t t z", "real_log_prob": -6.543112165394227}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "if cond then if cond then action else t t t t t z else t z", "real_log_prob": -9.032701763086608}
+{"sequence": "if not cond and not not cond then if not not not not cond and cond and not not cond and cond and not not cond and cond and cond then if cond then while cond do if not not cond and cond and not cond then action else z else z else z else t t z", "real_log_prob": -52.46653658043019}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do while not cond and not cond and cond and cond do action", "real_log_prob": -14.532374265141534}
+{"sequence": "if not not cond and cond and cond and cond and cond then while cond do action else t t t t t t t z", "real_log_prob": -20.410738724497527}
+{"sequence": "if cond and not cond and cond then while not cond do if not cond and not cond then action else t z else z", "real_log_prob": -20.564660806769773}
+{"sequence": "if cond and cond and not cond then action else t t z", "real_log_prob": -10.008848068193952}
+{"sequence": "if cond then while cond do if not cond then action else t t t t z else t t t t t z", "real_log_prob": -14.254058088498516}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond and cond and cond and cond then if not cond then if cond then action else z else z else t t z", "real_log_prob": -17.139746898490298}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while not cond and not cond and not cond and cond and cond do if not cond then action else t t t t t t t t z", "real_log_prob": -23.6941530705033}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if not cond then if cond then if not cond and cond then if cond and cond and not cond and cond then if cond then while cond do action else z else t t t t z else t t t z else z else t t t t z", "real_log_prob": -33.9432501579144}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while not cond and cond and cond do if cond then while cond do while cond do action else z", "real_log_prob": -15.894952099644106}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond and cond then if not not not not not cond and not cond and not cond and cond and cond then action else z else t t t z", "real_log_prob": -27.60149312802705}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then if not cond then action else z else z", "real_log_prob": -7.354042381610556}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "if not cond then action else z", "real_log_prob": -4.828313737302301}
-{"sequence": "if not not cond and cond and not cond and not not cond then action else t z", "real_log_prob": -17.122641430587365}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "if cond then if cond then if cond and cond then if cond and cond and cond then action else z else t z else t z else z", "real_log_prob": -18.279181181678666}
-{"sequence": "if cond then if cond then if cond then action else t t t z else t t t t z else z", "real_log_prob": -12.069256031160853}
-{"sequence": "if cond then action else t t z", "real_log_prob": -4.463670623714392}
-{"sequence": "if not not cond and cond then action else t t t z", "real_log_prob": -9.826526511399999}
-{"sequence": "if cond then if cond and not cond and cond and not not cond and not cond then action else z else t t t t t t z", "real_log_prob": -22.895645374285525}
-{"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "if cond then while not cond and cond and cond and not not cond do action else t z", "real_log_prob": -16.652637801341626}
-{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
-{"sequence": "if cond and cond then action else z", "real_log_prob": -5.521460917862246}
-{"sequence": "if cond and cond then while cond do while cond do while cond do if cond and cond then while not cond and not cond and cond and cond do action else z else z", "real_log_prob": -28.347884823105804}
-{"sequence": "while cond do if not cond and cond then action else t z", "real_log_prob": -9.721165995742172}
-{"sequence": "while not cond do while not not not cond and not cond and cond and not not cond and not cond and cond and cond do if cond then while not not cond and cond do if not not cond then while cond do action else t z else t t z", "real_log_prob": -47.90218838896234}
-{"sequence": "if not cond and cond then if cond then while not cond and not not cond and not not not cond and not cond and cond and not not not not not not cond and cond and cond and not cond and not cond and cond and cond and cond and not cond and cond and cond and cond and not cond and cond and cond and cond and cond do action else t z else z", "real_log_prob": -79.48217115436512}
 {"sequence": "if cond then action else t z", "real_log_prob": -3.952844999948401}
+{"sequence": "if cond and not cond then if cond then if not not cond and cond then if not cond and cond and cond then action else t z else t z else t t t t z else z", "real_log_prob": -27.947102662902036}
+{"sequence": "if cond then action else t t t t t t z", "real_log_prob": -6.506973118778354}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "while cond do while cond and cond and cond and not not not cond and not not cond and not cond and cond and cond and not not cond and cond and not not cond and cond and not cond and cond do action", "real_log_prob": -47.80343893201889}
+{"sequence": "if not cond then while not cond do while cond do action else t z", "real_log_prob": -11.330603908176272}
+{"sequence": "if not not cond then while cond do if not cond then action else t t z else t t t t t t t t t t z", "real_log_prob": -18.559123682036276}
+{"sequence": "if cond then while cond do if not cond and cond then if cond then action else z else t t t z else t z", "real_log_prob": -16.305100155656653}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond and cond then while cond do if cond then while cond do action else t t z else t z", "real_log_prob": -14.184836619456561}
+{"sequence": "while cond do if not cond then while cond and cond and not not cond and not cond and not not cond and cond and cond do while not cond do while cond and not cond do if cond and cond then action else t t t t z else t t t z", "real_log_prob": -46.47975498122658}
+{"sequence": "if cond then if cond then action else z else z", "real_log_prob": -5.967748020490665}
+{"sequence": "if not not cond and cond and cond then if cond then if cond then action else t t z else z else t t t t z", "real_log_prob": -18.48990221299432}
+{"sequence": "if cond then if cond then action else z else z", "real_log_prob": -5.967748020490665}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then if cond then action else z else z", "real_log_prob": -5.967748020490665}
+{"sequence": "while cond do if not cond and cond and cond and cond and cond then action else t z", "real_log_prob": -15.95949062078168}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "while cond do action", "real_log_prob": -3.2188758248682006}
+{"sequence": "if cond then while cond do action else z", "real_log_prob": -5.744604469176456}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else t t t z", "real_log_prob": -4.974496247480382}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond then action else z", "real_log_prob": -3.4420193761824103}
+{"sequence": "while cond and cond and not cond and cond do if not cond and cond and not cond then if cond then action else t z else t t z", "real_log_prob": -24.35890077654154}
+{"sequence": "action", "real_log_prob": -0.916290731874155}
+{"sequence": "if cond and not cond and cond then if cond then if cond then action else t z else t t z else z", "real_log_prob": -15.57113098057645}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
 {"sequence": "action", "real_log_prob": -0.916290731874155}
-{"sequence": "if not not not cond and cond and cond and not cond and not cond then if cond then if cond then while cond do action else t t z else t t t t t z else z", "real_log_prob": -29.621079096473707}
+{"sequence": "if cond then if cond then if cond then action else z else t z else z", "real_log_prob": -9.00430228856491}
+{"sequence": "if not not cond and cond then action else z", "real_log_prob": -8.294049640102028}
+{"sequence": "if not not cond and cond then action else t z", "real_log_prob": -8.804875263868018}
+{"sequence": "if cond then while cond do while cond and cond do if cond then if cond then action else t t z else z else t t z", "real_log_prob": -17.22139088753081}
+{"sequence": "action", "real_log_prob": -0.916290731874155}

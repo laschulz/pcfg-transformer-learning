@@ -112,14 +112,14 @@ def compare_model_vs_real_probs_subgrammar(model, tokenizer, test_sequences_with
             # Encode string with BOS/EOS
             start, end, text = seq
             encoded = tokenizer.encode(text, return_tensors="pt").to(device)
-
             # Compute model log-prob
             model_log_prob = 0.0
 
+            length = end - start + 1
             if start == 0:
                 start = 1
 
-            for i in range(end - start+1):
+            for i in range(length):
                 input_ids = encoded[:, : start + i]
                 target_id = encoded[:, start + i].item()
                 logits, _ = model(input_ids)
