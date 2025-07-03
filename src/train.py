@@ -65,7 +65,7 @@ def main():
         model.train_model(
             data_dir=f'../data/{pcfg}',
             dataset=dataset,
-            num_epochs=50, # 200
+            num_epochs=100,
             batch_size=8,
             learning_rate=6e-4,
             weight_decay=1e-1,

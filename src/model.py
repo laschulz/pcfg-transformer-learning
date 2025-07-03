@@ -118,7 +118,7 @@ class GPT2Config: # 124M params
 
 class SixLayer:
     block_size = 128           
-    vocab_size = 512          
+    vocab_size = 64          
     n_layer = 6                
     n_head = 8                
     n_embd = 512              
@@ -128,7 +128,7 @@ class SixLayer:
 
 class FourLayer: # 0.89M params
     block_size = 128           
-    vocab_size = 512          
+    vocab_size = 64          
     n_layer = 4                
     n_head = 4                
     n_embd = 128              
@@ -138,7 +138,7 @@ class FourLayer: # 0.89M params
 
 class TwoLayer:
     block_size = 128           
-    vocab_size = 512          
+    vocab_size = 64          
     n_layer = 2                
     n_head = 2                
     n_embd = 128              
@@ -308,7 +308,7 @@ class GPT(nn.Module):
 
             ckpt_path = os.path.join(data_dir, dataset, config)
 
-            if epoch % checkpoint_every == 0 or epoch in {1, 2, 3, 4, 5}:
+            if epoch % checkpoint_every == 0 or epoch in range(10):
                 ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch + continue_from}.pt')
                 os.makedirs(os.path.dirname(ckpt_path_ep), exist_ok=True)
                 torch.save(self.state_dict(), ckpt_path_ep)

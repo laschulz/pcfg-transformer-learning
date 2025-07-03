@@ -17,30 +17,177 @@ MAX_SEQUENCE_LENGTH = 100
 DATASET_SIZE = 1000
 
 GRAMMARS = {
-    "LinearRecursion": {
-        "S": [(["Aa"], .5), (["Bb"], .4), (["c"], .1)],
-        "A": [(["a"], .3), (["A", "a"], .7)],
-        "B": [(["b"], .2), (["B", "b"], .8)],
+    # ----- Full Grammars -----
+    "SeparatedSubgrammars": {
+        "L0": [(["sL1", "L1", "eL1"], 0.9), (["done"], 0.1)],
+        "L1": [(["sL2", "L2", "eL2", "L1", "sL2_3", "L2_3", "eL2_3"], 0.4),
+               (["sL2", "L2", "eL2", "L1"], 0.2),
+               (["sL2_2", "L2_2", "eL2_2"], 0.4)],
+        "L2": [(["sL4", "L4", "eL4"], 0.5), (["not", "L2"], 0.25),
+               (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
+        "L2_2": [(["a", "L2_2", "b"], 0.6), (["c"], 0.4)],
+        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+        "L4": [(["=="], 0.2), (["<="], 0.2), (["<"], 0.2),
+               ([">="], 0.2), ([">"], 0.2)],
     },
 
-    "MutualRecursion": {
-        "S": [(["a", "B"], .7), (["a"], .3)],
-        "B": [(["b", "S"], .7), (["b"], .3)],
+    "OverlappingSubgrammar_flipped": {
+        "L0": [(["sL1", "L1", "eL1"], 0.5), (["sL1_2", "L1_2", "eL1_2"], 0.5)],
+        "L1": [(["sL2", "L2", "eL2", "L1", "sL2_3", "L2_3", "eL2_3"], 0.4),
+               (["sL2", "L2", "eL2", "L1"], 0.2), (["action"], 0.4)],
+        "L1_2": [(["L1_2", "+", "sL2_3", "L2_3", "eL2_3"], 0.25),
+                 (["sL2_3", "L2_3", "eL2_3"], 0.75)],
+        "L2": [(["cond"], 0.5), (["not", "L2"], 0.25),
+               (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
+        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
     },
 
-    "CenterEmbedding": {
-        "S": [(["a", "S", "b"], .8), (["c"], .2)],
+    "OverlappingSubgrammar": {
+        "L0": [(["sL1", "L1", "eL1"], 0.5), (["sL1_2", "L1_2", "eL1_2"], 0.5)],
+        "L1": [(["sL2", "L2", "eL2", "L1", "sL2_3", "L2_3", "eL2_3"], 0.4),
+               (["sL2", "L2", "eL2", "L1"], 0.2), (["action"], 0.4)],
+        "L1_2": [(["L1_2", "+", "sL2", "L2", "eL2"], 0.25),
+                 (["sL2", "L2", "eL2"], 0.75)],
+        "L2": [(["cond"], 0.5), (["not", "L2"], 0.25),
+               (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
+        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
     },
 
-    "ConditionalLoops": {
-        "S": [
-            (["if", "C", "then", "S", "else", "T"], .4),
-            (["while", "C", "do", "S"], .2),
-            (["action"], .4)],
-        "T": [(["t", "T"], .6), (["z"], .4)],
-        "C": [(["cond"], .5), (["not", "C"], .25), (["C", "and", "C"], .25)],
+    "OverlappingSubgrammar_plus": {
+        "L0": [(["sL1", "L1", "eL1"], 0.5), (["sL1_2", "L1_2", "eL1_2"], 0.5)],
+        "L1": [(["sL2", "L2", "eL2", "L1", "sL2_3", "L2_3", "eL2_3"], 0.4),
+               (["sL2", "L2", "eL2", "L1"], 0.2), (["action"], 0.4)],
+        "L1_2": [(["L1_2", "+", "sL2", "L2", "eL2"], 0.25),
+                 (["sL2", "L2", "eL2"], 0.75)],
+        "L2": [(["sL4", "L4", "eL4"], 0.5), (["not", "L2"], 0.25),
+               (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
+        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+        "L4": [(["=="], 0.2), (["<="], 0.2), (["<"], 0.2),
+               ([">="], 0.2), ([">"], 0.2)],
+    },
+     "TripleOverlappingSubgrammar": {
+        "L0": [(["sL1", "L1", "eL1"], 0.3),
+               (["sL1_2", "L1_2", "eL1_2"], 0.3),
+               (["sL1_3", "L1_3", "eL1_3"], 0.4)],
+        "L1": [(["sL2", "L2", "eL2", "L1", "sL2_3", "L2_3", "eL2_3"], 0.4),
+               (["sL2", "L2", "eL2", "L1"], 0.2), (["action"], 0.4)],
+        "L1_2": [(["L1_2", "+", "sL2", "L2", "eL2"], 0.3),
+                 (["sL2", "L2", "eL2"], 0.35), (["sL2_2", "L2_2", "eL2_2"], 0.35)],
+        "L1_3": [(["xy", "L1_3"], 0.3), (["x", "L1_3"], 0.3),
+                 (["sL2_3", "L2_3", "eL2_3"], 0.4)],
+        "L2": [(["cond"], 0.5), (["not", "L2"], 0.25),
+               (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
+        "L2_2": [(["a", "L2_2", "b"], 0.6), (["c"], 0.4)],
+        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+    },   
+    "TripleOverlappingSubgrammar_plus": {
+        "L0": [(["sL1", "L1", "eL1"], 0.3),
+               (["sL1_2", "L1_2", "eL1_2"], 0.3),
+               (["sL1_3", "L1_3", "eL1_3"], 0.4)],
+        "L1": [(["sL2", "L2", "eL2", "L1", "sL2_3", "L2_3", "eL2_3"], 0.4),
+               (["sL2", "L2", "eL2", "L1"], 0.2), (["action"], 0.4)],
+        "L1_2": [(["L1_2", "+", "sL2", "L2", "eL2"], 0.3),
+                 (["sL2", "L2", "eL2"], 0.35), (["sL2_2", "L2_2", "eL2_2"], 0.35)],
+        "L1_3": [(["xy", "L1_3"], 0.3), (["x", "L1_3"], 0.3),
+                 (["sL2_3", "L2_3", "eL2_3"], 0.4)],
+        "L2": [(["sL4", "L4", "eL4"], 0.5), (["not", "L2"], 0.25),
+               (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
+        "L2_2": [(["a", "L2_2", "b"], 0.6), (["c"], 0.4)],
+        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+        "L4": [(["=="], 0.2), (["<="], 0.2), (["<"], 0.2),
+               ([">="], 0.2), ([">"], 0.2)],
     },
 
+    # analogue to ConditionalLoops_plus
+    "L1": {
+        "L1": [(["sL2", "L2", "eL2", "L1", "sL2_3", "L2_3", "eL2_3"], 0.4),
+               (["sL2", "L2", "eL2", "L1"], 0.2), (["action"], 0.4)],
+        "L2": [(["sL4", "L4", "eL4"], 0.5), (["not", "L2"], 0.25),
+               (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
+        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+        "L4": [(["=="], 0.2), (["<="], 0.2), (["<"], 0.2),
+               ([">="], 0.2), ([">"], 0.2)],    
+    },
+    "L1_simple": {
+        "L1": [(["sL2", "L2", "eL2", "L1", "sL2_3", "L2_3", "eL2_3"], 0.4),
+               (["sL2", "L2", "eL2", "L1"], 0.2), (["action"], 0.4)],
+        "L2": [(["cond"], 0.5), (["not", "L2"], 0.25),
+               (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
+        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)]  
+    },
+    "L1_separated": {
+        "L1": [(["sL2", "L2", "eL2", "L1", "sL2_3", "L2_3", "eL2_3"], 0.4),
+               (["sL2", "L2", "eL2", "L1"], 0.2),
+               (["sL2_2", "L2_2", "eL2_2"], 0.4)],
+        "L2": [(["sL4", "L4", "eL4"], 0.5), (["not", "L2"], 0.25),
+               (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
+        "L2_2": [(["a", "L2_2", "b"], 0.6), (["c"], 0.4)],
+        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+        "L4": [(["=="], 0.2), (["<="], 0.2), (["<"], 0.2),
+               ([">="], 0.2), ([">"], 0.2)],
+    },
+    "L1_2": {
+        "L1_2": [(["L1_2", "+", "sL2", "L2", "eL2"], 0.25),
+                 (["sL2", "L2", "eL2"], 0.75)],
+        "L2": [(["sL4", "L4", "eL4"], 0.5), (["not", "L2"], 0.25),
+               (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
+        "L4": [(["=="], 0.2), (["<="], 0.2), (["<"], 0.2),
+               ([">="], 0.2), ([">"], 0.2)],  
+    },
+    "L1_2_extended": {
+        "L1_2": [(["L1_2", "+", "sL2", "L2", "eL2"], 0.3),
+                 (["sL2", "L2", "eL2"], 0.35), (["sL2_2", "L2_2", "eL2_2"], 0.35)],
+        "L2": [(["sL4", "L4", "eL4"], 0.5), (["not", "L2"], 0.25),
+               (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
+        "L2_2": [(["a", "L2_2", "b"], 0.6), (["c"], 0.4)],
+        "L4": [(["=="], 0.2), (["<="], 0.2), (["<"], 0.2),
+               ([">="], 0.2), ([">"], 0.2)],
+    },
+    "L1_2_flipped_simple": {
+        "L1_2": [(["L1_2", "+", "sL2_3", "L2_3", "eL2_3"], 0.25),
+                 (["sL2_3", "L2_3", "eL2_3"], 0.75)],
+        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+    },
+    "L1_2_simple": {
+        "L1_2": [(["L1_2", "+", "sL2", "L2", "eL2"], 0.25),
+                 (["sL2", "L2", "eL2"], 0.75)],
+        "L2": [(["cond"], 0.5), (["not", "L2"], 0.25),
+               (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],  
+    },
+    "L1_2_extended_simple": {
+        "L1_2": [(["L1_2", "+", "sL2", "L2", "eL2"], 0.3),
+                 (["sL2", "L2", "eL2"], 0.35), (["sL2_2", "L2_2", "eL2_2"], 0.35)],
+        "L2": [(["cond"], 0.5), (["not", "L2"], 0.25),
+               (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
+        "L2_2": [(["a", "L2_2", "b"], 0.6), (["c"], 0.4)]
+    },
+    "L1_3": {
+        "L1_3": [(["xy", "L1_3"], 0.3), (["x", "L1_3"], 0.3),
+                 (["sL2_3", "L2_3", "eL2_3"], 0.4)],
+        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)]
+    },
+    "L2": {
+        "L2": [(["sL4", "L4", "eL4"], 0.5), (["not", "L2"], 0.25),
+               (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
+        "L4": [(["=="], 0.2), (["<="], 0.2), (["<"], 0.2),
+               ([">="], 0.2), ([">"], 0.2)],   
+    },
+    "L2_simple": {
+        "L2": [(["cond"], 0.5), (["not", "L2"], 0.25),
+               (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)]
+    },
+    "L2_2": {
+        "L2_2": [(["a", "L2_2", "b"], 0.6), (["c"], 0.4)],
+    },
+    "L2_3": {
+        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+    },
+    "L4": {
+        "L4": [(["=="], 0.2), (["<="], 0.2), (["<"], 0.2),
+               ([">="], 0.2), ([">"], 0.2)],
+    },
+    
+    # old grammars
     "ArithmeticLogic": {
         "S": [(["S", "+", "T"], .25), (["T"], .75)],
         "T": [(["T", "*", "F"], .25), (["F"], .75)],
@@ -72,15 +219,6 @@ GRAMMARS = {
         "C": [(["R"], 0.5), (["not", "C"], 0.25), (["C", "and", "C"], 0.25)],
         "R": [(["x", "==", "y"], 0.2), (["x", "<=", "y"], 0.2), (["x", "<", "y"], 0.2), 
               (["x", ">=", "y"], 0.2), (["x", ">", "y"], 0.2)]
-    },
-
-    # G7  ─ NestedStructures
-    "NestedStructures": {
-        "S": [(["(", "A", ")"], .5), (["*", "X", "X", "*"], .5)],
-        "A": [(["B", "B"], .4), (["a"], .6)],
-        "B": [(["[", "S", "]"], .3), (["b"], .7)],
-        "X": [(["Y", '"', "Y"], .3), (["x"], .7)],
-        "Y": [(["S", "y", "S"], .15), (["S", "X"], .15), (["y"], .7)]
     },
 
     # Condition
@@ -191,12 +329,12 @@ def save_dataset(test_pairs, out_dir):
             }) + "\n")
 
 
-def sample(grammar_name, max_len=MAX_SEQUENCE_LENGTH):
+def sample(grammar_name, start_symbol, max_len=MAX_SEQUENCE_LENGTH):
     tbl = GRAMMARS[grammar_name]
 
     while True:
         seq = []
-        stack = ["S"]
+        stack = [start_symbol]
         log_prob = 0.0
 
         # Grow seq until either stack empties or seq reaches max_len
@@ -221,7 +359,7 @@ def sample(grammar_name, max_len=MAX_SEQUENCE_LENGTH):
         # Otherwise, seq hit max_len with stack nonempty → discard and retry
 
 
-def sample_greedy(grammar_name, max_len=MAX_SEQUENCE_LENGTH):
+def sample_greedy(grammar_name, start_symbol, max_len=MAX_SEQUENCE_LENGTH):
     """
     Generate exactly one terminal sequence from grammar_name:
       • Randomly expand until (len(seq) + total_min_len(stack) >= max_len), then
@@ -245,8 +383,8 @@ def sample_greedy(grammar_name, max_len=MAX_SEQUENCE_LENGTH):
 
     # Initialize stack and a running "stack_min_sum" = sum(min_len_map[sym] or 1)
     seq = []
-    stack = ["S"]
-    stack_min_sum = min_len_map["S"]      # because "S" is on the stack initially
+    stack = [start_symbol]
+    stack_min_sum = min_len_map[start_symbol]      
     log_prob = 0.0
     greedy = False
 
@@ -304,8 +442,8 @@ def sample_greedy(grammar_name, max_len=MAX_SEQUENCE_LENGTH):
 
     return seq, log_prob
 
-def sample_many(grammar_name,n,max_len=MAX_SEQUENCE_LENGTH):
-    return [sample(grammar_name,max_len) for _ in range(n)]
+def sample_many(grammar_name, start_symbol, n, max_len=MAX_SEQUENCE_LENGTH):
+    return [sample(grammar_name, start_symbol, max_len) for _ in range(n)]
 
 def count_valid_sequences(tokenizer, sequences, grammar_name):
     total = len(sequences)
@@ -416,13 +554,14 @@ def main():
                         help="Name of the grammar to use.")
     parser.add_argument("--dataset_size","-n",type=int,default=1000,
                         help="Number of sequences to generate.")
+    parser.add_argument("--start_symbol", type=str,default="L0"),
     parser.add_argument("--max-len",type=int,default=100,
                         help="Max symbols per generated sequence.")
     args=parser.parse_args()
 
     # 1) generate
-    train_sequences = sample_many(args.grammar, args.dataset_size, args.max_len)
-    test_sequences = sample_many(args.grammar, 500, args.max_len)
+    train_sequences = sample_many(args.grammar, args.start_symbol, args.dataset_size, args.max_len)
+    test_sequences = sample_many(args.grammar, args.start_symbol, 500, args.max_len)
     str_sequences = [seq for seq, _ in train_sequences]
 
     # 2) save dataset

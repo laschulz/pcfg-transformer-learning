@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from transformers import PreTrainedTokenizerFast
 from eval import evaluate_generated_sequences
-from model import TwoLayer, FourLayer, SixLayer, GPT
+from model import GPT
 
 from train import map_model_name
 import argparse
