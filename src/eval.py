@@ -58,21 +58,18 @@ def generate_and_score_sequences(model, tokenizer, num_samples, max_length, devi
 
 #     return results
 
-def compare_model_vs_real_probs(model, tokenizer, test_sequences_with_probs, device):
+def compare_model_vs_real_probs(model, tokenizer, test_sequences_with_probs, device): # TODO: is this being used?
     """
     Now expects test_sequences_with_probs to be a list of (sequence_str, real_log_prob) tuples.
     We unpack both, but only recompute model_log_prob and then compare to the stored real_log_prob.
     """
     model.eval()
-    bos_token = tokenizer.bos_token
-    eos_token = tokenizer.eos_token
     results = []
 
     with torch.no_grad():
         for seq, real_log_prob in test_sequences_with_probs:
             # Encode string with BOS/EOS
-            encoded = tokenizer.encode(
-                bos_token + " " + seq + " " + eos_token,
+            encoded = tokenizer.encode(seq,
                 return_tensors="pt"
             ).to(device)
 
@@ -108,7 +105,6 @@ def compare_model_vs_real_probs_subgrammar(model, tokenizer, test_sequences_with
 
     with torch.no_grad():
         for seq, real_log_prob in test_sequences_with_probs:
-            # Encode string with BOS/EOS
             start, end, text = seq
             encoded = tokenizer.encode(text, return_tensors="pt").to(device)
             # Compute model log-prob
@@ -119,6 +115,7 @@ def compare_model_vs_real_probs_subgrammar(model, tokenizer, test_sequences_with
             for i in range(length):
                 input_ids = encoded[:, : start + i]
                 target_id = encoded[:, start + i].item()
+                #print(tokenizer.decode(target_id))
                 logits, _ = model(input_ids)
                 log_probs = F.log_softmax(logits.squeeze(1), dim=-1)
                 token_log_prob = log_probs[0, target_id].item()

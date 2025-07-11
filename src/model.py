@@ -279,7 +279,7 @@ class GPT(nn.Module):
 
         # training loop
         iters_per_epoch = len(train_data) // (batch_size * block_size)
-
+        print(len(train_data), batch_size, block_size, iters_per_epoch)
         for epoch in range(num_epochs):
             self.train()
             running_train_loss = 0.0

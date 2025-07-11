@@ -23,7 +23,8 @@ NT2COLOR = {
     "L2":       "#2ca02c",  # red
     "L2_2":     "#0e582d",  # purple
     "L2_3":     "#8c564b",  # brown
-    "L4":       "#7f7f7f",  # pink
+    "L4":       "#7f7f7f",  # pink,
+    "overhead": "#bcbd22",  # yellow
     # …add any others you need
 }
 
@@ -308,7 +309,7 @@ def find_non_overlapping_longest(tokens, cnf_rules, C: Nonterminal):
 
     return selected, len(selected)
 
-def find_subsequences(tokens: List[str], C: Nonterminal) -> List[Tuple[int, int, str]]:
+def find_subsequences(tokens: List[str], C: Nonterminal, start_marker, end_marker) -> List[Tuple[int, int, str]]:
     """
     Find all subsequences in `tokens` delimited by start and end markers for nonterminal C.
     Assumes every start marker has a matching end marker and sequences are well-formed.
@@ -316,8 +317,8 @@ def find_subsequences(tokens: List[str], C: Nonterminal) -> List[Tuple[int, int,
     Returns a list of (start_index, end_index, subseq_text), where end_index is exclusive.
     """
 
-    start_marker = f"s{C.symbol()}"
-    end_marker = f"e{C.symbol()}"
+    # start_marker = f"s{C.symbol()}"
+    # end_marker = f"e{C.symbol()}"
     spans: List[Tuple[int, int, str]] = []
 
     i = 0
@@ -372,7 +373,7 @@ def get_terminals_for_nonterminal(grammar_rules):
         terminals.add(terminal)
     return terminals
 
-def prepare_test_sequences(parser, cnf_rules, nt, main_dir, top_level: bool):
+def prepare_test_sequences(parser, nt, main_dir, top_level: bool):
     with open(f"{main_dir}/test.jsonl", 'r') as f:
         test_sequences = [json.loads(line)["sequence"] for line in f]
 
@@ -381,7 +382,7 @@ def prepare_test_sequences(parser, cnf_rules, nt, main_dir, top_level: bool):
 
     for seq in test_sequences:
         tokens = seq.split()
-        spans = find_subsequences(tokens, nt) if not top_level else [(0, len(tokens), seq)]
+        spans = find_subsequences(tokens, nt, f"s{nt.symbol()}", f"e{nt.symbol()}") if not top_level else [(0, len(tokens), seq)]
         for start, end, subseq in spans:
             prob = seq_log_pcfg(parser, subseq)
             relevant_test_sequences.append((start, end, seq))
@@ -390,12 +391,28 @@ def prepare_test_sequences(parser, cnf_rules, nt, main_dir, top_level: bool):
     test_sequences_with_probs = list(zip(relevant_test_sequences, probabilities))
     return test_sequences_with_probs, len(relevant_test_sequences)
 
+def prepare_overhead_sequences(main_dir):
+    with open(f"{main_dir}/test.jsonl", 'r') as f:
+        test_sequences = [json.loads(line)["sequence"] for line in f]
+
+    relevant_test_sequences = []
+    probabilities = []
+
+    for seq in test_sequences:
+        tokens = seq.split()
+        for i, token in enumerate(tokens):
+            if token == "sL2" or token == "sL2_3":
+                relevant_test_sequences.append((i, i, seq))
+                #probabilities.append(0.0)
+                probabilities.append(math.log(0.5))
+        # also append EOS
+        relevant_test_sequences.append((len(tokens), len(tokens), seq))
+        probabilities.append(0.0)
+    test_sequences_with_probs = list(zip(relevant_test_sequences, probabilities))
+    return test_sequences_with_probs, len(relevant_test_sequences)
+
 def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoch, dataset_size):
     # Looking into Conditionals subgrammar
-    parser = PARSERS[subgrammar]
-    cnf_rules, _ , _ = to_cnf(parser)
-    nt = Nonterminal(nonTerminal)
-    terminal_list = get_terminals_for_nonterminal(cnf_rules)
 
     # Initialize model and load results
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -412,9 +429,14 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
         bos_token="<|bos|>",
         eos_token="<|eos|>"
     )
-
-    # prepare test sequences
-    test_sequences, num_sequences = prepare_test_sequences(parser, cnf_rules, nt, main_dir, subgrammar == grammar_name)
+ 
+    if subgrammar == "overhead":
+        test_sequences, num_sequences = prepare_overhead_sequences(main_dir)
+        num_sequences = 500
+    else:
+        parser = PARSERS[subgrammar]
+        nt = Nonterminal(nonTerminal)
+        test_sequences, num_sequences = prepare_test_sequences(parser, nt, main_dir, subgrammar == grammar_name)
     print(num_sequences)
 
 
@@ -450,8 +472,8 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
         #valid_count, total_count, selected_texts = analyze_hierarchy_per_epoch(sequences, cnf_rules, nt,  terminal_list)
 
         diffs = compare_model_vs_real_probs_subgrammar(model, tokenizer, test_sequences, device)
-        sum_of_diffs = sum([d['abs_logprob_diff'] for d in diffs])  # Extract only the differences
-        kl_divergence = sum_of_diffs / num_sequences
+        kl_divergence = sum([d['abs_logprob_diff'] for d in diffs]) / num_sequences 
+        rel_kl_divergence = kl_divergence * num_sequences / 500  #TODO: this only works for non-recursive top grammar
 
         # Add results for this epoch under the grammar's entry
         if ckpt not in all_grammar_results[grammar_name][nonTerminal]:
@@ -459,7 +481,7 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
             
         all_grammar_results[grammar_name][nonTerminal][ckpt] = {
             "kl_divergence": kl_divergence,
-            "sum_of_diffs": sum_of_diffs,
+            "rel_kl_divergence": rel_kl_divergence,
             # "valid_count": valid_count,
             # "total_count": total_count,
             # "selected_texts": selected_texts,
@@ -522,18 +544,18 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, to_epoch: int = None)
             if to_epoch and e > to_epoch:
                 continue
             epochs.append(e)
-            kl_vals.append(data['sum_of_diffs'])
+            kl_vals.append(data['rel_kl_divergence'])
         order = np.argsort(epochs)
         epochs_arr = np.array(epochs)[order]
         kl_arr = np.array(kl_vals)[order]
         plt.plot(epochs_arr, kl_arr, marker='o', linestyle='-', label=nt, color=color)
     plt.xlabel('Epoch')
-    plt.ylabel('Sum of Differences')
-    plt.title(f'Sum of Differences over Epochs for {grammar_name}')
+    plt.ylabel('Relative KL Divergence')
+    plt.title(f'Relative KL Divergence over Epochs for {grammar_name}')
     plt.grid(alpha=0.3)
     plt.legend()
     plt.tight_layout()
-    plt.savefig(f"../results/sum_of_diffs_plot_{grammar_name}.png")
+    plt.savefig(f"../results/rel_kl_divergence_plot_{grammar_name}.png")
     plt.show()
 
 
