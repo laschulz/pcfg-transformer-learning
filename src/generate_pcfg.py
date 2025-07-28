@@ -26,7 +26,7 @@ GRAMMARS = {
         "L2": [(["sL4", "L4", "eL4"], 0.5), (["not", "L2"], 0.25),
                (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
         "L2_2": [(["a", "L2_2", "b"], 0.6), (["c"], 0.4)],
-        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+        "L2_3": [(["a", "L2_3"], 0.8), (["a"], 0.2)],
         "L4": [(["=="], 0.2), (["<="], 0.2), (["<"], 0.2),
                ([">="], 0.2), ([">"], 0.2)],
     },
@@ -39,7 +39,7 @@ GRAMMARS = {
                  (["sL2_3", "L2_3", "eL2_3"], 0.75)],
         "L2": [(["cond"], 0.5), (["not", "L2"], 0.25),
                (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
-        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+        "L2_3": [(["a", "L2_3"], 0.8), (["a"], 0.2)],
     },
 
     "OverlappingSubgrammar": {
@@ -50,7 +50,7 @@ GRAMMARS = {
                  (["sL2", "L2", "eL2"], 0.75)],
         "L2": [(["cond"], 0.5), (["not", "L2"], 0.25),
                (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
-        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+        "L2_3": [(["a", "L2_3"], 0.8), (["a"], 0.2)],
     },
 
     "OverlappingSubgrammar_plus": {
@@ -61,7 +61,7 @@ GRAMMARS = {
                  (["sL2", "L2", "eL2"], 0.75)],
         "L2": [(["sL4", "L4", "eL4"], 0.5), (["not", "L2"], 0.25),
                (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
-        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+        "L2_3": [(["a", "L2_3"], 0.8), (["a"], 0.2)],
         "L4": [(["=="], 0.2), (["<="], 0.2), (["<"], 0.2),
                ([">="], 0.2), ([">"], 0.2)],
     },
@@ -78,7 +78,7 @@ GRAMMARS = {
         "L2": [(["cond"], 0.5), (["not", "L2"], 0.25),
                (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
         "L2_2": [(["a", "L2_2", "b"], 0.6), (["c"], 0.4)],
-        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+        "L2_3": [(["a", "L2_3"], 0.8), (["a"], 0.2)],
     },   
     "TripleOverlappingSubgrammar_plus": {
         "L0": [(["sL1", "L1", "eL1"], 0.3),
@@ -93,7 +93,7 @@ GRAMMARS = {
         "L2": [(["sL4", "L4", "eL4"], 0.5), (["not", "L2"], 0.25),
                (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
         "L2_2": [(["a", "L2_2", "b"], 0.6), (["c"], 0.4)],
-        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+        "L2_3": [(["a", "L2_3"], 0.8), (["a"], 0.2)],
         "L4": [(["=="], 0.2), (["<="], 0.2), (["<"], 0.2),
                ([">="], 0.2), ([">"], 0.2)],
     },
@@ -125,7 +125,7 @@ GRAMMARS = {
                (["sL2", "L2", "eL2", "L1"], 0.2), (["action"], 0.4)],
         "L2": [(["sL4", "L4", "eL4"], 0.5), (["not", "L2"], 0.25),
                (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
-        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+        "L2_3": [(["a", "L2_3"], 0.8), (["a"], 0.2)],
         "L4": [(["=="], 0.2), (["<="], 0.2), (["<"], 0.2),
                ([">="], 0.2), ([">"], 0.2)],    
     },
@@ -134,7 +134,7 @@ GRAMMARS = {
                (["sL2", "L2", "eL2", "L1"], 0.2), (["action"], 0.4)],
         "L2": [(["cond"], 0.5), (["not", "L2"], 0.25),
                (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
-        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)]  
+        "L2_3": [(["a", "L2_3"], 0.8), (["a"], 0.2)]  
     },
     "L1_separated": {
         "L1": [(["sL2", "L2", "eL2", "L1", "sL2_3", "L2_3", "eL2_3"], 0.4),
@@ -143,7 +143,7 @@ GRAMMARS = {
         "L2": [(["sL4", "L4", "eL4"], 0.5), (["not", "L2"], 0.25),
                (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)],
         "L2_2": [(["a", "L2_2", "b"], 0.6), (["c"], 0.4)],
-        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+        "L2_3": [(["a", "L2_3"], 0.8), (["a"], 0.2)],
         "L4": [(["=="], 0.2), (["<="], 0.2), (["<"], 0.2),
                ([">="], 0.2), ([">"], 0.2)],
     },
@@ -167,7 +167,7 @@ GRAMMARS = {
     "L1_2_flipped_simple": {
         "L1_2": [(["L1_2", "+", "sL2_3", "L2_3", "eL2_3"], 0.25),
                  (["sL2_3", "L2_3", "eL2_3"], 0.75)],
-        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)],
+        "L2_3": [(["a", "L2_3"], 0.8), (["a"], 0.2)],
     },
     "L1_2_simple": {
         "L1_2": [(["L1_2", "+", "sL2", "L2", "eL2"], 0.25),
@@ -185,7 +185,7 @@ GRAMMARS = {
     "L1_3": {
         "L1_3": [(["xy", "L1_3"], 0.3), (["x", "L1_3"], 0.3),
                  (["sL2_3", "L2_3", "eL2_3"], 0.4)],
-        "L2_3": [(["a", "L2_3"], 0.6), (["a"], 0.4)]
+        "L2_3": [(["a", "L2_3"], 0.8), (["a"], 0.2)]
     },
     "L2": {
         "L2": [(["sL4", "L4", "eL4"], 0.5), (["not", "L2"], 0.25),
@@ -198,6 +198,11 @@ GRAMMARS = {
                (["L2", "and", "L2"], 0.1), (["L2", "or", "L2"], 0.15)]
     },
      "L2_verysimple": {
+        "L2": [(["cond"], 0.75),
+               (["L2", "and", "L2"], 0.25)]
+    },
+    "L2_verysimple_subgrammar": {
+        "L1": [(["sL2", "L2", "eL2"], 1.0)],
         "L2": [(["cond"], 0.75),
                (["L2", "and", "L2"], 0.25)]
     },
@@ -494,22 +499,6 @@ def split_and_tokenize(sequences, tok_fast, out_dir, train_ratio=.9):
             "eos_token_id": tok_fast.eos_token_id
         }, m)
 
-# can remove this later
-def train_custom_tokenizer(corpus, tok_path, vocab=512):
-    tok = Tokenizer(models.BPE())
-    tok.normalizer = NormalizerSequence([NFD(), Lowercase(), StripAccents()])
-    tok.pre_tokenizer = Whitespace()
-
-    trainer = trainers.BpeTrainer(vocab_size=vocab, special_tokens=["<|bos|>", "<|eos|>"])
-    tok.train_from_iterator(corpus, trainer=trainer)
-
-    tok.post_processor = TemplateProcessing(
-        single="<|bos|> $A <|eos|>", special_tokens=[("<|bos|>", tok.token_to_id("<|bos|>")), ("<|eos|>", tok.token_to_id("<|eos|>"))]
-    )
-    tok.save(os.path.abspath(tok_path))
-    return PreTrainedTokenizerFast(tokenizer_file=tok_path, bos_token="<|bos|>", eos_token="<|eos|>")
-
-
 def build_fixed_tokenizer(grammar_name: str, tok_path: str, special_tokens=None):
     """
     Create a WordLevel tokenizer whose vocab = exactly the terminals
@@ -594,9 +583,15 @@ def main():
     save_dataset(test_sequences, out_dir)
 
     # 3) BPE tokenisation
-    tok_path = f"{out_dir}/tokenizer.json"
-    tok_fast = build_fixed_tokenizer(args.grammar, tok_path)
-    #tok_fast = train_custom_tokenizer(str_sequences, tok_path)
+    # tok_path = f"{out_dir}/tokenizer.json"
+    # tok_fast = build_fixed_tokenizer(args.grammar, tok_path)
+
+    #load tokenizer from path
+    tok_path = f"../data/O3_Combined/O3_Combined_300/tokenizer.json"
+    tok_fast = PreTrainedTokenizerFast(tokenizer_file=tok_path,
+                                            bos_token="<|bos|>",
+                                            eos_token="<|eos|>")
+
 
     split_and_tokenize(str_sequences, tok_fast, out_dir)
 

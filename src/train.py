@@ -32,7 +32,8 @@ def main():
     dataset = args.dataset
     
     main_path = f'../data/{pcfg}/{dataset}'
-    checkpoint_path = f'{main_path}/{args.checkpoint_path}' if args.checkpoint_path else None
+    #checkpoint_path = f'{main_path}/{args.checkpoint_path}' if args.checkpoint_path else None
+    checkpoint_path = f'../data/{args.checkpoint_path}' if args.checkpoint_path else None
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     torch.manual_seed(42)
@@ -65,7 +66,7 @@ def main():
         model.train_model(
             data_dir=f'../data/{pcfg}',
             dataset=dataset,
-            num_epochs=100,
+            num_epochs=50,
             batch_size=8,
             learning_rate=6e-4,
             weight_decay=1e-1,

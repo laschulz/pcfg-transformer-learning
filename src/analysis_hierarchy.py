@@ -14,9 +14,11 @@ import numpy as np
 import re
 from typing import List, Dict, Tuple, Any, Set
 from eval import compare_model_vs_real_probs_subgrammar
+from nltk.parse import pchart
 
 NT2COLOR = {
     "L0":       "#1f77b4",
+    "L1_direct": "#0373fc", 
     "L1":       "#ff7f0e",
     "L1_2":     "#d62728",
     "L1_3":     "#e377c2",  # gray
@@ -417,9 +419,9 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
     # Initialize model and load results
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = GPT(FourLayer()).to(device)
-    with open("../results/results_log.json") as f:
-        all_results = json.load(f)
-    sequences_all_epochs = all_results[grammar_name]
+    # with open("../results/results_log.json") as f:
+    #     all_results = json.load(f)
+    # sequences_all_epochs = all_results[grammar_name]
 
     main_dir = f"../data/{grammar_name}/{grammar_name}_{dataset_size}"
     
@@ -452,6 +454,7 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
     if grammar_name not in all_grammar_results:
         all_grammar_results[grammar_name] = {}
     
+    nonTerminal = nonTerminal + "_direct"
     if nonTerminal not in all_grammar_results[grammar_name]:
         all_grammar_results[grammar_name][nonTerminal] = {}
 
@@ -468,7 +471,7 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
             torch.load(os.path.join(checkpoints_dir, ckpt), map_location=device)
         )
 
-        sequences = sequences_all_epochs[ckpt]["generated_sequences"]
+        # sequences = sequences_all_epochs[ckpt]["generated_sequences"]
         #valid_count, total_count, selected_texts = analyze_hierarchy_per_epoch(sequences, cnf_rules, nt,  terminal_list)
 
         diffs = compare_model_vs_real_probs_subgrammar(model, tokenizer, test_sequences, device)
@@ -532,30 +535,6 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, to_epoch: int = None)
     plt.legend()
     plt.tight_layout()
     plt.savefig(f"../results/kl_divergence_plot_{grammar_name}.png")
-    plt.show()
-
-    # Plot Sum of differences
-    plt.figure(figsize=(8, 5))
-    for idx, nt in enumerate(nonterminals):
-        epochs, kl_vals = [], []
-        color = NT2COLOR[nt]
-        for ckpt, data in grammar_data[nt].items():
-            e = epoch_num(ckpt)
-            if to_epoch and e > to_epoch:
-                continue
-            epochs.append(e)
-            kl_vals.append(data['rel_kl_divergence'])
-        order = np.argsort(epochs)
-        epochs_arr = np.array(epochs)[order]
-        kl_arr = np.array(kl_vals)[order]
-        plt.plot(epochs_arr, kl_arr, marker='o', linestyle='-', label=nt, color=color)
-    plt.xlabel('Epoch')
-    plt.ylabel('Relative KL Divergence')
-    plt.title(f'Relative KL Divergence over Epochs for {grammar_name}')
-    plt.grid(alpha=0.3)
-    plt.legend()
-    plt.tight_layout()
-    plt.savefig(f"../results/rel_kl_divergence_plot_{grammar_name}.png")
     plt.show()
 
 
@@ -634,170 +613,3 @@ def argument_parser():
         
 if __name__ == "__main__":
     main()
-
-
-# def plot_subgrammar(grammar_name, to_epoch):
-#     """
-#     Plot KL divergence between neural model and PCFG predictions across epochs
-#     for multiple nonterminals.
-    
-#     Args:
-#         grammar_name: Name of the grammar to plot results for
-#         to_epoch: Optional maximum epoch to include
-#     """
-    
-#     # Load results
-#     results_path = f"../results/hierarchy_analysis.json"
-#     with open(results_path, 'r') as f:
-#         all_results = json.load(f)
-    
-#     # Fixed styles for each metric
-#     metric_styles = {
-#         'KL Div': {'linestyle': '-', 'marker': 'o'},   # Solid line with circles
-#         'Acc': {'linestyle': '--', 'marker': 's'}      # Dashed line with squares
-#     }
-    
-#     # Create the main figure with two subplots
-#     fig, (ax1, ax4) = plt.subplots(2, 1, figsize=(12, 10), gridspec_kw={'height_ratios': [3, 2]})
-    
-#     # Create secondary axis for the top plot
-#     ax2 = ax1.twinx()
-    
-#     # Common function to extract epoch numbers
-#     def extract_epoch_num(epoch_str):
-#         match = re.search(r'epoch_(\d+)', epoch_str)
-#         return int(match.group(1)) if match else 0
-    
-#     # To store bar positions and heights for the subplot
-#     bar_data = {}
-#     all_epochs = set()
-    
-#     # Process each nonterminal
-#     grammar_data = all_results[grammar_name]
-#     nonTerminals = list(grammar_data.keys())
-    
-#     # Generate a distinct color for each nonterminal
-#     nt_colors = plt.cm.tab10(np.linspace(0, 1, len(nonTerminals)))
-    
-#     # Store legend elements
-#     legend_elements = []
-    
-#     # Process each nonterminal
-#     for nt_idx, nonTerminal in enumerate(nonTerminals):
-#         # Get the data for this nonterminal
-#         nt_data = grammar_data[nonTerminal]
-#         nt_color = nt_colors[nt_idx]
-        
-#         # Extract metrics for this nonterminal
-#         epochs = []
-#         diffs = []
-#         accuracies = []
-#         valid_counts = []
-#         total_counts = []
-        
-#         # Sort epoch keys by epoch number
-#         sorted_keys = sorted(nt_data.keys(), key=extract_epoch_num)
-        
-#         for epoch_key in sorted_keys:
-#             match = re.search(r'epoch_(\d+)', epoch_key)
-#             epoch_num = int(match.group(1))
-#             if to_epoch and epoch_num > to_epoch:
-#                 continue
-                
-#             # Get metrics for this epoch
-#             data = nt_data[epoch_key]
-#             diff = data["diffs"]
-#             valid_count = data["valid_count"]
-#             total_count = data["total_count"]
-#             accuracy = valid_count / total_count if total_count > 0 else 0
-            
-#             # Add data points
-#             epochs.append(epoch_num)
-#             all_epochs.add(epoch_num)
-#             diffs.append(diff)
-#             accuracies.append(accuracy)
-#             valid_counts.append(valid_count)
-#             total_counts.append(total_count)
-            
-#             # Store bar data for the subplot
-#             if epoch_num not in bar_data:
-#                 bar_data[epoch_num] = {}
-#             bar_data[epoch_num][nonTerminal] = total_count
-        
-#         # Plot KL divergence with this nonterminal's color and KL's style
-#         kl_style = metric_styles['KL Div']
-#         ax1.plot(epochs, diffs, marker=kl_style['marker'], linestyle=kl_style['linestyle'], 
-#                  color=nt_color, label=f'{nonTerminal}')
-        
-#         # Plot accuracy with this nonterminal's color and accuracy's style
-#         # acc_style = metric_styles['Acc']
-#         # ax2.plot(epochs, accuracies, marker=acc_style['marker'], linestyle=acc_style['linestyle'],
-#         #          color=nt_color, label=f'{nonTerminal}')
-        
-#         # Add to legend elements
-#         legend_elements.append(plt.Line2D([0], [0], color=nt_color, lw=2, label=nonTerminal))
-    
-#     # Configure the first plot
-#     ax1.set_xlabel('Epoch')
-#     ax1.set_ylabel('Difference (KL Divergence)')
-#     # ax2.set_ylabel('Accuracy (valid/total)')
-#     ax1.grid(True, alpha=0.3)
-#     ax1.set_title(f'Model Performance vs. PCFG - {grammar_name}')
-    
-#     # Add metric style indicators to legend
-#     from matplotlib.lines import Line2D
-    
-#     # Add a black line with each metric's style for the legend
-#     legend_elements.append(Line2D([0], [0], color='black', 
-#                                    marker=metric_styles['KL Div']['marker'], 
-#                                    linestyle=metric_styles['KL Div']['linestyle'],
-#                                    label='KL Divergence'))
-    
-#     # legend_elements.append(Line2D([0], [0], color='black', 
-#     #                                marker=metric_styles['Acc']['marker'], 
-#     #                                linestyle=metric_styles['Acc']['linestyle'],
-#     #                                label='Accuracy'))
-    
-#     # Add legend
-#     ax1.legend(handles=legend_elements, loc='upper center', 
-#                bbox_to_anchor=(0.5, -0.15), ncol=min(3, len(nonTerminals)+2), 
-#                fontsize='small')
-    
-#     # Now create the bar chart for subsequence counts
-#     ax4.set_xlabel('Epoch')
-#     ax4.set_ylabel('Number of Subsequences')
-    
-#     # Sort all epochs
-#     all_epochs = sorted(all_epochs)
-#     bar_width = 0.8 / len(nonTerminals)
-    
-#     # Plot bars for each nonterminal (using the same color as in the plots)
-#     for nt_idx, nonTerminal in enumerate(nonTerminals):
-#         positions = []
-#         counts = []
-        
-#         for epoch in all_epochs:
-#             if epoch in bar_data and nonTerminal in bar_data[epoch]:
-#                 positions.append(epoch + (nt_idx - len(nonTerminals)/2 + 0.5) * bar_width)
-#                 counts.append(bar_data[epoch][nonTerminal])
-        
-#         color = nt_colors[nt_idx]
-#         bars = ax4.bar(positions, counts, bar_width, label=nonTerminal, 
-#                       color=color, alpha=0.7)
-        
-#         # Add value labels above bars
-#         for i, v in enumerate(counts):
-#             ax4.text(positions[i], v + 0.5, str(v), ha='center', fontsize=8)
-    
-#     # Configure the second plot
-#     ax4.legend(loc='upper right')
-#     ax4.grid(True, alpha=0.3, axis='y')
-#     ax4.set_title(f'Subsequence Counts per Epoch - {grammar_name}')
-    
-#     # Set x-ticks to be at the actual epoch numbers
-#     ax4.set_xticks(all_epochs)
-    
-#     # Adjust layout and save
-#     plt.tight_layout()
-#     plt.savefig(f"../results/hierarchy_plot_{grammar_name}.png", dpi=300, bbox_inches='tight')
-#     plt.show()

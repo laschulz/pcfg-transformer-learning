@@ -199,7 +199,7 @@ def argument_parser():
     parser = argparse.ArgumentParser(description="Analyze PCFG Transformer models.")
     parser.add_argument("--pcfgs", nargs='+', help="List of PCFG names to analyze.")
     parser.add_argument("--dataset_size", type=str, default='1000', help="Size of the dataset to analyze.")
-    parser.add_argument("--model", type=str, choices=["TwoLayer", "FourLayer", "SixLayer", "GPT"], default="SixLayer", help="Model configuration to use.")
+    parser.add_argument("--model", type=str, choices=["TwoLayer", "FourLayer", "SixLayer", "GPT"], default="FourLayer", help="Model configuration to use.")
     parser.add_argument('--load_data', action='store_true')  # default is False
     return parser.parse_args()
 
