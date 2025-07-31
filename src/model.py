@@ -136,7 +136,7 @@ class FourLayer: # 0.89M params
     bias = True
     name = "FourLayer"
 
-class TwoLayer:
+class TwoLayer: # 0.22M params
     block_size = 128           
     vocab_size = 64          
     n_layer = 2                
@@ -262,7 +262,7 @@ class GPT(nn.Module):
     
     def train_model(self, data_dir, dataset, num_epochs, batch_size,
                 learning_rate, weight_decay, betas, 
-                checkpoint_every, config, device, continue_from=46):
+                checkpoint_every, config, device, continue_from=0):
         
         block_size = self.config.block_size
         optimizer = self.configure_optimizers(weight_decay, learning_rate, betas, device)

@@ -24,6 +24,7 @@ def parse_args():
     parser.add_argument("--model", type=str, choices=["TwoLayer", "FourLayer", "SixLayer"], default="FourLayer", help="Type of GPT model to use")
     parser.add_argument("--checkpoint_path", type=str, default=None, help="Optional path to checkpoint to load")
     parser.add_argument("--continue_training", action='store_true', help="Continue training from the checkpoint if provided")
+    parser.add_argument("--continue_from", type=int, default=0, help="Epoch to continue training from if continuing")
     return parser.parse_args()
 
 def main():
@@ -32,7 +33,6 @@ def main():
     dataset = args.dataset
     
     main_path = f'../data/{pcfg}/{dataset}'
-    #checkpoint_path = f'{main_path}/{args.checkpoint_path}' if args.checkpoint_path else None
     checkpoint_path = f'../data/{args.checkpoint_path}' if args.checkpoint_path else None
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -73,7 +73,8 @@ def main():
             betas=(0.9, 0.95),
             checkpoint_every=5,
             config=config.name,
-            device=device
+            device=device,
+            continue_from=args.continue_from
         )
 
     # jsonl_path = f'{main_path}/train.jsonl'

@@ -19,7 +19,7 @@ from nltk.parse import pchart
 NT2COLOR = {
     "L0":       "#1f77b4",
     "L1_direct": "#0373fc", 
-    "L1":       "#ff7f0e",
+    "L1":       "#ff7f0e", # orange
     "L1_2":     "#d62728",
     "L1_3":     "#e377c2",  # gray
     "L2":       "#2ca02c",  # red
@@ -27,7 +27,7 @@ NT2COLOR = {
     "L2_3":     "#8c564b",  # brown
     "L4":       "#7f7f7f",  # pink,
     "overhead": "#bcbd22",  # yellow
-    # …add any others you need
+    "uebergang_direct": "#17becf",  # cyan
 }
 
 def to_cnf(parser: ViterbiParser) -> Tuple[Dict[str, list], Set[Nonterminal], Nonterminal]:
@@ -413,15 +413,30 @@ def prepare_overhead_sequences(main_dir):
     test_sequences_with_probs = list(zip(relevant_test_sequences, probabilities))
     return test_sequences_with_probs, len(relevant_test_sequences)
 
+def prepare_eos_test_sequences(main_dir, tokenizer):
+    with open(f"{main_dir}/test.jsonl", 'r') as f:
+        test_sequences = [json.loads(line)["sequence"] for line in f]
+
+    relevant_test_sequences = []
+    probabilities = []
+
+    for seq in test_sequences:
+        tokens = seq.split()
+        for i, token in enumerate(tokens):
+            if token == "eL2" and tokens[i+1] == "sL2_3":
+                relevant_test_sequences.append((i, i+1, seq))
+                probabilities.append(0.0)
+                break
+    test_sequences_with_probs = list(zip(relevant_test_sequences, probabilities))
+    return test_sequences_with_probs, len(relevant_test_sequences)
+
+
 def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoch, dataset_size):
     # Looking into Conditionals subgrammar
 
     # Initialize model and load results
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = GPT(FourLayer()).to(device)
-    # with open("../results/results_log.json") as f:
-    #     all_results = json.load(f)
-    # sequences_all_epochs = all_results[grammar_name]
 
     main_dir = f"../data/{grammar_name}/{grammar_name}_{dataset_size}"
     
@@ -435,6 +450,8 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
     if subgrammar == "overhead":
         test_sequences, num_sequences = prepare_overhead_sequences(main_dir)
         num_sequences = 500
+    elif subgrammar == "eos_test":
+        test_sequences, num_sequences = prepare_eos_test_sequences(main_dir, tokenizer)
     else:
         parser = PARSERS[subgrammar]
         nt = Nonterminal(nonTerminal)
@@ -454,7 +471,6 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
     if grammar_name not in all_grammar_results:
         all_grammar_results[grammar_name] = {}
     
-    nonTerminal = nonTerminal + "_direct"
     if nonTerminal not in all_grammar_results[grammar_name]:
         all_grammar_results[grammar_name][nonTerminal] = {}
 
@@ -470,9 +486,6 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
         model.load_state_dict(
             torch.load(os.path.join(checkpoints_dir, ckpt), map_location=device)
         )
-
-        # sequences = sequences_all_epochs[ckpt]["generated_sequences"]
-        #valid_count, total_count, selected_texts = analyze_hierarchy_per_epoch(sequences, cnf_rules, nt,  terminal_list)
 
         diffs = compare_model_vs_real_probs_subgrammar(model, tokenizer, test_sequences, device)
         kl_divergence = sum([d['abs_logprob_diff'] for d in diffs]) / num_sequences 

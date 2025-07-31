@@ -26,38 +26,6 @@ def generate_and_score_sequences(model, tokenizer, num_samples, max_length, devi
 
     return results
 
-# def score_known_sequences(model, tokenizer, sequences, device):
-#     model.eval()
-#     results = []
-#     bos_token = tokenizer.bos_token
-#     eos_token = tokenizer.eos_token
-
-#     with torch.no_grad():
-#         for seq in sequences:
-#             encoded = tokenizer.encode(bos_token + " " + seq + " " + eos_token, return_tensors="pt").to(device)
-
-#             sequence_log_prob = 0.0
-#             for i in range(encoded.size(1) - 1):
-#                 # Input: tokens up to position i
-#                 input_ids = encoded[:, :i+1]
-#                 # Target: token at position i+1
-#                 target_id = encoded[:, i+1].item()
-                
-#                 # Get logits (will be for the last position only)
-#                 logits, _ = model(input_ids)
-#                 # Apply softmax to get probabilities
-#                 log_probs = F.log_softmax(logits.squeeze(1), dim=-1)
-#                 # Get log prob for the target token
-#                 token_log_prob = log_probs[0, target_id].item()
-#                 sequence_log_prob += token_log_prob
-            
-#             results.append({
-#                 "text": seq,
-#                 "log_prob": sequence_log_prob,
-#             })
-
-#     return results
-
 def compare_model_vs_real_probs(model, tokenizer, test_sequences_with_probs, device): # TODO: is this being used?
     """
     Now expects test_sequences_with_probs to be a list of (sequence_str, real_log_prob) tuples.
@@ -130,7 +98,6 @@ def compare_model_vs_real_probs_subgrammar(model, tokenizer, test_sequences_with
             })
 
     return results
-
 
 def calculate_accuracy(generated_sequences, train_sequences, grammar_name, tokenizer):
     """Calculate the accuracy of generated sequences against valid sequences."""
