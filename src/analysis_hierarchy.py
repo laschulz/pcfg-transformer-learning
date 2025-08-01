@@ -6,7 +6,8 @@ import math
 import os
 import torch
 import torch.nn.functional as F
-from model import GPT, FourLayer, TwoLayer, OneLayer, SixLayer, map_model_name
+from model import GPT, FourLayer, TwoLayer, OneLayer, SixLayer
+from train import map_model_name
 from transformers import PreTrainedTokenizerFast
 import argparse
 import matplotlib.pyplot as plt
@@ -429,7 +430,7 @@ def prepare_eos_test_sequences(main_dir, tokenizer):
     test_sequences_with_probs = list(zip(relevant_test_sequences, probabilities))
     return test_sequences_with_probs, len(relevant_test_sequences)
 
-def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoch, dataset_size, model_name):
+def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoch, dataset_size, model_name, train_type):
 
     # Initialize model and load results
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -465,14 +466,17 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
         all_grammar_results = {}
     
     # Initialize grammar entry if it doesn't exist
-    if grammar_name not in all_grammar_results:
-        all_grammar_results[grammar_name] = {}
-    
-    if nonTerminal not in all_grammar_results[grammar_name]:
-        all_grammar_results[grammar_name][nonTerminal] = {}
+    if model_name not in all_grammar_results:
+        all_grammar_results[model_name] = {}
+
+    if grammar_name not in all_grammar_results[model_name]:
+        all_grammar_results[model_name][grammar_name] = {}
+
+    if nonTerminal not in all_grammar_results[model_name][grammar_name]:
+        all_grammar_results[model_name][grammar_name][nonTerminal] = {}
 
     # Load epoch 
-    checkpoints_dir = f"{main_dir}/{model_name}"
+    checkpoints_dir = f"{main_dir}/{model_name}/{train_type}"
     for ckpt in sorted(os.listdir(checkpoints_dir)):
         if not ckpt.endswith(".pt"): 
             continue 
@@ -505,13 +509,13 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
     
     print(f"Updated hierarchy analysis results for {grammar_name} in {master_results_path}")
     
-def plot_kl_accuracy(results_path: str, grammar_name: str, to_epoch: int = None):
+def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str,to_epoch: int = None):
     """
     Generate separate line charts for KL divergence and accuracy per subgrammar, keeping distinct colors.
     """
     with open(results_path, 'r') as f:
         all_results = json.load(f)
-    grammar_data = all_results[grammar_name]
+    grammar_data = all_results[model_name][grammar_name]
 
     # Helper to extract epoch number
     def epoch_num(key: str) -> int:
@@ -541,8 +545,7 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, to_epoch: int = None)
     plt.grid(alpha=0.3)
     plt.legend()
     plt.tight_layout()
-    plt.savefig(f"../results/kl_divergence_plot_{grammar_name}.png")
-    plt.show()
+    plt.savefig(f"../results/kl_divergence_plot_{model_name}_{grammar_name}.png")
 
 
 def plot_subsequence_lengths(results_path: str, grammar_name: str, to_epoch: int = None):
@@ -595,15 +598,10 @@ def plot_subsequence_lengths(results_path: str, grammar_name: str, to_epoch: int
 def main():
     args = argument_parser()
     if args.plot_only:
-        #plot_subgrammar(args.grammar, args.to_epoch)
-        plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.to_epoch)
-        #plot_subsequence_lengths("../results/hierarchy_analysis.json", args.grammar)
+        plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.model, args.to_epoch)
         return
-    analyze_hieararchy_all_epochs(args.grammar, args.nonTerminal, args.subgrammar, args.to_epoch, args.dataset_size, args.model)
-    # plot_subgrammar(args.grammar, args.to_epoch)
-            
-    plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.to_epoch)
-    #plot_subsequence_lengths("../results/hierarchy_analysis.json", args.grammar)
+    analyze_hieararchy_all_epochs(args.grammar, args.nonTerminal, args.subgrammar, args.to_epoch, args.dataset_size, args.model, args.train_type)     
+    plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.model, args.to_epoch)
 
 # Update argument parser to include plot-only option
 def argument_parser():
@@ -615,6 +613,7 @@ def argument_parser():
     parser.add_argument("--subgrammar", type=str, required=True, help="Subgrammar to use for analysis.")
     parser.add_argument("--to_epoch", type=int, default=None, help="Number of epochs to analyze.")
     parser.add_argument("--model", type=str, choices=["TwoLayer", "FourLayer", "SixLayer", "OneLayer"], default="FourLayer", help="Type of GPT model to use")
+    parser.add_argument("--train_type", type=str, default="new", help="Type of training to analyze (new, continued)")
 
     return parser.parse_args()
         
