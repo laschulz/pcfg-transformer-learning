@@ -1,42 +1,48 @@
-#!/bin/bash                      
-#SBATCH -t 30:00:00                 
-#SBATCH --gres=gpu:1                # Request 1 GPU
-#SBATCH --mem=32G                   # Set memory limit
-#SBATCH --cpus-per-task=8
-#SBATCH --job-name=exp2
-#SBATCH --array=0-29               
-#SBATCH --output=/om2/user/laschulz/investigating_sparseNN/logs/output_%A_%a.log
-#SBATCH --error=/om2/user/laschulz/investigating_sparseNN/logs/error_%A_%a.log
+#!/bin/bash
 
-hostname                             # Print node info
+SUPERGRAMMAR="O3_Combined"
+SUBGRAMMAR_TRAIN="L2"
+SUBGRAMMAR_ANALYSIS="L2"
+DATASET_SIZE=300
+MODEL="OneLayer"
+CONTINUE_FROM=10
 
-# Activate the conda environment
-source /om2/user/laschulz/anaconda3/etc/profile.d/conda.sh
-conda activate pcfg_transformer
+cd src
+python generate_pcfg.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --start_symbol L1 
 
-# Create logs directory if needed
-mkdir -p /om2/user/laschulz/pcfg-transformer-learning/logs
+python generate_pcfg.py --grammar "{$SUBGRAMMAR_TRAIN}" --dataset_size $DATASET_SIZE --start_symbol L1 \
+    --tokenizer_path "../data/${SUPERGRAMMAR}/${SUPERGRAMMAR}_${DATASET_SIZE}/tokenizer.json"
 
-cd /om2/user/laschulz/pcfg-transformer-learning
+python train.py --pcfg "{$SUBGRAMMAR_TRAIN}" --dataset "${SUBGRAMMAR_TRAIN}_${DATASET_SIZE}" --model $MODEL
 
-PCFGS=("CenterEmbedding" "ArithmeticLogic")
-NUM_PCFG=${#PCFGS[@]}
-INDEX=$(( SLURM_ARRAY_TASK_ID % NUM_PCFG ))
+python train.py --pcfg $SUPERGRAMMAR \
+    --dataset "${SUPERGRAMMAR}_${DATASET_SIZE}" \
+    --model $MODEL \
+    --continue_training \
+    --checkpoint_path "../data/${SUBGRAMMAR_TRAIN}/${SUBGRAMMAR_TRAIN}_${DATASET_SIZE}/${MODEL}/continued/epoch_${CONTINUE_FROM}.pt"
 
-PCFG="${PCFGS[$INDEX]}"
+python train.py --pcfg $SUPERGRAMMAR \
+    --dataset "${SUPERGRAMMAR}_${DATASET_SIZE}" \
+    --model $MODEL \
+    --continue_from $CONTINUE_FROM
 
-# concatenate pcfgs with + 
-IFS='+' 
-LIST_PCFG="${PCFGS[*]}"   # now LIST_PCFG="CenterEmbedding+ArithmeticLogic"
-unset IFS
+python analysis_hierarchy.py --grammar $SUPERGRAMMAR \
+    --dataset_size $DATASET_SIZE \
+    --model $MODEL \
+    --nonTerminal L1 \
+    --to_epoch 100
+    --subgrammar $SUPERGRAMMAR
 
-python src/main.py \
-    --pcfg $PCFG \
-    --dataset "$PCFG{_5000}" \
-    --model FourLayer
+python analysis_hierarchy.py --grammar $SUPERGRAMMAR \
+    --dataset_size $DATASET_SIZE \
+    --model $MODEL \
+    --nonTerminal L1_direct \
+    --to_epoch 100
+    --subgrammar $SUPERGRAMMAR
 
-
-python src/analysis.py \
-    --pcfg $LIST_PCFG \
-    --dataset_size 5000 \
-    --model FourLayer 
+python analysis_hierarchy.py --grammar $SUPERGRAMMAR \
+    --dataset_size $DATASET_SIZE \
+    --model $MODEL \
+    --nonTerminal L2 \
+    --to_epoch 100
+    --subgrammar $SUBGRAMMAR_ANALYSIS
