@@ -136,7 +136,7 @@ class FourLayer: # 0.89M params
     bias = True
     name = "FourLayer"
 
-class TwoLayer: # 0.22M params
+class TwoLayer: # 0.40M params
     block_size = 128           
     vocab_size = 64          
     n_layer = 2                
@@ -145,6 +145,16 @@ class TwoLayer: # 0.22M params
     dropout = 0.1              
     bias = True
     name = "TwoLayer"
+
+class OneLayer:
+    block_size = 128           
+    vocab_size = 64          
+    n_layer = 1              
+    n_head = 1                
+    n_embd = 32              
+    dropout = 0.1              
+    bias = True
+    name = "OneLayer"
 
 class GPT(nn.Module):
 
@@ -262,7 +272,7 @@ class GPT(nn.Module):
     
     def train_model(self, data_dir, dataset, num_epochs, batch_size,
                 learning_rate, weight_decay, betas, 
-                checkpoint_every, config, device, continue_from=0):
+                checkpoint_every, config, device, continue_from=0, train_type="new"):
         
         block_size = self.config.block_size
         optimizer = self.configure_optimizers(weight_decay, learning_rate, betas, device)
@@ -278,7 +288,7 @@ class GPT(nn.Module):
             return x.to(device), y.to(device)
 
         # save the very beginning of the training
-        ckpt_path = os.path.join(data_dir, dataset, config)
+        ckpt_path = os.path.join(data_dir, dataset, config, train_type)
 
         ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{continue_from}.pt')
         os.makedirs(os.path.dirname(ckpt_path_ep), exist_ok=True)

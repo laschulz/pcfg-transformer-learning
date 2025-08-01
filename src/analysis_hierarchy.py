@@ -6,7 +6,7 @@ import math
 import os
 import torch
 import torch.nn.functional as F
-from model import GPT, FourLayer
+from model import GPT, FourLayer, TwoLayer, OneLayer, SixLayer, map_model_name
 from transformers import PreTrainedTokenizerFast
 import argparse
 import matplotlib.pyplot as plt
@@ -30,108 +30,108 @@ NT2COLOR = {
     "uebergang_direct": "#17becf",  # cyan
 }
 
-def to_cnf(parser: ViterbiParser) -> Tuple[Dict[str, list], Set[Nonterminal], Nonterminal]:
-    """
-    Convert an NLTK PCFG into CNF, but *also* keep track of unit‐productions.
-    Returns:
-      - cnf_rules: a dict with three keys: "unary_term", "unit", and "binary"
-          • "unary": list of (A, terminal, prob) for rules A→"a"
-          • "unit":       list of (A, B, prob) for rules A→B  (both Nonterminals)
-          • "binary":     list of (A, B, C, prob) for rules A→B C
-      - nonterminals: set of all Nonterminal symbols
-      - start_symbol: the grammar’s start Nonterminal
-    """
-    grammar = parser.grammar()
-    cnf_rules = {
-        "unary": [],        # A → "a"  (terminal)
-        "unit": [],         # A → B    (unit production between nonterminals)
-        "binary": []        # A → B C
-    }
-    nonterminals: Set[Nonterminal] = set()
-    start_symbol = grammar.start()
+# def to_cnf(parser: ViterbiParser) -> Tuple[Dict[str, list], Set[Nonterminal], Nonterminal]:
+#     """
+#     Convert an NLTK PCFG into CNF, but *also* keep track of unit‐productions.
+#     Returns:
+#       - cnf_rules: a dict with three keys: "unary_term", "unit", and "binary"
+#           • "unary": list of (A, terminal, prob) for rules A→"a"
+#           • "unit":       list of (A, B, prob) for rules A→B  (both Nonterminals)
+#           • "binary":     list of (A, B, C, prob) for rules A→B C
+#       - nonterminals: set of all Nonterminal symbols
+#       - start_symbol: the grammar’s start Nonterminal
+#     """
+#     grammar = parser.grammar()
+#     cnf_rules = {
+#         "unary": [],        # A → "a"  (terminal)
+#         "unit": [],         # A → B    (unit production between nonterminals)
+#         "binary": []        # A → B C
+#     }
+#     nonterminals: Set[Nonterminal] = set()
+#     start_symbol = grammar.start()
 
-    # Step 1: Introduce temporary Nonterminals to replace terminals inside long RHS
-    temp_rules: Dict[Any, Nonterminal] = {}
-    next_temp_id = 0
+#     # Step 1: Introduce temporary Nonterminals to replace terminals inside long RHS
+#     temp_rules: Dict[Any, Nonterminal] = {}
+#     next_temp_id = 0
 
-    # First pass: Create temp_NTs for any terminal that appears in a binary/multi rule
-    for production in grammar.productions():
-        lhs = production.lhs()
-        rhs = production.rhs()
-        nonterminals.add(lhs)
+#     # First pass: Create temp_NTs for any terminal that appears in a binary/multi rule
+#     for production in grammar.productions():
+#         lhs = production.lhs()
+#         rhs = production.rhs()
+#         nonterminals.add(lhs)
 
-        # If this RHS is length>1 and has a terminal, introduce a temp_NT
-        if len(rhs) > 1:
-            for symbol in rhs:
-                if not isinstance(symbol, Nonterminal):
-                    if symbol not in temp_rules:
-                        temp_nt = Nonterminal(f"_TEMP{next_temp_id}")
-                        next_temp_id += 1
-                        temp_rules[symbol] = temp_nt
-                        nonterminals.add(temp_nt)
-                        # Add the “_TEMPx → terminal” as a unary‐term rule with prob = 1.0
-                        cnf_rules["unary"].append((temp_nt, symbol, 1.0))
+#         # If this RHS is length>1 and has a terminal, introduce a temp_NT
+#         if len(rhs) > 1:
+#             for symbol in rhs:
+#                 if not isinstance(symbol, Nonterminal):
+#                     if symbol not in temp_rules:
+#                         temp_nt = Nonterminal(f"_TEMP{next_temp_id}")
+#                         next_temp_id += 1
+#                         temp_rules[symbol] = temp_nt
+#                         nonterminals.add(temp_nt)
+#                         # Add the “_TEMPx → terminal” as a unary‐term rule with prob = 1.0
+#                         cnf_rules["unary"].append((temp_nt, symbol, 1.0))
 
-    # Second pass: turn every production into either unary, unit, or binary
-    for production in grammar.productions():
-        lhs = production.lhs()
-        rhs = production.rhs()
-        prob = production.prob()
-        nonterminals.add(lhs)
+#     # Second pass: turn every production into either unary, unit, or binary
+#     for production in grammar.productions():
+#         lhs = production.lhs()
+#         rhs = production.rhs()
+#         prob = production.prob()
+#         nonterminals.add(lhs)
 
-        # CASE 1: A → terminal  (pure terminal rule)
-        if len(rhs) == 1 and not isinstance(rhs[0], Nonterminal):
-            cnf_rules["unary"].append((lhs, rhs[0], prob))
+#         # CASE 1: A → terminal  (pure terminal rule)
+#         if len(rhs) == 1 and not isinstance(rhs[0], Nonterminal):
+#             cnf_rules["unary"].append((lhs, rhs[0], prob))
 
-        # CASE 2: A → B   (unit production: both sides are Nonterminal)
-        elif len(rhs) == 1 and isinstance(rhs[0], Nonterminal):
-            cnf_rules["unit"].append((lhs, rhs[0], prob))
+#         # CASE 2: A → B   (unit production: both sides are Nonterminal)
+#         elif len(rhs) == 1 and isinstance(rhs[0], Nonterminal):
+#             cnf_rules["unit"].append((lhs, rhs[0], prob))
 
-        # CASE 3: A → B C   (both are Nonterminals, already CNF)
-        elif len(rhs) == 2 and all(isinstance(sym, Nonterminal) for sym in rhs):
-            cnf_rules["binary"].append((lhs, rhs[0], rhs[1], prob))
+#         # CASE 3: A → B C   (both are Nonterminals, already CNF)
+#         elif len(rhs) == 2 and all(isinstance(sym, Nonterminal) for sym in rhs):
+#             cnf_rules["binary"].append((lhs, rhs[0], rhs[1], prob))
 
-        # CASE 4: A → B a  or A → a B  (mixed terminal + nonterminal, length = 2)
-        elif len(rhs) == 2:
-            new_rhs = []
-            for sym in rhs:
-                if isinstance(sym, Nonterminal):
-                    new_rhs.append(sym)
-                else:
-                    # replace terminal with its temp_NT
-                    new_rhs.append(temp_rules[sym])
-            cnf_rules["binary"].append((lhs, new_rhs[0], new_rhs[1], prob))
+#         # CASE 4: A → B a  or A → a B  (mixed terminal + nonterminal, length = 2)
+#         elif len(rhs) == 2:
+#             new_rhs = []
+#             for sym in rhs:
+#                 if isinstance(sym, Nonterminal):
+#                     new_rhs.append(sym)
+#                 else:
+#                     # replace terminal with its temp_NT
+#                     new_rhs.append(temp_rules[sym])
+#             cnf_rules["binary"].append((lhs, new_rhs[0], new_rhs[1], prob))
 
-        # CASE 5: A → X1 X2 X3 ... (length > 2)
-        else:  # len(rhs) > 2
-            # First replace any terminal in RHS with temp_NT
-            processed_rhs: List[Nonterminal] = []
-            for sym in rhs:
-                if isinstance(sym, Nonterminal):
-                    processed_rhs.append(sym)
-                else:
-                    processed_rhs.append(temp_rules[sym])
+#         # CASE 5: A → X1 X2 X3 ... (length > 2)
+#         else:  # len(rhs) > 2
+#             # First replace any terminal in RHS with temp_NT
+#             processed_rhs: List[Nonterminal] = []
+#             for sym in rhs:
+#                 if isinstance(sym, Nonterminal):
+#                     processed_rhs.append(sym)
+#                 else:
+#                     processed_rhs.append(temp_rules[sym])
 
-            # Then binarize step by step
-            current_lhs = lhs
-            for i in range(len(processed_rhs) - 2):
-                new_nt = Nonterminal(f"_BIN{next_temp_id}")
-                next_temp_id += 1
-                nonterminals.add(new_nt)
+#             # Then binarize step by step
+#             current_lhs = lhs
+#             for i in range(len(processed_rhs) - 2):
+#                 new_nt = Nonterminal(f"_BIN{next_temp_id}")
+#                 next_temp_id += 1
+#                 nonterminals.add(new_nt)
 
-                # First binary: current_lhs → processed_rhs[i] new_nt
-                # Use original prob only on the first introduced rule
-                rule_prob = prob if i == 0 else 1.0
-                cnf_rules["binary"].append(
-                    (current_lhs, processed_rhs[i], new_nt, rule_prob)
-                )
-                current_lhs = new_nt
+#                 # First binary: current_lhs → processed_rhs[i] new_nt
+#                 # Use original prob only on the first introduced rule
+#                 rule_prob = prob if i == 0 else 1.0
+#                 cnf_rules["binary"].append(
+#                     (current_lhs, processed_rhs[i], new_nt, rule_prob)
+#                 )
+#                 current_lhs = new_nt
 
-            # Final binary: current_lhs → second_last last
-            last_two = processed_rhs[-2:]
-            cnf_rules["binary"].append((current_lhs, last_two[0], last_two[1], 1.0))
+#             # Final binary: current_lhs → second_last last
+#             last_two = processed_rhs[-2:]
+#             cnf_rules["binary"].append((current_lhs, last_two[0], last_two[1], 1.0))
 
-    return cnf_rules, nonterminals, start_symbol
+#     return cnf_rules, nonterminals, start_symbol
 
 def cyk_parse(tokens: List[str], cnf_rules, start_symbol, find_suffix=False) -> Dict:
     """
@@ -343,8 +343,7 @@ def seq_log_pcfg(parser: ViterbiParser, text: str) -> float:
     parses = list(parser.parse(toks))
     return math.log(parses[0].prob())
 
-#TODO: adjust here
-def analyze_hierarchy_per_epoch(sequences, cnf_rules, C: Nonterminal,invalid_terminals):
+def analyze_hierarchy_per_epoch(sequences, cnf_rules, C: Nonterminal, invalid_terminals):
     total_count = 0
     valid_count = 0
     selected_texts = []
@@ -369,11 +368,11 @@ def analyze_hierarchy_per_epoch(sequences, cnf_rules, C: Nonterminal,invalid_ter
 
     return valid_count, total_count, selected_texts
 
-def get_terminals_for_nonterminal(grammar_rules):
-    terminals = set()
-    for rhs, terminal, prob in grammar_rules['unary']:
-        terminals.add(terminal)
-    return terminals
+# def get_terminals_for_nonterminal(grammar_rules):
+#     terminals = set()
+#     for rhs, terminal, prob in grammar_rules['unary']:
+#         terminals.add(terminal)
+#     return terminals
 
 def prepare_test_sequences(parser, nt, main_dir, top_level: bool):
     with open(f"{main_dir}/test.jsonl", 'r') as f:
@@ -430,13 +429,11 @@ def prepare_eos_test_sequences(main_dir, tokenizer):
     test_sequences_with_probs = list(zip(relevant_test_sequences, probabilities))
     return test_sequences_with_probs, len(relevant_test_sequences)
 
-
-def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoch, dataset_size):
-    # Looking into Conditionals subgrammar
+def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoch, dataset_size, model_name):
 
     # Initialize model and load results
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = GPT(FourLayer()).to(device)
+    model = GPT(map_model_name(model_name)).to(device)
 
     main_dir = f"../data/{grammar_name}/{grammar_name}_{dataset_size}"
     
@@ -475,9 +472,9 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
         all_grammar_results[grammar_name][nonTerminal] = {}
 
     # Load epoch 
-    checkpoints_dir = f"{main_dir}/FourLayer"
+    checkpoints_dir = f"{main_dir}/{model_name}"
     for ckpt in sorted(os.listdir(checkpoints_dir)):
-        if not ckpt.endswith(".pt"): #or ckpt in all_grammar_results.get(grammar_name, {}).get(ckpt, False):
+        if not ckpt.endswith(".pt"): 
             continue 
         epoch_int = int(ckpt.split('_')[1].split('.')[0])  # Extract epoch number from filename
         if to_epoch and epoch_int > to_epoch:
@@ -492,17 +489,14 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
         rel_kl_divergence = kl_divergence * num_sequences / 500  #TODO: this only works for non-recursive top grammar
 
         # Add results for this epoch under the grammar's entry
-        if ckpt not in all_grammar_results[grammar_name][nonTerminal]:
-            all_grammar_results[grammar_name][nonTerminal][ckpt] = {}
+        if ckpt not in all_grammar_results[model_name][grammar_name][nonTerminal]:
+            all_grammar_results[model_name][grammar_name][nonTerminal][ckpt] = {}
             
-        all_grammar_results[grammar_name][nonTerminal][ckpt] = {
+        all_grammar_results[model_name][grammar_name][nonTerminal][ckpt] = {
             "kl_divergence": kl_divergence,
             "rel_kl_divergence": rel_kl_divergence,
-            # "valid_count": valid_count,
-            # "total_count": total_count,
-            # "selected_texts": selected_texts,
-            "non_terminal": nonTerminal,  # Store which nonterminal was used
-            "subgrammar": subgrammar      # Store which subgrammar was used
+            "non_terminal": nonTerminal,
+            "subgrammar": subgrammar
         }
     
     # Write the updated master results file
@@ -595,7 +589,6 @@ def plot_subsequence_lengths(results_path: str, grammar_name: str, to_epoch: int
     plt.legend()
     plt.tight_layout()
     plt.savefig(f"../results/subsequence_counts_plot_{grammar_name}.png")
-    plt.show()
 
 
 # Update the main function to optionally generate plots
@@ -606,7 +599,7 @@ def main():
         plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.to_epoch)
         #plot_subsequence_lengths("../results/hierarchy_analysis.json", args.grammar)
         return
-    analyze_hieararchy_all_epochs(args.grammar, args.nonTerminal, args.subgrammar, args.to_epoch, args.dataset_size)
+    analyze_hieararchy_all_epochs(args.grammar, args.nonTerminal, args.subgrammar, args.to_epoch, args.dataset_size, args.model)
     # plot_subgrammar(args.grammar, args.to_epoch)
             
     plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.to_epoch)
@@ -621,6 +614,7 @@ def argument_parser():
     parser.add_argument("--nonTerminal", type=str, required=True, help="Number of epochs to analyze.")
     parser.add_argument("--subgrammar", type=str, required=True, help="Subgrammar to use for analysis.")
     parser.add_argument("--to_epoch", type=int, default=None, help="Number of epochs to analyze.")
+    parser.add_argument("--model", type=str, choices=["TwoLayer", "FourLayer", "SixLayer", "OneLayer"], default="FourLayer", help="Type of GPT model to use")
 
     return parser.parse_args()
         

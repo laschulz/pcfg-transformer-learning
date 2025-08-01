@@ -1,5 +1,4 @@
 GRAMMARS = {
-    # ----- Full Grammars -----
     "SeparatedSubgrammars": {
         "L0": [(["sL1", "L1", "eL1"], 0.9), (["done"], 0.1)],
         "L1": [(["sL2", "L2", "eL2", "L1", "sL2_3", "L2_3", "eL2_3"], 0.4),

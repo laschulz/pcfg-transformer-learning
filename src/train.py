@@ -1,11 +1,12 @@
 import torch
 import argparse
 from transformers import PreTrainedTokenizerFast
-from model import GPT, TwoLayer, FourLayer, SixLayer
+from model import GPT, TwoLayer, FourLayer, SixLayer, OneLayer
 from eval import evaluate_generated_sequences
 import json
 import os
 import numpy as np
+import shutil
 
 def map_model_name(model_name):
     if model_name == "TwoLayer":
@@ -14,6 +15,8 @@ def map_model_name(model_name):
         return FourLayer()
     elif model_name == "SixLayer":
         return SixLayer()
+    elif model_name == "OneLayer":
+        return OneLayer()
     else:
         raise ValueError(f"Unknown model name: {model_name}")
 
@@ -21,7 +24,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Train or load a GPT model on a PCFG dataset")
     parser.add_argument("--pcfg", type=str, required=True, help="Type of PCFG to use")
     parser.add_argument("--dataset", type=str, required=True, help="Name of the dataset (e.g., LinearRecursion_1000)")
-    parser.add_argument("--model", type=str, choices=["TwoLayer", "FourLayer", "SixLayer"], default="FourLayer", help="Type of GPT model to use")
+    parser.add_argument("--model", type=str, choices=["TwoLayer", "FourLayer", "SixLayer", "OneLayer"], default="FourLayer", help="Type of GPT model to use")
     parser.add_argument("--checkpoint_path", type=str, default=None, help="Optional path to checkpoint to load")
     parser.add_argument("--continue_training", action='store_true', help="Continue training from the checkpoint if provided")
     parser.add_argument("--continue_from", type=int, default=0, help="Epoch to continue training from if continuing")
@@ -60,8 +63,18 @@ def main():
             checkpoint_every=5,
             config=config.name,
             device=device, 
-            continue_from=epoch
+            continue_from=epoch,
+            train_type="continued"
         )
+        # Copy checkpoint to the standard checkpoints directory
+        copy_to_dir = f'../data/{pcfg}/{dataset}/{config.name}/continued'
+        epoch_to = int(checkpoint_path.split('_')[-1].split('.')[0])
+
+        for file in os.listdir(checkpoint_dir):
+            if file.startswith('epoch_') and file.endswith('.pt'):
+                file_epoch = int(file.split('_')[1].split('.')[0])
+                if file_epoch < epoch:
+                    shutil.copy(os.path.join(checkpoint_path, file), os.path.join(copy_to_dir, file))
     else:
         print(f"Training new model on dataset {dataset}")
         model.train_model(
@@ -75,7 +88,8 @@ def main():
             checkpoint_every=5,
             config=config.name,
             device=device,
-            continue_from=args.continue_from
+            continue_from=args.continue_from,
+            train_type="new"
         )
 
 if __name__ == "__main__":
