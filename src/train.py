@@ -35,8 +35,6 @@ def main():
     args = parse_args()
     pcfg = args.pcfg
     dataset = args.dataset
-    
-    main_path = f'../data/{pcfg}/{dataset}'
     checkpoint_path = f'../data/{args.checkpoint_path}' if args.checkpoint_path else None
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -68,11 +66,7 @@ def main():
         )
         # Copy checkpoint to the standard checkpoints directory
         copy_to_dir = f'../data/{pcfg}/{dataset}/{config.name}/continued'
-        epoch_to = int(checkpoint_path.split('_')[-1].split('.')[0])
-
-        # my checkpoint path is like: ../data/LinearRecursion_1000/continued/epoch_10.pt, I only want to iterate in the  ..continued/ folder
         checkpoint_path = checkpoint_path.rsplit('/', 1)[0]
-
 
         for file in os.listdir(checkpoint_path):
             if file.startswith('epoch_') and file.endswith('.pt'):

@@ -8,6 +8,7 @@ import logging
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
+import shutil
 
 logging.basicConfig(
     level=logging.INFO,
@@ -281,15 +282,20 @@ class GPT(nn.Module):
         val_data = np.memmap(os.path.join(data_dir, dataset, 'val.bin'), dtype=np.uint32, mode='r')
 
         def get_batch(data):
-
             ix = torch.randint(len(data) - block_size, (batch_size,))
             x = torch.stack([torch.from_numpy(data[i:i+block_size].astype(np.int64)) for i in ix])
             y = torch.stack([torch.from_numpy(data[i+1:i+1+block_size].astype(np.int64)) for i in ix])
             return x.to(device), y.to(device)
 
-        # save the very beginning of the training
         ckpt_path = os.path.join(data_dir, dataset, config, train_type)
+        
+        # clean up directory
+        if os.path.exists(ckpt_path):
+            logger.info(f"Removing existing checkpoint directory {ckpt_path}")
+            shutil.rmtree(ckpt_path)
+            os.makedirs(ckpt_path, exist_ok=True)
 
+        # save the very beginning of the training
         ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{continue_from}.pt')
         os.makedirs(os.path.dirname(ckpt_path_ep), exist_ok=True)
         torch.save(self.state_dict(), ckpt_path_ep)

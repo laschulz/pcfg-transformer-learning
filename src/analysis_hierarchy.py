@@ -472,8 +472,8 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
     if grammar_name not in all_grammar_results[model_name]:
         all_grammar_results[model_name][grammar_name] = {}
 
-    if nonTerminal not in all_grammar_results[model_name][grammar_name]:
-        all_grammar_results[model_name][grammar_name][nonTerminal] = {}
+
+    all_grammar_results[model_name][grammar_name][nonTerminal] = {}
 
     # Load epoch 
     checkpoints_dir = f"{main_dir}/{model_name}/{train_type}"
