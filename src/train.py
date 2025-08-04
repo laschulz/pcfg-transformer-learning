@@ -1,9 +1,6 @@
 import torch
 import argparse
-from transformers import PreTrainedTokenizerFast
 from model import GPT, TwoLayer, FourLayer, SixLayer, OneLayer
-from eval import evaluate_generated_sequences
-import json
 import os
 import numpy as np
 import shutil
