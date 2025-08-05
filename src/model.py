@@ -273,8 +273,9 @@ class GPT(nn.Module):
     
     def train_model(self, data_dir, dataset, num_epochs, batch_size,
                 learning_rate, weight_decay, betas, 
-                checkpoint_every, config, device, continue_from=0, train_type="new"):
+                checkpoint_every, config, device, seed, safe_first_x_epochs=10, continue_from=0, train_type="new"):
         
+        torch.manual_seed(seed)
         block_size = self.config.block_size
         optimizer = self.configure_optimizers(weight_decay, learning_rate, betas, device)
 
@@ -287,8 +288,8 @@ class GPT(nn.Module):
             y = torch.stack([torch.from_numpy(data[i+1:i+1+block_size].astype(np.int64)) for i in ix])
             return x.to(device), y.to(device)
 
-        ckpt_path = os.path.join(data_dir, dataset, config, train_type)
-        
+        ckpt_path = os.path.join(data_dir, dataset, config, train_type, f'seed_{seed}')
+
         # clean up directory
         if os.path.exists(ckpt_path):
             logger.info(f"Removing existing checkpoint directory {ckpt_path}")
@@ -330,7 +331,7 @@ class GPT(nn.Module):
             avg_val_loss = float(np.mean(val_losses))
             logger.info(f"[Epoch {epoch+continue_from}] Validation Loss: {avg_val_loss:.4f}")
 
-            if epoch % checkpoint_every == 0 or epoch in range(10):
+            if epoch % checkpoint_every == 0 or epoch in range(safe_first_x_epochs) or epoch == num_epochs - 1:
                 ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch + continue_from+1}.pt')
                 os.makedirs(os.path.dirname(ckpt_path_ep), exist_ok=True)
                 torch.save(self.state_dict(), ckpt_path_ep)

@@ -1,6 +1,5 @@
 import json
-from collections import defaultdict
-from nltk import Nonterminal, ViterbiParser, Production, PCFG
+from nltk import Nonterminal, ViterbiParser
 from generate_pcfg import PARSERS, sample
 import math, random 
 import os
@@ -63,7 +62,6 @@ def seq_log_pcfg(parser: ViterbiParser, text: str) -> float:
     return math.log(parses[0].prob())
 
 def generate_test_subgrammar_set(grammar_name: str, nt: str, num_sequences: int):
-    print(grammar_name)
     grammar = GRAMMARS[grammar_name]
     start_symbol = list(grammar)[0]
 
@@ -247,53 +245,6 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str,to_ep
     plt.legend()
     plt.tight_layout()
     plt.savefig(f"../results/kl_divergence_plot_{model_name}_{grammar_name}.png")
-
-
-def plot_subsequence_lengths(results_path: str, grammar_name: str, to_epoch: int = None):
-    """
-    Generate a grouped bar chart of the number of subsequences per epoch for each subgrammar, with distinct colors.
-    """
-    with open(results_path, 'r') as f:
-        all_results = json.load(f)
-    grammar_data = all_results[grammar_name]
-
-    # Helper to extract epoch number
-    def epoch_num(key: str) -> int:
-        m = re.search(r'(\d+)', key)
-        return int(m.group(1)) if m else 0
-
-    nonterminals = list(grammar_data.keys())
-    colors = plt.cm.tab10(np.linspace(0, 1, len(nonterminals)))
-
-    # Gather epochs
-    epochs_set = set()
-    counts_by_nt = {nt: {} for nt in nonterminals}
-    for idx, nt in enumerate(nonterminals):
-        for ckpt, data in grammar_data[nt].items():
-            e = epoch_num(ckpt)
-            if to_epoch and e > to_epoch:
-                continue
-            epochs_set.add(e)
-            counts_by_nt[nt][e] = data.get('total_count', 0)
-    epochs = sorted(epochs_set)
-
-    # Plot grouped bars
-    x = np.array(epochs)
-    width = 0.8 / len(nonterminals)
-    plt.figure(figsize=(10, 5))
-    for idx, nt in enumerate(nonterminals):
-        counts = [counts_by_nt[nt].get(e, 0) for e in epochs]
-        positions = x + (idx - len(nonterminals)/2 + 0.5) * width
-        plt.bar(positions, counts, width=width, label=nt, color=colors[idx])
-    plt.xlabel('Epoch')
-    plt.ylabel('Number of Subsequences')
-    plt.title(f'Subsequence Counts per Epoch for {grammar_name}')
-    plt.xticks(epochs)
-    plt.grid(axis='y', alpha=0.3)
-    plt.legend()
-    plt.tight_layout()
-    plt.savefig(f"../results/subsequence_counts_plot_{grammar_name}.png")
-
 
 # Update the main function to optionally generate plots
 def main():

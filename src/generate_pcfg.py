@@ -17,6 +17,8 @@ from def_pcfgs import GRAMMARS
 
 MAX_SEQUENCE_LENGTH = 100
 DATASET_SIZE = 1000
+PARSERS = {name: ViterbiParser(PCFG.fromstring(dict_to_pcfg(tbl)))
+           for name, tbl in GRAMMARS.items()}
 
 def dict_to_pcfg(table):
     """Convert rule table to an nltk-parsable PCFG string."""
@@ -27,44 +29,6 @@ def dict_to_pcfg(table):
             lines.append(f"{lhs} -> {rhs_str} [{p}]")
     pcfg_str = "\n".join(lines)
     return pcfg_str
-
-PARSERS = {name: ViterbiParser(PCFG.fromstring(dict_to_pcfg(tbl)))
-           for name, tbl in GRAMMARS.items()}
-
-def compute_min_len(tbl):
-    """
-    Given a grammar table `tbl: dict[str, List[(rhs: List[str], prob: float)]]`,
-    return a dict mapping each nonterminal -> minimal number of terminals required
-    to derive from it. Terminals count as length 1.
-    """
-    # Initialize min_len for each nonterminal as “infinity” (unknown)
-    min_len = {NT: float('inf') for NT in tbl}
-
-    # Iteratively relax until fixpoint
-    changed = True
-    while changed:
-        changed = False
-        for NT, productions in tbl.items():
-            best = min_len[NT]
-            for rhs, _prob in productions:
-                total = 0
-                valid = True
-                for sym in rhs:
-                    if sym in tbl:
-                        length = min_len[sym]
-                        if length == float('inf'):
-                            valid = False
-                            break
-                        total += length
-                    else:
-                        # sym is a terminal → length 1
-                        total += 1
-                if valid and total < best:
-                    best = total
-            if best < min_len[NT]:
-                min_len[NT] = best
-                changed = True
-    return min_len
 
 def validate(tokenizer, sequence, grammar_name):
     """True iff sequence (list or space-string) derives from grammar
@@ -210,43 +174,46 @@ def build_fixed_tokenizer(grammar_name: str, tok_path: str, special_tokens=None)
     print(vocab)
     return tok_fast
 
-def main():
-    parser=argparse.ArgumentParser(
-        description="Generate and optionally tokenise PCFG datasets.")
-    parser.add_argument("--grammar","-g",
-                        choices=sorted(GRAMMARS),
-                        help="Name of the grammar to use.")
-    parser.add_argument("--dataset_size","-n",type=int,default=1000,
-                        help="Number of sequences to generate.")
-    parser.add_argument("--start_symbol", type=str,default="L0"),
-    parser.add_argument("--max-len",type=int,default=100,
-                        help="Max symbols per generated sequence.")
-    parser.add_argument("--tokenizer_path", type=str, default=None,)
-    args=parser.parse_args()
-
+def generate_pcfg(grammar, start_symbol, dataset_size, max_len, tokenizer_path):
     # 1) generate
-    train_sequences = sample_many(args.grammar, args.start_symbol, args.dataset_size, args.max_len)
-    test_sequences = sample_many(args.grammar, args.start_symbol, 500, args.max_len)
+    train_sequences = sample_many(grammar, start_symbol, dataset_size, max_len)
+    test_sequences = sample_many(grammar, start_symbol, 500, max_len)
     str_sequences = [seq for seq, _ in train_sequences]
 
     # 2) save dataset
-    out_dir = f"../data/{args.grammar}/{args.grammar}_{args.dataset_size}"
+    out_dir = f"../data/{grammar}/{grammar}_{dataset_size}"
     save_dataset(test_sequences, out_dir)
 
     # 3) BPE tokenisation
-    if args.tokenizer_path:     #load tokenizer from path
-        tok_path = args.tokenizer_path 
+    if tokenizer_path:     #load tokenizer from path
+        tok_path = tokenizer_path 
         tok_fast = PreTrainedTokenizerFast(tokenizer_file=tok_path, bos_token="<|bos|>", eos_token="<|eos|>")
         print(tok_fast.get_vocab())
     else:
         tok_path = f"{out_dir}/tokenizer.json"
-        tok_fast = build_fixed_tokenizer(args.grammar, tok_path)
+        tok_fast = build_fixed_tokenizer(grammar, tok_path)
 
     split_and_tokenize(str_sequences, tok_fast, out_dir)
 
-    count_valid_sequences(tok_fast, test_sequences, args.grammar)
-    count_valid_sequences(tok_fast, train_sequences, args.grammar)
+    count_valid_sequences(tok_fast, test_sequences, grammar)
+    count_valid_sequences(tok_fast, train_sequences, grammar)
 
+def parse_args():
+    parser=argparse.ArgumentParser(
+        description="Generate and optionally tokenise PCFG datasets.")
+    parser.add_argument("--grammar", choices=sorted(GRAMMARS),
+                        help="Name of the grammar to use.")
+    parser.add_argument("--dataset_size","-n",type=int,default=1000,
+                        help="Number of sequences to generate.")
+    parser.add_argument("--start_symbol", type=str,default="L0"),
+    parser.add_argument("--tokenizer_path", type=str, default=None)
+    parser.add_argument("--max_len",type=int,default=100,
+                        help="Max symbols per generated sequence.")
+    return parser.parse_args()
+
+def main():
+    args=parse_args()
+    generate_pcfg(args.grammar, args.start_symbol, args.dataset_size, args.max_len, args.tokenizer_path)
 
 if __name__=="__main__":
     main()
