@@ -17,8 +17,6 @@ from def_pcfgs import GRAMMARS
 
 MAX_SEQUENCE_LENGTH = 100
 DATASET_SIZE = 1000
-PARSERS = {name: ViterbiParser(PCFG.fromstring(dict_to_pcfg(tbl)))
-           for name, tbl in GRAMMARS.items()}
 
 def dict_to_pcfg(table):
     """Convert rule table to an nltk-parsable PCFG string."""
@@ -29,6 +27,9 @@ def dict_to_pcfg(table):
             lines.append(f"{lhs} -> {rhs_str} [{p}]")
     pcfg_str = "\n".join(lines)
     return pcfg_str
+
+PARSERS = {name: ViterbiParser(PCFG.fromstring(dict_to_pcfg(tbl)))
+           for name, tbl in GRAMMARS.items()}
 
 def validate(tokenizer, sequence, grammar_name):
     """True iff sequence (list or space-string) derives from grammar

@@ -52,7 +52,7 @@ def trainer(model, grammar, config, dataset_size, checkpoint_path, checkpoint_ev
             seed=seed
         )
         # Copy checkpoint to the standard checkpoints directory
-        copy_to_dir = f'../data/{grammar}/{dataset}/{config.name}/continued'
+        copy_to_dir = f'../data/{grammar}/{dataset}/{config.name}/continued/seed_{seed}'
         checkpoint_path = checkpoint_path.rsplit('/', 1)[0]
 
         for file in os.listdir(checkpoint_path):

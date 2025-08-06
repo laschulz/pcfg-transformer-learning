@@ -8,10 +8,10 @@ MODEL="OneLayer"
 CONTINUE_FROM=46
 
 cd src
-# python generate_pcfg.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --start_symbol L1 
+python generate_pcfg.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --start_symbol L1 
 
-# python generate_pcfg.py --grammar $SUBGRAMMAR_TRAIN --dataset_size $DATASET_SIZE --start_symbol L1 \
-#     --tokenizer_path "../data/${SUPERGRAMMAR}/${SUPERGRAMMAR}_${DATASET_SIZE}/tokenizer.json"
+python generate_pcfg.py --grammar $SUBGRAMMAR_TRAIN --dataset_size $DATASET_SIZE --start_symbol L1 \
+    --tokenizer_path "../data/${SUPERGRAMMAR}/${SUPERGRAMMAR}_${DATASET_SIZE}/tokenizer.json"
 
 python train.py --pcfg $SUBGRAMMAR_TRAIN --dataset "${SUBGRAMMAR_TRAIN}_${DATASET_SIZE}" --model $MODEL
 

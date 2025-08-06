@@ -1,44 +1,36 @@
 #!/bin/bash
 
-SUPERGRAMMAR="O3_Combined_flipped"
-SUBGRAMMAR_2_TRAIN="L2_verysimple_subgrammar"
-SUBGRAMMAR_2_ANALYSIS="L2_verysimple"
-SUBGRAMMAR_1_TRAIN="L2_3_subgrammar"
-SUBGRAMMAR_1_ANALYSIS="L2_3"
+SUPERGRAMMAR="ABC_grammar_basic"
+SUBGRAMMAR_A_ANALYSIS="L2_3"
+SUBGRAMMAR_B_TRAIN="L2_3b_subgrammar"
+SUBGRAMMAR_B_ANALYSIS="L2_3b"
+SUBGRAMMAR_C_ANALYSIS="L2_3c"
 DATASET_SIZE=300
 MODEL="FourLayer"
 CONTINUE_FROM_1=21
-CONTINUE_FROM_2=42
 
 cd src
 python generate_pcfg.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --start_symbol L1 
 
-python generate_pcfg.py --grammar $SUBGRAMMAR_1_TRAIN --dataset_size $DATASET_SIZE --start_symbol L1 \
+python generate_pcfg.py --grammar $SUBGRAMMAR_B_TRAIN --dataset_size $DATASET_SIZE --start_symbol L1 \
     --tokenizer_path "../data/${SUPERGRAMMAR}/${SUPERGRAMMAR}_${DATASET_SIZE}/tokenizer.json"
 
-python generate_pcfg.py --grammar $SUBGRAMMAR_2_TRAIN --dataset_size $DATASET_SIZE --start_symbol L1 \
+python generate_pcfg.py --grammar $SUBGRAMMAR_B_TRAIN --dataset_size $DATASET_SIZE --start_symbol L1 \
     --tokenizer_path "../data/${SUPERGRAMMAR}/${SUPERGRAMMAR}_${DATASET_SIZE}/tokenizer.json"
 
 # -------TRAINING--------
-python train.py --grammar $SUBGRAMMAR_1_TRAIN --dataset_size $DATASET_SIZE --model $MODEL --num_epochs 30
-
-python train.py --grammar $SUBGRAMMAR_2_TRAIN \
-    --dataset_size $DATASET_SIZE \
-    --model $MODEL \
-    --continue_training \
-    --checkpoint_path "${SUBGRAMMAR_1_TRAIN}/${SUBGRAMMAR_1_TRAIN}_${DATASET_SIZE}/${MODEL}/new/seed_42/epoch_${CONTINUE_FROM_1}.pt" \
-    --num_epochs 30
+python train.py --grammar $SUBGRAMMAR_B_TRAIN --dataset_size $DATASET_SIZE --model $MODEL --num_epochs 30
 
 python train.py --grammar $SUPERGRAMMAR \
     --dataset_size $DATASET_SIZE \
     --model $MODEL \
     --continue_training \
-    --checkpoint_path "${SUBGRAMMAR_2_TRAIN}/${SUBGRAMMAR_2_TRAIN}_${DATASET_SIZE}/${MODEL}/continued/seed_42/epoch_${CONTINUE_FROM_2}.pt"
+    --checkpoint_path "${SUBGRAMMAR_B_TRAIN}/${SUBGRAMMAR_B_TRAIN}_${DATASET_SIZE}/${MODEL}/new/seed_42/epoch_${CONTINUE_FROM_1}.pt"
 
 python train.py --grammar $SUPERGRAMMAR \
     --dataset_size $DATASET_SIZE \
     --model $MODEL \
-    --continue_from $CONTINUE_FROM_2
+    --continue_from $CONTINUE_FROM_1
 
 # -------ANALYSIS--------
 
@@ -63,13 +55,22 @@ python analysis_hierarchy.py --grammar $SUPERGRAMMAR \
     --model $MODEL \
     --nonTerminal L2_3 \
     --to_epoch 150 \
-    --subgrammar $SUBGRAMMAR_1_ANALYSIS \
+    --subgrammar $SUBGRAMMAR_A_ANALYSIS \
     --train_type continued
 
 python analysis_hierarchy.py --grammar $SUPERGRAMMAR \
     --dataset_size $DATASET_SIZE \
     --model $MODEL \
-    --nonTerminal L2 \
+    --nonTerminal L2_3b \
     --to_epoch 150 \
-    --subgrammar $SUBGRAMMAR_2_ANALYSIS \
+    --subgrammar $SUBGRAMMAR_B_ANALYSIS \
+    --train_type continued \
+    --plot_only
+
+python analysis_hierarchy.py --grammar $SUPERGRAMMAR \
+    --dataset_size $DATASET_SIZE \
+    --model $MODEL \
+    --nonTerminal L2_3c \
+    --to_epoch 150 \
+    --subgrammar $SUBGRAMMAR_C_ANALYSIS \
     --train_type continued

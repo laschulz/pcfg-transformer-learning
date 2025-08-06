@@ -26,6 +26,8 @@ NT2COLOR = {
     "L2":       "#2ca02c",  # red
     "L2_2":     "#0e582d",  # purple
     "L2_3":     "#8c564b",  # brown
+    "L2_3b":    "#2B9E91", 
+    "L2_3c":    "#892362",  
     "L4":       "#7f7f7f",  # pink,
     "overhead": "#bcbd22",  # yellow
     "uebergang_direct": "#17becf",  # cyan
@@ -130,7 +132,7 @@ def prepare_eos_test_sequences(main_dir, tokenizer):
     test_sequences_with_probs = list(zip(relevant_test_sequences, probabilities))
     return test_sequences_with_probs, len(relevant_test_sequences)
 
-def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoch, dataset_size, model_name, train_type):
+def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoch, dataset_size, model_name, train_type, seed=42):
 
     # Initialize model and load results
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -175,7 +177,7 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
     all_grammar_results[model_name][grammar_name][nonTerminal] = {}
 
     # Load epoch 
-    checkpoints_dir = f"{main_dir}/{model_name}/{train_type}"
+    checkpoints_dir = f"{main_dir}/{model_name}/{train_type}/seed_{seed}"
     for ckpt in sorted(os.listdir(checkpoints_dir)):
         if not ckpt.endswith(".pt"): 
             continue 
