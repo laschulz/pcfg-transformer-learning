@@ -19,7 +19,8 @@ from def_pcfgs import GRAMMARS
 
 NT2COLOR = {
     "L0":       "#1f77b4",
-    "L1_direct": "#0373fc", 
+    "L0_direct": "#0373fc", 
+    "L1_direct": "#0373fc",
     "L1":       "#ff7f0e", # orange
     "L1_2":     "#d62728",
     "L1_3":     "#e377c2",  # gray
@@ -56,6 +57,8 @@ def find_subsequences(tokens: List[str], C: Nonterminal, start_marker, end_marke
                     i = j  # skip ahead to end marker
                     break
         i += 1
+    if spans == []:
+        print("no spans found for", ' '.join(tokens))
     return spans
 
 def seq_log_pcfg(parser: ViterbiParser, text: str) -> float:
@@ -64,6 +67,7 @@ def seq_log_pcfg(parser: ViterbiParser, text: str) -> float:
     return math.log(parses[0].prob())
 
 def generate_test_subgrammar_set(grammar_name: str, nt: str, num_sequences: int):
+    grammar_name = f"{grammar_name}_subgrammar" # we need the subgrammar version with the start and end markers
     grammar = GRAMMARS[grammar_name]
     start_symbol = list(grammar)[0]
 
@@ -80,6 +84,7 @@ def prepare_test_sequences(parser, nt, main_dir, top_level: bool, grammar_name: 
             test_sequences = [json.loads(line)["sequence"] for line in f]
     else:
         test_sequences = generate_test_subgrammar_set(grammar_name, nt, 500)
+        print(len(test_sequences), "is length of test sequences for subgrammar", nt.symbol())
 
     relevant_test_sequences = []
     probabilities = []
@@ -93,7 +98,7 @@ def prepare_test_sequences(parser, nt, main_dir, top_level: bool, grammar_name: 
             probabilities.append(prob)
 
     test_sequences_with_probs = list(zip(relevant_test_sequences, probabilities))
-    return test_sequences_with_probs, len(relevant_test_sequences)
+    return test_sequences_with_probs, len(test_sequences_with_probs)
 
 def prepare_overhead_sequences(main_dir):
     with open(f"{main_dir}/test.jsonl", 'r') as f:
@@ -154,7 +159,7 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
     else:
         parser = PARSERS[subgrammar]
         nt = Nonterminal(nonTerminal)
-        test_sequences, num_sequences = prepare_test_sequences(parser, nt, main_dir, subgrammar == grammar_name, grammar_name)
+        test_sequences, num_sequences = prepare_test_sequences(parser, nt, main_dir, subgrammar == grammar_name, subgrammar)
     print(num_sequences)
 
 

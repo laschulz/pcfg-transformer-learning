@@ -27,7 +27,7 @@ def parse_args():
     parser.add_argument("--num_epochs", type=int, default=50, help="Number of epochs to train the model")
     return parser.parse_args()
 
-def trainer(model, grammar, config, dataset_size, checkpoint_path, checkpoint_every, num_epochs, continue_from, continue_training, device, seed):
+def trainer(model, grammar, config, dataset_size, checkpoint_path, checkpoint_every, num_epochs, save_first_x_epochs, continue_from, continue_training, device, seed):
     dataset = f"{grammar}_{dataset_size}"
     if checkpoint_path and os.path.exists(checkpoint_path) and not continue_training:
         print(f"Loading model from checkpoint: {checkpoint_path}")
@@ -44,6 +44,7 @@ def trainer(model, grammar, config, dataset_size, checkpoint_path, checkpoint_ev
             learning_rate=6e-4,
             weight_decay=1e-1,
             betas=(0.9, 0.95),
+            save_first_x_epochs=save_first_x_epochs,
             checkpoint_every=checkpoint_every,
             config=config.name,
             device=device, 
@@ -70,6 +71,7 @@ def trainer(model, grammar, config, dataset_size, checkpoint_path, checkpoint_ev
             learning_rate=6e-4,
             weight_decay=1e-1,
             betas=(0.9, 0.95),
+            save_first_x_epochs=save_first_x_epochs,
             checkpoint_every=checkpoint_every,
             config=config.name,
             device=device,
@@ -85,8 +87,9 @@ def main():
     config = map_model_name(args.model)
     model = GPT(config).to(device)
 
-    trainer(model, args.grammar, config, args.dataset_size, checkpoint_path, 5,
-            args.num_epochs, args.continue_from, args.continue_training, device, 42)
+    trainer(model, args.grammar, config, args.dataset_size, checkpoint_path=checkpoint_path, checkpoint_every=5,
+            num_epochs=args.num_epochs, save_first_x_epochs=10, continue_from=args.continue_from, 
+            continue_training=args.continue_training, device=device, seed=42)
 
 if __name__ == "__main__":
     main()

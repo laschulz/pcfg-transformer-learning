@@ -15,9 +15,6 @@ python generate_pcfg.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --s
 python generate_pcfg.py --grammar $SUBGRAMMAR_B_TRAIN --dataset_size $DATASET_SIZE --start_symbol L1 \
     --tokenizer_path "../data/${SUPERGRAMMAR}/${SUPERGRAMMAR}_${DATASET_SIZE}/tokenizer.json"
 
-python generate_pcfg.py --grammar $SUBGRAMMAR_B_TRAIN --dataset_size $DATASET_SIZE --start_symbol L1 \
-    --tokenizer_path "../data/${SUPERGRAMMAR}/${SUPERGRAMMAR}_${DATASET_SIZE}/tokenizer.json"
-
 # -------TRAINING--------
 python train.py --grammar $SUBGRAMMAR_B_TRAIN --dataset_size $DATASET_SIZE --model $MODEL --num_epochs 30
 
