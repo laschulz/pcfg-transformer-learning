@@ -318,7 +318,7 @@ class GPT(nn.Module):
                 running_train_loss += loss.item()
 
             avg_train_loss = running_train_loss / iters_per_epoch
-            logger.info(f"[Epoch {epoch+continue_from}] Training Loss: {avg_train_loss:.4f}")
+            # logger.info(f"[Epoch {epoch+continue_from}] Training Loss: {avg_train_loss:.4f}")
 
             # validation
             self.eval()

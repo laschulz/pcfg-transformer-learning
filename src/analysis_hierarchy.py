@@ -20,17 +20,19 @@ from def_pcfgs import GRAMMARS
 NT2COLOR = {
     "L0":       "#1f77b4",
     "L0_direct": "#0373fc", 
-    "L1_direct": "#0373fc",
-    "L1":       "#ff7f0e", # orange
+    "L1_direct": "#ff7f0e",
+    "L1":       "#ff7f0e",
     "L1_2":     "#d62728",
-    "L1_3":     "#e377c2",  # gray
-    "L2":       "#2ca02c",  # red
-    "L2_2":     "#0e582d",  # purple
-    "L2_3":     "#8c564b",  # brown
+    "L1_2b":    "#d6275e", 
+    "L1_3":     "#e377c2",
+    "L1_3c":    "#9467bd", 
+    "L2":       "#2ca02c", 
+    "L2_2":     "#0e582d", 
+    "L2_3":     "#8c564b", 
     "L2_3b":    "#2B9E91", 
     "L2_3c":    "#892362",  
-    "L4":       "#7f7f7f",  # pink,
-    "overhead": "#bcbd22",  # yellow
+    "L4":       "#7f7f7f",
+    "overhead": "#bcbd22", 
     "uebergang_direct": "#17becf",  # cyan
 }
 
@@ -252,6 +254,7 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str,to_ep
     plt.legend()
     plt.tight_layout()
     plt.savefig(f"../results/kl_divergence_plot_{model_name}_{grammar_name}.png")
+    plt.close()
 
 # Update the main function to optionally generate plots
 def main():
