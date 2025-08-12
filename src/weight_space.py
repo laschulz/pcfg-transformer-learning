@@ -11,6 +11,7 @@ import pandas as pd
 import numpy as np
 import json
 from transformers import PreTrainedTokenizerFast
+from scipy.stats import spearmanr
 
 NUM_SEEDS = 50
 
@@ -98,8 +99,118 @@ def compute_cosine_similarity_matrix(models_list1, models_list2):
                       columns=[f'seed_{j}' for j in range(num_models2)])
     return df
 
+# RSA (Representational Similarity Analysis) for per-layer weights
+def _rowwise_pearson_corr(X: torch.Tensor) -> torch.Tensor:
+    """
+    X: (N, D). Returns correlation matrix between rows (N, N).
+    We compute Pearson across features for each pair of rows.
+    """
+    X = X - X.mean(dim=1, keepdim=True)
+    X = X / (X.std(dim=1, keepdim=True) + 1e-8)
+    # cosine of standardized rows equals Pearson
+    return (X @ X.T) / X.shape[1]
+
+def compute_rdms_per_layer(seq_reps: dict) -> dict:
+    """
+    For each layer-key -> (N_seq, N_seq) RDM = 1 - Pearson(rowwise).
+    """
+    rdms = {}
+    for k, X in seq_reps.items():
+        if isinstance(X, torch.Tensor):
+            X = X.cpu()
+        C = _rowwise_pearson_corr(X)          # (N, N) in [-1, 1]
+        D = 1.0 - C.clamp(min=-1.0, max=1.0)  # dissimilarity
+        rdms[k] = D.numpy()
+    return rdms
+
+def _upper_tri_vec(M: np.ndarray) -> np.ndarray:
+    iu = np.triu_indices(M.shape[0], k=1)
+    return M[iu]
+
+def rsa_similarity_between_rdms(rdm1: np.ndarray, rdm2: np.ndarray, method="spearman") -> float:
+    """
+    Spearman correlation between vectorized upper triangles of two RDMs.
+    """
+    v1 = _upper_tri_vec(rdm1)
+    v2 = _upper_tri_vec(rdm2)
+    if method == "spearman":
+        rho, _ = spearmanr(v1, v2)
+        return float(rho)
+    else:
+        # Pearson fallback
+        v1m = v1 - v1.mean()
+        v2m = v2 - v2.mean()
+        denom = (np.linalg.norm(v1m) * np.linalg.norm(v2m) + 1e-12)
+        return float((v1m @ v2m) / denom)
+
+def compute_rsa_matrix(seq_reps_list1, seq_reps_list2, method="spearman"):
+    """
+    seq_reps_list*: list of dicts from collect_sequence_representations().
+    Returns DataFrame (seed_i_vs_seed_j) x (layers) with RSA similarities.
+    """
+    keys = sorted(set().union(*[r.keys() for r in seq_reps_list1 + seq_reps_list2]))
+    seed_pairs, rows = [], []
+    for i in range(len(seq_reps_list1)):
+        for j in range(i, len(seq_reps_list2)):
+            row = {}
+            for k in keys:
+                if k not in seq_reps_list1[i] or k not in seq_reps_list2[j]:
+                    continue
+                rdm1 = compute_rdms_per_layer(seq_reps_list1[i])[k]
+                rdm2 = compute_rdms_per_layer(seq_reps_list2[j])[k]
+                row[k] = rsa_similarity_between_rdms(rdm1, rdm2, method=method)
+            rows.append(row)
+            seed_pairs.append(f"seed_{i}_vs_seed_{j}")
+    df = pd.DataFrame(rows, index=seed_pairs)
+    return df
+
+def average_rsa(df: pd.DataFrame, skip_diagonal=True):
+    df = df.apply(pd.to_numeric, errors="coerce")
+    if skip_diagonal and isinstance(df.index, pd.Index):
+        pairs = df.index.to_series().str.extract(r"seed_(\d+)_vs_seed_(\d+)").astype(float)
+        offdiag = pairs[0] != pairs[1]
+        df = df[offdiag.values]
+
+    overall_mean = df.stack(dropna=True).mean()
+    overall_std  = df.stack(dropna=True).std()
+    per_pair_mean  = df.mean(axis=1, skipna=True)
+    per_layer_mean = df.mean(axis=0, skipna=True)
+    return {
+        "overall_mean": float(overall_mean),
+        "overall_std": float(overall_std),
+        "per_pair_mean": per_pair_mean,
+        "per_layer_mean": per_layer_mean,
+    }
+
+def plot_per_layer_rsa_heatmap(df, grammar, dataset_size, train_type, config):
+    col_mean = df.mean(axis=0, skipna=True)
+    overall  = df.stack(dropna=True).mean()
+
+    def _fmt(v): return "NA" if pd.isna(v) else f"{v:.3f}"
+    labels = [f"{col}\n{_fmt(col_mean[col])}" for col in df.columns]
+
+    fig, ax = plt.subplots(figsize=(14, 10))
+    sns.heatmap(df, ax=ax, cmap="magma", cbar=True, vmin=-1, vmax=1)  # RSA can be negative
+
+    ax.xaxis.set_ticks_position('bottom')
+    ax.set_xticklabels(labels, rotation=0, ha='center', fontsize=10, linespacing=1.2)
+    ax.tick_params(axis='x', pad=12)
+    fig.subplots_adjust(bottom=0.22)
+
+    fig.text(0.995, 0.01, f"Overall mean RSA: {overall:.3f}",
+             ha='center', va='bottom',
+             bbox=dict(boxstyle="round", facecolor="white", alpha=0.85, lw=0), fontsize=10)
+
+    ax.set_xlabel("Layer (mean shown below)")
+    ax.set_ylabel("Seed pair")
+    ax.set_title(f"Per-Layer RSA – {train_type}\nGrammar: {grammar}, Dataset Size: {dataset_size}")
+
+    fig.savefig(f"../results/weight_space/pl_rsa_{grammar}_{dataset_size}_{config.name}_{train_type}.png",
+                bbox_inches="tight", dpi=300)
+    plt.close(fig)
+
 # CKA (Centered Kernel Alignment) for per-layer weights between two models
-def collect_activations(model, config, tokenizer, base_dir):
+def collect_activations(model, tokenizer, base_dir, agg=None):
     # 1) Prepare empty buffers
     n_layers = len(model.transformer.h)
     acts = {f"attn_{i}": [] for i in range(n_layers)}
@@ -110,8 +221,12 @@ def collect_activations(model, config, tokenizer, base_dir):
         def hook(module, inp, out):
             if isinstance(out, (tuple, list)):
                 out = out[0]
-            B, L, D = out.shape  # expected (1, L, D) here
-            acts[key].append(out.detach().reshape(B*L, D))
+            B, L, D = out.shape
+            if agg is None:
+                rep = out.reshape(B*L, D)
+            elif agg == "mean":
+                rep = out.mean(dim=1)  # (B, D) -> (1, D)
+            acts[key].append(rep.detach().cpu())
         return hook
 
     # 3) Register hooks
@@ -141,9 +256,6 @@ def collect_activations(model, config, tokenizer, base_dir):
 
     # 6) Concatenate into single tensor per layer
     for k in list(acts.keys()):
-        if len(acts[k]) == 0:
-            # this can happen if e.g. a module name wasn't found
-            continue
         acts[k] = torch.cat(acts[k], dim=0)
 
     return acts
@@ -218,7 +330,7 @@ def find_checkpoints(dir):
             latest_checkpoints.append(latest_checkpoint)
     return latest_checkpoints
 
-def difference_pretrain_and_direct(grammar, config, tokenizer, base_dir):
+def difference_pretrain_and_direct(config, tokenizer, base_dir):
     dir = f'{base_dir}/{config.name}'
     direct_folder = os.path.join(dir, 'new')
     pretrain_folder = os.path.join(dir, 'continued')
@@ -230,39 +342,41 @@ def difference_pretrain_and_direct(grammar, config, tokenizer, base_dir):
     models_pretrain = list_of_models_from_checkpoints(pretrain_checkpoints, config)
 
     #load activations for all models
-    act_direct = [collect_activations(model, config, tokenizer, base_dir) for model in models_direct]
-    act_pretrain = [collect_activations(model, config, tokenizer, base_dir) for model in models_pretrain]
-
-    l2_distances = compute_l2_distances(models_direct, models_pretrain, skip_diagonals=False)
-    l2_per_layer_distances = compute_per_layer_distances(models_direct, models_pretrain)
-    cosine_distances = compute_cosine_similarity_matrix(models_direct, models_pretrain)
+    act_direct = [collect_activations(model, tokenizer, base_dir) for model in models_direct]
+    act_pretrain = [collect_activations(model, tokenizer, base_dir) for model in models_pretrain]
     cka_distances = compute_cka_matrix(act_direct, act_pretrain)
 
-    summary = average_cka(cka_distances, skip_diagonal=True)
-    print("Overall CKA (off-diagonal):", summary["overall_mean"])
-    print("Per-layer means:\n", summary["per_layer_mean"])
+        # RSA sequence-level reps
+    seq_direct = [collect_activations(m, tokenizer, base_dir, agg="mean")
+                  for m in models_direct]
+    seq_pretrain = [collect_activations(m, tokenizer, base_dir, agg="mean")
+                    for m in models_pretrain]
+    rsa_distances = compute_rsa_matrix(seq_direct, seq_pretrain, method="spearman")
 
 
-    return l2_distances, l2_per_layer_distances, cosine_distances, cka_distances
+    # l2_distances = compute_l2_distances(models_direct, models_pretrain, skip_diagonals=False)
+    # l2_per_layer_distances = compute_per_layer_distances(models_direct, models_pretrain)
+    # cosine_distances = compute_cosine_similarity_matrix(models_direct, models_pretrain)
 
-def difference_same_seed(grammar, train_type, config, tokenizer, base_dir):
+    return cka_distances, rsa_distances
+
+def difference_same_seed(train_type, config, tokenizer, base_dir):
     dir = f'{base_dir}/{config.name}/{train_type}'
     checkpoints = find_checkpoints(dir)
     models = list_of_models_from_checkpoints(checkpoints, config)
 
     # load activations 
-    acts = [collect_activations(model, config, tokenizer, base_dir) for model in models]
-
-    l2_distances = compute_l2_distances(models, models, skip_diagonals=True)
-    per_layer_distances = compute_per_layer_distances(models, models)
-    cosine_distances = compute_cosine_similarity_matrix(models, models)
+    acts = [collect_activations(model, tokenizer, base_dir) for model in models]
     cka_distances = compute_cka_matrix(acts, acts)
 
-    summary = average_cka(cka_distances, skip_diagonal=True)
-    print("Overall CKA (off-diagonal):", summary["overall_mean"])
-    print("Per-layer means:\n", summary["per_layer_mean"])
+    seq_reps = [collect_activations(m, tokenizer, base_dir, agg="mean") for m in models]
+    rsa_distances = compute_rsa_matrix(seq_reps, seq_reps, method="spearman")
 
-    return l2_distances, per_layer_distances, cosine_distances, cka_distances
+    # l2_distances = compute_l2_distances(models, models, skip_diagonals=True)
+    # per_layer_distances = compute_per_layer_distances(models, models)
+    # cosine_distances = compute_cosine_similarity_matrix(models, models)
+
+    return cka_distances, rsa_distances
 
 def list_of_models_from_checkpoints(checkpoints, config):
     models = []
@@ -285,13 +399,13 @@ def loop_over_seeds_and_train(grammar, dataset_size, subgrammar,
         model.apply(model._init_weights)
 
         # train directly
-        trainer(model, grammar, config, dataset_size, checkpoint_path=None, checkpoint_every=num_epochs_direct,
-                num_epochs=num_epochs_direct, save_first_x_epochs=0, continue_from=num_epochs_pretrain, 
-                continue_training=False, device=device, seed=i)
-
-        # trainer(model, grammar, config, dataset_size, checkpoint_path=None, checkpoint_every=num_epochs_direct+num_epochs_pretrain,
-        #         num_epochs=num_epochs_direct+num_epochs_pretrain, save_first_x_epochs=0, continue_from=0, 
+        # trainer(model, grammar, config, dataset_size, checkpoint_path=None, checkpoint_every=num_epochs_direct,
+        #         num_epochs=num_epochs_direct, save_first_x_epochs=0, continue_from=num_epochs_pretrain, 
         #         continue_training=False, device=device, seed=i)
+
+        trainer(model, grammar, config, dataset_size, checkpoint_path=None, checkpoint_every=num_epochs_direct+num_epochs_pretrain,
+                num_epochs=num_epochs_direct+num_epochs_pretrain, save_first_x_epochs=0, continue_from=0, 
+                continue_training=False, device=device, seed=i)
             
         # train on subgrammar
         model = GPT(config).to(device) 
@@ -343,16 +457,6 @@ def plot_cosine_similarity_heatmap(df, grammar, dataset_size, train_type):
     plt.savefig(filename, bbox_inches='tight', dpi=300)
     plt.close()
 
-# def plot_per_layer_cka_heatmap(df, grammar, dataset_size, train_type):
-#     plt.figure(figsize=(14, 10))
-#     ax = sns.heatmap(df, cmap="viridis", cbar=True, vmin=0, vmax=1)
-#     plt.title(f"Per-Layer CKA Heatmap – {train_type}\nGrammar: {grammar}, Dataset Size: {dataset_size}")
-#     plt.xlabel("Layer")
-#     plt.ylabel("Seed Pair")
-#     plt.tight_layout()
-#     fname = f"../results/weight_space/pl_cka_{grammar}_{dataset_size}_{train_type}.png"
-#     plt.savefig(fname, bbox_inches="tight", dpi=300)
-#     plt.close()
 def plot_per_layer_cka_heatmap(df, grammar, dataset_size, train_type, config):
     # ensure numeric
     # df = df.apply(pd.to_numeric, errors='coerce')
@@ -384,7 +488,6 @@ def plot_per_layer_cka_heatmap(df, grammar, dataset_size, train_type, config):
     fig.savefig(f"../results/weight_space/pl_cka_{grammar}_{dataset_size}_{config.name}_{train_type}.png",
                 bbox_inches="tight", dpi=300)
     plt.close(fig)
-
 
 
 def parse_args():
@@ -419,36 +522,35 @@ def main():
     tokenizer_path = f'{base_dir}/tokenizer.json'
     tokenizer = PreTrainedTokenizerFast(tokenizer_file=tokenizer_path, bos_token="<|bos|>", eos_token="<|eos|>")
 
-    direct_l2, direct_l2_pl, direct_cos, direct_cka = difference_same_seed(args.grammar,
-                         train_type='new',
+    direct_cka, direct_rsa = difference_same_seed(train_type='new',
                          config=config,
                          tokenizer=tokenizer,
                          base_dir=base_dir)
-    continued_l2, continued_l2_pl, continued_cos, continued_cka = difference_same_seed(args.grammar,
-                        train_type='continued',
+    continued_cka, continued_rsa = difference_same_seed(train_type='continued',
                         config=config,
                         tokenizer=tokenizer,
                         base_dir=base_dir)
-    pretrain_vs_direct_l2, pretrain_vs_direct_l2_pl, pretrain_vs_direct_cos, pretrain_vs_direct_cka = difference_pretrain_and_direct(args.grammar, 
-                                                                                                                                     config,
-                                                                                                                                     tokenizer=tokenizer,
-                                                                                                                                     base_dir=base_dir)
+    pretrain_vs_direct_cka, pretrain_vs_direct_rsa = difference_pretrain_and_direct(config, tokenizer=tokenizer, base_dir=base_dir)
 
-    plot_l2_distances(direct_l2, args.grammar, args.dataset_size, 'direct')
-    plot_l2_distances(continued_l2, args.grammar, args.dataset_size, 'continued')
-    plot_l2_distances(pretrain_vs_direct_l2, args.grammar, args.dataset_size, 'pretrain_vs_direct')
+    # plot_l2_distances(direct_l2, args.grammar, args.dataset_size, 'direct')
+    # plot_l2_distances(continued_l2, args.grammar, args.dataset_size, 'continued')
+    # plot_l2_distances(pretrain_vs_direct_l2, args.grammar, args.dataset_size, 'pretrain_vs_direct')
 
-    plot_per_layer_l2_distances(direct_l2_pl, args.grammar, args.dataset_size, 'direct')
-    plot_per_layer_l2_distances(continued_l2_pl, args.grammar, args.dataset_size, 'continued')
-    plot_per_layer_l2_distances(pretrain_vs_direct_l2_pl, args.grammar, args.dataset_size, 'pretrain_vs_direct')
+    # plot_per_layer_l2_distances(direct_l2_pl, args.grammar, args.dataset_size, 'direct')
+    # plot_per_layer_l2_distances(continued_l2_pl, args.grammar, args.dataset_size, 'continued')
+    # plot_per_layer_l2_distances(pretrain_vs_direct_l2_pl, args.grammar, args.dataset_size, 'pretrain_vs_direct')
 
-    plot_cosine_similarity_heatmap(direct_cos, args.grammar, args.dataset_size, 'direct')
-    plot_cosine_similarity_heatmap(continued_cos, args.grammar, args.dataset_size, 'continued')
-    plot_cosine_similarity_heatmap(pretrain_vs_direct_cos, args.grammar, args.dataset_size, 'pretrain_vs_direct')    
+    # plot_cosine_similarity_heatmap(direct_cos, args.grammar, args.dataset_size, 'direct')
+    # plot_cosine_similarity_heatmap(continued_cos, args.grammar, args.dataset_size, 'continued')
+    # plot_cosine_similarity_heatmap(pretrain_vs_direct_cos, args.grammar, args.dataset_size, 'pretrain_vs_direct')    
 
     plot_per_layer_cka_heatmap(direct_cka, args.grammar, args.dataset_size, 'direct', config)
     plot_per_layer_cka_heatmap(continued_cka, args.grammar, args.dataset_size, 'continued', config)
     plot_per_layer_cka_heatmap(pretrain_vs_direct_cka, args.grammar, args.dataset_size, 'pretrain_vs_direct', config) 
+
+    plot_per_layer_rsa_heatmap(direct_rsa, args.grammar, args.dataset_size, 'direct', config)
+    plot_per_layer_rsa_heatmap(continued_rsa, args.grammar, args.dataset_size, 'continued', config)
+    plot_per_layer_rsa_heatmap(pretrain_vs_direct_rsa, args.grammar, args.dataset_size, 'pretrain_vs_direct', config)
 
 if __name__ == "__main__":
     main()

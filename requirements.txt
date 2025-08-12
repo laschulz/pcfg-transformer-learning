@@ -1,2 +1,5 @@
 torch
 matplotlib
+scipy
+transformers
+seaborn
