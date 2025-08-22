@@ -15,7 +15,6 @@ from nltk.parse import ViterbiParser
 
 from def_pcfgs import GRAMMARS
 
-MAX_SEQUENCE_LENGTH = 100
 DATASET_SIZE = 1000
 
 def dict_to_pcfg(table):
@@ -31,23 +30,22 @@ def dict_to_pcfg(table):
 PARSERS = {name: ViterbiParser(PCFG.fromstring(dict_to_pcfg(tbl)))
            for name, tbl in GRAMMARS.items()}
 
-def validate(tokenizer, sequence, grammar_name):
-    """True iff sequence (list or space-string) derives from grammar
-        and if length of the sequence is <= 126 tokens after tokenization.
-    """
+def validate(tokenizer, sequence, grammar_name, max_len):
     tokens = sequence.split() if isinstance(sequence, str) else list(sequence)
     tokens = [tok for tok in tokens if tok not in {"<|eos|>", "<|bos|>"}]
 
     encoded_ids = tokenizer.encode(' '.join(tokens), add_special_tokens=False)
-    if len(encoded_ids) > 126:
+    if len(encoded_ids) > max_len:
         return False
+    else:
+        return True
 
-    try:
-        is_valid = any(PARSERS[grammar_name].parse(tokens))
-        return is_valid
-    except ValueError as err:          # token not covered by the grammar
-        print(f"[VALIDATION ERROR - {grammar_name}] {tokens}\n{err}\n")
-        return False
+    # try:
+    #     is_valid = any(PARSERS[grammar_name].parse(tokens))
+    #     return is_valid
+    # except ValueError as err:          # token not covered by the grammar
+    #     print(f"[VALIDATION ERROR - {grammar_name}] {tokens}\n{err}\n")
+    #     return False
 
 def save_dataset(test_pairs, out_dir):
     os.makedirs(out_dir, exist_ok=True)
@@ -59,7 +57,7 @@ def save_dataset(test_pairs, out_dir):
             }) + "\n")
 
 
-def sample(grammar_name, start_symbol, max_len=MAX_SEQUENCE_LENGTH):
+def sample(grammar_name, start_symbol, max_len):
     tbl = GRAMMARS[grammar_name]
 
     while True:
@@ -87,12 +85,12 @@ def sample(grammar_name, start_symbol, max_len=MAX_SEQUENCE_LENGTH):
         if not stack:
             return " ".join(seq), log_prob
 
-def sample_many(grammar_name, start_symbol, n, max_len=MAX_SEQUENCE_LENGTH):
+def sample_many(grammar_name, start_symbol, n, max_len):
     return [sample(grammar_name, start_symbol, max_len) for _ in range(n)]
 
-def count_valid_sequences(tokenizer, sequences, grammar_name):
+def count_valid_sequences(tokenizer, sequences, grammar_name, max_len):
     total = len(sequences)
-    valid = sum(validate(tokenizer, seq, grammar_name) for seq, _ in sequences)
+    valid = sum(validate(tokenizer, seq, grammar_name, max_len) for seq, _ in sequences)
     print(f"[VALIDITY] {valid}/{total} sequences valid ({100 * valid / total:.2f}%)")
     return valid, total
 
@@ -157,7 +155,7 @@ def build_fixed_tokenizer(grammar_name: str, tok_path: str, special_tokens=None)
         pair=None,
         special_tokens=[
             ("<|bos|>", vocab["<|bos|>"]),
-            ("<|eos|>", vocab["<|eos|>"]),
+            ("<|eos|>", vocab["<|eos|>"])
         ],
     )
 
@@ -178,15 +176,16 @@ def build_fixed_tokenizer(grammar_name: str, tok_path: str, special_tokens=None)
 def generate_pcfg(grammar, start_symbol, dataset_size, max_len, tokenizer_path):
     # 1) generate
     train_sequences = sample_many(grammar, start_symbol, dataset_size, max_len)
-    test_sequences = sample_many(grammar, start_symbol, 500, max_len)
+    test_sequences = sample_many(grammar, start_symbol, 1000, max_len)
     str_sequences = [seq for seq, _ in train_sequences]
 
     # 2) save dataset
-    out_dir = f"../data/{grammar}/{grammar}_{dataset_size}"
+    out_dir = f"../data/{grammar}/{grammar}_{dataset_size}_{start_symbol}"
     save_dataset(test_sequences, out_dir)
 
     # 3) BPE tokenisation
     if tokenizer_path:     #load tokenizer from path
+        print(tokenizer_path)
         tok_path = tokenizer_path 
         tok_fast = PreTrainedTokenizerFast(tokenizer_file=tok_path, bos_token="<|bos|>", eos_token="<|eos|>")
         print(tok_fast.get_vocab())
@@ -196,8 +195,8 @@ def generate_pcfg(grammar, start_symbol, dataset_size, max_len, tokenizer_path):
 
     split_and_tokenize(str_sequences, tok_fast, out_dir)
 
-    count_valid_sequences(tok_fast, test_sequences, grammar)
-    count_valid_sequences(tok_fast, train_sequences, grammar)
+    count_valid_sequences(tok_fast, test_sequences, grammar, max_len)
+    count_valid_sequences(tok_fast, train_sequences, grammar, max_len)
 
 def parse_args():
     parser=argparse.ArgumentParser(

@@ -16,10 +16,11 @@ from typing import List, Dict, Tuple, Any, Set
 from eval import compare_model_vs_real_probs_subgrammar
 from def_pcfgs import GRAMMARS
 
+RUN_PYTHON_GRAMMAR = False  # Set to True if you want to run the Python grammar analysis
 
 NT2COLOR = {
     "L0":       "#1f77b4",
-    "L0_direct": "#0373fc", 
+    "L0_direct": "#fc03c2", 
     "L1_direct": "#ff7f0e",
     "L1":       "#ff7f0e",
     "L1_2":     "#d62728",
@@ -32,6 +33,8 @@ NT2COLOR = {
     "L2_3b":    "#2B9E91", 
     "L2_3c":    "#892362",  
     "L4":       "#7f7f7f",
+    "STMTS":    "#bcbd22",  # yellow
+    "STMTS_direct": "#2B9E91",
     "overhead": "#bcbd22", 
     "uebergang_direct": "#17becf",  # cyan
 }
@@ -68,6 +71,14 @@ def seq_log_pcfg(parser: ViterbiParser, text: str) -> float:
     parses = list(parser.parse(toks))
     return math.log(parses[0].prob())
 
+def generate_from_nt(grammar_name: str, nt: str, num_sequences: int):
+    start_symbol = Nonterminal(nt)  # <- start from the nonterminal directly
+    sequences = []
+    while len(sequences) < num_sequences:
+        seq, _ = sample(grammar_name, start_symbol)
+        sequences.append(seq)
+    return sequences
+
 def generate_test_subgrammar_set(grammar_name: str, nt: str, num_sequences: int):
     grammar_name = f"{grammar_name}_subgrammar" # we need the subgrammar version with the start and end markers
     grammar = GRAMMARS[grammar_name]
@@ -85,7 +96,7 @@ def prepare_test_sequences(parser, nt, main_dir, top_level: bool, grammar_name: 
         with open(f"{main_dir}/test.jsonl", 'r') as f:
             test_sequences = [json.loads(line)["sequence"] for line in f]
     else:
-        test_sequences = generate_test_subgrammar_set(grammar_name, nt, 500)
+        test_sequences = generate_test_subgrammar_set(grammar_name, nt, 1000)
         print(len(test_sequences), "is length of test sequences for subgrammar", nt.symbol())
 
     relevant_test_sequences = []
@@ -94,6 +105,7 @@ def prepare_test_sequences(parser, nt, main_dir, top_level: bool, grammar_name: 
     for seq in test_sequences:
         tokens = seq.split()
         spans = find_subsequences(tokens, nt, f"s{nt.symbol()}", f"e{nt.symbol()}") if not top_level else [(0, len(tokens), seq)]
+
         for start, end, subseq in spans:
             prob = seq_log_pcfg(parser, subseq)
             relevant_test_sequences.append((start, end, seq))
@@ -139,22 +151,32 @@ def prepare_eos_test_sequences(main_dir, tokenizer):
     test_sequences_with_probs = list(zip(relevant_test_sequences, probabilities))
     return test_sequences_with_probs, len(relevant_test_sequences)
 
-def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoch, dataset_size, model_name, train_type, seed=42):
+def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoch, dataset_name, model_name, train_type, seed=42):
 
     # Initialize model and load results
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = GPT(map_model_name(model_name)).to(device)
 
-    main_dir = f"../data/{grammar_name}/{grammar_name}_{dataset_size}"
-    
+    main_dir = f"../data/{grammar_name}/{grammar_name}_{dataset_name}"
+
     # Load tokenizer
     tokenizer = PreTrainedTokenizerFast(
         tokenizer_file=f"{main_dir}/tokenizer.json",
         bos_token="<|bos|>",
         eos_token="<|eos|>"
     )
-
-    if subgrammar == "overhead":
+    if "_" in dataset_name:
+        test_sequences = []
+        with open(f"{main_dir}/test.jsonl", "r") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                obj = json.loads(line)
+                tokens = obj["sequence"].split()
+                test_sequences.append(((0, len(tokens), obj["sequence"]), obj["real_log_prob"]))
+        num_sequences = len(test_sequences)
+    elif subgrammar == "overhead":
         test_sequences, num_sequences = prepare_overhead_sequences(main_dir)
     elif subgrammar == "eos_test":
         test_sequences, num_sequences = prepare_eos_test_sequences(main_dir, tokenizer)
@@ -162,8 +184,6 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
         parser = PARSERS[subgrammar]
         nt = Nonterminal(nonTerminal)
         test_sequences, num_sequences = prepare_test_sequences(parser, nt, main_dir, subgrammar == grammar_name, subgrammar)
-    print(num_sequences)
-
 
     # Load master results file that contains all grammars
     master_results_path = "../results/hierarchy_analysis.json"
@@ -174,13 +194,8 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
         all_grammar_results = {}
     
     # Initialize grammar entry if it doesn't exist
-    if model_name not in all_grammar_results:
-        all_grammar_results[model_name] = {}
-
-    if grammar_name not in all_grammar_results[model_name]:
-        all_grammar_results[model_name][grammar_name] = {}
-
-
+    all_grammar_results.setdefault(model_name, {})
+    all_grammar_results[model_name].setdefault(grammar_name, {})
     all_grammar_results[model_name][grammar_name][nonTerminal] = {}
 
     # Load epoch 
@@ -188,7 +203,7 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
     for ckpt in sorted(os.listdir(checkpoints_dir)):
         if not ckpt.endswith(".pt"): 
             continue 
-        epoch_int = int(ckpt.split('_')[1].split('.')[0])  # Extract epoch number from filename
+        epoch_int = int(ckpt.split('_')[1].split('.')[0])
         if to_epoch and epoch_int > to_epoch:
             continue
         print(f"Analyzing epoch: {ckpt}")
@@ -198,12 +213,9 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
 
         diffs = compare_model_vs_real_probs_subgrammar(model, tokenizer, test_sequences, device)
         kl_divergence = sum([d['abs_logprob_diff'] for d in diffs]) / num_sequences 
-        rel_kl_divergence = kl_divergence * num_sequences / 500  #TODO: this only works for non-recursive top grammar
+        rel_kl_divergence = kl_divergence * num_sequences / 1000  #TODO: this only works for non-recursive top grammar
 
         # Add results for this epoch under the grammar's entry
-        if ckpt not in all_grammar_results[model_name][grammar_name][nonTerminal]:
-            all_grammar_results[model_name][grammar_name][nonTerminal][ckpt] = {}
-            
         all_grammar_results[model_name][grammar_name][nonTerminal][ckpt] = {
             "kl_divergence": kl_divergence,
             "rel_kl_divergence": rel_kl_divergence,
@@ -217,7 +229,7 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
     
     print(f"Updated hierarchy analysis results for {grammar_name} in {master_results_path}")
     
-def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str,to_epoch: int = None):
+def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str,to_epoch: int = None, for_paper: bool = True):
     """
     Generate separate line charts for KL divergence and accuracy per subgrammar, keeping distinct colors.
     """
@@ -230,25 +242,45 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str,to_ep
         m = re.search(r'(\d+)', key)
         return int(m.group(1)) if m else 0
 
+    def epoch_step_num(key: str) -> int:
+        m = re.match(r"epoch_(\d+)(?:_(\d+))?\.pt$", key)
+        epoch = int(m.group(1))
+        step = int(m.group(2)) if m.group(2) else 0
+        return epoch, step
+
     nonterminals = list(grammar_data.keys())
 
     # Plot KL divergence
     plt.figure(figsize=(8, 5))
     for idx, nt in enumerate(nonterminals):
-        epochs, kl_vals = [], []
+        data_points = []
         color = NT2COLOR[nt]
         for ckpt, data in grammar_data[nt].items():
-            e = epoch_num(ckpt)
+            e , s = epoch_step_num(ckpt)
             if to_epoch and e > to_epoch:
                 continue
-            epochs.append(e)
-            kl_vals.append(data['kl_divergence'])
-        order = np.argsort(epochs)
-        epochs_arr = np.array(epochs)[order]
-        kl_arr = np.array(kl_vals)[order]
-        plt.plot(epochs_arr, kl_arr, marker='o', linestyle='-', label=nt, color=color)
+            data_points.append((e, s, data['kl_divergence']))
+        
+        # Sort by epoch first, then by step
+        data_points.sort(key=lambda x: (x[0], x[1]))
+        
+        if data_points:
+            x_values = [e + s/500 for e, s, _ in data_points] 
+            y_values = [kl for _, _, kl in data_points]
+        
+        if for_paper:
+            if "_direct" in nt:
+                legend_label = "from scratch"
+            else:
+                legend_label = "with pretraining"
+        else:
+            legend_label = nt
+            
+        plt.plot(x_values, y_values, marker='o', linestyle='-', label=legend_label, color=color)
+            
     plt.xlabel('Epoch')
     plt.ylabel('KL Divergence')
+    plt.yscale('log')
     plt.title(f'KL Divergence over Epochs for {grammar_name}')
     plt.grid(alpha=0.3)
     plt.legend()
@@ -262,16 +294,16 @@ def main():
     if args.plot_only:
         plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.model, args.to_epoch)
         return
-    analyze_hieararchy_all_epochs(args.grammar, args.nonTerminal, args.subgrammar, args.to_epoch, args.dataset_size, args.model, args.train_type)     
+    analyze_hieararchy_all_epochs(args.grammar, args.nonTerminal, args.subgrammar, args.to_epoch, args.dataset_name, args.model, args.train_type)     
     plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.model, args.to_epoch)
 
 # Update argument parser to include plot-only option
 def argument_parser():
     parser = argparse.ArgumentParser(description="Analyze hierarchy in PCFG Transformer learning.")
     parser.add_argument("--grammar", type=str, required=True, help="The grammar to analyze.")
-    parser.add_argument("--dataset_size", type=int, required=True, help="Size of the dataset to analyze.")
+    parser.add_argument("--dataset_name", type=str, required=True, help="Size of the dataset to analyze.")
     parser.add_argument("--plot_only", action='store_true', help="If set, only generate plots without analysis.")
-    parser.add_argument("--nonTerminal", type=str, required=True, help="Number of epochs to analyze.")
+    parser.add_argument("--nonTerminal", type=str, required=True)
     parser.add_argument("--subgrammar", type=str, required=True, help="Subgrammar to use for analysis.")
     parser.add_argument("--to_epoch", type=int, default=None, help="Number of epochs to analyze.")
     parser.add_argument("--model", type=str, choices=["TwoLayer", "FourLayer", "SixLayer", "OneLayer"], default="FourLayer", help="Type of GPT model to use")

@@ -128,28 +128,28 @@ class SixLayer:
     name = "SixLayer"
 
 class FourLayer: # 0.89M params
-    block_size = 128           
-    vocab_size = 64          
+    block_size = 256    #128       
+    vocab_size = 100          
     n_layer = 4                
     n_head = 4                
-    n_embd = 128              
+    n_embd = 16    #128           
     dropout = 0.1              
     bias = True
     name = "FourLayer"
 
-class TwoLayer: # 0.40M params
-    block_size = 128           
-    vocab_size = 64          
+class TwoLayer: # 0.40M params #now 34k
+    block_size = 256        
+    vocab_size = 100     
     n_layer = 2                
     n_head = 2                
-    n_embd = 128              
+    n_embd = 20  #128            
     dropout = 0.1              
     bias = True
     name = "TwoLayer"
 
-class OneLayer:
-    block_size = 128           
-    vocab_size = 64          
+class OneLayer: #22k
+    block_size = 256           
+    vocab_size = 100          
     n_layer = 1              
     n_head = 1                
     n_embd = 32              
@@ -273,7 +273,7 @@ class GPT(nn.Module):
     
     def train_model(self, data_dir, dataset, num_epochs, batch_size,
                 learning_rate, weight_decay, betas, 
-                checkpoint_every, config, device, seed, save_first_x_epochs=10, continue_from=0, train_type="new"):
+                checkpoint_every, config, device, seed, save_first_x_epochs=10, continue_from=0, train_type="new", safe_only_last=False):
         
         torch.manual_seed(seed)
         block_size = self.config.block_size
@@ -306,8 +306,10 @@ class GPT(nn.Module):
         iters_per_epoch = len(train_data) // (batch_size * block_size)
         print(len(train_data), batch_size, block_size, iters_per_epoch)
         for epoch in range(num_epochs):
+            print("starting epoch", epoch + continue_from)
             self.train()
             running_train_loss = 0.0
+            epoch_step = 0
             for _ in range(iters_per_epoch):
                 X, Y = get_batch(train_data)
                 _, loss = self(X, Y)
@@ -317,8 +319,12 @@ class GPT(nn.Module):
                 optimizer.step()
                 running_train_loss += loss.item()
 
-            avg_train_loss = running_train_loss / iters_per_epoch
-            # logger.info(f"[Epoch {epoch+continue_from}] Training Loss: {avg_train_loss:.4f}")
+                if epoch_step % checkpoint_every == 0 and not safe_only_last:
+                    ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch+continue_from}_{epoch_step}.pt')
+                    os.makedirs(os.path.dirname(ckpt_path_ep), exist_ok=True)
+                    torch.save(self.state_dict(), ckpt_path_ep)
+                    logger.info(f"Saved checkpoint to {ckpt_path_ep}")
+                epoch_step += 1
 
             # validation
             self.eval()
@@ -329,14 +335,17 @@ class GPT(nn.Module):
                     _, val_loss = self(X_val, Y_val)
                     val_losses.append(val_loss.item())
             avg_val_loss = float(np.mean(val_losses))
-            logger.info(f"[Epoch {epoch+continue_from}] Validation Loss: {avg_val_loss:.4f}")
 
-            if epoch % checkpoint_every == 0 or epoch in range(save_first_x_epochs) or epoch == num_epochs - 1:
-                ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch + continue_from+1}.pt')
-                os.makedirs(os.path.dirname(ckpt_path_ep), exist_ok=True)
-                torch.save(self.state_dict(), ckpt_path_ep)
-                logger.info(f"Saved checkpoint to {ckpt_path_ep}")
+            # if epoch % checkpoint_every == 0 or epoch in range(save_first_x_epochs) or epoch == num_epochs - 1:
+            #     ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch + continue_from+1}.pt')
+            #     os.makedirs(os.path.dirname(ckpt_path_ep), exist_ok=True)
+            #     torch.save(self.state_dict(), ckpt_path_ep)
+            #     logger.info(f"Saved checkpoint to {ckpt_path_ep}")
 
+        ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch+continue_from+1}_0.pt')
+        os.makedirs(os.path.dirname(ckpt_path_ep), exist_ok=True)
+        torch.save(self.state_dict(), ckpt_path_ep)
+        logger.info(f"Saved checkpoint to {ckpt_path_ep}")
 
     @torch.no_grad()
     def generate(self, idx, max_new_tokens, eos_token_id, eos_prob_threshold, temperature=1.0, top_k=None):

@@ -13,7 +13,7 @@ import json
 from transformers import PreTrainedTokenizerFast
 from scipy.stats import spearmanr
 
-NUM_SEEDS = 50
+NUM_SEEDS = 25
 
 # per-layer L2 distance between two models
 def per_layer_l2(model1, model2):
@@ -102,32 +102,98 @@ def compute_cosine_similarity_matrix(models_list1, models_list2):
 # RSA (Representational Similarity Analysis) for per-layer weights
 def _rowwise_pearson_corr(X: torch.Tensor) -> torch.Tensor:
     """
-    X: (N, D). Returns correlation matrix between rows (N, N).
-    We compute Pearson across features for each pair of rows.
+    X: (N, D). Returns (N, N) Pearson corr between rows.
+    Handles zero-variance rows by adding eps.
     """
-    X = X - X.mean(dim=1, keepdim=True)
-    X = X / (X.std(dim=1, keepdim=True) + 1e-8)
-    # cosine of standardized rows equals Pearson
-    return (X @ X.T) / X.shape[1]
+    X = X.float()
+    mean = X.mean(dim=1, keepdim=True)
+    std  = X.std(dim=1, keepdim=True)
+    Xz = (X - mean) / (std + 1e-8)      # (N, D)
+    # cosine of z-scored rows == Pearson
+    return Xz @ Xz.T / X.shape[1]
 
-def compute_rdms_per_layer(seq_reps: dict) -> dict:
+def compute_rdms_per_layer(seq_reps: dict, device=None) -> dict:
     """
-    For each layer-key -> (N_seq, N_seq) RDM = 1 - Pearson(rowwise).
+    For each layer key: RDM = 1 - Pearson(rowwise). Returns CPU numpy arrays.
     """
     rdms = {}
     for k, X in seq_reps.items():
-        if isinstance(X, torch.Tensor):
-            X = X.cpu()
-        C = _rowwise_pearson_corr(X)          # (N, N) in [-1, 1]
-        D = 1.0 - C.clamp(min=-1.0, max=1.0)  # dissimilarity
-        rdms[k] = D.numpy()
+        if not isinstance(X, torch.Tensor) or X.numel() == 0:
+            continue
+        X = X.to(device)
+        C = _rowwise_pearson_corr(X).clamp(min=-1.0, max=1.0)  # (N, N)
+        D = 1.0 - C
+        rdms[k] = D.detach().cpu().numpy()
     return rdms
+
+# def subsample_seq_reps(seq_reps: dict, max_seqs: int = None, seed: int = 0) -> dict:
+#     """Pick same subset of sequences across all layers for a model."""
+#     if max_seqs is None:
+#         return seq_reps
+#     # find N from first present layer
+#     first = next((v for v in seq_reps.values() if isinstance(v, torch.Tensor) and v.numel() > 0), None)
+#     if first is None:
+#         return seq_reps
+#     N = first.shape[0]
+#     if N <= max_seqs:
+#         return seq_reps
+#     g = torch.Generator().manual_seed(seed)
+#     idx = torch.randperm(N, generator=g)[:max_seqs]
+#     out = {}
+#     for k, X in seq_reps.items():
+#         out[k] = X[idx] if isinstance(X, torch.Tensor) and X.shape[0] == N else X
+#     return out
+
+def _num_sequences(seq_reps: dict) -> int:
+    """Return N for the first valid (N, D) tensor found, else 0."""
+    for v in seq_reps.values():
+        if isinstance(v, torch.Tensor) and v.ndim == 2 and v.numel() > 0:
+            return v.shape[0]
+    return 0
+
+def _subsample_to_N(seq_reps: dict, N_target: int, seed: int = 0) -> dict:
+    """Deterministically subsample (or keep) exactly N_target rows for all layers present."""
+    if N_target <= 0:
+        return seq_reps
+    N_cur = _num_sequences(seq_reps)
+    if N_cur == 0:
+        return seq_reps
+    if N_cur == N_target:
+        return seq_reps
+
+    g = torch.Generator().manual_seed(seed)
+    idx = torch.randperm(N_cur, generator=g)[:N_target]
+    out = {}
+    for k, X in seq_reps.items():
+        if isinstance(X, torch.Tensor) and X.ndim == 2 and X.shape[0] == N_cur:
+            out[k] = X[idx]
+        else:
+            out[k] = X
+    return out
+
+def _common_subsample(seq_reps_list1, seq_reps_list2, max_seqs=None, seed=0):
+    """
+    Force a common N across *all* models in both lists, capped by max_seqs if provided.
+    Returns two new lists with each dict subsampled to the same N_common.
+    """
+    Ns = []
+    for sr in (seq_reps_list1 + seq_reps_list2):
+        Ns.append(_num_sequences(sr))
+    N_min = min([n for n in Ns if n > 0], default=0)
+    if max_seqs is not None:
+        N_common = min(N_min, max_seqs)
+    else:
+        N_common = N_min
+
+    out1 = [_subsample_to_N(sr, N_common, seed=seed) for sr in seq_reps_list1]
+    out2 = [_subsample_to_N(sr, N_common, seed=seed) for sr in seq_reps_list2]
+    return out1, out2, N_common
 
 def _upper_tri_vec(M: np.ndarray) -> np.ndarray:
     iu = np.triu_indices(M.shape[0], k=1)
     return M[iu]
 
-def rsa_similarity_between_rdms(rdm1: np.ndarray, rdm2: np.ndarray, method="spearman") -> float:
+def rsa_similarity_between_rdms(rdm1: np.ndarray, rdm2: np.ndarray, method) -> float:
     """
     Spearman correlation between vectorized upper triangles of two RDMs.
     """
@@ -143,26 +209,40 @@ def rsa_similarity_between_rdms(rdm1: np.ndarray, rdm2: np.ndarray, method="spea
         denom = (np.linalg.norm(v1m) * np.linalg.norm(v2m) + 1e-12)
         return float((v1m @ v2m) / denom)
 
-def compute_rsa_matrix(seq_reps_list1, seq_reps_list2, method="spearman"):
+def compute_rsa_matrix(seq_reps_list1, seq_reps_list2, method, max_seqs=300, seed=0, device=None, diagonal_only=False):
     """
-    seq_reps_list*: list of dicts from collect_sequence_representations().
-    Returns DataFrame (seed_i_vs_seed_j) x (layers) with RSA similarities.
+    Efficient RSA: subsample once per model, precompute RDMs once per model,
+    then compare across pairs.
     """
-    keys = sorted(set().union(*[r.keys() for r in seq_reps_list1 + seq_reps_list2]))
+
+    seq_reps_list1, seq_reps_list2, N_common = _common_subsample(
+        seq_reps_list1, seq_reps_list2, max_seqs=max_seqs, seed=seed
+    )
+
+    rdms_list1 = [compute_rdms_per_layer(sr, device=device) for sr in seq_reps_list1]
+    rdms_list2 = [compute_rdms_per_layer(sr, device=device) for sr in seq_reps_list2]
+
+    keys = sorted(set().union(*[r.keys() for r in rdms_list1 + rdms_list2]))
     seed_pairs, rows = [], []
-    for i in range(len(seq_reps_list1)):
-        for j in range(i, len(seq_reps_list2)):
-            row = {}
+    if diagonal_only:
+        for i in range(len(rdms_list1)):
             for k in keys:
-                if k not in seq_reps_list1[i] or k not in seq_reps_list2[j]:
+                if k not in rdms_list1[i] or k not in rdms_list2[i]:
                     continue
-                rdm1 = compute_rdms_per_layer(seq_reps_list1[i])[k]
-                rdm2 = compute_rdms_per_layer(seq_reps_list2[j])[k]
-                row[k] = rsa_similarity_between_rdms(rdm1, rdm2, method=method)
-            rows.append(row)
-            seed_pairs.append(f"seed_{i}_vs_seed_{j}")
-    df = pd.DataFrame(rows, index=seed_pairs)
-    return df
+                row = {k: rsa_similarity_between_rdms(rdms_list1[i][k], rdms_list2[i][k], method=method)}
+                rows.append(row)
+                seed_pairs.append(f"seed_{i}_vs_seed_{i}")
+    else:
+        for i in range(len(rdms_list1)):
+            for j in range(i, len(rdms_list2)):
+                row = {}
+                for k in keys:
+                    if k not in rdms_list1[i] or k not in rdms_list2[j]:
+                        continue
+                    row[k] = rsa_similarity_between_rdms(rdms_list1[i][k], rdms_list2[j][k], method=method)
+                rows.append(row)
+                seed_pairs.append(f"seed_{i}_vs_seed_{j}")
+    return pd.DataFrame(rows, index=seed_pairs)
 
 def average_rsa(df: pd.DataFrame, skip_diagonal=True):
     df = df.apply(pd.to_numeric, errors="coerce")
@@ -226,6 +306,9 @@ def collect_activations(model, tokenizer, base_dir, agg=None):
                 rep = out.reshape(B*L, D)
             elif agg == "mean":
                 rep = out.mean(dim=1)  # (B, D) -> (1, D)
+            elif agg == "mean_unit":
+                z = out / (out.norm(dim=-1, keepdim=True) + 1e-8)  # per-token unit
+                rep = z.mean(dim=1)  
             acts[key].append(rep.detach().cpu())
         return hook
 
@@ -246,7 +329,7 @@ def collect_activations(model, tokenizer, base_dir, agg=None):
     model.eval()
     with torch.no_grad():
         for seq in sequences:
-            enc = tokenizer(seq, return_tensors="pt", truncation=True)  # NO padding
+            enc = tokenizer(seq, return_tensors="pt")
             input_ids = enc["input_ids"]                    # shape (1, L)
             _ = model(input_ids)  
 
@@ -272,7 +355,7 @@ def compute_cka(X, Y):
     den = torch.linalg.norm(X.T @ X, ord="fro") * torch.linalg.norm(Y.T @ Y, ord="fro") + 1e-12
     return float((num / den).item())
 
-def compute_cka_matrix(acts_list1, acts_list2):
+def compute_cka_matrix(acts_list1, acts_list2, diagonal_only=False):
     """
     Compute the CKA distances between activations of two sets of models.
     activations1, activations2: lists of activations for each model.
@@ -280,15 +363,24 @@ def compute_cka_matrix(acts_list1, acts_list2):
     """
     keys = sorted(set().union(*[a.keys() for a in acts_list1 + acts_list2]))
     seed_pairs, rows = [], []
-    for i in range(len(acts_list1)):
-        for j in range(i, len(acts_list2)):
-            row = {}
+    if diagonal_only:
+        for i in range(len(acts_list1)):
             for k in keys:
-                if k not in acts_list1[i] or k not in acts_list2[j]:
+                if k not in acts_list1[i] or k not in acts_list2[i]:
                     continue
-                row[k] = compute_cka(acts_list1[i][k], acts_list2[j][k])
-            rows.append(row)
-            seed_pairs.append(f"seed_{i}_vs_seed_{j}")
+                row = {k: compute_cka(acts_list1[i][k], acts_list2[i][k])}
+                rows.append(row)
+                seed_pairs.append(f"seed_{i}_vs_seed_{i}")
+    else:
+        for i in range(len(acts_list1)):
+            for j in range(i, len(acts_list2)):
+                row = {}
+                for k in keys:
+                    if k not in acts_list1[i] or k not in acts_list2[j]:
+                        continue
+                    row[k] = compute_cka(acts_list1[i][k], acts_list2[j][k])
+                rows.append(row)
+                seed_pairs.append(f"seed_{i}_vs_seed_{j}")
     df = pd.DataFrame(rows, index=seed_pairs)
     return df
 
@@ -330,10 +422,9 @@ def find_checkpoints(dir):
             latest_checkpoints.append(latest_checkpoint)
     return latest_checkpoints
 
-def difference_pretrain_and_direct(config, tokenizer, base_dir):
-    dir = f'{base_dir}/{config.name}'
-    direct_folder = os.path.join(dir, 'new')
-    pretrain_folder = os.path.join(dir, 'continued')
+def difference_pretrain_and_direct(config, tokenizer, dir1, dir2, base_dir):
+    direct_folder = dir1
+    pretrain_folder = dir2
 
     direct_checkpoints = find_checkpoints(direct_folder)
     pretrain_checkpoints = find_checkpoints(pretrain_folder)
@@ -342,41 +433,41 @@ def difference_pretrain_and_direct(config, tokenizer, base_dir):
     models_pretrain = list_of_models_from_checkpoints(pretrain_checkpoints, config)
 
     #load activations for all models
-    act_direct = [collect_activations(model, tokenizer, base_dir) for model in models_direct]
-    act_pretrain = [collect_activations(model, tokenizer, base_dir) for model in models_pretrain]
-    cka_distances = compute_cka_matrix(act_direct, act_pretrain)
+    act_direct = [collect_activations(model, tokenizer, base_dir, agg=None) for model in models_direct] #was without mean
+    act_pretrain = [collect_activations(model, tokenizer, base_dir, agg=None) for model in models_pretrain] # was without mean
+    cka_distances = compute_cka_matrix(act_direct, act_pretrain, diagonal_only=True)
 
         # RSA sequence-level reps
     seq_direct = [collect_activations(m, tokenizer, base_dir, agg="mean")
                   for m in models_direct]
     seq_pretrain = [collect_activations(m, tokenizer, base_dir, agg="mean")
                     for m in models_pretrain]
-    rsa_distances = compute_rsa_matrix(seq_direct, seq_pretrain, method="spearman")
+    rsa_distances = compute_rsa_matrix(seq_direct, seq_pretrain, method="spearman", diagonal_only=True)
 
 
-    # l2_distances = compute_l2_distances(models_direct, models_pretrain, skip_diagonals=False)
-    # l2_per_layer_distances = compute_per_layer_distances(models_direct, models_pretrain)
-    # cosine_distances = compute_cosine_similarity_matrix(models_direct, models_pretrain)
+    l2_distances = compute_l2_distances(models_direct, models_pretrain, skip_diagonals=False)
+    l2_per_layer_distances = compute_per_layer_distances(models_direct, models_pretrain)
+    cosine_distances = compute_cosine_similarity_matrix(models_direct, models_pretrain)
 
-    return cka_distances, rsa_distances
+    return l2_distances, l2_per_layer_distances, cosine_distances, cka_distances, rsa_distances
 
-def difference_same_seed(train_type, config, tokenizer, base_dir):
+def difference_same_seed(train_type, config, tokenizer, base_dir, test_dir):
     dir = f'{base_dir}/{config.name}/{train_type}'
     checkpoints = find_checkpoints(dir)
     models = list_of_models_from_checkpoints(checkpoints, config)
 
     # load activations 
-    acts = [collect_activations(model, tokenizer, base_dir) for model in models]
-    cka_distances = compute_cka_matrix(acts, acts)
+    acts = [collect_activations(model, tokenizer, test_dir) for model in models]
+    cka_distances = compute_cka_matrix(acts, acts, diagonal_only=True)
 
-    seq_reps = [collect_activations(m, tokenizer, base_dir, agg="mean") for m in models]
-    rsa_distances = compute_rsa_matrix(seq_reps, seq_reps, method="spearman")
+    seq_reps = [collect_activations(m, tokenizer, test_dir, agg="mean") for m in models]
+    rsa_distances = compute_rsa_matrix(seq_reps, seq_reps, method="spearman", diagonal_only=True)
 
-    # l2_distances = compute_l2_distances(models, models, skip_diagonals=True)
-    # per_layer_distances = compute_per_layer_distances(models, models)
-    # cosine_distances = compute_cosine_similarity_matrix(models, models)
+    l2_distances = compute_l2_distances(models, models, skip_diagonals=True)
+    per_layer_distances = compute_per_layer_distances(models, models)
+    cosine_distances = compute_cosine_similarity_matrix(models, models)
 
-    return cka_distances, rsa_distances
+    return l2_distances, per_layer_distances, cosine_distances, cka_distances, rsa_distances
 
 def list_of_models_from_checkpoints(checkpoints, config):
     models = []
@@ -387,11 +478,11 @@ def list_of_models_from_checkpoints(checkpoints, config):
         models.append(model_instance)
     return models
 
-def loop_over_seeds_and_train(grammar, dataset_size, subgrammar, 
+def loop_over_seeds_and_train(grammar, dataset_size, grammar_startsymbol, subgrammar_startsymbol,
                               num_epochs_direct, num_epochs_pretrain, 
-                              config, device):
+                              config, device, start_seed):
     "train model (once through pretrain and once directly), only saves weights at beginning and end of training"
-    for i in range(NUM_SEEDS):
+    for i in range(start_seed, NUM_SEEDS):
         #initialize the model with random weights
         print("Training seed:", i)
         torch.manual_seed(i)
@@ -403,23 +494,23 @@ def loop_over_seeds_and_train(grammar, dataset_size, subgrammar,
         #         num_epochs=num_epochs_direct, save_first_x_epochs=0, continue_from=num_epochs_pretrain, 
         #         continue_training=False, device=device, seed=i)
 
-        trainer(model, grammar, config, dataset_size, checkpoint_path=None, checkpoint_every=num_epochs_direct+num_epochs_pretrain,
-                num_epochs=num_epochs_direct+num_epochs_pretrain, save_first_x_epochs=0, continue_from=0, 
-                continue_training=False, device=device, seed=i)
+        # trainer(model, grammar, config, dataset_size, checkpoint_path=None, checkpoint_every=num_epochs_direct+num_epochs_pretrain,
+        #         num_epochs=num_epochs_direct+num_epochs_pretrain, save_first_x_epochs=0, continue_from=0, 
+        #         continue_training=False, device=device, seed=i)
             
         # train on subgrammar
-        model = GPT(config).to(device) 
-        model.apply(model._init_weights)
+        # model = GPT(config).to(device) 
+        # model.apply(model._init_weights)
 
-        trainer(model, subgrammar, config, dataset_size, checkpoint_path=None, checkpoint_every=num_epochs_pretrain,
+        trainer(model, grammar, config, f'{dataset_size}_{subgrammar_startsymbol}', checkpoint_path=None, checkpoint_every=num_epochs_pretrain,
                 num_epochs=num_epochs_pretrain, save_first_x_epochs=0,continue_from=0, 
-                continue_training=False, device=device, seed=i)
+                continue_training=False, device=device, seed=i, safe_only_last=True)
 
         # train on full grammar after pretraining
-        checkpoint_path = f'../data/{subgrammar}/{subgrammar}_{dataset_size}/{config.name}/new/seed_{i}/epoch_{num_epochs_pretrain}.pt'
-        trainer(model, grammar, config, dataset_size, checkpoint_path=checkpoint_path, checkpoint_every=num_epochs_direct,
+        checkpoint_path = f'../data/{grammar}/{grammar}_{dataset_size}_{subgrammar_startsymbol}/{config.name}/continued/seed_{i}/epoch_{num_epochs_pretrain}_0.pt'
+        trainer(model, grammar, config, f'{dataset_size}_{grammar_startsymbol}', checkpoint_path=checkpoint_path, checkpoint_every=num_epochs_direct,
                 num_epochs=num_epochs_direct, save_first_x_epochs=0, continue_from=num_epochs_pretrain, 
-                continue_training=True, device=device, seed=i) 
+                continue_training=True, device=device, seed=i, safe_only_last=True) 
 
 def plot_l2_distances(distances, grammar, dataset_size, train_type):
     # plot the distances as a distribution
@@ -446,7 +537,6 @@ def plot_per_layer_l2_distances(df, grammar, dataset_size, train_type):
     plt.close()
 
 def plot_cosine_similarity_heatmap(df, grammar, dataset_size, train_type):
-
     plt.figure(figsize=(12, 10))
     sns.heatmap(df, cmap='coolwarm', cbar=True, square=True, vmin=-1.0, vmax=1.0)
     plt.title(f"Cosine Similarity Heatmap - {train_type}\nGrammar: {grammar}, Dataset Size: {dataset_size}")
@@ -494,10 +584,12 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Compute L2 distances between models.")
     parser.add_argument("--grammar", type=str, required=True, help="Grammar to use for training.")
     parser.add_argument("--dataset_size", type=int, required=True)
-    parser.add_argument("--subgrammar", type=str, required=True, help="Subgrammar to use for pretraining.")
     parser.add_argument("--model", type=str, required=True, help="Model name to use for training.")
     parser.add_argument("--num_epochs_direct", type=int, default=50, help="Number of epochs to train the model.")
     parser.add_argument("--num_epochs_pretrain", type=int, default=10, help="Number of epochs to pretrain the model.")
+    parser.add_argument("--grammar_startsymbol", type=str, required=True, help="Start symbol for the grammar.")
+    parser.add_argument("--subgrammar_startsymbol", type=str, required=True, help="End symbol for the grammar.")
+    parser.add_argument("--start_seed", type=int, default=0, help="Starting seed for training.")
 
     return parser.parse_args()
 
@@ -509,40 +601,49 @@ def main():
 
     base_dir = f'../data/{args.grammar}/{args.grammar}_{args.dataset_size}'
 
-    loop_over_seeds_and_train(args.grammar, 
-                              args.dataset_size, 
-                              args.subgrammar, 
-                              args.num_epochs_direct, 
-                              args.num_epochs_pretrain,
-                              config, 
-                              device)
+    # loop_over_seeds_and_train(args.grammar, 
+    #                           args.dataset_size, 
+    #                           args.grammar_startsymbol,
+    #                           args.subgrammar_startsymbol,
+    #                           args.num_epochs_direct, 
+    #                           args.num_epochs_pretrain,
+    #                           config, 
+    #                           device,
+    #                           start_seed=args.start_seed)
 
     
     # load tokenizer
-    tokenizer_path = f'{base_dir}/tokenizer.json'
+    tokenizer_path = f'{base_dir}_{args.grammar_startsymbol}/tokenizer.json'
     tokenizer = PreTrainedTokenizerFast(tokenizer_file=tokenizer_path, bos_token="<|bos|>", eos_token="<|eos|>")
 
-    direct_cka, direct_rsa = difference_same_seed(train_type='new',
+    direct_l2, direct_l2_pl, direct_cos, direct_cka, direct_rsa = difference_same_seed(train_type='new',
                          config=config,
                          tokenizer=tokenizer,
-                         base_dir=base_dir)
-    continued_cka, continued_rsa = difference_same_seed(train_type='continued',
+                         base_dir=f"{base_dir}_{args.subgrammar_startsymbol}",
+                         test_dir=f"{base_dir}_{args.subgrammar_startsymbol}")
+    continued_l2, continued_l2_pl, continued_cos, continued_cka, continued_rsa = difference_same_seed(train_type='continued',
                         config=config,
                         tokenizer=tokenizer,
-                        base_dir=base_dir)
-    pretrain_vs_direct_cka, pretrain_vs_direct_rsa = difference_pretrain_and_direct(config, tokenizer=tokenizer, base_dir=base_dir)
+                        base_dir=f"{base_dir}_{args.grammar_startsymbol}",
+                        test_dir=f"{base_dir}_{args.subgrammar_startsymbol}")
+    pretrain_vs_direct_l2, pretrain_vs_direct_l2_pl, pretrain_vs_direct_cos, pretrain_vs_direct_cka, pretrain_vs_direct_rsa = difference_pretrain_and_direct(config, 
+                                                                                    tokenizer=tokenizer, 
+                                                                                    dir1=f'{base_dir}_{args.subgrammar_startsymbol}/{args.model}/new', 
+                                                                                    dir2=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/continued',
+                                                                                    base_dir =f'{base_dir}_{args.subgrammar_startsymbol}'
+                                                                                    )
 
-    # plot_l2_distances(direct_l2, args.grammar, args.dataset_size, 'direct')
-    # plot_l2_distances(continued_l2, args.grammar, args.dataset_size, 'continued')
-    # plot_l2_distances(pretrain_vs_direct_l2, args.grammar, args.dataset_size, 'pretrain_vs_direct')
+    plot_l2_distances(direct_l2, args.grammar, args.dataset_size, 'direct')
+    plot_l2_distances(continued_l2, args.grammar, args.dataset_size, 'continued')
+    plot_l2_distances(pretrain_vs_direct_l2, args.grammar, args.dataset_size, 'pretrain_vs_direct')
 
-    # plot_per_layer_l2_distances(direct_l2_pl, args.grammar, args.dataset_size, 'direct')
-    # plot_per_layer_l2_distances(continued_l2_pl, args.grammar, args.dataset_size, 'continued')
-    # plot_per_layer_l2_distances(pretrain_vs_direct_l2_pl, args.grammar, args.dataset_size, 'pretrain_vs_direct')
+    plot_per_layer_l2_distances(direct_l2_pl, args.grammar, args.dataset_size, 'direct')
+    plot_per_layer_l2_distances(continued_l2_pl, args.grammar, args.dataset_size, 'continued')
+    plot_per_layer_l2_distances(pretrain_vs_direct_l2_pl, args.grammar, args.dataset_size, 'pretrain_vs_direct')
 
-    # plot_cosine_similarity_heatmap(direct_cos, args.grammar, args.dataset_size, 'direct')
-    # plot_cosine_similarity_heatmap(continued_cos, args.grammar, args.dataset_size, 'continued')
-    # plot_cosine_similarity_heatmap(pretrain_vs_direct_cos, args.grammar, args.dataset_size, 'pretrain_vs_direct')    
+    plot_cosine_similarity_heatmap(direct_cos, args.grammar, args.dataset_size, 'direct')
+    plot_cosine_similarity_heatmap(continued_cos, args.grammar, args.dataset_size, 'continued')
+    plot_cosine_similarity_heatmap(pretrain_vs_direct_cos, args.grammar, args.dataset_size, 'pretrain_vs_direct')    
 
     plot_per_layer_cka_heatmap(direct_cka, args.grammar, args.dataset_size, 'direct', config)
     plot_per_layer_cka_heatmap(continued_cka, args.grammar, args.dataset_size, 'continued', config)
