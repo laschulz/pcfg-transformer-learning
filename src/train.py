@@ -1,6 +1,6 @@
 import torch
 import argparse
-from model import GPT, TwoLayer, FourLayer, SixLayer, OneLayer
+from model import GPT, TwoLayer, FourLayer, SixLayer, OneLayer, TwoLayer_LARGER
 import os
 import shutil
 import re
@@ -14,6 +14,8 @@ def map_model_name(model_name):
         return SixLayer()
     elif model_name == "OneLayer":
         return OneLayer()
+    elif model_name == "TwoLayer_LARGER":
+        return TwoLayer_LARGER()
     else:
         raise ValueError(f"Unknown model name: {model_name}")
 
@@ -21,7 +23,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Train or load a GPT model on a PCFG dataset")
     parser.add_argument("--grammar", type=str, required=True, help="Type of PCFG to use")
     parser.add_argument("--dataset_name", type=str, required=True)
-    parser.add_argument("--model", type=str, choices=["TwoLayer", "FourLayer", "SixLayer", "OneLayer"], default="FourLayer", help="Type of GPT model to use")
+    parser.add_argument("--model", type=str, default="FourLayer", help="Type of GPT model to use")
     parser.add_argument("--checkpoint_path", type=str, default=None, help="Optional path to checkpoint to load")
     parser.add_argument("--continue_training", action='store_true', help="Continue training from the checkpoint if provided")
     parser.add_argument("--continue_from", type=int, default=0, help="Epoch to continue training from if continuing")
@@ -91,7 +93,7 @@ def main():
     config = map_model_name(args.model)
     model = GPT(config).to(device)
 
-    trainer(model, args.grammar, config, args.dataset_name, checkpoint_path=checkpoint_path, checkpoint_every=50,
+    trainer(model, args.grammar, config, args.dataset_name, checkpoint_path=checkpoint_path, checkpoint_every=100,
             num_epochs=args.num_epochs, save_first_x_epochs=10, continue_from=args.continue_from, 
             continue_training=args.continue_training, device=device, seed=args.seed)
 

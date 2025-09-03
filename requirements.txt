@@ -3,3 +3,4 @@ matplotlib
 scipy
 transformers
 seaborn
+nltk

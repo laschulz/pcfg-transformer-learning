@@ -1,21 +1,26 @@
-#!/bin/bash
+#!/bin/bash -l
 
-SUPERGRAMMAR="ABC_grammar"
-SUBGRAMMAR_TRAIN="L1_3c_subgrammar"
-DATASET_SIZE=300
-MODEL="FourLayer"
+SUPERGRAMMAR="PythonPCFG"
+SUPERGRAMMAR_SYMBOL="STMTS"
+SUBGRAMMAR_SYMBOL="compound_stmt"
+DATASET_SIZE=50000 #50k
+MODEL="OneLayer"
 
-
+#cd /om2/user/laschulz/pcfg-transformer-learning/src
 cd src
-# python generate_pcfg.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --start_symbol L0
 
-# python generate_pcfg.py --grammar $SUBGRAMMAR_TRAIN --dataset_size $DATASET_SIZE --start_symbol L0 \
-#     --tokenizer_path "../data/${SUPERGRAMMAR}/${SUPERGRAMMAR}_${DATASET_SIZE}/tokenizer.json"
+# python generate_pcfg.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --start_symbol $SUPERGRAMMAR_SYMBOL --max_len 250
+
+# python generate_pcfg.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --start_symbol $SUBGRAMMAR_SYMBOL \
+#     --tokenizer_path "../data/${SUPERGRAMMAR}/${SUPERGRAMMAR}_${DATASET_SIZE}_${SUPERGRAMMAR_SYMBOL}/tokenizer.json" --max_len 250
 
 python weight_space.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --model $MODEL \
-    --subgrammar $SUBGRAMMAR_TRAIN --num_epochs_direct 40 --num_epochs_pretrain 30
+    --grammar_startsymbol $SUPERGRAMMAR_SYMBOL --subgrammar_startsymbol $SUBGRAMMAR_SYMBOL --num_epochs_direct 45 --num_epochs_pretrain 5 --start_seed 30
 
+# python generate_pcfg.py --grammar PythonPCFG --dataset_size 50000 --start_symbol STMTS --max_len 250
 
-# think about that CKA is focusing on the global structure and might miss local structures / not put as much
-# priority on local structures. Apparently RSA is better for that but I mainly see i t in neuroscience papers.
-# could also do PWCCA or windowed/conditional CKA, or CKA on nonterminal spans. But gotta think about it more. 
+# python generate_pcfg.py --grammar PythonPCFG --dataset_size 50000 --start_symbol compound_stmt \
+#   --tokenizer_path "../data/PythonPCFG/PythonPCFG_50000_STMTS/tokenizer.json" --max_len 250
+
+# python weight_space.py --grammar PythonPCFG --dataset_size 50000 --model TwoLayer \
+#   --grammar_startsymbol STMTS --subgrammar_startsymbol compound_stmt --num_epochs_direct 30 --num_epochs_pretrain 3 --start_seed 19

@@ -17,6 +17,7 @@ from eval import compare_model_vs_real_probs_subgrammar
 from def_pcfgs import GRAMMARS
 
 RUN_PYTHON_GRAMMAR = False  # Set to True if you want to run the Python grammar analysis
+DIVIDER = 500  # Used for normalizing KL divergence in plots
 
 NT2COLOR = {
     "L0":       "#1f77b4",
@@ -151,7 +152,7 @@ def prepare_eos_test_sequences(main_dir, tokenizer):
     test_sequences_with_probs = list(zip(relevant_test_sequences, probabilities))
     return test_sequences_with_probs, len(relevant_test_sequences)
 
-def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoch, dataset_name, model_name, train_type, seed=42):
+def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoch, dataset_name, model_name, train_type, seed):
 
     # Initialize model and load results
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -165,7 +166,9 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
         bos_token="<|bos|>",
         eos_token="<|eos|>"
     )
+
     if "_" in dataset_name:
+        #compound_stmt_count = 0
         test_sequences = []
         with open(f"{main_dir}/test.jsonl", "r") as f:
             for line in f:
@@ -174,8 +177,10 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
                     continue
                 obj = json.loads(line)
                 tokens = obj["sequence"].split()
+                #compound_stmt_count += tokens.count("compound_stmt")
                 test_sequences.append(((0, len(tokens), obj["sequence"]), obj["real_log_prob"]))
         num_sequences = len(test_sequences)
+        #print(compound_stmt_count)
     elif subgrammar == "overhead":
         test_sequences, num_sequences = prepare_overhead_sequences(main_dir)
     elif subgrammar == "eos_test":
@@ -184,7 +189,7 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
         parser = PARSERS[subgrammar]
         nt = Nonterminal(nonTerminal)
         test_sequences, num_sequences = prepare_test_sequences(parser, nt, main_dir, subgrammar == grammar_name, subgrammar)
-
+        
     # Load master results file that contains all grammars
     master_results_path = "../results/hierarchy_analysis.json"
     if os.path.exists(master_results_path):
@@ -193,10 +198,12 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
     else:
         all_grammar_results = {}
     
+    seed = str(seed)
     # Initialize grammar entry if it doesn't exist
     all_grammar_results.setdefault(model_name, {})
     all_grammar_results[model_name].setdefault(grammar_name, {})
-    all_grammar_results[model_name][grammar_name][nonTerminal] = {}
+    all_grammar_results[model_name][grammar_name].setdefault(seed, {})
+    all_grammar_results[model_name][grammar_name][seed][nonTerminal] = {}
 
     # Load epoch 
     checkpoints_dir = f"{main_dir}/{model_name}/{train_type}/seed_{seed}"
@@ -213,10 +220,10 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
 
         diffs = compare_model_vs_real_probs_subgrammar(model, tokenizer, test_sequences, device)
         kl_divergence = sum([d['abs_logprob_diff'] for d in diffs]) / num_sequences 
-        rel_kl_divergence = kl_divergence * num_sequences / 1000  #TODO: this only works for non-recursive top grammar
+        rel_kl_divergence = kl_divergence * num_sequences / DIVIDER  #TODO: this only works for non-recursive top grammar
 
         # Add results for this epoch under the grammar's entry
-        all_grammar_results[model_name][grammar_name][nonTerminal][ckpt] = {
+        all_grammar_results[model_name][grammar_name][seed][nonTerminal][ckpt] = {
             "kl_divergence": kl_divergence,
             "rel_kl_divergence": rel_kl_divergence,
             "non_terminal": nonTerminal,
@@ -228,55 +235,59 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar, to_epoc
         json.dump(all_grammar_results, f, indent=4)
     
     print(f"Updated hierarchy analysis results for {grammar_name} in {master_results_path}")
+    return all_grammar_results
     
-def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str,to_epoch: int = None, for_paper: bool = True):
+def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seed, to_epoch: int = None, for_paper: bool = False):
     """
     Generate separate line charts for KL divergence and accuracy per subgrammar, keeping distinct colors.
     """
     with open(results_path, 'r') as f:
         all_results = json.load(f)
-    grammar_data = all_results[model_name][grammar_name]
-
-    # Helper to extract epoch number
-    def epoch_num(key: str) -> int:
-        m = re.search(r'(\d+)', key)
-        return int(m.group(1)) if m else 0
-
-    def epoch_step_num(key: str) -> int:
-        m = re.match(r"epoch_(\d+)(?:_(\d+))?\.pt$", key)
-        epoch = int(m.group(1))
-        step = int(m.group(2)) if m.group(2) else 0
-        return epoch, step
-
-    nonterminals = list(grammar_data.keys())
-
-    # Plot KL divergence
+    seeds = [2]
     plt.figure(figsize=(8, 5))
-    for idx, nt in enumerate(nonterminals):
-        data_points = []
-        color = NT2COLOR[nt]
-        for ckpt, data in grammar_data[nt].items():
-            e , s = epoch_step_num(ckpt)
-            if to_epoch and e > to_epoch:
-                continue
-            data_points.append((e, s, data['kl_divergence']))
-        
-        # Sort by epoch first, then by step
-        data_points.sort(key=lambda x: (x[0], x[1]))
-        
-        if data_points:
-            x_values = [e + s/500 for e, s, _ in data_points] 
-            y_values = [kl for _, _, kl in data_points]
-        
-        if for_paper:
-            if "_direct" in nt:
-                legend_label = "from scratch"
-            else:
-                legend_label = "with pretraining"
-        else:
-            legend_label = nt
+    for seed1 in seeds:
+        grammar_data = all_results[model_name][grammar_name][f'{seed1}']
+
+        def epoch_num(key: str) -> int:
+            m = re.search(r'(\d+)', key)
+            return int(m.group(1)) if m else 0
+
+        def epoch_step_num(key: str) -> int:
+            m = re.match(r"epoch_(\d+)(?:_(\d+))?\.pt$", key)
+            epoch = int(m.group(1))
+            step = int(m.group(2)) if m.group(2) else 0
+            return epoch, step
+
+        nonterminals = list(grammar_data.keys())
+        print(nonterminals)
+
+        # Plot KL divergence
+        for idx, nt in enumerate(nonterminals):
+            data_points = []
+            # color = NT2COLOR[nt]
+            color = "#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
+            for ckpt, data in grammar_data[nt].items():
+                e , s = epoch_step_num(ckpt)
+                if to_epoch and e > to_epoch:
+                    continue
+                data_points.append((e, s, data['kl_divergence']))
             
-        plt.plot(x_values, y_values, marker='o', linestyle='-', label=legend_label, color=color)
+            # Sort by epoch first, then by step
+            data_points.sort(key=lambda x: (x[0], x[1]))
+            
+            if data_points:
+                x_values = [e + s/DIVIDER for e, s, _ in data_points] 
+                y_values = [kl for _, _, kl in data_points]
+            
+            if for_paper:
+                if "_direct" in nt:
+                    legend_label = "from scratch"
+                else:
+                    legend_label = "with pretraining"
+            else:
+                legend_label = f"{nt}_{seed1}"
+                
+            plt.plot(x_values, y_values, marker='o', linestyle='-', label=legend_label, color=color)
             
     plt.xlabel('Epoch')
     plt.ylabel('KL Divergence')
@@ -288,14 +299,70 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str,to_ep
     plt.savefig(f"../results/kl_divergence_plot_{model_name}_{grammar_name}.png")
     plt.close()
 
+def plot_combined_kl_accuracy(results_path: str, grammar_model_pairs: List[Tuple[str, str, int]], to_epoch: int = None, for_paper: bool = False):
+        """
+        Generate a single line chart for KL divergence across multiple grammar-model pairs.
+        """
+        with open(results_path, 'r') as f:
+            all_results = json.load(f)
+        
+        plt.figure(figsize=(10, 6))
+        
+        for grammar_name, model_name, nt, seed in grammar_model_pairs:
+                grammar_data = all_results[model_name][grammar_name][f'{seed}']
+                
+                def epoch_step_num(key: str) -> Tuple[int, int]:
+                    m = re.match(r"epoch_(\d+)(?:_(\d+))?\.pt$", key)
+                    epoch = int(m.group(1))
+                    step = int(m.group(2)) if m.group(2) else 0
+                    return epoch, step
+
+                data_points = []
+                color = NT2COLOR.get(nt, "#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]))
+                
+                for ckpt, data in grammar_data[nt].items():
+                    e, s = epoch_step_num(ckpt)
+                    if to_epoch and e > to_epoch:
+                        continue
+                    data_points.append((e, s, data['kl_divergence']))
+                    
+                data_points.sort(key=lambda x: (x[0], x[1]))
+                    
+                if data_points:
+                    x_values = [e + s/DIVIDER for e, s, _ in data_points] 
+                    y_values = [kl for _, _, kl in data_points]
+                        
+                    label = f"{model_name}-{grammar_name}-{nt}"
+                    plt.plot(x_values, y_values, marker='o', linestyle='-', label=label, color=color)
+        
+        plt.xlabel('Epoch')
+        plt.ylabel('KL Divergence')
+        #plt.yscale('log')
+        plt.title('KL Divergence over Epochs (Combined)')
+        plt.grid(alpha=0.3)
+        plt.legend()
+        plt.tight_layout()
+        plt.savefig(f"../results/combined_kl_divergence_plot.png")
+        plt.close()
+
 # Update the main function to optionally generate plots
 def main():
     args = argument_parser()
     if args.plot_only:
-        plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.model, args.to_epoch)
+        #plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.model, args.seed, args.to_epoch)
+        plot_combined_kl_accuracy(
+        "../results/hierarchy_analysis.json", 
+        [
+            ("PythonPCFG_symbol", "TwoLayer", "STMTS", 2),
+            ("PythonPCFG", "TwoLayer", "compound_stmt",2),
+            ("PythonPCFG", "TwoLayer", "STMTS_direct", 2),
+            ("PythonPCFG", "TwoLayer_LARGER", "STMTS_direct", 2),
+        ],
+        to_epoch=50
+    )
         return
-    analyze_hieararchy_all_epochs(args.grammar, args.nonTerminal, args.subgrammar, args.to_epoch, args.dataset_name, args.model, args.train_type)     
-    plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.model, args.to_epoch)
+    analyze_hieararchy_all_epochs(args.grammar, args.nonTerminal, args.subgrammar, args.to_epoch, args.dataset_name, args.model, args.train_type, args.seed)     
+    plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.model, args.seed, args.to_epoch)
 
 # Update argument parser to include plot-only option
 def argument_parser():
@@ -306,8 +373,9 @@ def argument_parser():
     parser.add_argument("--nonTerminal", type=str, required=True)
     parser.add_argument("--subgrammar", type=str, required=True, help="Subgrammar to use for analysis.")
     parser.add_argument("--to_epoch", type=int, default=None, help="Number of epochs to analyze.")
-    parser.add_argument("--model", type=str, choices=["TwoLayer", "FourLayer", "SixLayer", "OneLayer"], default="FourLayer", help="Type of GPT model to use")
+    parser.add_argument("--model", type=str, default="FourLayer", help="Type of GPT model to use")
     parser.add_argument("--train_type", type=str, default="new", help="Type of training to analyze (new, continued)")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility")
 
     return parser.parse_args()
         

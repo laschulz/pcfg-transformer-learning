@@ -142,17 +142,27 @@ class TwoLayer: # 0.40M params #now 34k
     vocab_size = 100     
     n_layer = 2                
     n_head = 2                
-    n_embd = 20  #128            
+    n_embd = 20  #128, then 20, then 4            
     dropout = 0.1              
     bias = True
     name = "TwoLayer"
+
+class TwoLayer_LARGER: # 0.40M params #now 34k
+    block_size = 256        
+    vocab_size = 100     
+    n_layer = 2                
+    n_head = 2                
+    n_embd = 6  #128, then 20            
+    dropout = 0.1              
+    bias = True
+    name = "TwoLayer_LARGER"
 
 class OneLayer: #22k
     block_size = 256           
     vocab_size = 100          
     n_layer = 1              
     n_head = 1                
-    n_embd = 32              
+    n_embd = 8  #32            
     dropout = 0.1              
     bias = True
     name = "OneLayer"
@@ -183,7 +193,7 @@ class GPT(nn.Module):
                 torch.nn.init.normal_(p, mean=0.0, std=0.02/math.sqrt(2 * config.n_layer))
 
         # report number of parameters
-        print("number of parameters: %.2fM" % (self.get_num_params()/1e6,))
+        print("number of parameters: %.4fM" % (self.get_num_params()/1e6,))
 
     def get_num_params(self, non_embedding=True):
         """
