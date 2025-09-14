@@ -1,3 +1,5 @@
+from  analysis_hierarchy import epoch_step_num
+
 def build_fixed_tokenizer(grammar, tok_path, special_tokens=None):
     """
     Create a WordLevel tokenizer whose vocab = exactly the terminals
@@ -110,8 +112,8 @@ def sample_many_direct(grammar, start_symbol, n, max_len=100):
     """Sample n sequences directly from the grammar."""
     return [sample_direct(grammar, start_symbol, max_len) for _ in range(n)]
 
-def generate_dataset(p_value, dataset_size, out_dir="../data/kl_analysis"):
-    grammar = create_grammar2(p_value) #change here
+def generate_dataset(func, p_value, dataset_size, out_dir="../data/kl_analysis"):
+    grammar = func(p_value)
     grammar_name = f"A_p{p_value:.2f}"
     dataset_dir = os.path.join(out_dir, f"{grammar_name}_{dataset_size}")
     os.makedirs(dataset_dir, exist_ok=True)
@@ -149,15 +151,12 @@ def train_model(dataset_dir, grammar_name, model_config, num_epochs):
         learning_rate=6e-4,
         weight_decay=1e-1,
         betas=(0.9, 0.95),
-        checkpoint_every=10,
+        checkpoint_every=50,
         config=model_config.name,
-        device=device
+        device=device,
+        seed=42
     )
-
-    ckpt_dir = os.path.join(dataset_dir, model_config.name)
-    ckpts = [f for f in os.listdir(ckpt_dir) if f.endswith(".pt")]
-    latest = sorted(ckpts, key=lambda fn: int(fn.split("_")[1].split(".")[0]))[-1]
-    return os.path.join(ckpt_dir, latest)
+    return 
 
 def evaluate_model_once(model, tokenizer, test_sequences, device, p_value):
     model.eval()
@@ -166,18 +165,28 @@ def evaluate_model_once(model, tokenizer, test_sequences, device, p_value):
 
 def evaluate_over_epochs(checkpoint_dir, tokenizer, test_sequences, device, p_value, model_config):
     ckpts = [f for f in os.listdir(checkpoint_dir) if f.endswith(".pt")]
-    epochs = sorted(int(fn.split("_")[1].split(".")[0]) for fn in ckpts)
+    print(checkpoint_dir, ckpts)
+    
+    # Extract epoch and step from checkpoint filenames
+    datapoints = []
+    for ckpt in ckpts:
+        epoch, step = epoch_step_num(ckpt)
+        datapoints.append((ckpt, epoch, step))
+    
+    # Sort by epoch, then by step
+    datapoints.sort(key=lambda x: (x[1], x[2]))
+    datapoints = datapoints[1:]  # Take every second checkpoint to reduce computation
     kl_by_epoch = []
-    for ep in epochs:
-        path = os.path.join(checkpoint_dir, f"epoch_{ep}.pt")
+    for ckpt, epoch, step in datapoints:
+        path = os.path.join(checkpoint_dir, ckpt)
         model = GPT(model_config).to(device)
         model.load_state_dict(torch.load(path, map_location=device))
         kl = evaluate_model_once(model, tokenizer, test_sequences, device, p_value)
-        kl_by_epoch.append((ep, kl))
-        print(f"  p={p_value:.2f}, epoch={ep}: KL={kl:.4f}")
+        kl_by_epoch.append((epoch, step, kl))
+    
     return kl_by_epoch
 
-def run_experiment(p_values, dataset_size, model_type, num_epochs):
+def run_experiment(p_values, dataset_size, model_type, num_epochs, func):
     out_dir = "../data/kl_analysis"
     os.makedirs(out_dir, exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -185,9 +194,9 @@ def run_experiment(p_values, dataset_size, model_type, num_epochs):
 
     results_by_p = {}
     for p in p_values:
-        ds_dir, grammar_name, tokenizer, test_seqs = generate_dataset(p, dataset_size, out_dir)
+        ds_dir, grammar_name, tokenizer, test_seqs = generate_dataset(func, p, dataset_size, out_dir)
         train_model(ds_dir, grammar_name, model_config, num_epochs)
-        ckpt_dir = os.path.join(ds_dir, model_config.name)
+        ckpt_dir = os.path.join(ds_dir, model_config.name, 'new/seed_42')
         kl_curve = evaluate_over_epochs(ckpt_dir, tokenizer, test_seqs, device, p, model_config)
         results_by_p[p] = kl_curve
 
@@ -195,14 +204,25 @@ def run_experiment(p_values, dataset_size, model_type, num_epochs):
 
 def plot_kl_over_epochs(results_by_p, model_type):
     plt.figure(figsize=(10, 6))
+    print(results_by_p)
+    
+    # Constant for normalizing steps
+    DIVIDER = 10  # Adjust based on your steps per epoch
+    
     for p, curve in results_by_p.items():
-        epochs, kl_vals = zip(*curve)
-        plt.plot(epochs, kl_vals, marker='o', label=f"p={p:.2f}")
-    plt.xlabel("Epoch")
-    plt.ylabel("KL Divergence")
-    plt.title(f"KL Divergence over Epochs (model: {model_type})")
-    plt.legend()
+        # Extract epochs and kl values
+        x_values = [epoch + step / DIVIDER for epoch, step, _ in curve]
+        y_values = [kl for _, _, kl in curve]
+        
+        plt.plot(x_values, y_values, marker='o', label=f"p={p:.2f}")
+    
+    plt.xlabel("Percentage of Trainig Data seen", fontsize=14)
+    plt.ylabel("KL Divergence", fontsize=14)
+    #plt.title(f"KL Divergence over Epochs", fontsize=16)
+    plt.legend(fontsize=14)
     plt.grid(alpha=0.3)
+    plt.xticks(fontsize=12)
+    plt.yticks(fontsize=12)
     plt.tight_layout()
     os.makedirs("../results", exist_ok=True)
     plt.savefig(f"../results/kl_over_epochs_{model_type}.png")
@@ -212,24 +232,22 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description="Plot KL divergence over epochs for varying p values"
     )
-    parser.add_argument(
-        "--p_values", nargs="+", type=float,
+    parser.add_argument("--p_values", nargs="+", type=float,
         default=[0.1, 0.3, 0.5, 0.7, 0.9],
         help="List of probability values to test"
     )
     parser.add_argument(
-        "--dataset_size", type=int, default=300,
+        "--dataset_size", type=int, required=True,
         help="Number of sequences per dataset"
     )
     parser.add_argument(
-        "--model", type=str, default="FourLayer",
-        choices=["TwoLayer", "FourLayer", "SixLayer"],
-        help="Which GPT configuration to use"
+        "--model", type=str, required=True, help="Which GPT configuration to use"
     )
     parser.add_argument(
-        "--epochs", type=int, default=50,
+        "--epochs", type=int, default=1,
         help="Number of training epochs"
     )
+    parser.add_argument("--grammar", type=str, required=True, help="Type of PCFG to use")
     return parser.parse_args()
 
 if __name__ == "__main__":
@@ -237,10 +255,18 @@ if __name__ == "__main__":
     random.seed(42)
     torch.manual_seed(42)
 
+    if args.grammar == "tail_recursive":
+        func = create_grammar
+    elif args.grammar == "two_sided_recursion":
+        func = create_grammar2
+    else:
+        raise ValueError(f"Unknown grammar type: {args.grammar}")
+
     results = run_experiment(
         args.p_values,
         args.dataset_size,
         args.model,
-        args.epochs
+        args.epochs,
+        func
     )
     plot_kl_over_epochs(results, args.model)

@@ -13,7 +13,8 @@ import json
 from transformers import PreTrainedTokenizerFast
 from scipy.stats import spearmanr
 
-NUM_SEEDS = 50
+NUM_SEEDS = 30
+SPECIFIC_SEEDS = [] #[30, 39, 41, 42, 46, 47]# [32, 34, 38, 48, 49]
 
 # per-layer L2 distance between two models
 def per_layer_l2(model1, model2):
@@ -355,7 +356,7 @@ def compute_cka(X, Y):
     den = torch.linalg.norm(X.T @ X, ord="fro") * torch.linalg.norm(Y.T @ Y, ord="fro") + 1e-12
     return float((num / den).item())
 
-def compute_cka_matrix(acts_list1, acts_list2, diagonal_only=False):
+def compute_cka_matrix(acts_list1, acts_list2, diagonal_only=False, skip_diagonals=False):
     """
     Compute the CKA distances between activations of two sets of models.
     activations1, activations2: lists of activations for each model.
@@ -371,6 +372,18 @@ def compute_cka_matrix(acts_list1, acts_list2, diagonal_only=False):
                 row = {k: compute_cka(acts_list1[i][k], acts_list2[i][k])}
                 rows.append(row)
                 seed_pairs.append(f"seed_{i}_vs_seed_{i}")
+    elif skip_diagonals:
+        for i in range(len(acts_list1)):
+            for j in range(i, len(acts_list2)):
+                if i == j:
+                    continue
+                row = {}
+                for k in keys:
+                    if k not in acts_list1[i] or k not in acts_list2[j]:
+                        continue
+                    row[k] = compute_cka(acts_list1[i][k], acts_list2[j][k])
+                rows.append(row)
+                seed_pairs.append(f"seed_{i}_vs_seed_{j}")
     else:
         for i in range(len(acts_list1)):
             for j in range(i, len(acts_list2)):
@@ -413,6 +426,9 @@ def find_checkpoints(dir):
     seed_folders = [f for f in os.listdir(dir) if f.startswith('seed_')]
 
     for seed_folder in seed_folders:
+        # Special case: only want seeds 30, 39, 41, 42, 46, 47
+        if SPECIFIC_SEEDS != [] and int(seed_folder.split('_')[1]) not in SPECIFIC_SEEDS:
+            continue
         seed_path = os.path.join(dir, seed_folder)
         checkpoint_files = glob.glob(os.path.join(seed_path, 'epoch_*.pt'))
         if checkpoint_files:
@@ -422,7 +438,7 @@ def find_checkpoints(dir):
             latest_checkpoints.append(latest_checkpoint)
     return latest_checkpoints
 
-def difference_pretrain_and_direct(config, tokenizer, dir1, dir2, base_dir):
+def difference_pretrain_and_direct(config, tokenizer, dir1, dir2, test_dir):
     direct_folder = dir1
     pretrain_folder = dir2
 
@@ -433,14 +449,14 @@ def difference_pretrain_and_direct(config, tokenizer, dir1, dir2, base_dir):
     models_pretrain = list_of_models_from_checkpoints(pretrain_checkpoints, config)
 
     #load activations for all models
-    act_direct = [collect_activations(model, tokenizer, base_dir, agg=None) for model in models_direct] #was without mean
-    act_pretrain = [collect_activations(model, tokenizer, base_dir, agg=None) for model in models_pretrain] # was without mean
-    cka_distances = compute_cka_matrix(act_direct, act_pretrain, diagonal_only=True)
+    act_direct = [collect_activations(model, tokenizer, test_dir, agg=None) for model in models_direct]
+    act_pretrain = [collect_activations(model, tokenizer, test_dir, agg=None) for model in models_pretrain]
+    cka_distances = compute_cka_matrix(act_direct, act_pretrain, diagonal_only=True, skip_diagonals=False)
 
-        # RSA sequence-level reps
-    seq_direct = [collect_activations(m, tokenizer, base_dir, agg="mean")
+    # RSA sequence-level reps
+    seq_direct = [collect_activations(m, tokenizer, test_dir, agg="mean")
                   for m in models_direct]
-    seq_pretrain = [collect_activations(m, tokenizer, base_dir, agg="mean")
+    seq_pretrain = [collect_activations(m, tokenizer, test_dir, agg="mean")
                     for m in models_pretrain]
     rsa_distances = compute_rsa_matrix(seq_direct, seq_pretrain, method="spearman", diagonal_only=True)
 
@@ -458,7 +474,7 @@ def difference_same_seed(train_type, config, tokenizer, base_dir, test_dir):
 
     # load activations 
     acts = [collect_activations(model, tokenizer, test_dir) for model in models]
-    cka_distances = compute_cka_matrix(acts, acts, diagonal_only=False)
+    cka_distances = compute_cka_matrix(acts, acts, diagonal_only=False, skip_diagonals=True)
 
     seq_reps = [collect_activations(m, tokenizer, test_dir, agg="mean") for m in models]
     rsa_distances = compute_rsa_matrix(seq_reps, seq_reps, method="spearman", diagonal_only=False)
@@ -491,7 +507,7 @@ def loop_over_seeds_and_train(grammar, dataset_size, grammar_startsymbol, subgra
 
         # train directly
         trainer(model, grammar, config, f'{dataset_size}_{grammar_startsymbol}', checkpoint_path=None, checkpoint_every=num_epochs_direct,
-                num_epochs=num_epochs_direct, save_first_x_epochs=0, continue_from=num_epochs_pretrain, 
+                num_epochs=num_epochs_direct, save_first_x_epochs=0, continue_from=0, 
                 continue_training=False, device=device, seed=i, safe_only_last=True)
 
         # trainer(model, grammar, config, dataset_size, checkpoint_path=None, checkpoint_every=num_epochs_direct+num_epochs_pretrain,
@@ -502,15 +518,15 @@ def loop_over_seeds_and_train(grammar, dataset_size, grammar_startsymbol, subgra
         # model = GPT(config).to(device) 
         # model.apply(model._init_weights)
 
-        # trainer(model, grammar, config, f'{dataset_size}_{subgrammar_startsymbol}', checkpoint_path=None, checkpoint_every=num_epochs_pretrain,
-        #         num_epochs=num_epochs_pretrain, save_first_x_epochs=0,continue_from=0, 
-        #         continue_training=False, device=device, seed=i, safe_only_last=True)
+        trainer(model, grammar, config, f'{dataset_size}_{subgrammar_startsymbol}', checkpoint_path=None, checkpoint_every=num_epochs_pretrain,
+                num_epochs=num_epochs_pretrain, save_first_x_epochs=0,continue_from=0, 
+                continue_training=False, device=device, seed=i, safe_only_last=True)
 
-        # # train on full grammar after pretraining
-        # checkpoint_path = f'../data/{grammar}/{grammar}_{dataset_size}_{subgrammar_startsymbol}/{config.name}/new/seed_{i}/epoch_{num_epochs_pretrain}_0.pt'
-        # trainer(model, grammar, config, f'{dataset_size}_{grammar_startsymbol}', checkpoint_path=checkpoint_path, checkpoint_every=num_epochs_direct,
-        #         num_epochs=num_epochs_direct, save_first_x_epochs=0, continue_from=num_epochs_pretrain, 
-        #         continue_training=True, device=device, seed=i, safe_only_last=True) 
+        # train on full grammar after pretraining
+        checkpoint_path = f'../data/{grammar}/{grammar}_{dataset_size}_{subgrammar_startsymbol}/{config.name}/new/seed_{i}/epoch_{num_epochs_pretrain}_0.pt'
+        trainer(model, grammar, config, f'{dataset_size}_{grammar_startsymbol}', checkpoint_path=checkpoint_path, checkpoint_every=num_epochs_direct,
+                num_epochs=num_epochs_direct, save_first_x_epochs=0, continue_from=num_epochs_pretrain, 
+                continue_training=True, device=device, seed=i, safe_only_last=True) 
 
 def plot_l2_distances(distances, grammar, dataset_size, train_type):
     # plot the distances as a distribution
@@ -601,21 +617,22 @@ def main():
 
     base_dir = f'../data/{args.grammar}/{args.grammar}_{args.dataset_size}'
 
-    # loop_over_seeds_and_train(args.grammar, 
-    #                           args.dataset_size, 
-    #                           args.grammar_startsymbol,
-    #                           args.subgrammar_startsymbol,
-    #                           args.num_epochs_direct, 
-    #                           args.num_epochs_pretrain,
-    #                           config, 
-    #                           device,
-    #                           start_seed=args.start_seed)
+    loop_over_seeds_and_train(args.grammar, 
+                              args.dataset_size, 
+                              args.grammar_startsymbol,
+                              args.subgrammar_startsymbol,
+                              args.num_epochs_direct, 
+                              args.num_epochs_pretrain,
+                              config, 
+                              device,
+                              start_seed=args.start_seed)
 
     
     # load tokenizer
     tokenizer_path = f'{base_dir}_{args.grammar_startsymbol}/tokenizer.json'
     tokenizer = PreTrainedTokenizerFast(tokenizer_file=tokenizer_path, bos_token="<|bos|>", eos_token="<|eos|>")
 
+    # pretraining vs full pretraining on subgrammar
     # direct_l2, direct_l2_pl, direct_cos, direct_cka, direct_rsa = difference_same_seed(train_type='new',
     #                      config=config,
     #                      tokenizer=tokenizer,
@@ -630,25 +647,44 @@ def main():
     #                                                                                 tokenizer=tokenizer, 
     #                                                                                 dir1=f'{base_dir}_{args.subgrammar_startsymbol}/{args.model}/new', 
     #                                                                                 dir2=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/continued',
-    #                                                                                 base_dir =f'{base_dir}_{args.subgrammar_startsymbol}'
+    #                                                                                 test_dir =f'{base_dir}_{args.subgrammar_startsymbol}'
     #                                                                                 )
 
+    # full pretraining vs direct training on subgrammar
     direct_l2, direct_l2_pl, direct_cos, direct_cka, direct_rsa = difference_same_seed(train_type='new',
                          config=config,
                          tokenizer=tokenizer,
                          base_dir=f"{base_dir}_{args.grammar_startsymbol}",
-                         test_dir=f"{base_dir}_{args.grammar_startsymbol}")
+                         test_dir=f"{base_dir}_{args.subgrammar_startsymbol}")
     continued_l2, continued_l2_pl, continued_cos, continued_cka, continued_rsa = difference_same_seed(train_type='continued',
                         config=config,
                         tokenizer=tokenizer,
                         base_dir=f"{base_dir}_{args.grammar_startsymbol}",
-                        test_dir=f"{base_dir}_{args.grammar_startsymbol}")
+                        test_dir=f"{base_dir}_{args.subgrammar_startsymbol}")
     pretrain_vs_direct_l2, pretrain_vs_direct_l2_pl, pretrain_vs_direct_cos, pretrain_vs_direct_cka, pretrain_vs_direct_rsa = difference_pretrain_and_direct(config, 
                                                                                     tokenizer=tokenizer, 
                                                                                     dir1=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/new', 
                                                                                     dir2=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/continued',
-                                                                                    base_dir =f'{base_dir}_{args.grammar_startsymbol}'
+                                                                                    test_dir =f'{base_dir}_{args.subgrammar_startsymbol}'
                                                                                     )
+
+    # full pretraining vs direct training on full grammar
+    # direct_l2, direct_l2_pl, direct_cos, direct_cka, direct_rsa = difference_same_seed(train_type='new',
+    #                      config=config,
+    #                      tokenizer=tokenizer,
+    #                      base_dir=f"{base_dir}_{args.grammar_startsymbol}",
+    #                      test_dir=f"{base_dir}_{args.grammar_startsymbol}")
+    # continued_l2, continued_l2_pl, continued_cos, continued_cka, continued_rsa = difference_same_seed(train_type='continued',
+    #                     config=config,
+    #                     tokenizer=tokenizer,
+    #                     base_dir=f"{base_dir}_{args.grammar_startsymbol}",
+    #                     test_dir=f"{base_dir}_{args.grammar_startsymbol}")
+    # pretrain_vs_direct_l2, pretrain_vs_direct_l2_pl, pretrain_vs_direct_cos, pretrain_vs_direct_cka, pretrain_vs_direct_rsa = difference_pretrain_and_direct(config, 
+    #                                                                                 tokenizer=tokenizer, 
+    #                                                                                 dir1=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/new', 
+    #                                                                                 dir2=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/continued',
+    #                                                                                 test_dir =f'{base_dir}_{args.grammar_startsymbol}'
+    #                                                                                 )
 
     plot_l2_distances(direct_l2, args.grammar, args.dataset_size, 'direct')
     plot_l2_distances(continued_l2, args.grammar, args.dataset_size, 'continued')

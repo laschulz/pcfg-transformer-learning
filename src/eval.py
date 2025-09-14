@@ -83,11 +83,13 @@ def compare_model_vs_real_probs_subgrammar(model, tokenizer, test_sequences_with
             for i in range(length):
                 input_ids = encoded[:, : start + i]
                 target_id = encoded[:, start + i].item()
-                # print(tokenizer.decode(target_id))
+                #print(tokenizer.decode(target_id))
                 logits, _ = model(input_ids)
                 log_probs = F.log_softmax(logits.squeeze(1), dim=-1)
                 token_log_prob = log_probs[0, target_id].item()
                 model_log_prob += token_log_prob
+
+            
             diff = abs(model_log_prob - real_log_prob)
 
             results.append({

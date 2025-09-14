@@ -167,6 +167,27 @@ class OneLayer: #22k
     bias = True
     name = "OneLayer"
 
+
+# class OneLayer: #22k
+#     block_size = 256           
+#     vocab_size = 100          
+#     n_layer = 1              
+#     n_head = 1                
+#     n_embd = 32  #32            
+#     dropout = 0.1              
+#     bias = True
+#     name = "OneLayer"
+
+class OneLayer_BIG: #22k
+    block_size = 256           
+    vocab_size = 100          
+    n_layer = 1              
+    n_head = 1                
+    n_embd = 32  #32            
+    dropout = 0.1              
+    bias = True
+    name = "OneLayer_BIG"
+
 class GPT(nn.Module):
 
     def __init__(self, config):
@@ -345,12 +366,6 @@ class GPT(nn.Module):
                     _, val_loss = self(X_val, Y_val)
                     val_losses.append(val_loss.item())
             avg_val_loss = float(np.mean(val_losses))
-
-            # if epoch % checkpoint_every == 0 or epoch in range(save_first_x_epochs) or epoch == num_epochs - 1:
-            #     ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch + continue_from+1}.pt')
-            #     os.makedirs(os.path.dirname(ckpt_path_ep), exist_ok=True)
-            #     torch.save(self.state_dict(), ckpt_path_ep)
-            #     logger.info(f"Saved checkpoint to {ckpt_path_ep}")
 
         ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch+continue_from+1}_0.pt')
         os.makedirs(os.path.dirname(ckpt_path_ep), exist_ok=True)

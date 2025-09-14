@@ -1,6 +1,6 @@
 import torch
 import argparse
-from model import GPT, TwoLayer, FourLayer, SixLayer, OneLayer, TwoLayer_LARGER
+from model import GPT, TwoLayer, FourLayer, SixLayer, OneLayer, TwoLayer_LARGER, OneLayer_BIG
 import os
 import shutil
 import re
@@ -16,6 +16,8 @@ def map_model_name(model_name):
         return OneLayer()
     elif model_name == "TwoLayer_LARGER":
         return TwoLayer_LARGER()
+    elif model_name == "OneLayer_BIG":
+        return OneLayer_BIG()
     else:
         raise ValueError(f"Unknown model name: {model_name}")
 
@@ -93,7 +95,7 @@ def main():
     config = map_model_name(args.model)
     model = GPT(config).to(device)
 
-    trainer(model, args.grammar, config, args.dataset_name, checkpoint_path=checkpoint_path, checkpoint_every=100,
+    trainer(model, args.grammar, config, args.dataset_name, checkpoint_path=checkpoint_path, checkpoint_every=50,
             num_epochs=args.num_epochs, save_first_x_epochs=10, continue_from=args.continue_from, 
             continue_training=args.continue_training, device=device, seed=args.seed)
 

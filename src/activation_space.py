@@ -22,13 +22,13 @@ SEQUENCES=["sL1 sL2 cond eL2", #same
             "sL1 sL2 cond eL2 sL2 not cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 cond eL2 sL2 cond eL2", # 5 loops
             "sL1 sL2 cond and cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 cond and cond and not cond eL2 sL2 not cond eL2 sL2 cond and cond eL2", # 5 loops
             "sL1 sL2 cond eL2 sL2 not cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 cond eL2 sL2 cond and not cond eL2", # 6 loops
-            "sL1 sL2 cond and cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 cond and cond and not cond eL2 sL2 not cond eL2 sL2 cond and cond eL2 sL2 not cond eL2" # 6 loops
+            "sL1 sL2 cond and cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 cond and cond and not cond eL2 sL2 not cond eL2 sL2 cond and cond eL2 sL2 not cond eL2", # 6 loops
             "sL1 sL2 cond eL2 sL2 not cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 cond eL2 sL2 cond and not cond eL2 sL2 cond eL2", # 7 loops
-            "sL1 sL2 cond and cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 cond and cond and not cond eL2 sL2 not cond eL2 sL2 cond and cond eL2 sL2 not cond eL2 sL2 cond eL2" # 7 loops
+            "sL1 sL2 cond and cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 cond and cond and not cond eL2 sL2 not cond eL2 sL2 cond and cond eL2 sL2 not cond eL2 sL2 cond eL2", # 7 loops
             "sL1 sL2 cond eL2 sL2 not cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 cond eL2 sL2 cond and not cond eL2 sL2 cond eL2 sL2 cond and cond eL2", # 8 loops
-            "sL1 sL2 cond and cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 cond and cond and not cond eL2 sL2 not cond eL2 sL2 cond and cond eL2 sL2 not cond eL2 sL2 cond eL2 sL2 not cond eL2" # 8 loops
+            "sL1 sL2 cond and cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 cond and cond and not cond eL2 sL2 not cond eL2 sL2 cond and cond eL2 sL2 not cond eL2 sL2 cond eL2 sL2 not cond eL2", # 8 loops
             "sL1 sL2 cond eL2 sL2 not cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 cond eL2 sL2 cond and not cond eL2 sL2 cond eL2 sL2 cond and cond eL2 sL2 not cond eL2 sL2 cond eL2", # 9 loops
-            "sL1 sL2 cond and cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 cond and cond and not cond eL2 sL2 not cond eL2 sL2 cond and cond eL2 sL2 not cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 not cond and cond and condeL2" # 9 loops
+            "sL1 sL2 cond and cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 cond and cond and not cond eL2 sL2 not cond eL2 sL2 cond and cond eL2 sL2 not cond eL2 sL2 cond eL2 sL2 not cond eL2 sL2 not cond and cond and cond eL2" # 9 loops
 ]
 
 OTHER_SEQUENCES=["sL1_2 sL2 cond eL2", #completely different
@@ -169,13 +169,12 @@ def get_logits(model, tokenizer, sequences, device):
     with torch.no_grad():
         for seq in sequences:
             # Encode string with BOS/EOS
-            encoded = tokenizer.encode(seq,
-                return_tensors="pt"
-            ).to(device)
+
+            encoded = tokenizer.encode(seq, return_tensors="pt").to(device)
 
             # Forward pass
             logits, _ = model(encoded)
-            log_probs = F.log_softmax(logits.squeeze(1), dim=-1)
+            log_probs = F.log_softmax(logits.squeeze(1), dim=-1) #change log_softmax to softmax
             results.append(log_probs.detach().cpu())
     return results
 
@@ -204,6 +203,11 @@ def main():
 
     logits = get_logits(model, tokenizer, SEQUENCES, device)
     print(logits)
+
+    #compute mean squard error 
+    for l in logits:
+        mse = F.mse_loss(l, logits[0])
+        print(mse)
 
 
     # activations = collect_activations_per_input(model, tokenizer, SEQUENCES, agg='mean')
