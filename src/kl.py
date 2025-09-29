@@ -160,7 +160,7 @@ def train_model(dataset_dir, grammar_name, model_config, num_epochs):
 
 def evaluate_model_once(model, tokenizer, test_sequences, device, p_value):
     model.eval()
-    kl_div = compare_model_vs_real_probs(model, tokenizer, test_sequences, device)
+    kl_div = compare_model_vs_real_probs(model, tokenizer, test_sequences, device) # TODO: check if we can rewrite this
     return sum(a["abs_logprob_diff"] for a in kl_div) / len(test_sequences)
 
 def evaluate_over_epochs(checkpoint_dir, tokenizer, test_sequences, device, p_value, model_config):
@@ -203,29 +203,35 @@ def run_experiment(p_values, dataset_size, model_type, num_epochs, func):
     return results_by_p
 
 def plot_kl_over_epochs(results_by_p, model_type):
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(4.8, 3))
     print(results_by_p)
     
     # Constant for normalizing steps
-    DIVIDER = 10  # Adjust based on your steps per epoch
+    DIVIDER = 200  # Adjust based on your steps per epoch
     
     for p, curve in results_by_p.items():
         # Extract epochs and kl values
-        x_values = [epoch + step / DIVIDER for epoch, step, _ in curve]
+        if p == 0.6:
+            x_values = [epoch*200 + step for epoch, step, _ in curve]
+        else:
+            x_values = [epoch*150 + step for epoch, step, _ in curve]
         y_values = [kl for _, _, kl in curve]
+
+        x_values, y_values = zip(
+            *[(x, y) for x, y in zip(x_values, y_values) if x <= 150]
+        )
         
-        plt.plot(x_values, y_values, marker='o', label=f"p={p:.2f}")
+        plt.plot(x_values, y_values, label=f"p={p:.2f}")
     
-    plt.xlabel("Percentage of Trainig Data seen", fontsize=14)
-    plt.ylabel("KL Divergence", fontsize=14)
+    plt.xlabel("Mini-batch Iterations")
+    plt.ylabel("KL Divergence")
     #plt.title(f"KL Divergence over Epochs", fontsize=16)
-    plt.legend(fontsize=14)
-    plt.grid(alpha=0.3)
-    plt.xticks(fontsize=12)
-    plt.yticks(fontsize=12)
+    plt.legend()
+    plt.xticks()
+    plt.yticks()
     plt.tight_layout()
     os.makedirs("../results", exist_ok=True)
-    plt.savefig(f"../results/kl_over_epochs_{model_type}.png")
+    plt.savefig(f"../results/kl_over_epochs_{model_type}.png", dpi=300)
     plt.show()
 
 def parse_args():

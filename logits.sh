@@ -1,7 +1,8 @@
-SUPERGRAMMAR="OverlappingSubgrammar"
-SUPERGRAMMAR_SYMBOL="L0"
+SUPERGRAMMAR="easyLingo2"
+SUPERGRAMMAR_SYMBOL="L4"
 DATASET_SIZE=50000 #50k
-MODEL="TwoLayer"
+MODEL="TwoLayer_31"
+SEED=5
 
 
 cd src
@@ -11,8 +12,28 @@ cd src
 # python train.py --grammar $SUPERGRAMMAR \
 #     --dataset_name "${DATASET_SIZE}_${SUPERGRAMMAR_SYMBOL}" \
 #     --model $MODEL \
-#     --num_epochs 40 \
-#     --seed 42
+#     --num_epochs 5 \
+#     --seed 6
 
-python activation_space.py --model $MODEL --checkpoint "../data/${SUPERGRAMMAR}/${SUPERGRAMMAR}_${DATASET_SIZE}_${SUPERGRAMMAR_SYMBOL}/${MODEL}/new/seed_42/epoch_40_0.pt" \
-    --tokenizer_path "../data/${SUPERGRAMMAR}/${SUPERGRAMMAR}_${DATASET_SIZE}_${SUPERGRAMMAR_SYMBOL}"
+# python train.py --grammar $SUPERGRAMMAR \
+#     --dataset_name "${DATASET_SIZE}_${SUPERGRAMMAR_SYMBOL}" \
+#     --model $MODEL \
+#     --num_epochs 5 \
+#     --seed 7
+
+
+for i in 3; do
+    python logit_comparison.py \
+        --model $MODEL \
+        --path "../data/${SUPERGRAMMAR}/${SUPERGRAMMAR}_${DATASET_SIZE}_${SUPERGRAMMAR_SYMBOL}" \
+        --case $i \
+        --seeds 1 2 4 5 42
+done
+
+# python analysis_hierarchy.py --grammar $SUPERGRAMMAR \
+#     --dataset_name "${DATASET_SIZE}_${SUPERGRAMMAR_SYMBOL}" \
+#     --model $MODEL \
+#     --nonTerminal $SUPERGRAMMAR_SYMBOL \
+#     --to_epoch 5 \
+#     --subgrammar $SUPERGRAMMAR \
+#     --train_type new

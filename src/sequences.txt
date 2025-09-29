@@ -1,0 +1,27 @@
+FOR j IN 0 ( ) ( i ) ( x ) LT i : simple_stmt
+WHILE STR_A ( ) DOT y : simple_stmt IF 0 ( ) ( STR_A ) : simple_stmt ELSE : simple_stmt
+IF y : simple_stmt ELSE : simple_stmt
+IF STR_HELLO EQEQ STR_B : simple_stmt DEF g ( z ) : simple_stmt
+WHILE STR_HELLO GT j : simple_stmt
+FOR i IN y ( STR_B ) : INDENT WHILE 0 / STR_HELLO ( ) : INDENT WHILE x ( ) : simple_stmt DEDENT DEDENT IF val ( ) DOT y : simple_stmt
+IF x NE val : simple_stmt IF STR_B : simple_stmt
+IF 5 + z ( STR_B - 1 ) ( z ( ) ( ) GT 3 ( ) ( ) + n ) ( ) : simple_stmt ELSE : simple_stmt
+WHILE 2 : simple_stmt
+IF j : simple_stmt ELIF x LT z : simple_stmt
+
+RETURN y *= y ( ) GT 1 i EQ 5 DOT z ( 0 ( ) DOT g EQEQ STR_A ) * g ( ) NL
+RETURN 0 NL
+{ } ( ) LT n ( ) ( n ( ) ) ( 42 - STR_B DOT j DOT f DOT n ) - n NL
+f EQ 3 NL
+IMPORT val CONTINUE NL
+val - 4 NL RETURN n NE j + STR_B ( ) ( ) NL
+IMPORT val NL
+BREAK NL
+BREAK FROM f IMPORT x IMPORT y NL
+PASS NL
+j EQ STR_A NE STR_A NL IMPORT g RETURN STR_HELLO NL
+FOR g IN f : INDENT DEF x ( ) : simple_stmt DEDENT y EQ 2 / 2 ( ) PASS NL
+DEF y ( ) : simple_stmt f *= 42 NL
+FOR j IN STR_A DOT g GT 0 + 4 : simple_stmt n EQ j ( 42 ) NL
+FOR g IN STR_A : simple_stmt j EQ z LT j ( ) NL
+WHILE 3 ( ) : simple_stmt PASS NL FOR f IN ( ) DOT f GT x : simple_stmt DEF y ( ) : simple_stmt

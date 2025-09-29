@@ -132,30 +132,40 @@ class FourLayer: # 0.89M params
     vocab_size = 100          
     n_layer = 4                
     n_head = 4                
-    n_embd = 16    #128           
+    n_embd = 8    #128           
     dropout = 0.1              
     bias = True
     name = "FourLayer"
 
-class TwoLayer: # 0.40M params #now 34k
+class TwoLayer: #12k params
     block_size = 256        
     vocab_size = 100     
     n_layer = 2                
     n_head = 2                
-    n_embd = 20  #128, then 20, then 4            
+    n_embd = 20         
     dropout = 0.1              
     bias = True
     name = "TwoLayer"
 
-class TwoLayer_LARGER: # 0.40M params #now 34k
+class TwoLayer_31: #12k params
+    block_size = 256        
+    vocab_size = 5   
+    n_layer = 2                
+    n_head = 2                
+    n_embd = 20         
+    dropout = 0.1              
+    bias = True
+    name = "TwoLayer_31"
+
+class TwoLayer_SMALL: #1.6k params
     block_size = 256        
     vocab_size = 100     
     n_layer = 2                
     n_head = 2                
-    n_embd = 6  #128, then 20            
+    n_embd = 6          
     dropout = 0.1              
     bias = True
-    name = "TwoLayer_LARGER"
+    name = "TwoLayer_SMALL"
 
 class OneLayer: #22k
     block_size = 256           
@@ -357,29 +367,19 @@ class GPT(nn.Module):
                     logger.info(f"Saved checkpoint to {ckpt_path_ep}")
                 epoch_step += 1
 
-            # validation
-            self.eval()
-            val_losses = []
-            with torch.no_grad():
-                for _ in range(40):
-                    X_val, Y_val = get_batch(val_data)
-                    _, val_loss = self(X_val, Y_val)
-                    val_losses.append(val_loss.item())
-            avg_val_loss = float(np.mean(val_losses))
-
         ckpt_path_ep = os.path.join(ckpt_path, f'epoch_{epoch+continue_from+1}_0.pt')
         os.makedirs(os.path.dirname(ckpt_path_ep), exist_ok=True)
         torch.save(self.state_dict(), ckpt_path_ep)
         logger.info(f"Saved checkpoint to {ckpt_path_ep}")
 
     @torch.no_grad()
-    def generate(self, idx, max_new_tokens, eos_token_id, eos_prob_threshold, temperature=1.0, top_k=None):
+    def generate(self, idx, max_new_tokens, eos_token_id, eos_prob_threshold, temperature=1.0, top_k=None, greedy = False):
         """
         Take a conditioning sequence of indices idx (LongTensor of shape (b,t)) and complete
         the sequence max_new_tokens times, feeding the predictions back into the model each time.
-        Most likely you'll want to make sure to be in model.eval() mode of operation for this.
         """
         logits_list = []
+        self.eval()
         for _ in range(max_new_tokens):
             # if the sequence context is growing too long we must crop it at block_size
             idx_cond = idx if idx.size(1) <= self.config.block_size else idx[:, -self.config.block_size:]
@@ -398,10 +398,15 @@ class GPT(nn.Module):
                 break
 
             # sample from the distribution
-            idx_next = torch.multinomial(probs, num_samples=1)
+            if greedy:
+                idx_next = torch.argmax(probs, dim=-1, keepdim=True)
+            else:
+                idx_next = torch.multinomial(probs, num_samples=1)
             # append sampled index to the running sequence and continue
             idx = torch.cat((idx, idx_next), dim=1)
             logits_list.append(logits.unsqueeze(1))  # store logits for this step
+            if idx_next == eos_token_id:
+                break
         
         logits_tensor = torch.cat(logits_list, dim=1)  # shape (b, max_new_tokens, vocab_size)
         return idx, logits_tensor

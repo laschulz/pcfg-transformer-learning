@@ -1,6 +1,6 @@
 import torch
 import argparse
-from model import GPT, TwoLayer, FourLayer, SixLayer, OneLayer, TwoLayer_LARGER, OneLayer_BIG
+from model import GPT, TwoLayer, FourLayer, SixLayer, OneLayer, TwoLayer_SMALL, OneLayer_BIG, TwoLayer_31
 import os
 import shutil
 import re
@@ -14,8 +14,10 @@ def map_model_name(model_name):
         return SixLayer()
     elif model_name == "OneLayer":
         return OneLayer()
-    elif model_name == "TwoLayer_LARGER":
-        return TwoLayer_LARGER()
+    elif model_name == "TwoLayer_SMALL":
+        return TwoLayer_SMALL()
+    elif model_name == "TwoLayer_31":
+        return TwoLayer_31()
     elif model_name == "OneLayer_BIG":
         return OneLayer_BIG()
     else:
@@ -36,6 +38,7 @@ def parse_args():
 def trainer(model, grammar, config, dataset_name, checkpoint_path, checkpoint_every, num_epochs, save_first_x_epochs, continue_from, continue_training, device, seed, safe_only_last=False):
     dataset = f"{grammar}_{dataset_name}"
     dir = f'../data/{grammar}/{dataset}'
+    print(dir)
     if checkpoint_path and os.path.exists(checkpoint_path) and not continue_training:
         print(f"Loading model from checkpoint: {checkpoint_path}")
         model.load_state_dict(torch.load(checkpoint_path, map_location=device))

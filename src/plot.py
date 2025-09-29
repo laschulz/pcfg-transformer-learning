@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+# Load data
 df = pd.read_csv("../results/kl_table.csv")
 
 # Convert kl_divergence to numeric, coercing errors to NaN
@@ -10,40 +11,45 @@ df["kl_divergence"] = pd.to_numeric(df["kl_divergence"], errors="coerce")
 # Keep only STMTS and STMTS_direct
 subset = df[(df["nonTerminal"].isin(["STMTS", "STMTS_direct"]))]
 
-# Check if we have data
-print(f"Number of STMTS_direct entries: {subset[subset['nonTerminal'] == 'STMTS_direct'].shape[0]}")
-print(f"Number of STMTS entries: {subset[subset['nonTerminal'] == 'STMTS'].shape[0]}")
+# Check counts
+print(f"Number of 'from scratch' entries: {subset[subset['nonTerminal'] == 'STMTS_direct'].shape[0]}")
+print(f"Number of 'with pretraining' entries: {subset[subset['nonTerminal'] == 'STMTS'].shape[0]}")
 
 # Split into groups
-stmts_direct = subset[subset["nonTerminal"] == "STMTS_direct"]["kl_divergence"].values
-stmts = subset[subset["nonTerminal"] == "STMTS"]["kl_divergence"].values
+from_scratch = subset[subset["nonTerminal"] == "STMTS_direct"]["kl_divergence"].values
+with_pretraining = subset[subset["nonTerminal"] == "STMTS"]["kl_divergence"].values
 
-fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-
-# Boxplot - use tick_labels instead of labels (deprecated parameter)
-axes[0].boxplot([stmts_direct, stmts], tick_labels=["STMTS_direct", "STMTS"])
-axes[0].set_title("KL Divergence Distribution (Boxplot)")
-axes[0].set_ylabel("KL Divergence")
-
-# Find range for histogram automatically
-min_val = min(np.min(stmts_direct), np.min(stmts))
-max_val = max(np.max(stmts_direct), np.max(stmts))
-bins = np.linspace(min_val - 0.1, max_val + 0.1, 15)  # automatic range
-
-# Histogram
-axes[1].hist(stmts_direct, bins=bins, alpha=0.6, label="STMTS_direct")
-axes[1].hist(stmts, bins=bins, alpha=0.6, label="STMTS")
-axes[1].set_title("KL Divergence Distribution (Histogram)")
-axes[1].set_xlabel("KL Divergence")
-axes[1].set_ylabel("Frequency")
-axes[1].legend()
+# --- Boxplot ---
+fig, ax = plt.subplots(figsize=(4, 3))
+ax.boxplot([from_scratch, with_pretraining], tick_labels=["from scratch", "with pretraining"])
+#ax.set_title("KL Divergence Distribution (Boxplot)")
+ax.set_ylabel("KL Divergence")
 
 plt.tight_layout()
-plt.savefig("../results/kl_comparison_plot.png")
+plt.savefig("../results/kl_comparison_boxplot.png", dpi=300)
 plt.show()
+plt.close()
 
-# Print statistics
+# --- Histogram ---
+min_val = min(np.min(from_scratch), np.min(with_pretraining))
+max_val = max(np.max(from_scratch), np.max(with_pretraining))
+bins = np.linspace(min_val - 0.1, max_val + 0.1, 15)
+
+fig, ax = plt.subplots(figsize=(4.3, 3))
+ax.hist(from_scratch, bins=bins, alpha=0.6, label="from scratch")
+ax.hist(with_pretraining, bins=bins, alpha=0.6, label="with pretraining")
+#ax.set_title("KL Divergence Distribution", fontsize=18)
+ax.set_xlabel("final KL Divergence")
+ax.set_ylabel("Frequency")
+ax.tick_params(axis='both', which='major')
+ax.legend()
+plt.tight_layout()
+plt.savefig("../results/kl_comparison_hist.png", dpi=300)
+plt.show()
+plt.close()
+
+# --- Statistics ---
 print("\nStatistics:")
-print(f"STMTS_direct: mean={np.mean(stmts_direct):.4f}, std={np.std(stmts_direct):.4f}")
-print(f"STMTS: mean={np.mean(stmts):.4f}, std={np.std(stmts):.4f}")
-print(f"Difference (direct - pretrained): {np.mean(stmts_direct) - np.mean(stmts):.4f}")
+print(f"from scratch: mean={np.mean(from_scratch):.4f}, std={np.std(from_scratch):.4f}")
+print(f"with pretraining: mean={np.mean(with_pretraining):.4f}, std={np.std(with_pretraining):.4f}")
+print(f"Difference (from scratch - with pretraining): {np.mean(from_scratch) - np.mean(with_pretraining):.4f}")

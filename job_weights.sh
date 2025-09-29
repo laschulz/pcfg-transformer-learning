@@ -4,7 +4,7 @@ SUPERGRAMMAR="PythonPCFG"
 SUPERGRAMMAR_SYMBOL="STMTS"
 SUBGRAMMAR_SYMBOL="compound_stmt"
 DATASET_SIZE=50000 #50k
-MODEL="TwoLayer_LARGER"
+MODEL="FourLayer"
 
 #cd /om2/user/laschulz/pcfg-transformer-learning/src
 cd src
@@ -15,7 +15,7 @@ cd src
 #     --tokenizer_path "../data/${SUPERGRAMMAR}/${SUPERGRAMMAR}_${DATASET_SIZE}_${SUPERGRAMMAR_SYMBOL}/tokenizer.json" --max_len 250
 
 python weight_space.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --model $MODEL \
-    --grammar_startsymbol $SUPERGRAMMAR_SYMBOL --subgrammar_startsymbol $SUBGRAMMAR_SYMBOL --num_epochs_direct 45 --num_epochs_pretrain 5 --start_seed 20
+    --grammar_startsymbol $SUPERGRAMMAR_SYMBOL --subgrammar_startsymbol $SUBGRAMMAR_SYMBOL --num_epochs_direct 40 --num_epochs_pretrain 10 --start_seed 20
 
 # python generate_pcfg.py --grammar PythonPCFG --dataset_size 50000 --start_symbol STMTS --max_len 250
 
@@ -23,4 +23,4 @@ python weight_space.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --mo
 #   --tokenizer_path "../data/PythonPCFG/PythonPCFG_50000_STMTS/tokenizer.json" --max_len 250
 
 # python weight_space.py --grammar PythonPCFG --dataset_size 50000 --model TwoLayer \
-#   --grammar_startsymbol STMTS --subgrammar_startsymbol compound_stmt --num_epochs_direct 30 --num_epochs_pretrain 3 --start_seed 19
+#   --grammar_startsymbol STMTS --subgrammar_startsymbol compound_stmt --num_epochs_direct 45 --num_epochs_pretrain 5 --start_seed 20

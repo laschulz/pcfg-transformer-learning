@@ -13,8 +13,8 @@ import json
 from transformers import PreTrainedTokenizerFast
 from scipy.stats import spearmanr
 
-NUM_SEEDS = 30
-SPECIFIC_SEEDS = [] #[30, 39, 41, 42, 46, 47]# [32, 34, 38, 48, 49]
+NUM_SEEDS = 50
+SPECIFIC_SEEDS = [] #[21, 23, 24, 30, 32, 34, 42, 46]
 
 # per-layer L2 distance between two models
 def per_layer_l2(model1, model2):
@@ -127,23 +127,23 @@ def compute_rdms_per_layer(seq_reps: dict, device=None) -> dict:
         rdms[k] = D.detach().cpu().numpy()
     return rdms
 
-# def subsample_seq_reps(seq_reps: dict, max_seqs: int = None, seed: int = 0) -> dict:
-#     """Pick same subset of sequences across all layers for a model."""
-#     if max_seqs is None:
-#         return seq_reps
-#     # find N from first present layer
-#     first = next((v for v in seq_reps.values() if isinstance(v, torch.Tensor) and v.numel() > 0), None)
-#     if first is None:
-#         return seq_reps
-#     N = first.shape[0]
-#     if N <= max_seqs:
-#         return seq_reps
-#     g = torch.Generator().manual_seed(seed)
-#     idx = torch.randperm(N, generator=g)[:max_seqs]
-#     out = {}
-#     for k, X in seq_reps.items():
-#         out[k] = X[idx] if isinstance(X, torch.Tensor) and X.shape[0] == N else X
-#     return out
+def subsample_seq_reps(seq_reps: dict, max_seqs: int = None, seed: int = 0) -> dict:
+    """Pick same subset of sequences across all layers for a model."""
+    if max_seqs is None:
+        return seq_reps
+    # find N from first present layer
+    first = next((v for v in seq_reps.values() if isinstance(v, torch.Tensor) and v.numel() > 0), None)
+    if first is None:
+        return seq_reps
+    N = first.shape[0]
+    if N <= max_seqs:
+        return seq_reps
+    g = torch.Generator().manual_seed(seed)
+    idx = torch.randperm(N, generator=g)[:max_seqs]
+    out = {}
+    for k, X in seq_reps.items():
+        out[k] = X[idx] if isinstance(X, torch.Tensor) and X.shape[0] == N else X
+    return out
 
 def _num_sequences(seq_reps: dict) -> int:
     """Return N for the first valid (N, D) tensor found, else 0."""
@@ -201,6 +201,7 @@ def rsa_similarity_between_rdms(rdm1: np.ndarray, rdm2: np.ndarray, method) -> f
     v1 = _upper_tri_vec(rdm1)
     v2 = _upper_tri_vec(rdm2)
     if method == "spearman":
+        rho = 0
         rho, _ = spearmanr(v1, v2)
         return float(rho)
     else:
@@ -352,8 +353,8 @@ def compute_cka(X, Y):
     X = X - X.mean(0, keepdim=True)
     Y = Y - Y.mean(0, keepdim=True)
 
-    num = torch.linalg.norm(X.T @ Y, ord="fro")**2
-    den = torch.linalg.norm(X.T @ X, ord="fro") * torch.linalg.norm(Y.T @ Y, ord="fro") + 1e-12
+    num = torch.linalg.norm(X.mT @ Y, ord="fro")**2
+    den = torch.linalg.norm(X.mT @ X, ord="fro") * torch.linalg.norm(Y.mT @ Y, ord="fro") + 1e-12
     return float((num / den).item())
 
 def compute_cka_matrix(acts_list1, acts_list2, diagonal_only=False, skip_diagonals=False):
@@ -489,7 +490,7 @@ def list_of_models_from_checkpoints(checkpoints, config):
     models = []
     for checkpoint in checkpoints:
         model_instance = GPT(config)  # create a fresh model instance
-        state_dict = torch.load(checkpoint)
+        state_dict = torch.load(checkpoint, map_location=torch.device('cpu')) # loading to CPU
         model_instance.load_state_dict(state_dict)
         models.append(model_instance)
     return models
@@ -506,17 +507,13 @@ def loop_over_seeds_and_train(grammar, dataset_size, grammar_startsymbol, subgra
         model.apply(model._init_weights)
 
         # train directly
-        trainer(model, grammar, config, f'{dataset_size}_{grammar_startsymbol}', checkpoint_path=None, checkpoint_every=num_epochs_direct,
-                num_epochs=num_epochs_direct, save_first_x_epochs=0, continue_from=0, 
+        trainer(model, grammar, config, f'{dataset_size}_{grammar_startsymbol}', checkpoint_path=None, checkpoint_every=num_epochs_direct+num_epochs_pretrain,
+                num_epochs=num_epochs_direct+num_epochs_pretrain, save_first_x_epochs=0, continue_from=0, 
                 continue_training=False, device=device, seed=i, safe_only_last=True)
-
-        # trainer(model, grammar, config, dataset_size, checkpoint_path=None, checkpoint_every=num_epochs_direct+num_epochs_pretrain,
-        #         num_epochs=num_epochs_direct+num_epochs_pretrain, save_first_x_epochs=0, continue_from=0, 
-        #         continue_training=False, device=device, seed=i)
             
         # train on subgrammar
-        # model = GPT(config).to(device) 
-        # model.apply(model._init_weights)
+        model = GPT(config).to(device) 
+        model.apply(model._init_weights)
 
         trainer(model, grammar, config, f'{dataset_size}_{subgrammar_startsymbol}', checkpoint_path=None, checkpoint_every=num_epochs_pretrain,
                 num_epochs=num_epochs_pretrain, save_first_x_epochs=0,continue_from=0, 
@@ -617,15 +614,15 @@ def main():
 
     base_dir = f'../data/{args.grammar}/{args.grammar}_{args.dataset_size}'
 
-    loop_over_seeds_and_train(args.grammar, 
-                              args.dataset_size, 
-                              args.grammar_startsymbol,
-                              args.subgrammar_startsymbol,
-                              args.num_epochs_direct, 
-                              args.num_epochs_pretrain,
-                              config, 
-                              device,
-                              start_seed=args.start_seed)
+    # loop_over_seeds_and_train(args.grammar, 
+    #                           args.dataset_size, 
+    #                           args.grammar_startsymbol,
+    #                           args.subgrammar_startsymbol,
+    #                           args.num_epochs_direct, 
+    #                           args.num_epochs_pretrain,
+    #                           config, 
+    #                           device,
+    #                           start_seed=args.start_seed)
 
     
     # load tokenizer
@@ -633,28 +630,10 @@ def main():
     tokenizer = PreTrainedTokenizerFast(tokenizer_file=tokenizer_path, bos_token="<|bos|>", eos_token="<|eos|>")
 
     # pretraining vs full pretraining on subgrammar
-    # direct_l2, direct_l2_pl, direct_cos, direct_cka, direct_rsa = difference_same_seed(train_type='new',
-    #                      config=config,
-    #                      tokenizer=tokenizer,
-    #                      base_dir=f"{base_dir}_{args.subgrammar_startsymbol}",
-    #                      test_dir=f"{base_dir}_{args.subgrammar_startsymbol}")
-    # continued_l2, continued_l2_pl, continued_cos, continued_cka, continued_rsa = difference_same_seed(train_type='continued',
-    #                     config=config,
-    #                     tokenizer=tokenizer,
-    #                     base_dir=f"{base_dir}_{args.grammar_startsymbol}",
-    #                     test_dir=f"{base_dir}_{args.subgrammar_startsymbol}")
-    # pretrain_vs_direct_l2, pretrain_vs_direct_l2_pl, pretrain_vs_direct_cos, pretrain_vs_direct_cka, pretrain_vs_direct_rsa = difference_pretrain_and_direct(config, 
-    #                                                                                 tokenizer=tokenizer, 
-    #                                                                                 dir1=f'{base_dir}_{args.subgrammar_startsymbol}/{args.model}/new', 
-    #                                                                                 dir2=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/continued',
-    #                                                                                 test_dir =f'{base_dir}_{args.subgrammar_startsymbol}'
-    #                                                                                 )
-
-    # full pretraining vs direct training on subgrammar
     direct_l2, direct_l2_pl, direct_cos, direct_cka, direct_rsa = difference_same_seed(train_type='new',
                          config=config,
                          tokenizer=tokenizer,
-                         base_dir=f"{base_dir}_{args.grammar_startsymbol}",
+                         base_dir=f"{base_dir}_{args.subgrammar_startsymbol}",
                          test_dir=f"{base_dir}_{args.subgrammar_startsymbol}")
     continued_l2, continued_l2_pl, continued_cos, continued_cka, continued_rsa = difference_same_seed(train_type='continued',
                         config=config,
@@ -663,10 +642,28 @@ def main():
                         test_dir=f"{base_dir}_{args.subgrammar_startsymbol}")
     pretrain_vs_direct_l2, pretrain_vs_direct_l2_pl, pretrain_vs_direct_cos, pretrain_vs_direct_cka, pretrain_vs_direct_rsa = difference_pretrain_and_direct(config, 
                                                                                     tokenizer=tokenizer, 
-                                                                                    dir1=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/new', 
+                                                                                    dir1=f'{base_dir}_{args.subgrammar_startsymbol}/{args.model}/new', 
                                                                                     dir2=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/continued',
                                                                                     test_dir =f'{base_dir}_{args.subgrammar_startsymbol}'
                                                                                     )
+
+    # full pretraining vs direct training on subgrammar
+    # direct_l2, direct_l2_pl, direct_cos, direct_cka, direct_rsa = difference_same_seed(train_type='new',
+    #                      config=config,
+    #                      tokenizer=tokenizer,
+    #                      base_dir=f"{base_dir}_{args.grammar_startsymbol}",
+    #                      test_dir=f"{base_dir}_{args.subgrammar_startsymbol}")
+    # continued_l2, continued_l2_pl, continued_cos, continued_cka, continued_rsa = difference_same_seed(train_type='continued',
+    #                     config=config,
+    #                     tokenizer=tokenizer,
+    #                     base_dir=f"{base_dir}_{args.grammar_startsymbol}",
+    #                     test_dir=f"{base_dir}_{args.subgrammar_startsymbol}")
+    # pretrain_vs_direct_l2, pretrain_vs_direct_l2_pl, pretrain_vs_direct_cos, pretrain_vs_direct_cka, pretrain_vs_direct_rsa = difference_pretrain_and_direct(config, 
+    #                                                                                 tokenizer=tokenizer, 
+    #                                                                                 dir1=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/new', 
+    #                                                                                 dir2=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/continued',
+    #                                                                                 test_dir =f'{base_dir}_{args.subgrammar_startsymbol}'
+    #                                                                                 )
 
     # full pretraining vs direct training on full grammar
     # direct_l2, direct_l2_pl, direct_cos, direct_cka, direct_rsa = difference_same_seed(train_type='new',

@@ -17,7 +17,8 @@ from eval import compare_model_vs_real_probs_subgrammar
 from def_pcfgs import GRAMMARS
 
 RUN_PYTHON_GRAMMAR = False  # Set to True if you want to run the Python grammar analysis
-DIVIDER = 600  # Used for normalizing KL divergence in plots
+DIVIDER = 650  # Used for normalizing KL divergence in plots
+TEST_SET_SIZE = 1000  # Number of test sequences to evaluate
 
 NT2COLOR = {
     "L0":       "#1f77b4",
@@ -25,15 +26,20 @@ NT2COLOR = {
     "L1_direct": "#ff7f0e",
     "L1":       "#ff7f0e",
     "L1_2":     "#d62728",
-    "L1_2b":    "#d6275e", 
+    "L1b":     "#d62728",
+    "L1c":     "#d6279f",
     "L1_3":     "#e377c2",
     "L1_3c":    "#9467bd", 
-    "L2":       "#d62770", 
+    "L2":       "#d62770",
+    "L2_1":       "#d62770", 
     "L2_2":     "#1ea054", 
     "L2_3":     "#1f77b4", 
     "L2_3b":    "#2B9E91", 
     "L2_3c":    "#892362",  
     "L4":       "#7f7f7f",
+    "L3":       "#8c564b",
+    "START":       "#3724c4",  # pink
+    "START_simple": "#ff1493",  # deep pink
     "STMTS":    "#bcbd22",  # yellow
     "STMTS_direct": "#2B9E91",
     "overhead": "#25d1ec", 
@@ -90,15 +96,15 @@ def generate_test_subgrammar_set(grammar_name: str, nt: str, num_sequences: int)
     grammar_name = f"{grammar_name}" #_subgrammar" # we need the subgrammar version with the start and end markers
     grammar = GRAMMARS[grammar_name]
     start_symbol = list(grammar)[0]
-    print(grammar_name)
-    print(start_symbol)
+
+    print(grammar_name, start_symbol)
     print(nt)
 
     sequences = []
-    while len(sequences) < num_sequences: # TODO: change this
+    while len(sequences) < num_sequences:
         seq, _ = sample(grammar_name, start_symbol, max_len=200)
         if f"s{nt.symbol()}" in seq and f"e{nt.symbol()}" in seq:
-            sequences.append(seq)
+            sequences.append(seq)   
     return sequences
 
 def prepare_test_sequences(parser, nt, main_dir, top_level: bool, grammar_name: str):
@@ -106,8 +112,8 @@ def prepare_test_sequences(parser, nt, main_dir, top_level: bool, grammar_name: 
         with open(f"{main_dir}/test.jsonl", 'r') as f:
             test_sequences = [json.loads(line)["sequence"] for line in f]
     else:
-        test_sequences = generate_test_subgrammar_set(grammar_name, nt, 1000)
-        print(len(test_sequences), "is length of test sequences for subgrammar", nt.symbol())
+        test_sequences = generate_test_subgrammar_set(grammar_name, nt, TEST_SET_SIZE)
+        print(test_sequences[:2])
 
     relevant_test_sequences = []
     probabilities = []
@@ -126,7 +132,7 @@ def prepare_test_sequences(parser, nt, main_dir, top_level: bool, grammar_name: 
 def prepare_overhead_sequences(grammar_name, start_symbol): # todo change here
     grammar = GRAMMARS[grammar_name]
     start_symbol = list(grammar)[0]
-    test_sequences = sample_many(grammar_name, start_symbol, 1000, max_len=200)
+    test_sequences = sample_many(grammar_name, start_symbol, TEST_SET_SIZE, max_len=200)
     print(len(test_sequences), "is length of test sequences for overhead")
 
     relevant_test_sequences = []
@@ -138,7 +144,6 @@ def prepare_overhead_sequences(grammar_name, start_symbol): # todo change here
             if token == "sL2_1" or token == "sL2_3" or token == "sL2_2":
                 relevant_test_sequences.append((i, i, seq))
                 probabilities.append(0.0)
-                #probabilities.append(math.log(1.0))
         # also append EOS
         relevant_test_sequences.append((len(tokens), len(tokens), seq))
         probabilities.append(0.0)
@@ -163,7 +168,7 @@ def prepare_eos_test_sequences(main_dir):
     return test_sequences_with_probs, len(relevant_test_sequences)
 
 def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar,
-                                  to_epoch, dataset_name, model_name, train_type, seed, prob_of_occuring = 1.0):
+                                  to_epoch, dataset_name, model_name, train_type, seeds, prob_of_occuring = 1.0):
 
     # Initialize model and load results
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -194,14 +199,15 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar,
     #     #print(compound_stmt_count)
     nt = Nonterminal(nonTerminal)
     if subgrammar == "overhead":
-        test_sequences, num_sequences = prepare_overhead_sequences(grammar_name, nt)
+        test_sequences, _ = prepare_overhead_sequences(grammar_name, nt)
+        test_sequences = test_sequences[:TEST_SET_SIZE]
         nonTerminal = "overhead"
-        num_sequences = 1000
     elif subgrammar == "eos_test":
         test_sequences, num_sequences = prepare_eos_test_sequences(main_dir)
     else:
         parser = PARSERS[subgrammar]
-        test_sequences, num_sequences = prepare_test_sequences(parser, nt, main_dir, subgrammar == grammar_name, grammar_name) # note: was subgrammar
+        test_sequences, num_sequences = prepare_test_sequences(parser, nt, main_dir, subgrammar == grammar_name, grammar_name)
+        test_sequences = test_sequences[:TEST_SET_SIZE]
     
 
     # Load master results file that contains all grammars
@@ -212,7 +218,7 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar,
     else:
         all_grammar_results = {}
     
-    seed = str(seed)
+    seed = str(seeds[0])
     # Initialize grammar entry if it doesn't exist
     all_grammar_results.setdefault(model_name, {})
     all_grammar_results[model_name].setdefault(grammar_name, {})
@@ -233,7 +239,7 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar,
         )
 
         diffs = compare_model_vs_real_probs_subgrammar(model, tokenizer, test_sequences, device)
-        kl_divergence = sum([d['abs_logprob_diff'] for d in diffs]) / 1000 * prob_of_occuring
+        kl_divergence = sum([d['abs_logprob_diff'] for d in diffs]) / TEST_SET_SIZE * prob_of_occuring
         
         # Add results for this epoch under the grammar's entry
         all_grammar_results[model_name][grammar_name][seed][nonTerminal][ckpt] = {
@@ -249,14 +255,13 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar,
     print(f"Updated hierarchy analysis results for {grammar_name} in {master_results_path}")
     return all_grammar_results
     
-def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seed, to_epoch: int = None, for_paper: bool = False):
+def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seeds: list[int], to_epoch: int = None, for_paper: bool = False):
     """
     Generate separate line charts for KL divergence and accuracy per subgrammar, keeping distinct colors.
     """
     with open(results_path, 'r') as f:
         all_results = json.load(f)
-    seeds = [seed]
-    plt.figure(figsize=(8, 5))
+    plt.figure(figsize=(4.8, 3))
     for seed1 in seeds:
         grammar_data = all_results[model_name][grammar_name][f'{seed1}']
 
@@ -270,7 +275,7 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seed
             #color = "#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
             for ckpt, data in grammar_data[nt].items():
                 e , s = epoch_step_num(ckpt)
-                if to_epoch and e > to_epoch:
+                if to_epoch and e > 0: #to_epoch:
                     continue
                 data_points.append((e, s, data['kl_divergence']))
             
@@ -278,7 +283,8 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seed
             data_points.sort(key=lambda x: (x[0], x[1]))
             
             if data_points:
-                x_values = [e + s/DIVIDER for e, s, _ in data_points] 
+                #x_values = [(e * 350 + s) if e <= 2 else ((e-3)*950 + s + 1050) for e, s, _ in data_points] 
+                x_values = [e + s/DIVIDER for e, s, _ in data_points]
                 y_values = [kl for _, _, kl in data_points]
             
             if for_paper:
@@ -287,24 +293,32 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seed
                 else:
                     legend_label = "with pretraining"
             else:
-                if nt == "L1" or nt == "overhead":
+                if nt == "L0" or nt == "overhead":
                     legend_label = nt
+                elif nt == "START":
+                    legend_label = "L0"
+                elif nt == "START_simple":
+                    legend_label = "outer subgrammar"
+                # elif nt == "L2":
+                #     legend_label = "subgrammar L2_1"
                 else:
-                    legend_label = f"subgrammar_{nt}" # f"{nt}_{seed1}"
+                    legend_label = f"subgrammar {nt}" # f"{nt}_{seed1}"
                 
             plt.plot(x_values, y_values, marker='o', linestyle='-', label=legend_label, color=color)
-            
-    plt.xlabel('Percentage of Training Data seen', fontsize=14)
-    plt.ylabel('KL Divergence', fontsize=14)
+    
+    #plt.axvspan(0, 1050, color="lightgray", alpha=0.4, label="pretrain on subgrammar")
+
+    plt.xlabel('Epochs')
+    plt.ylabel('KL Divergence')
     #plt.yscale('log')
-    plt.title('Compositionality of KL Divergence', fontsize=18)
+    #plt.title('Compositionality of KL Divergence', fontsize=18)
     #plt.title(f'KL Divergence over Epochs for {grammar_name}')
-    plt.grid(alpha=0.3)
-    plt.legend(fontsize=14)
-    plt.xticks(fontsize=12)
-    plt.yticks(fontsize=12)
+
+    plt.legend()
+    plt.xticks()
+    plt.yticks()
     plt.tight_layout()
-    plt.savefig(f"../results/kl_divergence_plot_{model_name}_{grammar_name}.png")
+    plt.savefig(f"../results/kl_divergence_plot_{model_name}_{grammar_name}.png", dpi=300)
     plt.close()
 
 def plot_combined_kl_accuracy(results_path: str, grammar_model_pairs: List[Tuple[str, str, int]], to_epoch: int = None, for_paper: bool = False):
@@ -361,6 +375,7 @@ def collect_kl_table(results_path: str, grammar_name: str, model_name: str, nonT
     #iterate over all seeds for this grammar and model and loop over all seeds and take last epoch of this nonTerminal 
     seeds = all_results[model_name][grammar_name].keys()
     for seed in seeds:
+        print("Processing seed:", seed)
         grammar_data = all_results[model_name][grammar_name][f'{seed}']
         nonterminals = list(grammar_data.keys())
         if nonTerminal in nonterminals:
@@ -377,7 +392,7 @@ def main():
         collect_kl_table("../results/hierarchy_analysis.json", args.grammar, args.model, args.nonTerminal)
         return
     if args.plot_only:
-        plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.model, args.seed, args.to_epoch)
+        plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.model, args.seeds, args.to_epoch)
     #     plot_combined_kl_accuracy(
     #     "../results/hierarchy_analysis.json", 
     #     [
@@ -389,8 +404,8 @@ def main():
     #     to_epoch=50
     # )
         return
-    analyze_hieararchy_all_epochs(args.grammar, args.nonTerminal, args.subgrammar, args.to_epoch, args.dataset_name, args.model, args.train_type, args.seed, args.prob_of_occurring)     
-    plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.model, args.seed, args.to_epoch)
+    analyze_hieararchy_all_epochs(args.grammar, args.nonTerminal, args.subgrammar, args.to_epoch, args.dataset_name, args.model, args.train_type, args.seeds, args.prob_of_occurring)     
+    plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.model, args.seeds, args.to_epoch)
 
 # Update argument parser to include plot-only option
 def argument_parser():
@@ -403,7 +418,7 @@ def argument_parser():
     parser.add_argument("--to_epoch", type=int, default=None, help="Number of epochs to analyze.")
     parser.add_argument("--model", type=str, default="FourLayer", help="Type of GPT model to use")
     parser.add_argument("--train_type", type=str, default="new", help="Type of training to analyze (new, continued)")
-    parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility")
+    parser.add_argument("--seeds", type=int, nargs='+', default=[42], help="Random seed for reproducibility")
     parser.add_argument("--create_table", action='store_true', help="If set, create a KL divergence table.")
     parser.add_argument("--prob_of_occurring", type=float, default=1.0, help="Probability of subgrammar occuring")
 
