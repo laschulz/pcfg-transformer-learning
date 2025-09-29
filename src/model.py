@@ -108,7 +108,7 @@ class Block(nn.Module):
         return x
 
 @dataclass
-class GPT2Config: # 124M params
+class GPT2Config:
     block_size: int = 1024
     vocab_size: int = 50304 # GPT-2 vocab_size of 50257, padded up to nearest multiple of 64 for efficiency
     n_layer: int = 12 
@@ -117,27 +117,17 @@ class GPT2Config: # 124M params
     dropout: float = 0.0 
     bias: bool = True # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
 
-class SixLayer:
-    block_size = 128           
-    vocab_size = 64          
-    n_layer = 6                
-    n_head = 8                
-    n_embd = 512              
-    dropout = 0.1              
-    bias = True
-    name = "SixLayer"
-
-class FourLayer: # 0.89M params
-    block_size = 256    #128       
+class FourLayer:
+    block_size = 256    
     vocab_size = 100          
     n_layer = 4                
     n_head = 4                
-    n_embd = 8    #128           
+    n_embd = 8         
     dropout = 0.1              
     bias = True
     name = "FourLayer"
 
-class TwoLayer: #12k params
+class TwoLayer:
     block_size = 256        
     vocab_size = 100     
     n_layer = 2                
@@ -147,7 +137,7 @@ class TwoLayer: #12k params
     bias = True
     name = "TwoLayer"
 
-class TwoLayer_31: #12k params
+class TwoLayer_31:
     block_size = 256        
     vocab_size = 5   
     n_layer = 2                
@@ -157,7 +147,7 @@ class TwoLayer_31: #12k params
     bias = True
     name = "TwoLayer_31"
 
-class TwoLayer_SMALL: #1.6k params
+class TwoLayer_SMALL:
     block_size = 256        
     vocab_size = 100     
     n_layer = 2                
@@ -177,16 +167,15 @@ class OneLayer: #22k
     bias = True
     name = "OneLayer"
 
-
-# class OneLayer: #22k
-#     block_size = 256           
-#     vocab_size = 100          
-#     n_layer = 1              
-#     n_head = 1                
-#     n_embd = 32  #32            
-#     dropout = 0.1              
-#     bias = True
-#     name = "OneLayer"
+class OneLayer: #22k
+    block_size = 256           
+    vocab_size = 100          
+    n_layer = 1              
+    n_head = 1                
+    n_embd = 32  #32            
+    dropout = 0.1              
+    bias = True
+    name = "OneLayer"
 
 class OneLayer_BIG: #22k
     block_size = 256           
@@ -314,7 +303,8 @@ class GPT(nn.Module):
     
     def train_model(self, data_dir, dataset, num_epochs, batch_size,
                 learning_rate, weight_decay, betas, 
-                checkpoint_every, config, device, seed, save_first_x_epochs=10, continue_from=0, train_type="new", safe_only_last=False):
+                checkpoint_every, config, device, seed, 
+                continue_from=0, train_type="new", safe_only_last=False):
         
         torch.manual_seed(seed)
         block_size = self.config.block_size

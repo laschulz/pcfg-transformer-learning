@@ -508,7 +508,7 @@ def loop_over_seeds_and_train(grammar, dataset_size, grammar_startsymbol, subgra
 
         # train directly
         trainer(model, grammar, config, f'{dataset_size}_{grammar_startsymbol}', checkpoint_path=None, checkpoint_every=num_epochs_direct+num_epochs_pretrain,
-                num_epochs=num_epochs_direct+num_epochs_pretrain, save_first_x_epochs=0, continue_from=0, 
+                num_epochs=num_epochs_direct+num_epochs_pretrain, continue_from=0, 
                 continue_training=False, device=device, seed=i, safe_only_last=True)
             
         # train on subgrammar
@@ -516,13 +516,13 @@ def loop_over_seeds_and_train(grammar, dataset_size, grammar_startsymbol, subgra
         model.apply(model._init_weights)
 
         trainer(model, grammar, config, f'{dataset_size}_{subgrammar_startsymbol}', checkpoint_path=None, checkpoint_every=num_epochs_pretrain,
-                num_epochs=num_epochs_pretrain, save_first_x_epochs=0,continue_from=0, 
+                num_epochs=num_epochs_pretrain, continue_from=0, 
                 continue_training=False, device=device, seed=i, safe_only_last=True)
 
         # train on full grammar after pretraining
         checkpoint_path = f'../data/{grammar}/{grammar}_{dataset_size}_{subgrammar_startsymbol}/{config.name}/new/seed_{i}/epoch_{num_epochs_pretrain}_0.pt'
         trainer(model, grammar, config, f'{dataset_size}_{grammar_startsymbol}', checkpoint_path=checkpoint_path, checkpoint_every=num_epochs_direct,
-                num_epochs=num_epochs_direct, save_first_x_epochs=0, continue_from=num_epochs_pretrain, 
+                num_epochs=num_epochs_direct, continue_from=num_epochs_pretrain, 
                 continue_training=True, device=device, seed=i, safe_only_last=True) 
 
 def plot_l2_distances(distances, grammar, dataset_size, train_type):

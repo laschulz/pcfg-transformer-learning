@@ -5,17 +5,13 @@ import numpy as np
 import json
 import argparse
 
-from tokenizers import Tokenizer, models, trainers, pre_tokenizers
-from tokenizers.normalizers import NFD, Lowercase, StripAccents, Sequence as NormalizerSequence
-from tokenizers.pre_tokenizers import Whitespace
+from tokenizers import Tokenizer, models, pre_tokenizers
 from tokenizers.processors import TemplateProcessing
 from transformers import PreTrainedTokenizerFast
 from nltk.grammar import PCFG
 from nltk.parse import ViterbiParser
 
 from def_pcfgs import GRAMMARS
-
-DATASET_SIZE = 1000
 
 def dict_to_pcfg(table):
     """Convert rule table to an nltk-parsable PCFG string."""
@@ -40,13 +36,6 @@ def validate(tokenizer, sequence, grammar_name, max_len):
     else:
         return True
 
-    # try:
-    #     is_valid = any(PARSERS[grammar_name].parse(tokens))
-    #     return is_valid
-    # except ValueError as err:          # token not covered by the grammar
-    #     print(f"[VALIDATION ERROR - {grammar_name}] {tokens}\n{err}\n")
-    #     return False
-
 def save_dataset(test_pairs, out_dir):
     os.makedirs(out_dir, exist_ok=True)
     with open(f"{out_dir}/test.jsonl", "w") as f:
@@ -55,7 +44,6 @@ def save_dataset(test_pairs, out_dir):
                 "sequence": seq,
                 "real_log_prob": log_prob
             }) + "\n")
-
 
 def sample(grammar_name, start_symbol, max_len):
     tbl = GRAMMARS[grammar_name]
@@ -185,10 +173,9 @@ def generate_pcfg(grammar, start_symbol, dataset_size, max_len, tokenizer_path):
 
     # 3) BPE tokenisation
     if tokenizer_path:     #load tokenizer from path
-        print(tokenizer_path)
         tok_path = tokenizer_path 
         tok_fast = PreTrainedTokenizerFast(tokenizer_file=tok_path, bos_token="<|bos|>", eos_token="<|eos|>")
-        print(tok_fast.get_vocab())
+        print("Tokenizer vocabulary is: ", tok_fast.get_vocab())
     else:
         tok_path = f"{out_dir}/tokenizer.json"
         tok_fast = build_fixed_tokenizer(grammar, tok_path)
@@ -203,11 +190,12 @@ def parse_args():
         description="Generate and optionally tokenise PCFG datasets.")
     parser.add_argument("--grammar", choices=sorted(GRAMMARS),
                         help="Name of the grammar to use.")
-    parser.add_argument("--dataset_size","-n",type=int,default=1000,
-                        help="Number of sequences to generate.")
+    parser.add_argument("--dataset_size", type=int,default=50000,
+                        help="Number of training sequences to generate.")
     parser.add_argument("--start_symbol", type=str,default="L0"),
-    parser.add_argument("--tokenizer_path", type=str, default=None)
-    parser.add_argument("--max_len",type=int,default=100,
+    parser.add_argument("--tokenizer_path", type=str, default=None,
+                        help="Path to a tokenizer.json file. If not provided, a new tokenizer will be built.")
+    parser.add_argument("--max_len",type=int,default=200,
                         help="Max symbols per generated sequence.")
     return parser.parse_args()
 

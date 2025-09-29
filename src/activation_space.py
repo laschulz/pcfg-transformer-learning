@@ -200,7 +200,7 @@ def load_sequences_from_file(path):
     else:
         raise ValueError(f"Expected 1 or 2 blocks of sequences, got {len(parts)}")
 
-def main():
+def parse_args():
     parser = argparse.ArgumentParser(description="Analyze sequence activation similarity using CKA")
     parser.add_argument("--model", type=str, required=True, help="Model architecture name")
     parser.add_argument("--base_dir", type=str, required=True, help="Path to model checkpoint")
@@ -210,7 +210,10 @@ def main():
     parser.add_argument("--output", type=str, default="../results/seq_similarity", help="Base output path")
     parser.add_argument("--sequence_file", type=str, default="sequences.txt", help="File containing sequences to analyze")
     parser.add_argument("--plot", action="store_true", help="Whether to plot the heatmaps")
-    args = parser.parse_args()
+    return parser.parse_args()
+
+def main():
+    args = parse_args()
     
     # Load sequences
     seq_A, seq_B = load_sequences_from_file(args.sequence_file)

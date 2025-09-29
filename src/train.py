@@ -1,23 +1,20 @@
 import torch
 import argparse
-from model import GPT, TwoLayer, FourLayer, SixLayer, OneLayer, TwoLayer_SMALL, OneLayer_BIG, TwoLayer_31
+from model import *
 import os
 import shutil
-import re
 
 def map_model_name(model_name):
-    if model_name == "TwoLayer":
-        return TwoLayer()
-    elif model_name == "FourLayer":
+    if model_name == "FourLayer":
         return FourLayer()
-    elif model_name == "SixLayer":
-        return SixLayer()
-    elif model_name == "OneLayer":
-        return OneLayer()
+    elif model_name == "TwoLayer":
+        return TwoLayer()
     elif model_name == "TwoLayer_SMALL":
         return TwoLayer_SMALL()
     elif model_name == "TwoLayer_31":
         return TwoLayer_31()
+    elif model_name == "OneLayer":
+        return OneLayer()
     elif model_name == "OneLayer_BIG":
         return OneLayer_BIG()
     else:
@@ -29,20 +26,17 @@ def parse_args():
     parser.add_argument("--dataset_name", type=str, required=True)
     parser.add_argument("--model", type=str, default="FourLayer", help="Type of GPT model to use")
     parser.add_argument("--checkpoint_path", type=str, default=None, help="Optional path to checkpoint to load")
-    parser.add_argument("--continue_training", action='store_true', help="Continue training from the checkpoint if provided")
     parser.add_argument("--continue_from", type=int, default=0, help="Epoch to continue training from if continuing")
     parser.add_argument("--num_epochs", type=int, default=50, help="Number of epochs to train the model")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility")
     return parser.parse_args()
 
-def trainer(model, grammar, config, dataset_name, checkpoint_path, checkpoint_every, num_epochs, save_first_x_epochs, continue_from, continue_training, device, seed, safe_only_last=False):
+def trainer(model, grammar, config, dataset_name, checkpoint_path, checkpoint_every, 
+            num_epochs, continue_from, continue_training, device, seed, safe_only_last=False):
     dataset = f"{grammar}_{dataset_name}"
     dir = f'../data/{grammar}/{dataset}'
-    print(dir)
-    if checkpoint_path and os.path.exists(checkpoint_path) and not continue_training:
-        print(f"Loading model from checkpoint: {checkpoint_path}")
-        model.load_state_dict(torch.load(checkpoint_path, map_location=device))
-    elif checkpoint_path and continue_training:
+
+    if checkpoint_path and continue_training:
         print(f"Continuing training from checkpoint: {checkpoint_path}")
         model.load_state_dict(torch.load(checkpoint_path, map_location=device))
         model.train_model(
@@ -53,7 +47,6 @@ def trainer(model, grammar, config, dataset_name, checkpoint_path, checkpoint_ev
             learning_rate=6e-4,
             weight_decay=1e-1,
             betas=(0.9, 0.95),
-            save_first_x_epochs=save_first_x_epochs,
             checkpoint_every=checkpoint_every,
             config=config.name,
             device=device, 
@@ -81,7 +74,6 @@ def trainer(model, grammar, config, dataset_name, checkpoint_path, checkpoint_ev
             learning_rate=6e-4,
             weight_decay=1e-1,
             betas=(0.9, 0.95),
-            save_first_x_epochs=save_first_x_epochs,
             checkpoint_every=checkpoint_every,
             config=config.name,
             device=device,
@@ -99,7 +91,7 @@ def main():
     model = GPT(config).to(device)
 
     trainer(model, args.grammar, config, args.dataset_name, checkpoint_path=checkpoint_path, checkpoint_every=50,
-            num_epochs=args.num_epochs, save_first_x_epochs=10, continue_from=args.continue_from, 
+            num_epochs=args.num_epochs, continue_from=args.continue_from, 
             continue_training=args.continue_training, device=device, seed=args.seed)
 
 if __name__ == "__main__":
