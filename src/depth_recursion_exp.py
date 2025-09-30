@@ -163,7 +163,7 @@ def main():
     path = "../data/nestedParentheses/nestedParentheses_50000_L4"
 
     # 1. generate tokenizer
-    # generate_pcfg("nestedParentheses", "L4", 50000, 200, None)
+    generate_pcfg("nestedParentheses", "L4", 50000, 200, None)
     tokenizer_path = f'{path}/tokenizer.json'
     tokenizer = PreTrainedTokenizerFast(tokenizer_file=tokenizer_path, bos_token="<|bos|>", eos_token="<|eos|>")
 
@@ -184,6 +184,8 @@ def main():
     if args.prefix: # in case further prefices are to be analyzed
         analyze_case(model, tokenizer, gt_logit, 3, args.prefix, args.seeds, path, args.to_epoch, device)
 
+    if args.generate:
+        pass
         # if args.generate:
         #     for i, seq in enumerate(sequences):
         #         seq_new = seq + " a ) ( a ) ( ( ( a )"

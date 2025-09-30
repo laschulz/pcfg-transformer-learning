@@ -13,8 +13,7 @@ from tokenizers.processors import TemplateProcessing
 from model import GPT
 from train import map_model_name
 from generate_pcfg import split_and_tokenize
-from eval import compare_model_vs_real_probs_subgrammar
-from  analysis_hierarchy import epoch_step_num
+from  analysis_hierarchy import epoch_step_num, compare_model_vs_real_probs_subgrammar
 
 def build_fixed_tokenizer(grammar, tok_path, special_tokens=None):
     """

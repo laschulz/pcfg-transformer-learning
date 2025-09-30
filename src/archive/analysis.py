@@ -4,11 +4,49 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 from transformers import PreTrainedTokenizerFast
-from eval import evaluate_generated_sequences
 from model import GPT
+
 
 from train import map_model_name
 import argparse
+
+# def calculate_accuracy(generated_sequences, train_sequences, grammar_name, tokenizer):
+#     """Calculate the accuracy of generated sequences against valid sequences."""
+#     train_set = set(tuple(seq) for seq in train_sequences)
+#     accuracy = sum(validate(tokenizer, seq, grammar_name) for seq in generated_sequences) / len(generated_sequences)
+#     train_overlap = sum(1 for seq in generated_sequences if tuple(seq) in train_set) / len(generated_sequences)
+#     return accuracy, train_overlap
+
+# def evaluate_generated_sequences(model, tokenizer, training_sequences, grammar_name, test_sequences, device, num_samples=50, max_length=128):
+#     """Evaluate generated sequences on accuracy and perplexity."""
+#     generated_sequences = generate_and_score_sequences(model, tokenizer, num_samples, max_length, device)
+#     accuracy, train_overlap = calculate_accuracy(generated_sequences, training_sequences, grammar_name, tokenizer)
+#     res = compare_model_vs_real_probs(model, tokenizer, test_sequences, device)
+#     return generated_sequences, accuracy, train_overlap, res
+
+def generate_and_score_sequences(model, tokenizer, num_samples, max_length, device):
+    """
+    Generate sequences from the model and compute their log-probabilities.
+    """
+    model.eval()
+    results = []
+
+    bos_token_id = tokenizer.bos_token_id
+    eos_token_id = tokenizer.eos_token_id
+
+    with torch.no_grad():
+        for _ in range(num_samples):
+            input_ids = torch.tensor([[bos_token_id]], dtype=torch.long).to(device)
+            output, _ = model.generate(input_ids, max_new_tokens=max_length, eos_token_id=eos_token_id, eos_prob_threshold=0.9)
+
+            # Remove batch dim and compute log-prob
+            sequence = output[0]
+
+            results.append(
+                tokenizer.decode(sequence, skip_special_tokens=True),
+            )
+
+    return results
 
 def plot_results(results_log, model_name, pcfgs=None):
     if pcfgs is not None:

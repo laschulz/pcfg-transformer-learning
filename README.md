@@ -30,6 +30,11 @@ It was used to run the experiments in the paper:
     This directory structure ensures a clear distinction between newly initialized models and those extended from checkpoints.  
     If the same model type is trained on the same PCFG and start symbol, the corresponding folder will be overwritten!
 
+- **`analysis_hierarchy.py`** 
+  This is the main script to analyze the models *after* being trained on a grammar. 
+  To analyze a specific subgrammar, provide its name; otherwise, set `--subgrammar` to the name of the full grammar. It estimates the KL divergence across training epochs and plots it.
+  If `create_table` is passed, it stores the final epoch value for each seed in `kl_table.csv`.  
+
 - **`activation_space.py`**
     To analyze the cosine similarity of models, supports both within-set and cross-set comparisons, aggregates results across seeds and can output per-layer heatmaps. 
     To analyze within-set comparison, the `.txt` file should contain a single block of sequences, one sequence per line. For cross-set comparison, the `.txt` file should contain **two blocks** of sequences, separated by an **empty line** to ensure correct parsing.

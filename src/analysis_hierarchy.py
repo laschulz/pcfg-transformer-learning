@@ -1,50 +1,23 @@
 import json
 from nltk import Nonterminal, ViterbiParser
-from generate_pcfg import PARSERS, sample, sample_many
 import math, random 
 import os
 import torch
 import torch.nn.functional as F
 from model import GPT
-from train import map_model_name
 from transformers import PreTrainedTokenizerFast
 import argparse
 import matplotlib.pyplot as plt
 import numpy as np
 import re
-from typing import List, Dict, Tuple, Any, Set
-from eval import compare_model_vs_real_probs_subgrammar
+from typing import List, Tuple
+from train import map_model_name
+from generate_pcfg import PARSERS, sample, sample_many
 from def_pcfgs import GRAMMARS
 
 RUN_PYTHON_GRAMMAR = False  # Set to True if you want to run the Python grammar analysis
-DIVIDER = 650  # Used for normalizing KL divergence in plots
 TEST_SET_SIZE = 1000  # Number of test sequences to evaluate
-
-NT2COLOR = {
-    "L0":       "#1f77b4",
-    "L0_direct": "#fc03c2", 
-    "L1_direct": "#ff7f0e",
-    "L1":       "#ff7f0e",
-    "L1_2":     "#d62728",
-    "L1b":     "#d62728",
-    "L1c":     "#d6279f",
-    "L1_3":     "#e377c2",
-    "L1_3c":    "#9467bd", 
-    "L2":       "#d62770",
-    "L2_1":       "#d62770", 
-    "L2_2":     "#1ea054", 
-    "L2_3":     "#1f77b4", 
-    "L2_3b":    "#2B9E91", 
-    "L2_3c":    "#892362",  
-    "L4":       "#7f7f7f",
-    "L3":       "#8c564b",
-    "START":       "#3724c4",  # pink
-    "START_simple": "#ff1493",  # deep pink
-    "STMTS":    "#bcbd22",  # yellow
-    "STMTS_direct": "#2B9E91",
-    "overhead": "#25d1ec", 
-    "uebergang_direct": "#17becf",  # cyan
-}
+MAX_LEN = 200
 
 def epoch_step_num(key: str) -> Tuple[int, int]:
     m = re.match(r"epoch_(\d+)(?:_(\d+))?\.pt$", key)
@@ -52,9 +25,9 @@ def epoch_step_num(key: str) -> Tuple[int, int]:
     step = int(m.group(2)) if m.group(2) else 0
     return epoch, step
 
-def find_subsequences(tokens: List[str], C: Nonterminal, start_marker, end_marker) -> List[Tuple[int, int, str]]:
+def find_subsequences(tokens: List[str], start_marker, end_marker) -> List[Tuple[int, int, str]]:
     """
-    Find all subsequences in `tokens` delimited by start and end markers for nonterminal C.
+    Find all subsequences in `tokens` delimited by start and end markers.
     Assumes every start marker has a matching end marker and sequences are well-formed.
 
     Returns a list of (start_index, end_index, subseq_text), where end_index is exclusive.
@@ -84,8 +57,43 @@ def seq_log_pcfg(parser: ViterbiParser, text: str) -> float:
     parses = list(parser.parse(toks))
     return math.log(parses[0].prob())
 
+def compare_model_vs_real_probs_subgrammar(model, tokenizer, test_sequences_with_probs, device):
+    """
+    Now expects test_sequences_with_probs to be a list of (sequence_str, real_log_prob) tuples.
+    We unpack both, but only recompute model_log_prob and then compare to the stored real_log_prob.
+    """
+    model.eval()
+    results = []
+
+    with torch.no_grad():
+        for seq, real_log_prob in test_sequences_with_probs:
+            start, end, text = seq
+            encoded = tokenizer.encode(text, return_tensors="pt").to(device)
+            model_log_prob = 0.0
+
+            length = end - start + 1
+            start += 1
+            for i in range(length):
+                input_ids = encoded[:, : start + i]
+                target_id = encoded[:, start + i].item()
+                logits, _ = model(input_ids)
+                log_probs = F.log_softmax(logits.squeeze(1), dim=-1)
+                token_log_prob = log_probs[0, target_id].item()
+                model_log_prob += token_log_prob
+
+            diff = abs(model_log_prob - real_log_prob)
+
+            results.append({
+                "text": text,
+                "log_prob_model": model_log_prob,
+                "log_prob_real": real_log_prob,
+                "abs_logprob_diff": diff,
+            })
+
+    return results
+
 def generate_from_nt(grammar_name: str, nt: str, num_sequences: int):
-    start_symbol = Nonterminal(nt)  # <- start from the nonterminal directly
+    start_symbol = Nonterminal(nt)
     sequences = []
     while len(sequences) < num_sequences:
         seq, _ = sample(grammar_name, start_symbol)
@@ -93,16 +101,14 @@ def generate_from_nt(grammar_name: str, nt: str, num_sequences: int):
     return sequences
 
 def generate_test_subgrammar_set(grammar_name: str, nt: str, num_sequences: int):
-    grammar_name = f"{grammar_name}" #_subgrammar" # we need the subgrammar version with the start and end markers
+    if f"{grammar_name}_subgrammar" in GRAMMARS:
+        grammar_name = f"{grammar_name}_subgrammar"  # we need the subgrammar version with the start and end markers
     grammar = GRAMMARS[grammar_name]
     start_symbol = list(grammar)[0]
 
-    print(grammar_name, start_symbol)
-    print(nt)
-
     sequences = []
     while len(sequences) < num_sequences:
-        seq, _ = sample(grammar_name, start_symbol, max_len=200)
+        seq, _ = sample(grammar_name, start_symbol, max_len=MAX_LEN)
         if f"s{nt.symbol()}" in seq and f"e{nt.symbol()}" in seq:
             sequences.append(seq)   
     return sequences
@@ -113,14 +119,13 @@ def prepare_test_sequences(parser, nt, main_dir, top_level: bool, grammar_name: 
             test_sequences = [json.loads(line)["sequence"] for line in f]
     else:
         test_sequences = generate_test_subgrammar_set(grammar_name, nt, TEST_SET_SIZE)
-        print(test_sequences[:2])
 
     relevant_test_sequences = []
     probabilities = []
 
     for seq in test_sequences:
         tokens = seq.split()
-        spans = find_subsequences(tokens, nt, f"s{nt.symbol()}", f"e{nt.symbol()}") if not top_level else [(0, len(tokens), seq)]
+        spans = find_subsequences(tokens, f"s{nt.symbol()}", f"e{nt.symbol()}") if not top_level else [(0, len(tokens), seq)]
         for start, end, subseq in spans:
             prob = seq_log_pcfg(parser, subseq)
             relevant_test_sequences.append((start, end, seq))
@@ -132,7 +137,7 @@ def prepare_test_sequences(parser, nt, main_dir, top_level: bool, grammar_name: 
 def prepare_overhead_sequences(grammar_name, start_symbol): # todo change here
     grammar = GRAMMARS[grammar_name]
     start_symbol = list(grammar)[0]
-    test_sequences = sample_many(grammar_name, start_symbol, TEST_SET_SIZE, max_len=200)
+    test_sequences = sample_many(grammar_name, start_symbol, TEST_SET_SIZE, max_len=MAX_LEN)
 
     relevant_test_sequences = []
     probabilities = []
@@ -182,20 +187,6 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar,
         eos_token="<|eos|>"
     )
 
-    # if "_" in dataset_name: # TODO: this is always the case
-    #     #compound_stmt_count = 0
-    #     test_sequences = []
-    #     with open(f"{main_dir}/test.jsonl", "r") as f:
-    #         for line in f:
-    #             line = line.strip()
-    #             if not line:
-    #                 continue
-    #             obj = json.loads(line)
-    #             tokens = obj["sequence"].split()
-    #             #compound_stmt_count += tokens.count("compound_stmt")
-    #             test_sequences.append(((0, len(tokens), obj["sequence"]), obj["real_log_prob"]))
-    #     num_sequences = len(test_sequences)
-    #     #print(compound_stmt_count)
     nt = Nonterminal(nonTerminal)
     if subgrammar == "overhead":
         test_sequences, _ = prepare_overhead_sequences(grammar_name, nt)
@@ -208,7 +199,6 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar,
         test_sequences, num_sequences = prepare_test_sequences(parser, nt, main_dir, subgrammar == grammar_name, grammar_name)
         test_sequences = test_sequences[:TEST_SET_SIZE]
     
-
     # Load master results file that contains all grammars
     master_results_path = "../results/hierarchy_analysis.json"
     if os.path.exists(master_results_path):
@@ -254,7 +244,7 @@ def analyze_hieararchy_all_epochs(grammar_name, nonTerminal, subgrammar,
     print(f"Updated hierarchy analysis results for {grammar_name} in {master_results_path}")
     return all_grammar_results
     
-def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seeds: list[int], to_epoch: int = None, for_paper: bool = False):
+def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seeds: list[int], to_epoch: int = None):
     """
     Generate separate line charts for KL divergence and accuracy per subgrammar, keeping distinct colors.
     """
@@ -263,15 +253,12 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seed
     plt.figure(figsize=(4.8, 3))
     for seed1 in seeds:
         grammar_data = all_results[model_name][grammar_name][f'{seed1}']
-
         nonterminals = list(grammar_data.keys())
-        print(nonterminals)
 
         # Plot KL divergence
         for idx, nt in enumerate(nonterminals):
             data_points = []
-            color = NT2COLOR[nt]
-            #color = "#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
+            color = "#"+''.join([random.choice('0123456789ABCDEF') for _ in range(6)])
             for ckpt, data in grammar_data[nt].items():
                 e , s = epoch_step_num(ckpt)
                 if to_epoch and e > 0: #to_epoch:
@@ -280,17 +267,15 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seed
             
             # Sort by epoch first, then by step
             data_points.sort(key=lambda x: (x[0], x[1]))
+
+            max_step = max(s for _, s, _ in data_points)
+            divider = max_step + 50    # define a dynamic divider as max_step + 50
             
             if data_points:
                 #x_values = [(e * 350 + s) if e <= 2 else ((e-3)*950 + s + 1050) for e, s, _ in data_points] 
-                x_values = [e + s/DIVIDER for e, s, _ in data_points]
+                x_values = [e + s/divider for e, s, _ in data_points]
                 y_values = [kl for _, _, kl in data_points]
             
-            if for_paper:
-                if "_direct" in nt:
-                    legend_label = "from scratch"
-                else:
-                    legend_label = "with pretraining"
             else:
                 if nt == "L0" or nt == "overhead":
                     legend_label = nt
@@ -298,8 +283,6 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seed
                     legend_label = "L0"
                 elif nt == "START_simple":
                     legend_label = "outer subgrammar"
-                # elif nt == "L2":
-                #     legend_label = "subgrammar L2_1"
                 else:
                     legend_label = f"subgrammar {nt}" # f"{nt}_{seed1}"
                 
@@ -310,9 +293,6 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seed
     plt.xlabel('Epochs')
     plt.ylabel('KL Divergence')
     #plt.yscale('log')
-    #plt.title('Compositionality of KL Divergence', fontsize=18)
-    #plt.title(f'KL Divergence over Epochs for {grammar_name}')
-
     plt.legend()
     plt.xticks()
     plt.yticks()
@@ -333,7 +313,7 @@ def plot_combined_kl_accuracy(results_path: str, grammar_model_pairs: List[Tuple
                 grammar_data = all_results[model_name][grammar_name][f'{seed}']
 
                 data_points = []
-                color = NT2COLOR.get(nt, "#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]))
+                color = "#"+''.join([random.choice('0123456789ABCDEF') for _ in range(6)])
                 
                 for ckpt, data in grammar_data[nt].items():
                     e, s = epoch_step_num(ckpt)
@@ -342,20 +322,22 @@ def plot_combined_kl_accuracy(results_path: str, grammar_model_pairs: List[Tuple
                     data_points.append((e, s, data['kl_divergence']))
                     
                 data_points.sort(key=lambda x: (x[0], x[1]))
-                    
+
+                max_step = max(s for _, s, _ in data_points)
+                divider = max_step + 50    # define a dynamic divider as max_step + 50
                 if data_points:
-                    x_values = [e + s/DIVIDER for e, s, _ in data_points] 
+                    x_values = [e + s/divider for e, s, _ in data_points] 
                     y_values = [kl for _, _, kl in data_points]
                         
                     label = f"{model_name}-{grammar_name}-{nt}"
                     plt.plot(x_values, y_values, marker='o', linestyle='-', label=label, color=color)
         
-        plt.xlabel('Epoch', fontsize=16)
+        plt.xlabel('Epoch')
         plt.ylabel('KL Divergence')
         plt.yscale('log')
         plt.title('KL Divergence over Epochs (Combined)')
         plt.grid(alpha=0.3)
-        plt.legend(fontsize=16)
+        plt.legend()
         plt.tight_layout()
         plt.savefig(f"../results/combined_kl_divergence_plot.png")
         plt.close()
@@ -384,7 +366,6 @@ def collect_kl_table(results_path: str, grammar_name: str, model_name: str, nonT
                 f.write(f"{nonTerminal},{seed},{kl_value}\n")
     return
 
-# Update the main function to optionally generate plots
 def main():
     args = argument_parser()
     if args.create_table:

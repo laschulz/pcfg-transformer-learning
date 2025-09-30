@@ -1,10 +1,10 @@
-from collections import defaultdict, Counter
-from nltk import Tree, ViterbiParser, Nonterminal, Production, PCFG
+from collections import defaultdict
+from nltk import Tree, ViterbiParser, Nonterminal
 import json
 import argparse
-from typing import List, Dict, Tuple, Any, Set, Optional
+from typing import List, Dict, Tuple, Any, Set
 
-from generate_pcfg import PARSERS, dict_to_pcfg
+from generate_pcfg import PARSERS
 
 def count_rules_in_tree(tree: Tree, rule_counts: dict):
     """
