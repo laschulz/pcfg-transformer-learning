@@ -133,7 +133,6 @@ def prepare_overhead_sequences(grammar_name, start_symbol): # todo change here
     grammar = GRAMMARS[grammar_name]
     start_symbol = list(grammar)[0]
     test_sequences = sample_many(grammar_name, start_symbol, TEST_SET_SIZE, max_len=200)
-    print(len(test_sequences), "is length of test sequences for overhead")
 
     relevant_test_sequences = []
     probabilities = []

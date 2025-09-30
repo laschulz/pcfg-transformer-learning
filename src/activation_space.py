@@ -275,5 +275,6 @@ def main():
         if values:
             avg_across_seeds = sum(values) / len(values)
             print(f"  {layer}: {avg_across_seeds:.4f}")
+            
 if __name__ == "__main__":
     main()

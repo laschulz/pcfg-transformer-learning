@@ -137,7 +137,7 @@ class TwoLayer:
     bias = True
     name = "TwoLayer"
 
-class TwoLayer_31:
+class TwoLayer_LARGE:
     block_size = 256        
     vocab_size = 5   
     n_layer = 2                
@@ -145,7 +145,7 @@ class TwoLayer_31:
     n_embd = 20         
     dropout = 0.1              
     bias = True
-    name = "TwoLayer_31"
+    name = "TwoLayer_LARGE"
 
 class TwoLayer_SMALL:
     block_size = 256        
@@ -177,7 +177,7 @@ class OneLayer: #22k
     bias = True
     name = "OneLayer"
 
-class OneLayer_BIG: #22k
+class OneLayer_LARGE: #22k
     block_size = 256           
     vocab_size = 100          
     n_layer = 1              
@@ -185,7 +185,7 @@ class OneLayer_BIG: #22k
     n_embd = 32  #32            
     dropout = 0.1              
     bias = True
-    name = "OneLayer_BIG"
+    name = "OneLayer_LARGE"
 
 class GPT(nn.Module):
 

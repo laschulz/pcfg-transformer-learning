@@ -11,12 +11,12 @@ def map_model_name(model_name):
         return TwoLayer()
     elif model_name == "TwoLayer_SMALL":
         return TwoLayer_SMALL()
-    elif model_name == "TwoLayer_31":
-        return TwoLayer_31()
+    elif model_name == "TwoLayer_LARGE":
+        return TwoLayer_LARGE()
     elif model_name == "OneLayer":
         return OneLayer()
-    elif model_name == "OneLayer_BIG":
-        return OneLayer_BIG()
+    elif model_name == "OneLayer_LARGE":
+        return OneLayer_LARGE()
     else:
         raise ValueError(f"Unknown model name: {model_name}")
 
@@ -24,7 +24,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Train or load a GPT model on a PCFG dataset")
     parser.add_argument("--grammar", type=str, required=True, help="Type of PCFG to use")
     parser.add_argument("--dataset_name", type=str, required=True)
-    parser.add_argument("--model", type=str, default="FourLayer", help="Type of GPT model to use")
+    parser.add_argument("--model", type=str, required=True, help="Type of GPT model to use")
     parser.add_argument("--checkpoint_path", type=str, default=None, help="Optional path to checkpoint to load")
     parser.add_argument("--continue_from", type=int, default=0, help="Epoch to continue training from if continuing")
     parser.add_argument("--num_epochs", type=int, default=50, help="Number of epochs to train the model")
@@ -32,11 +32,11 @@ def parse_args():
     return parser.parse_args()
 
 def trainer(model, grammar, config, dataset_name, checkpoint_path, checkpoint_every, 
-            num_epochs, continue_from, continue_training, device, seed, safe_only_last=False):
+            num_epochs, continue_from, device, seed, safe_only_last=False):
     dataset = f"{grammar}_{dataset_name}"
     dir = f'../data/{grammar}/{dataset}'
 
-    if checkpoint_path and continue_training:
+    if checkpoint_path:
         print(f"Continuing training from checkpoint: {checkpoint_path}")
         model.load_state_dict(torch.load(checkpoint_path, map_location=device))
         model.train_model(
@@ -92,7 +92,7 @@ def main():
 
     trainer(model, args.grammar, config, args.dataset_name, checkpoint_path=checkpoint_path, checkpoint_every=50,
             num_epochs=args.num_epochs, continue_from=args.continue_from, 
-            continue_training=args.continue_training, device=device, seed=args.seed)
+            device=device, seed=args.seed)
 
 if __name__ == "__main__":
     main()

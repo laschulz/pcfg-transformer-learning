@@ -34,6 +34,9 @@ It was used to run the experiments in the paper:
     To analyze the cosine similarity of models, supports both within-set and cross-set comparisons, aggregates results across seeds and can output per-layer heatmaps. 
     To analyze within-set comparison, the `.txt` file should contain a single block of sequences, one sequence per line. For cross-set comparison, the `.txt` file should contain **two blocks** of sequences, separated by an **empty line** to ensure correct parsing.
 
+- **`depth_recursion_exp.py`**
+    This script trains and evaluates the transformer **TwoLayer_LARGE** model on the **NestedParentheses** grammar. It generates synthetic sequences, compares model-predicted logits with handcrafted ground-truth distributions, and visualizes prediction errors across depths and random seeds. The pipeline includes tokenizer generation, training the model on multiple seeds, and systematic analysis of different input cases and prefixes.
+
 - **`generate_arithmetic_expr.ipynb`**  
   A Jupyter Notebook that can be used to generate random nested arithmetic expressions,  
   up to a maximum nesting depth and number of terms.

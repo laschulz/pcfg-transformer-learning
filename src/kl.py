@@ -1,3 +1,19 @@
+import os
+import json
+import random
+import argparse
+import numpy as np
+import matplotlib.pyplot as plt
+import torch
+
+from transformers import PreTrainedTokenizerFast
+from tokenizers import Tokenizer, models, pre_tokenizers
+from tokenizers.processors import TemplateProcessing
+
+from model import GPT
+from train import map_model_name
+from generate_pcfg import split_and_tokenize
+from eval import compare_model_vs_real_probs_subgrammar
 from  analysis_hierarchy import epoch_step_num
 
 def build_fixed_tokenizer(grammar, tok_path, special_tokens=None):
@@ -5,15 +21,12 @@ def build_fixed_tokenizer(grammar, tok_path, special_tokens=None):
     Create a WordLevel tokenizer whose vocab = exactly the terminals
     of the grammar, plus any provided special_tokens.
     """
-    from tokenizers import Tokenizer, models, pre_tokenizers
-    from tokenizers.processors import TemplateProcessing
     
     if special_tokens is None:
         special_tokens = ["<|bos|>", "<|eos|>"]
     
     # Extract terminals from the grammar
     terminals = set()
-    print(grammar.items())
     for lhs, productions in grammar.items():
             for option, _ in productions:
                 for sym in option:
@@ -57,22 +70,6 @@ def build_fixed_tokenizer(grammar, tok_path, special_tokens=None):
     
     return tok_fast
 
-import os
-import json
-import random
-import argparse
-
-import numpy as np
-import matplotlib.pyplot as plt
-import torch
-import torch.nn.functional as F
-
-from transformers import PreTrainedTokenizerFast
-from model import GPT
-from train import map_model_name
-from generate_pcfg import split_and_tokenize
-from eval import compare_model_vs_real_probs
-
 def create_grammar(p_value):
     return {
         "A": [
@@ -88,7 +85,7 @@ def create_grammar2(p_value):
         ]
     }
 
-def sample_direct(grammar, start_symbol, max_len=100):
+def sample_direct(grammar, start_symbol, max_len):
     """Sample a single sequence plus its log-prob from the grammar."""
     seq, log_prob, stack = [], 0.0, [start_symbol]
     while stack and len(seq) < max_len:
@@ -129,7 +126,6 @@ def generate_dataset(func, p_value, dataset_size, out_dir="../data/kl_analysis")
 
     # build tokenizer
     tok_path = os.path.join(dataset_dir, "tokenizer.json")
-    print(grammar_name)
     tokenizer = build_fixed_tokenizer(grammar, tok_path)
 
     # prepare train/val splits and tokenize
@@ -158,14 +154,14 @@ def train_model(dataset_dir, grammar_name, model_config, num_epochs):
     )
     return 
 
-def evaluate_model_once(model, tokenizer, test_sequences, device, p_value):
+def evaluate_model_once(model, tokenizer, test_sequences, device):
     model.eval()
-    kl_div = compare_model_vs_real_probs(model, tokenizer, test_sequences, device) # TODO: check if we can rewrite this
+    test_sequences = [[(0, len(seq.split()), seq), logp] for seq, logp in test_sequences]
+    kl_div = compare_model_vs_real_probs_subgrammar(model, tokenizer, test_sequences, device)
     return sum(a["abs_logprob_diff"] for a in kl_div) / len(test_sequences)
 
-def evaluate_over_epochs(checkpoint_dir, tokenizer, test_sequences, device, p_value, model_config):
+def evaluate_over_epochs(checkpoint_dir, tokenizer, test_sequences, device, model_config):
     ckpts = [f for f in os.listdir(checkpoint_dir) if f.endswith(".pt")]
-    print(checkpoint_dir, ckpts)
     
     # Extract epoch and step from checkpoint filenames
     datapoints = []
@@ -181,7 +177,7 @@ def evaluate_over_epochs(checkpoint_dir, tokenizer, test_sequences, device, p_va
         path = os.path.join(checkpoint_dir, ckpt)
         model = GPT(model_config).to(device)
         model.load_state_dict(torch.load(path, map_location=device))
-        kl = evaluate_model_once(model, tokenizer, test_sequences, device, p_value)
+        kl = evaluate_model_once(model, tokenizer, test_sequences, device)
         kl_by_epoch.append((epoch, step, kl))
     
     return kl_by_epoch
@@ -197,17 +193,13 @@ def run_experiment(p_values, dataset_size, model_type, num_epochs, func):
         ds_dir, grammar_name, tokenizer, test_seqs = generate_dataset(func, p, dataset_size, out_dir)
         train_model(ds_dir, grammar_name, model_config, num_epochs)
         ckpt_dir = os.path.join(ds_dir, model_config.name, 'new/seed_42')
-        kl_curve = evaluate_over_epochs(ckpt_dir, tokenizer, test_seqs, device, p, model_config)
+        kl_curve = evaluate_over_epochs(ckpt_dir, tokenizer, test_seqs, device, model_config)
         results_by_p[p] = kl_curve
 
     return results_by_p
 
 def plot_kl_over_epochs(results_by_p, model_type):
     plt.figure(figsize=(4.8, 3))
-    print(results_by_p)
-    
-    # Constant for normalizing steps
-    DIVIDER = 200  # Adjust based on your steps per epoch
     
     for p, curve in results_by_p.items():
         # Extract epochs and kl values
@@ -225,14 +217,13 @@ def plot_kl_over_epochs(results_by_p, model_type):
     
     plt.xlabel("Mini-batch Iterations")
     plt.ylabel("KL Divergence")
-    #plt.title(f"KL Divergence over Epochs", fontsize=16)
     plt.legend()
     plt.xticks()
     plt.yticks()
     plt.tight_layout()
     os.makedirs("../results", exist_ok=True)
     plt.savefig(f"../results/kl_over_epochs_{model_type}.png", dpi=300)
-    plt.show()
+    plt.close()
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -242,17 +233,9 @@ def parse_args():
         default=[0.1, 0.3, 0.5, 0.7, 0.9],
         help="List of probability values to test"
     )
-    parser.add_argument(
-        "--dataset_size", type=int, required=True,
-        help="Number of sequences per dataset"
-    )
-    parser.add_argument(
-        "--model", type=str, required=True, help="Which GPT configuration to use"
-    )
-    parser.add_argument(
-        "--epochs", type=int, default=1,
-        help="Number of training epochs"
-    )
+    parser.add_argument("--dataset_size", type=int, required=True, help="Number of sequences per dataset")
+    parser.add_argument("--model", type=str, required=True, help="Which model configuration to use")
+    parser.add_argument("--epochs", type=int, default=1, help="Number of training epochs")
     parser.add_argument("--grammar", type=str, required=True, help="Type of PCFG to use")
     return parser.parse_args()
 
