@@ -14,7 +14,7 @@ from transformers import PreTrainedTokenizerFast
 from scipy.stats import spearmanr
 
 NUM_SEEDS = 50
-SPECIFIC_SEEDS = [] #[21, 23, 24, 30, 32, 34, 42, 46]
+SPECIFIC_SEEDS = []  # set to something if you only want to look at specific seeds
 
 # per-layer L2 distance between two models
 def per_layer_l2(model1, model2):
@@ -402,7 +402,7 @@ def average_cka(df: pd.DataFrame, skip_diagonal=True):
     # Ensure numeric
     df = df.apply(pd.to_numeric, errors="coerce")
 
-    # Optionally drop i==j pairs (self-similarity ~1.0)
+    # Optionally drop i==j pairs since self-similarity 1.0
     if skip_diagonal and isinstance(df.index, pd.Index):
         pairs = df.index.to_series().str.extract(r"seed_(\d+)_vs_seed_(\d+)").astype(float)
         offdiag = pairs[0] != pairs[1]
@@ -427,7 +427,6 @@ def find_checkpoints(dir):
     seed_folders = [f for f in os.listdir(dir) if f.startswith('seed_')]
 
     for seed_folder in seed_folders:
-        # Special case: only want seeds 30, 39, 41, 42, 46, 47
         if SPECIFIC_SEEDS != [] and int(seed_folder.split('_')[1]) not in SPECIFIC_SEEDS:
             continue
         seed_path = os.path.join(dir, seed_folder)
@@ -536,9 +535,7 @@ def plot_l2_distances(distances, grammar, dataset_size, train_type):
     plt.close()
 
 def plot_per_layer_l2_distances(df, grammar, dataset_size, train_type):
-
     plt.figure(figsize=(14, 10))
-    ax = sns.heatmap(df, cmap="coolwarm", cbar=True)
     plt.title(f"Per-Layer L2 Distances Heatmap - {train_type}\nGrammar: {grammar}, Dataset Size: {dataset_size}")
     plt.xlabel("Layers")
     plt.ylabel("Seeds")
@@ -561,8 +558,6 @@ def plot_cosine_similarity_heatmap(df, grammar, dataset_size, train_type):
     plt.close()
 
 def plot_per_layer_cka_heatmap(df, grammar, dataset_size, train_type, config):
-    # ensure numeric
-    # df = df.apply(pd.to_numeric, errors='coerce')
     col_mean = df.mean(axis=0, skipna=True)
     overall  = df.stack(dropna=True).mean()
 
@@ -592,6 +587,37 @@ def plot_per_layer_cka_heatmap(df, grammar, dataset_size, train_type, config):
                 bbox_inches="tight", dpi=300)
     plt.close(fig)
 
+def summarize(name, results):
+    """
+    results = (l2, l2_pl, cos, cka, rsa)
+    """
+    l2, l2_pl, cos, cka, rsa = results
+
+    # mean L2 (flatten nested list)
+    mean_l2 = np.mean([v for sub in l2 for v in sub if isinstance(v, (int, float))])
+
+    # cosine: take overall mean
+    mean_cos = cos.stack(dropna=True).mean().item() if isinstance(cos, pd.DataFrame) else np.mean(cos)
+
+    # split per-layer CKA
+    cka_means = cka.mean(axis=0, skipna=True) if isinstance(cka, pd.DataFrame) else pd.Series()
+    mean_cka_attn = cka_means[[k for k in cka_means.index if k.startswith("attn_")]].mean()
+    mean_cka_mlp  = cka_means[[k for k in cka_means.index if k.startswith("mlp_")]].mean()
+
+    # split per-layer RSA
+    rsa_means = rsa.mean(axis=0, skipna=True) if isinstance(rsa, pd.DataFrame) else pd.Series()
+    mean_rsa_attn = rsa_means[[k for k in rsa_means.index if k.startswith("attn_")]].mean()
+    mean_rsa_mlp  = rsa_means[[k for k in rsa_means.index if k.startswith("mlp_")]].mean()
+
+    return {
+        "comparison": name,
+        "mean_L2": mean_l2,
+        "mean_cosine": mean_cos,
+        "mean_CKA_attn": mean_cka_attn,
+        "mean_CKA_mlp": mean_cka_mlp,
+        "mean_RSA_attn": mean_rsa_attn,
+        "mean_RSA_mlp": mean_rsa_mlp,
+    }
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Compute L2 distances between models.")
@@ -603,105 +629,110 @@ def parse_args():
     parser.add_argument("--grammar_startsymbol", type=str, required=True, help="Start symbol for the grammar.")
     parser.add_argument("--subgrammar_startsymbol", type=str, required=True, help="End symbol for the grammar.")
     parser.add_argument("--start_seed", type=int, default=0, help="Starting seed for training.")
+    parser.add_argument("--generate_plots", action="store_true", help="Whether to generate plots.")
 
     return parser.parse_args()
 
 def main():
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
-
     args = parse_args()
     config = map_model_name(args.model)
 
     base_dir = f'../data/{args.grammar}/{args.grammar}_{args.dataset_size}'
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-    # loop_over_seeds_and_train(args.grammar, 
-    #                           args.dataset_size, 
-    #                           args.grammar_startsymbol,
-    #                           args.subgrammar_startsymbol,
-    #                           args.num_epochs_direct, 
-    #                           args.num_epochs_pretrain,
-    #                           config, 
-    #                           device,
-    #                           start_seed=args.start_seed)
+    loop_over_seeds_and_train(args.grammar, 
+                              args.dataset_size, 
+                              args.grammar_startsymbol,
+                              args.subgrammar_startsymbol,
+                              args.num_epochs_direct, 
+                              args.num_epochs_pretrain,
+                              config, 
+                              device,
+                              start_seed=args.start_seed)
 
-    
     # load tokenizer
     tokenizer_path = f'{base_dir}_{args.grammar_startsymbol}/tokenizer.json'
     tokenizer = PreTrainedTokenizerFast(tokenizer_file=tokenizer_path, bos_token="<|bos|>", eos_token="<|eos|>")
 
     # pretraining vs full pretraining on subgrammar
-    direct_l2, direct_l2_pl, direct_cos, direct_cka, direct_rsa = difference_same_seed(train_type='new',
-                         config=config,
-                         tokenizer=tokenizer,
-                         base_dir=f"{base_dir}_{args.subgrammar_startsymbol}",
-                         test_dir=f"{base_dir}_{args.subgrammar_startsymbol}")
-    continued_l2, continued_l2_pl, continued_cos, continued_cka, continued_rsa = difference_same_seed(train_type='continued',
+    comparisons = {
+        'pretrain_sub': difference_same_seed(train_type='new',
+                        config=config,
+                        tokenizer=tokenizer,
+                        base_dir=f"{base_dir}_{args.subgrammar_startsymbol}",
+                        test_dir=f"{base_dir}_{args.subgrammar_startsymbol}"),
+        'full_pretrain_sub': difference_same_seed(train_type='continued',
                         config=config,
                         tokenizer=tokenizer,
                         base_dir=f"{base_dir}_{args.grammar_startsymbol}",
-                        test_dir=f"{base_dir}_{args.subgrammar_startsymbol}")
-    pretrain_vs_direct_l2, pretrain_vs_direct_l2_pl, pretrain_vs_direct_cos, pretrain_vs_direct_cka, pretrain_vs_direct_rsa = difference_pretrain_and_direct(config, 
-                                                                                    tokenizer=tokenizer, 
-                                                                                    dir1=f'{base_dir}_{args.subgrammar_startsymbol}/{args.model}/new', 
-                                                                                    dir2=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/continued',
-                                                                                    test_dir =f'{base_dir}_{args.subgrammar_startsymbol}'
-                                                                                    )
+                        test_dir=f"{base_dir}_{args.subgrammar_startsymbol}"),
+        'direct_sub': difference_same_seed(train_type='new',
+                         config=config,
+                         tokenizer=tokenizer,
+                         base_dir=f"{base_dir}_{args.grammar_startsymbol}",
+                         test_dir=f"{base_dir}_{args.subgrammar_startsymbol}"),
+        'direct_full': difference_same_seed(train_type='new',
+                         config=config,
+                         tokenizer=tokenizer,
+                         base_dir=f"{base_dir}_{args.grammar_startsymbol}",
+                         test_dir=f"{base_dir}_{args.grammar_startsymbol}"),
+        'continued_full': difference_same_seed(train_type='continued',
+                        config=config,
+                        tokenizer=tokenizer,
+                        base_dir=f"{base_dir}_{args.grammar_startsymbol}",
+                        test_dir=f"{base_dir}_{args.grammar_startsymbol}")
+    }
 
-    # full pretraining vs direct training on subgrammar
-    # direct_l2, direct_l2_pl, direct_cos, direct_cka, direct_rsa = difference_same_seed(train_type='new',
-    #                      config=config,
-    #                      tokenizer=tokenizer,
-    #                      base_dir=f"{base_dir}_{args.grammar_startsymbol}",
-    #                      test_dir=f"{base_dir}_{args.subgrammar_startsymbol}")
-    # continued_l2, continued_l2_pl, continued_cos, continued_cka, continued_rsa = difference_same_seed(train_type='continued',
-    #                     config=config,
-    #                     tokenizer=tokenizer,
-    #                     base_dir=f"{base_dir}_{args.grammar_startsymbol}",
-    #                     test_dir=f"{base_dir}_{args.subgrammar_startsymbol}")
-    # pretrain_vs_direct_l2, pretrain_vs_direct_l2_pl, pretrain_vs_direct_cos, pretrain_vs_direct_cka, pretrain_vs_direct_rsa = difference_pretrain_and_direct(config, 
-    #                                                                                 tokenizer=tokenizer, 
-    #                                                                                 dir1=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/new', 
-    #                                                                                 dir2=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/continued',
-    #                                                                                 test_dir =f'{base_dir}_{args.subgrammar_startsymbol}'
-    #                                                                                 )
+    pretrain_vs_direct_sub = difference_pretrain_and_direct(
+        config,
+        tokenizer=tokenizer,
+        dir1=f'{base_dir}_{args.subgrammar_startsymbol}/{args.model}/new',
+        dir2=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/continued',
+        test_dir=f'{base_dir}_{args.subgrammar_startsymbol}'
+    )
 
-    # full pretraining vs direct training on full grammar
-    # direct_l2, direct_l2_pl, direct_cos, direct_cka, direct_rsa = difference_same_seed(train_type='new',
-    #                      config=config,
-    #                      tokenizer=tokenizer,
-    #                      base_dir=f"{base_dir}_{args.grammar_startsymbol}",
-    #                      test_dir=f"{base_dir}_{args.grammar_startsymbol}")
-    # continued_l2, continued_l2_pl, continued_cos, continued_cka, continued_rsa = difference_same_seed(train_type='continued',
-    #                     config=config,
-    #                     tokenizer=tokenizer,
-    #                     base_dir=f"{base_dir}_{args.grammar_startsymbol}",
-    #                     test_dir=f"{base_dir}_{args.grammar_startsymbol}")
-    # pretrain_vs_direct_l2, pretrain_vs_direct_l2_pl, pretrain_vs_direct_cos, pretrain_vs_direct_cka, pretrain_vs_direct_rsa = difference_pretrain_and_direct(config, 
-    #                                                                                 tokenizer=tokenizer, 
-    #                                                                                 dir1=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/new', 
-    #                                                                                 dir2=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/continued',
-    #                                                                                 test_dir =f'{base_dir}_{args.grammar_startsymbol}'
-    #                                                                                 )
+    pretrain_vs_direct_full = difference_pretrain_and_direct(
+        config,
+        tokenizer=tokenizer,
+        dir1=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/new',
+        dir2=f'{base_dir}_{args.grammar_startsymbol}/{args.model}/continued',
+        test_dir=f'{base_dir}_{args.grammar_startsymbol}'
+    )
 
-    plot_l2_distances(direct_l2, args.grammar, args.dataset_size, 'direct')
-    plot_l2_distances(continued_l2, args.grammar, args.dataset_size, 'continued')
-    plot_l2_distances(pretrain_vs_direct_l2, args.grammar, args.dataset_size, 'pretrain_vs_direct')
+    # --- Aggregate into CSV table ---
+    rows = []
+    for name, res in comparisons.items():
+        rows.append(summarize(name, res))
+    rows.append(summarize("pretrain_vs_direct_sub", pretrain_vs_direct_sub))
+    rows.append(summarize("pretrain_vs_direct_full", pretrain_vs_direct_full))
 
-    plot_per_layer_l2_distances(direct_l2_pl, args.grammar, args.dataset_size, 'direct')
-    plot_per_layer_l2_distances(continued_l2_pl, args.grammar, args.dataset_size, 'continued')
-    plot_per_layer_l2_distances(pretrain_vs_direct_l2_pl, args.grammar, args.dataset_size, 'pretrain_vs_direct')
+    df = pd.DataFrame(rows)
+    outpath = f"../results/weight_space/final_values_{args.grammar}_{args.dataset_size}_{config.name}.csv"
+    df.to_csv(outpath, index=False)
+    print(f"Saved summary table to {outpath}")
 
-    plot_cosine_similarity_heatmap(direct_cos, args.grammar, args.dataset_size, 'direct')
-    plot_cosine_similarity_heatmap(continued_cos, args.grammar, args.dataset_size, 'continued')
-    plot_cosine_similarity_heatmap(pretrain_vs_direct_cos, args.grammar, args.dataset_size, 'pretrain_vs_direct')    
+    if args.generate_plots:
+        for name, res in comparisons.items():
+            l2, l2_pl, cos, cka, rsa = res
+            plot_l2_distances(l2, args.grammar, args.dataset_size, name)
+            plot_per_layer_l2_distances(l2_pl, args.grammar, args.dataset_size, name)
+            plot_cosine_similarity_heatmap(cos, args.grammar, args.dataset_size, name)
+            plot_per_layer_cka_heatmap(cka, args.grammar, args.dataset_size, name, config)
+            plot_per_layer_rsa_heatmap(rsa, args.grammar, args.dataset_size, name, config)
 
-    plot_per_layer_cka_heatmap(direct_cka, args.grammar, args.dataset_size, 'direct', config)
-    plot_per_layer_cka_heatmap(continued_cka, args.grammar, args.dataset_size, 'continued', config)
-    plot_per_layer_cka_heatmap(pretrain_vs_direct_cka, args.grammar, args.dataset_size, 'pretrain_vs_direct', config) 
+        l2, l2_pl, cos, cka, rsa = pretrain_vs_direct_sub
+        plot_l2_distances(l2, args.grammar, args.dataset_size, "pretrain_vs_direct_sub")
+        plot_per_layer_l2_distances(l2_pl, args.grammar, args.dataset_size, "pretrain_vs_direct_sub")
+        plot_cosine_similarity_heatmap(cos, args.grammar, args.dataset_size, "pretrain_vs_direct_sub")
+        plot_per_layer_cka_heatmap(cka, args.grammar, args.dataset_size, "pretrain_vs_direct_sub", config)
+        plot_per_layer_rsa_heatmap(rsa, args.grammar, args.dataset_size, "pretrain_vs_direct_sub", config)
 
-    plot_per_layer_rsa_heatmap(direct_rsa, args.grammar, args.dataset_size, 'direct', config)
-    plot_per_layer_rsa_heatmap(continued_rsa, args.grammar, args.dataset_size, 'continued', config)
-    plot_per_layer_rsa_heatmap(pretrain_vs_direct_rsa, args.grammar, args.dataset_size, 'pretrain_vs_direct', config)
+        l2, l2_pl, cos, cka, rsa = pretrain_vs_direct_full
+        plot_l2_distances(l2, args.grammar, args.dataset_size, "pretrain_vs_direct_full")
+        plot_per_layer_l2_distances(l2_pl, args.grammar, args.dataset_size, "pretrain_vs_direct_full")
+        plot_cosine_similarity_heatmap(cos, args.grammar, args.dataset_size, "pretrain_vs_direct_full")
+        plot_per_layer_cka_heatmap(cka, args.grammar, args.dataset_size, "pretrain_vs_direct_full", config)
+        plot_per_layer_rsa_heatmap(rsa, args.grammar, args.dataset_size, "pretrain_vs_direct_full", config)
 
 if __name__ == "__main__":
     main()

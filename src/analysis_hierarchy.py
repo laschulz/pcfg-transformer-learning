@@ -276,15 +276,14 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seed
                 x_values = [e + s/divider for e, s, _ in data_points]
                 y_values = [kl for _, _, kl in data_points]
             
+            if nt == "L0" or nt == "overhead":
+                legend_label = nt
+            elif nt == "START":
+                legend_label = "L0"
+            elif nt == "START_simple":
+                legend_label = "outer subgrammar"
             else:
-                if nt == "L0" or nt == "overhead":
-                    legend_label = nt
-                elif nt == "START":
-                    legend_label = "L0"
-                elif nt == "START_simple":
-                    legend_label = "outer subgrammar"
-                else:
-                    legend_label = f"subgrammar {nt}" # f"{nt}_{seed1}"
+                legend_label = f"subgrammar {nt}" # f"{nt}_{seed1}"
                 
             plt.plot(x_values, y_values, marker='o', linestyle='-', label=legend_label, color=color)
     

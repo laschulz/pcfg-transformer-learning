@@ -55,6 +55,26 @@ def get_logits(model, tokenizer, sequences, device):
     return results
 
 
+def analyze_case(model, tokenizer, gt_logit,case, prefix, seeds, path, to_epoch, device):
+    diffs = {}
+    for s in seeds:
+        checkpoint_path = f'{path}/TwoLayer_LARGE/new/seed_{s}/epoch_{to_epoch}_0.pt'
+        state_dict = torch.load(checkpoint_path)
+        model.load_state_dict(state_dict)
+
+        model.eval()
+        sequences = generate_sequences(case, 80, prefix)
+        logits = get_logits(model, tokenizer, sequences, device)
+
+        diffs[s] = []
+        for l in logits:
+            diff_vec = torch.abs(l - gt_logit)
+            diff = diff_vec.sum().item()
+            diffs[s].append(diff)
+
+    plot_logit_differences(sequences, diffs, case, prefix)
+
+
 def plot_logit_differences(sequences, diffs, case, prefix):
     """
     Plot the differences between model logits and ground truth logits
@@ -91,15 +111,18 @@ def plot_logit_differences(sequences, diffs, case, prefix):
     if case == 1 or case == 2 or case == 3:
         if case == 1:
             plateau_start = 70
-            plt.xlim(-3, len(x)+15)
+            plt.xlim(-2, len(x)+13)
+            tick_positions = [i for i in x if i % 20 == 0]
         if case == 2:
-            plateau_start = 190
-            plt.axvspan(plateau_start, len(x)-1, color="lightgray", alpha=0.2, label="Plateau region")
-            plt.xlim(-5, len(x)+30)
+            plateau_start = 220
+            #plt.axvspan(plateau_start, len(x)-1, color="lightgray", alpha=0.2, label="Plateau region")
+            plt.xlim(-5, len(x)+33)
+            tick_positions = [i for i in x if i % 40 == 0]
         elif case == 3:
-            plateau_start = 190
-            plt.axvspan(plateau_start, len(x)-1, color="lightgray", alpha=0.2, label="Plateau region")
+            plateau_start = 220
+            #plt.axvspan(plateau_start, len(x)-1, color="lightgray", alpha=0.2, label="Plateau region")
             plt.xlim(-5, len(x)+30)
+            tick_positions = [i for i in x if i % 40 == 0]
         
         # Add plateau mean line for average
         if plateau_start < len(avg_values):
@@ -110,14 +133,13 @@ def plot_logit_differences(sequences, diffs, case, prefix):
                     color='blue', va="center", fontweight='bold')
     
     plt.xlabel('Sequence Depth')
-    plt.yticks([])
+    # plt.yticks([]) # uncomment to hide y-axis ticks
     plt.ylabel('Prediction Error')
     plt.legend(loc='upper left')
     plt.xticks()
     plt.yticks()
     
     # Add ticks only every 5 steps
-    tick_positions = [i for i in x if i % 40 == 0]
     tick_labels = [f"{i}" for i in tick_positions]
     plt.xticks(tick_positions, tick_labels, rotation=45)
     plt.ylim(0, 0.25)
@@ -126,25 +148,6 @@ def plot_logit_differences(sequences, diffs, case, prefix):
     save_path = f'../results/logit_differences_case_{case}_{prefix}.png'
     plt.savefig(save_path, dpi=300)
     plt.close()
-
-def analyze_case(model, tokenizer, gt_logit,case, prefix, seeds, path, to_epoch, device):
-    diffs = {}
-    for s in seeds:
-        checkpoint_path = f'{path}/TwoLayer_LARGE/new/seed_{s}/epoch_{to_epoch}_0.pt'
-        state_dict = torch.load(checkpoint_path)
-        model.load_state_dict(state_dict)
-
-        model.eval()
-        sequences = generate_sequences(case, 80, prefix)
-        logits = get_logits(model, tokenizer, sequences, device)
-
-        diffs[s] = []
-        for l in logits:
-            diff_vec = torch.abs(l - gt_logit)
-            diff = diff_vec.sum().item()
-            diffs[s].append(diff)
-
-    plot_logit_differences(sequences, diffs, case, prefix)
 
 def parse_args():
     parser = argparse.ArgumentParser()

@@ -35,6 +35,9 @@ It was used to run the experiments in the paper:
   To analyze a specific subgrammar, provide its name; otherwise, set `--subgrammar` to the name of the full grammar. It estimates the KL divergence across training epochs and plots it.
   If `create_table` is passed, it stores the final epoch value for each seed in `kl_table.csv`.  
 
+- **`cka_analysis.py`**
+  
+
 - **`activation_space.py`**
     To analyze the cosine similarity of models, supports both within-set and cross-set comparisons, aggregates results across seeds and can output per-layer heatmaps. 
     To analyze within-set comparison, the `.txt` file should contain a single block of sequences, one sequence per line. For cross-set comparison, the `.txt` file should contain **two blocks** of sequences, separated by an **empty line** to ensure correct parsing.

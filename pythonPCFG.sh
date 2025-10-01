@@ -4,12 +4,11 @@ SUPERGRAMMAR="PythonPCFG"
 SUPERGRAMMAR_SYMBOL="STMTS"
 SUBGRAMMAR_SYMBOL="compound_stmt"
 DATASET_SIZE=50000 #50k
-MODEL="OneLayer"
-CONTINUE_FROM=5 #5
-NUM_EPOCHS=40 #40
-SEED=2
+MODEL="TwoLayer_SMALL"
+CONTINUE_FROM=5
+NUM_EPOCHS=40
 
-cd src
+cd ../src
 python generate_pcfg.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --start_symbol $SUPERGRAMMAR_SYMBOL --max_len 250
 
 python generate_pcfg.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --start_symbol $SUBGRAMMAR_SYMBOL \
