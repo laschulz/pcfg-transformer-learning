@@ -13,5 +13,5 @@ python generate_pcfg.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --s
 python generate_pcfg.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --start_symbol $SUBGRAMMAR_SYMBOL \
     --tokenizer_path "../data/${SUPERGRAMMAR}/${SUPERGRAMMAR}_${DATASET_SIZE}_${SUPERGRAMMAR_SYMBOL}/tokenizer.json" --max_len 250
 
-python weight_space.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --model $MODEL \
+python cka_analysis.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --model $MODEL \
     --grammar_startsymbol $SUPERGRAMMAR_SYMBOL --subgrammar_startsymbol $SUBGRAMMAR_SYMBOL --num_epochs_direct 40 --num_epochs_pretrain 10 --start_seed 20
