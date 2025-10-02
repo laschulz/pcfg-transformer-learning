@@ -3,7 +3,7 @@
 This repository contains tools for analyzing transformer models trained on probabilistic context-free grammars (PCFGs).  
 It was used to run the experiments in the paper:
 
-[Unraveling Syntax: How Language Models Learn Context-Free Grammars][Learning_of_CFGs_ICLR_2026.pdf]
+[Unraveling Syntax: How Language Models Learn Context-Free Grammars](Learning_of_CFGs_ICLR_2026.pdf)
 
 ---
 
