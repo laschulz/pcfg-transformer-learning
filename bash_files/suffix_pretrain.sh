@@ -9,7 +9,7 @@ MODEL="TwoLayer_SMALL"
 PRETRAIN_EPOCHS=3
 TO_EPOCH=10
 
-cd src
+cd ../src
 
 python generate_pcfg.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --start_symbol $SUPERGRAMMAR_SYMBOL 
 

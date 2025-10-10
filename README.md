@@ -80,6 +80,8 @@ Stores analysis outputs and figures.
 3. **Train models** using `train.py` (direct or checkpoint continuation).
 4. **Run analyses** using the analysis scripts (analysis_hierarchy.py, cka_analysis.py, etc.)
 
+For most experiments, a bash file can be found in `bash_files/`.
+
 
 ## Notes
 - The Transformer architecture is based on GPT-2 but scaled down for PCFG datasets, which are smaller and more compact than natural language corpora.

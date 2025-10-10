@@ -3,7 +3,7 @@ SUPERGRAMMAR_SYMBOL="STMTS"
 DATASET_SIZE=50000 #50k
 MODEL="FourLayer"
 
-cd src
+cd ../src
 
 for i in {20..49}; do
     python analysis_hierarchy.py --grammar $SUPERGRAMMAR \

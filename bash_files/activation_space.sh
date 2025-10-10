@@ -4,7 +4,7 @@ DATASET_SIZE=50000 #50k
 MODEL="TwoLayer_SMALL"
 SEED=21 # this is the best seed
 
-cd src
+cd ../src
 
 python activation_space.py \
     --model $MODEL \
