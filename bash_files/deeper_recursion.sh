@@ -11,12 +11,12 @@ MODEL="TwoLayer"
 TO_EPOCH=2
 
 cd ../src
-# python generate_pcfg.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --start_symbol $SUPERGRAMMAR_SYMBOL 
+python generate_pcfg.py --grammar $SUPERGRAMMAR --dataset_size $DATASET_SIZE --start_symbol $SUPERGRAMMAR_SYMBOL 
 
-# python train.py --grammar $SUPERGRAMMAR \
-#     --dataset_name "${DATASET_SIZE}_${SUPERGRAMMAR_SYMBOL}" \
-#     --model $MODEL \
-#     --num_epochs $TO_EPOCH
+python train.py --grammar $SUPERGRAMMAR \
+    --dataset_name "${DATASET_SIZE}_${SUPERGRAMMAR_SYMBOL}" \
+    --model $MODEL \
+    --num_epochs $TO_EPOCH
 
 #-------ANALYSIS--------
 

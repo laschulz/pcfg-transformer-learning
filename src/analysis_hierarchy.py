@@ -372,16 +372,6 @@ def main():
         return
     if args.plot_only:
         plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.model, args.seeds, args.to_epoch)
-    #     plot_combined_kl_accuracy(
-    #     "../results/hierarchy_analysis.json", 
-    #     [
-    #         ("PythonPCFG_symbol", "TwoLayer", "STMTS", 2),
-    #         ("PythonPCFG", "TwoLayer", "compound_stmt",2),
-    #         ("PythonPCFG", "TwoLayer", "STMTS_direct", 2),
-    #         ("PythonPCFG", "TwoLayer_LARGER", "STMTS_direct", 2),
-    #     ],
-    #     to_epoch=50
-    # )
         return
     analyze_hieararchy_all_epochs(args.grammar, args.nonTerminal, args.subgrammar, args.to_epoch, args.dataset_name, args.model, args.train_type, args.seeds, args.prob_of_occurring)     
     plot_kl_accuracy("../results/hierarchy_analysis.json", args.grammar, args.model, args.seeds, args.to_epoch)
