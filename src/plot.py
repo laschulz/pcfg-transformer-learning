@@ -7,17 +7,11 @@ df = pd.read_csv("../results/kl_table.csv")
 
 # Convert kl_divergence to numeric, coercing errors to NaN
 df["kl_divergence"] = pd.to_numeric(df["kl_divergence"], errors="coerce")
+df["training_type"] = np.where(df["nonTerminal"].str.endswith("_direct"), "from scratch", "with pretraining")
 
-# Keep only STMTS and STMTS_direct
-subset = df[(df["nonTerminal"].isin(["STMTS", "STMTS_direct"]))]
-
-# Check counts
-print(f"Number of 'from scratch' entries: {subset[subset['nonTerminal'] == 'STMTS_direct'].shape[0]}")
-print(f"Number of 'with pretraining' entries: {subset[subset['nonTerminal'] == 'STMTS'].shape[0]}")
-
-# Split into groups
-from_scratch = subset[subset["nonTerminal"] == "STMTS_direct"]["kl_divergence"].values
-with_pretraining = subset[subset["nonTerminal"] == "STMTS"]["kl_divergence"].values
+# Extract values
+from_scratch = df[df["training_type"] == "from scratch"]["kl_divergence"].dropna().values
+with_pretraining = df[df["training_type"] == "with pretraining"]["kl_divergence"].dropna().values
 
 # --- Boxplot ---
 fig, ax = plt.subplots(figsize=(4, 3))

@@ -188,26 +188,24 @@ def main():
         analyze_case(model, tokenizer, gt_logit, 3, args.prefix, args.seeds, path, args.to_epoch, device)
 
     if args.generate:
-        pass
-        # if args.generate:
-        #     for i, seq in enumerate(sequences):
-        #         seq_new = seq + " a ) ( a ) ( ( ( a )"
-        #         print(seq_new)
-        #         idx = tokenizer.encode(seq_new, return_tensors="pt").to(device)
-        #         idx = idx[:,:-1] # remove eos token
-        #         print(idx)
-        #         generated_text = model.generate(idx, max_new_tokens=10, eos_token_id=tokenizer.eos_token_id, eos_prob_threshold=0.95)
-        #         # how to decode this correctly?
-        #         ids = generated_text[0][0]
-        #         print(ids)
-        #         text_decoded = tokenizer.decode(ids, skip_special_tokens=True)
-        #         print(text_decoded)
+        # #for i, seq in enumerate(sequences):
+        #     seq_new = "( ( ( a )"
+        #     print(seq_new)
+        #     idx = tokenizer.encode(seq_new, return_tensors="pt").to(device)
+        #     idx = idx[:,:-1] # remove eos token
+        #     print(idx)
+        #     generated_text = model.generate(idx, max_new_tokens=10, eos_token_id=tokenizer.eos_token_id, eos_prob_threshold=0.95, greedy=True)
+        #     # how to decode this correctly?
+        #     ids = generated_text[0][0]
+        #     print(ids)
+        #     text_decoded = tokenizer.decode(ids, skip_special_tokens=True)
+        #     print(text_decoded)
 
-        #         c = text_decoded.count("(")
-        #         q = text_decoded.count(")")
-        #         print(c - q)
-        #         break
-        #     return 
+        #     c = text_decoded.count("(")
+        #     q = text_decoded.count(")")
+        #     print(c - q)
+        #     #break
+        pass
 
 if __name__ == "__main__":
     main()
