@@ -203,7 +203,7 @@ def load_sequences_from_file(path):
 def parse_args():
     parser = argparse.ArgumentParser(description="Analyze sequence activation similarity using CKA")
     parser.add_argument("--model", type=str, required=True, help="Model architecture name")
-    parser.add_argument("--base_dir", type=str, required=True, help="Path to model checkpoint")
+    parser.add_argument("--base_dir", type=str, required=True)
     parser.add_argument("--seeds", type=int, nargs="+", help="Seeds to analyze (for multiple models)")
     parser.add_argument("--epoch", type=int, required=True, help="Epoch number to load")
     parser.add_argument("--train_type", type=str, required=True, help="Type of training (e.g., new, continued)")

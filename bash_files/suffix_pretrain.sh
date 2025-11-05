@@ -22,7 +22,6 @@ python train.py --grammar $SUBGRAMMAR_TRAIN --dataset_name "${DATASET_SIZE}_${SU
 python train.py --grammar $SUPERGRAMMAR \
     --dataset_name "${DATASET_SIZE}_${SUPERGRAMMAR_SYMBOL}" \
     --model $MODEL \
-    --continue_training \
     --checkpoint_path "${SUBGRAMMAR_TRAIN}/${SUBGRAMMAR_TRAIN}_${DATASET_SIZE}_${SUPERGRAMMAR_SYMBOL}/${MODEL}/new/seed_42/epoch_${PRETRAIN_EPOCHS}_0.pt" \
     --num_epochs $TO_EPOCH \
     --continue_from $PRETRAIN_EPOCHS

@@ -66,6 +66,9 @@ Stores analysis outputs and figures.
   This runs the experiment show how model learning dynamics depend on the production probability *p*. Specifically, it investigates the double-sided recursion and tail recursion. 
   This script creates the tokenizer and dataset, trains the modle on each dataset and finally evaluates the model across checkpoints to finally plot the KL divergence curves for different *p* values.
 
+- **`plot.py`**
+  This file has to be run once the file `kl_table.csv` has been created (i.e by running `analysis_hierarchy` with `--create_table` enabled). It compares the KL divergence bwtween the two training settings: from scratch (needs to contain `_direct`) and with pretraining. When executed, this script will generate a boxplot and a histogram. 
+
 - **`generate_arithmetic_expr.ipynb`**  
   A Jupyter Notebook that can be used to generate random nested arithmetic expressions,  
   up to a maximum nesting depth and number of terms.

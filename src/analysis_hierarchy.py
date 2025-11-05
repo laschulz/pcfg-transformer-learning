@@ -261,7 +261,7 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seed
             color = "#"+''.join([random.choice('0123456789ABCDEF') for _ in range(6)])
             for ckpt, data in grammar_data[nt].items():
                 e , s = epoch_step_num(ckpt)
-                if to_epoch and e > 0: #to_epoch:
+                if to_epoch and e > to_epoch:
                     continue
                 data_points.append((e, s, data['kl_divergence']))
             
@@ -273,7 +273,16 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seed
             
             if data_points:
                 #x_values = [(e * 350 + s) if e <= 2 else ((e-3)*950 + s + 1050) for e, s, _ in data_points] 
-                x_values = [e + s/divider for e, s, _ in data_points]
+                #x_values = [e + s/divider for e, s, _ in data_points]
+                epoch_max_steps = {}
+                for e, s, _ in data_points:
+                    epoch_max_steps[e] = max(epoch_max_steps.get(e, 0), s)
+
+                # normalized x_values: epoch + step/(max_step_of_that_epoch+buffer)
+                x_values = [
+                    e + s / (epoch_max_steps[e] + 50)   # +50 buffer per epoch
+                    for e, s, _ in data_points
+                ]
                 y_values = [kl for _, _, kl in data_points]
             
             if nt == "L0" or nt == "overhead":
@@ -285,7 +294,7 @@ def plot_kl_accuracy(results_path: str, grammar_name: str, model_name: str, seed
             else:
                 legend_label = f"subgrammar {nt}" # f"{nt}_{seed1}"
                 
-            plt.plot(x_values, y_values, marker='o', linestyle='-', label=legend_label, color=color)
+            plt.plot(x_values, y_values, linestyle='-', label=legend_label, color=color)
     
     #plt.axvspan(0, 1050, color="lightgray", alpha=0.4, label="pretrain on subgrammar")
 
